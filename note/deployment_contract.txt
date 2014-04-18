@@ -1,0 +1,7 @@
+Assume that database is located in
+localhost : 3456
+and
+Username: root
+Password: 123456
+
+Change the port from standard 3306 to 3456, configure my.ini, and restart the server.
