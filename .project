@@ -31,7 +31,11 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
+<<<<<<< HEAD
 			<name>com.genuitec.eclipse.springframework.springbuilder</name>
+=======
+			<name>com.genuitec.eclipse.ast.deploy.core.DeploymentBuilder</name>
+>>>>>>> d4217550eb427de2a095fbce37141d67c4a29bc1
 			<arguments>
 			</arguments>
 		</buildCommand>
