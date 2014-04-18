@@ -5,7 +5,7 @@
 
 build/
 .settings/
-
+.project
 .classpath
 
 # Package Files #
