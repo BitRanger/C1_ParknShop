@@ -5,4 +5,4 @@
  * @author BowenCai
  *
  */
-package com.bitranger.parknshop.model;
+package com.bitranger.parknshop.view.admin;

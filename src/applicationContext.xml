@@ -13,6 +13,7 @@
 		<property name="username" value="bitranger"></property>
 		<property name="password" value="psw-dev"></property>
 	</bean>
+	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource">
@@ -26,4 +27,20 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 			</props>
 		</property>
-	</bean></beans>
+		<property name="annotatedClasses">
+			<list>
+			<value>com.bitranger.parknshop.model.PsItemInfo</value>
+			<value>com.bitranger.parknshop.model.PsRecipient</value>
+			<value>com.bitranger.parknshop.model.PsTag</value>
+			<value>com.bitranger.parknshop.model.PsComment</value>
+			<value>com.bitranger.parknshop.model.PsAdministator</value>
+			<value>com.bitranger.parknshop.model.PsOrder</value>
+			<value>com.bitranger.parknshop.model.PsCustomer</value>
+			<value>com.bitranger.parknshop.model.PsCategory</value>
+			<value>com.bitranger.parknshop.model.PsShop</value>
+			<value>com.bitranger.parknshop.model.PsSeller</value>
+			<value>com.bitranger.parknshop.model.PsItem</value></list>
+		</property>
+	</bean>
+
+</beans>

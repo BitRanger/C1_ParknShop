@@ -5,4 +5,4 @@
  * @author BowenCai
  *
  */
-package com.bitranger.parknshop.dao.impl;
+package com.bitranger.parknshop.util;
