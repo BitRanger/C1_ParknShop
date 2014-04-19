@@ -2,15 +2,12 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-DROP SCHEMA IF EXISTS `c1_parknshop` ;
 CREATE SCHEMA IF NOT EXISTS `c1_parknshop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `c1_parknshop` ;
 
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_customer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_customer` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_customer` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nickname` VARCHAR(45) NOT NULL,
@@ -19,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_customer` (
   `gender` TINYINT(4) NOT NULL COMMENT '男、女',
   `name` VARCHAR(45) NULL,
   `birthday` DATE NULL,
-  `time_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `time_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -27,8 +24,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_seller`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_seller` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_seller` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `nickname` VARCHAR(45) NOT NULL,
@@ -36,7 +31,8 @@ CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_seller` (
   `email` VARCHAR(45) NULL,
   `password` VARCHAR(45) NOT NULL,
   `status` SMALLINT NULL,
-  `time_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` VARCHAR(45) NOT NULL,
+  `time_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -44,14 +40,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_administator`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_administator` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_administator` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
-  `name` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
-  `time_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -59,17 +52,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_shop`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_shop` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_shop` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_seller` INT UNSIGNED NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `status` SMALLINT NOT NULL,
   `introduction` VARCHAR(200) NULL,
-  `time_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `vote` DOUBLE NULL DEFAULT 0.0,
-  PRIMARY KEY (`id`),
+  `time_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`, `id_seller`),
   INDEX `fk_shop_seller_idx` (`id_seller` ASC),
   CONSTRAINT `fk_shop_seller`
     FOREIGN KEY (`id_seller`)
@@ -82,8 +72,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_category`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_category` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_category` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
@@ -94,8 +82,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_item` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_item` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_shop` INT UNSIGNED NOT NULL,
@@ -103,19 +89,13 @@ CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_item` (
   `name` VARCHAR(45) NOT NULL,
   `introduction` VARCHAR(500) NULL,
   `price` DECIMAL(9,2) NOT NULL,
-  `extra_1` VARCHAR(120) NULL,
-  `extra_2` VARCHAR(120) NULL,
-  `time_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `count_purchase` INT NOT NULL DEFAULT 0,
-  `count_favourite` INT NOT NULL DEFAULT 0,
-  `count_click` INT NOT NULL DEFAULT 0,
-  `vote` DOUBLE NOT NULL DEFAULT 0.0,
+  `extra_1` VARCHAR(120) NOT NULL,
+  `extra_2` VARCHAR(45) NULL,
+  `extra_3` VARCHAR(120) NULL,
+  `time_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `fk_item_shop1_idx` (`id_shop` ASC),
   INDEX `fk_item_L1category1_idx` (`id_category` ASC),
-  UNIQUE INDEX `count_purchase_UNIQUE` (`count_purchase` ASC),
-  UNIQUE INDEX `count_favourite_UNIQUE` (`count_favourite` ASC),
-  UNIQUE INDEX `count_click_UNIQUE` (`count_click` ASC),
   CONSTRAINT `fk_item_shop1`
     FOREIGN KEY (`id_shop`)
     REFERENCES `c1_parknshop`.`ps_shop` (`id`)
@@ -132,8 +112,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_order` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_order` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_customer` INT UNSIGNED NOT NULL,
@@ -145,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_order` (
   `name_recipient` VARCHAR(45) NULL,
   `phone_recipient` VARCHAR(45) NULL,
   `price_total` DECIMAL(15,2) NOT NULL,
-  `time_created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `time_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `fk_order_customer1_idx` (`id_customer` ASC),
   CONSTRAINT `fk_order_customer1`
@@ -159,8 +137,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_recipient`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_recipient` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_recipient` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_customer` INT UNSIGNED NOT NULL,
@@ -181,8 +157,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_tag`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_tag` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_tag` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
@@ -193,8 +167,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`r_tag_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`r_tag_item` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`r_tag_item` (
   `id_tag` INT UNSIGNED NOT NULL,
   `id_item` INT UNSIGNED NOT NULL,
@@ -217,8 +189,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`r_order_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`r_order_item` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`r_order_item` (
   `id_item` INT ZEROFILL NOT NULL,
   `id_order` INT ZEROFILL NOT NULL,
@@ -244,8 +214,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`cart_customer_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`cart_customer_item` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`cart_customer_item` (
   `id_customer` INT UNSIGNED NOT NULL,
   `id_item` INT UNSIGNED NOT NULL,
@@ -271,8 +239,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`customer_favourite_item`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`customer_favourite_item` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`customer_favourite_item` (
   `id_customer` INT UNSIGNED NOT NULL,
   `id_item` INT UNSIGNED NOT NULL,
@@ -295,8 +261,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_comment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_comment` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_comment` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_customer` INT UNSIGNED NOT NULL,
@@ -323,8 +287,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `c1_parknshop`.`ps_item_info`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `c1_parknshop`.`ps_item_info` ;
-
 CREATE TABLE IF NOT EXISTS `c1_parknshop`.`ps_item_info` (
   `id_item` INT UNSIGNED NOT NULL,
   `description` VARCHAR(200) NULL,
