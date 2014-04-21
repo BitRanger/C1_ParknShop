@@ -39,7 +39,15 @@
 			<value>com.bitranger.parknshop.model.PsCategory</value>
 			<value>com.bitranger.parknshop.model.PsShop</value>
 			<value>com.bitranger.parknshop.model.PsSeller</value>
-			<value>com.bitranger.parknshop.model.PsItem</value></list>
+			<value>com.bitranger.parknshop.model.PsItem</value>
+			<value>com.bitranger.parknshop.view.seller.WkChapter</value>
+			<value>
+				com.bitranger.parknshop.view.seller.WkQuestion
+			</value>
+			<value>
+				com.bitranger.parknshop.view.seller.WkQuestionMeta
+			</value>
+			<value>com.bitranger.parknshop.view.seller.WkPaper</value></list>
 		</property>
 	</bean>
 
