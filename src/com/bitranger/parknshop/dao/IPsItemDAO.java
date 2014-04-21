@@ -1,8 +1,10 @@
-package org.example.model.dao;
+package com.bitranger.parknshop.dao;
 
 import java.util.List;
 
-import org.example.model.PsItem;
+
+import com.bitranger.parknshop.dao.impl.SortOption;
+import com.bitranger.parknshop.model.PsItem;
 
 public interface IPsItemDAO {
 
@@ -25,4 +27,7 @@ public interface IPsItemDAO {
 	
 	public abstract List<PsItem> findAllByCountPurchase(SortOption op);
 	public abstract List<PsItem> findAllByCountFavourite(SortOption op);
+	
+	public abstract List<PsItem> findByOrderId(Integer id);
+
 }

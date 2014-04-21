@@ -1,8 +1,8 @@
-package org.example.model.dao;
+package com.bitranger.parknshop.dao;
 
 import java.util.List;
 
-import org.example.model.PsComment;
+import com.bitranger.parknshop.model.PsComment;
 
 public interface IPsCommentDAO {
 	public abstract void save(PsComment transientInstance);

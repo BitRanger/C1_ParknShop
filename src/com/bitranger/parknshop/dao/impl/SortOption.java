@@ -1,4 +1,4 @@
-package org.example.model.dao;
+package com.bitranger.parknshop.dao.impl;
 
 public enum SortOption {
 	ASCENDING, DESCENDING

@@ -1,8 +1,10 @@
-package org.example.model.dao;
+package com.bitranger.parknshop.dao;
 
 import java.util.List;
 
-import org.example.model.*;
+import com.bitranger.parknshop.model.CartCustomerItem;
+import com.bitranger.parknshop.model.CartCustomerItemId;
+import com.bitranger.parknshop.model.PsItem;
 
 public interface ICartCustomerItemDAO {
 

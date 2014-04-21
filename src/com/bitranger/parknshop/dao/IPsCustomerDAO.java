@@ -1,18 +1,13 @@
-package org.example.model.dao;
+package com.bitranger.parknshop.dao;
 
 import java.util.List;
 
-import org.example.model.PsCustomer;
+import com.bitranger.parknshop.model.PsCustomer;
 
 public interface IPsCustomerDAO {
 	public abstract void save(PsCustomer transientInstance);
-
 	public abstract void delete(PsCustomer persistentInstance);
-
+	public abstract void update(PsCustomer detachedInstance);
 	public abstract PsCustomer findByEmail(String email);
-
 	public abstract List<PsCustomer> findAll(Integer limit, Integer offset);
-
-	public abstract PsCustomer merge(PsCustomer detachedInstance);
-
 }
