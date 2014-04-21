@@ -10,21 +10,37 @@
  ******************************************************************************/
 package com.bitranger.parknshop.dao;
 
-import java.util.List;
 
-import com.bitranger.parknshop.model.PsCustomer;
+import com.bitranger.parknshop.dao.impl.SortOption;
 
-public interface IPsCustomerDAO {
-	
-	public abstract void save(PsCustomer transientInstance);
-	public abstract void delete(PsCustomer persistentInstance);
-	public abstract void update(PsCustomer detachedInstance);
+/**
+ * 
+ * @author BowenCai
+ *
+ */
+public class FetchOption {
 
 	/**
-	 * email is not null and is verified
-	 * @param email
-	 * @return
+	 * sort option can be ignored, by default it is descending
 	 */
-	public abstract PsCustomer findByEmail(String email);
-	public abstract List<PsCustomer> findAll(Integer limit, Integer offset);
+	SortOption sortOption = SortOption.DESCENDING;
+	int offset = 0;
+	int limit = Integer.MAX_VALUE;
+	
+	public static FetchOption newOption() {
+		return new FetchOption();
+	}
+	
+	public FetchOption limit(int l) {
+		this.limit = l;
+		return this;
+	}
+	public FetchOption offset(int o) {
+		this.offset = o;
+		return this;
+	}
+	public FetchOption sort(SortOption op) {
+		this.sortOption = op;
+		return this;
+	}
 }
