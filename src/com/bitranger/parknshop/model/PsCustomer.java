@@ -11,7 +11,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.ManyToMany;
+=======
+>>>>>>> 277b72c7b8643742c8636baddc8431f27295828d
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -34,10 +37,13 @@ public class PsCustomer implements java.io.Serializable {
 	private String name;
 	private Date birthday;
 	private Timestamp timeCreated;
+<<<<<<< HEAD
 	private Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(
 			0);
 	private Set<PsOrder> psOrders = new HashSet<PsOrder>(0);
 	private Set<PsItem> psItems = new HashSet<PsItem>(0);
+=======
+>>>>>>> 277b72c7b8643742c8636baddc8431f27295828d
 	private Set<PsRecipient> psRecipients = new HashSet<PsRecipient>(0);
 	private Set<PsComment> psComments = new HashSet<PsComment>(0);
 
@@ -60,9 +66,13 @@ public class PsCustomer implements java.io.Serializable {
 	/** full constructor */
 	public PsCustomer(String nickname, String email, String password,
 			Short gender, String name, Date birthday, Timestamp timeCreated,
+<<<<<<< HEAD
 			Set<CartCustomerItem> cartCustomerItems, Set<PsOrder> psOrders,
 			Set<PsItem> psItems, Set<PsRecipient> psRecipients,
 			Set<PsComment> psComments) {
+=======
+			Set<PsRecipient> psRecipients, Set<PsComment> psComments) {
+>>>>>>> 277b72c7b8643742c8636baddc8431f27295828d
 		this.nickname = nickname;
 		this.email = email;
 		this.password = password;
@@ -70,9 +80,12 @@ public class PsCustomer implements java.io.Serializable {
 		this.name = name;
 		this.birthday = birthday;
 		this.timeCreated = timeCreated;
+<<<<<<< HEAD
 		this.cartCustomerItems = cartCustomerItems;
 		this.psOrders = psOrders;
 		this.psItems = psItems;
+=======
+>>>>>>> 277b72c7b8643742c8636baddc8431f27295828d
 		this.psRecipients = psRecipients;
 		this.psComments = psComments;
 	}
@@ -154,6 +167,7 @@ public class PsCustomer implements java.io.Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+<<<<<<< HEAD
 	public Set<CartCustomerItem> getCartCustomerItems() {
 		return this.cartCustomerItems;
 	}
@@ -181,6 +195,8 @@ public class PsCustomer implements java.io.Serializable {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+=======
+>>>>>>> 277b72c7b8643742c8636baddc8431f27295828d
 	public Set<PsRecipient> getPsRecipients() {
 		return this.psRecipients;
 	}
