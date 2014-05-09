@@ -138,7 +138,9 @@ public class PsShop implements java.io.Serializable {
 		this.vote = vote;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psShop")
+	@OneToMany(cascade = CascadeType.ALL, 
+				fetch = FetchType.EAGER, 
+				mappedBy = "psShop")
 	public Set<PsItem> getPsItems() {
 		return this.psItems;
 	}

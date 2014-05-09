@@ -26,5 +26,5 @@ public interface IPsCustomerDAO {
 	 * @return
 	 */
 	public abstract PsCustomer findByEmail(String email);
-	public abstract List<PsCustomer> findAll(Integer limit, Integer offset);
+	public abstract List<PsCustomer> findAll(FetchOption option);
 }

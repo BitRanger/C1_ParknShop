@@ -16,11 +16,13 @@ import com.bitranger.parknshop.model.PsCategory;
 
 public interface IPsCategoryDAO {
 
+	public List<PsCategory> findAll();
+	
 	public abstract void save(PsCategory transientInstance);
 
 	public abstract void delete(PsCategory persistentInstance);
 
-	public abstract List<PsCategory> findAll(Integer limit, Integer offset);
+	public abstract List<PsCategory> findAll(FetchOption option);
 
 	public abstract void update(PsCategory detachedInstance);
 }

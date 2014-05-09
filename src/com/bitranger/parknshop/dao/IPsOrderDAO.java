@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 
-import com.bitranger.parknshop.dao.impl.OrderState;
+import com.bitranger.parknshop.core.OrderState;
 import com.bitranger.parknshop.model.PsOrder;
 
 public interface IPsOrderDAO {

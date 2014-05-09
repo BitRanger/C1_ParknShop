@@ -123,7 +123,7 @@ public class PsItem implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_shop", nullable = false)
 	public PsShop getPsShop() {
 		return this.psShop;

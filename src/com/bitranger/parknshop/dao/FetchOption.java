@@ -11,7 +11,6 @@
 package com.bitranger.parknshop.dao;
 
 
-import com.bitranger.parknshop.dao.impl.SortOption;
 
 /**
  * 
@@ -23,9 +22,9 @@ public class FetchOption {
 	/**
 	 * sort option can be ignored, by default it is descending
 	 */
-	SortOption sortOption = SortOption.DESCENDING;
-	int offset = 0;
-	int limit = Integer.MAX_VALUE;
+	public SortOption sortOption = SortOption.DESCENDING;
+	public int offset = 0;
+	public int limit = Integer.MAX_VALUE;
 	
 	public static FetchOption newOption() {
 		return new FetchOption();
@@ -39,8 +38,12 @@ public class FetchOption {
 		this.offset = o;
 		return this;
 	}
-	public FetchOption sort(SortOption op) {
-		this.sortOption = op;
+	public FetchOption ascending() {
+		this.sortOption = SortOption.ASCENDING;
+		return this;
+	}
+	public FetchOption descending() {
+		this.sortOption = SortOption.DESCENDING;
 		return this;
 	}
 }

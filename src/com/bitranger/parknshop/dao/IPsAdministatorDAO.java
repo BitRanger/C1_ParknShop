@@ -14,6 +14,6 @@ import com.bitranger.parknshop.model.PsAdministator;
 
 public interface IPsAdministatorDAO {
 	
-	public PsAdministator findByName(String name);
+	public PsAdministator findByEmail(String name);
 
 }

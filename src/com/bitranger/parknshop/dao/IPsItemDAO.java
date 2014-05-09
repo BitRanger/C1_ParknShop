@@ -23,7 +23,7 @@ public interface IPsItemDAO {
 	
 	public abstract void save(PsItem transientInstance);
 	public abstract void delete(PsItem persistentInstance);
-	public abstract PsItem update(PsItem detachedInstance);
+	public abstract void update(PsItem detachedInstance);
 
 	public abstract PsItem findById(Integer id);
 
@@ -35,7 +35,7 @@ public interface IPsItemDAO {
 	public abstract List<PsItem> searchByKeyword(String keyword);
 	
 	/**
-	 * 
+	 * sort by price
 	 * @param psCategoryId
 	 * @param priceMin
 	 * @param priceMax

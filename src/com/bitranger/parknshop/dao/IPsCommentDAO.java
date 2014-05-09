@@ -19,17 +19,18 @@ public interface IPsCommentDAO {
 	
 	public abstract void save(PsComment transientInstance);
 	public abstract void delete(PsComment persistentInstance);
+
+	public PsComment findById(java.lang.Integer id);
 	
 	/**
-	 * sort by time_created, in descending order
+	 * sort by time_created
 	 * @param customerId
 	 * @param limit
 	 * @param offset
 	 * @return
 	 */
 	public abstract List<PsComment> findByCustomerId(Integer customerId, 
-													Integer limit, 
-													Integer offset);
+													FetchOption option);
 	/**
 	 * sort by time_created, in descending order
 	 * @param itemId
@@ -38,6 +39,11 @@ public interface IPsCommentDAO {
 	 * @return
 	 */
 	public abstract List<PsComment> findByItemId(Integer itemId, 
-												Integer limit, 
-												Integer offset);
+												FetchOption option);
+
+	public List<PsComment> findByScore(Object score);
+
+	public List<PsComment> findByContent(Object content);
+
+	public List<PsComment> findAll();
 }

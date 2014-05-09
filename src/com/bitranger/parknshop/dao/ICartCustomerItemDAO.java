@@ -14,7 +14,6 @@ import java.util.List;
 
 import com.bitranger.parknshop.model.CartCustomerItem;
 import com.bitranger.parknshop.model.CartCustomerItemId;
-import com.bitranger.parknshop.model.PsItem;
 
 public interface ICartCustomerItemDAO {
 
@@ -24,7 +23,7 @@ public interface ICartCustomerItemDAO {
 
 	public CartCustomerItem findById(CartCustomerItemId id);
 
-	public List<PsItem> findByCustomerId(Integer psCustomerId, Integer limit, Integer offset);
+	public List<CartCustomerItem> findByCustomerId(Integer psCustomerId, FetchOption option);
 
 	public void update(CartCustomerItem detachedInstance);
 }

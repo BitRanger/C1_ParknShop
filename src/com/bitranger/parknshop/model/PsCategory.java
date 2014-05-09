@@ -31,6 +31,10 @@ public class PsCategory implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2906574866680065588L;
 	private Integer id;
 	private String name;
 	private Set<PsItem> psItems = new HashSet<PsItem>(0);

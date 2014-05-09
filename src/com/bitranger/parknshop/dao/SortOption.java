@@ -8,7 +8,7 @@
  * Contributors:
  *     BitRanger - initial API and implementation
  ******************************************************************************/
-package com.bitranger.parknshop.dao.impl;
+package com.bitranger.parknshop.dao;
 
 public enum SortOption {
 	ASCENDING, DESCENDING

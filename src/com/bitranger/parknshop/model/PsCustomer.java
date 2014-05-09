@@ -191,7 +191,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.psItems = psItems;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")
 	public Set<PsRecipient> getPsRecipients() {
 		return this.psRecipients;
 	}
