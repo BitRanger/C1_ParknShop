@@ -8,9 +8,12 @@
  * Contributors:
  *     BitRanger - initial API and implementation
  ******************************************************************************/
-/**
- * @author BowenCai
- *
- */
-@java.lang.Deprecated
-package test.dao;
+package com.bitranger.parknshop.common.dao;
+
+import com.bitranger.parknshop.common.model.PsAdministator;
+
+public interface IPsAdministatorDAO {
+	
+	public PsAdministator findByEmail(String name);
+
+}

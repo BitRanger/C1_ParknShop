@@ -8,9 +8,20 @@
  * Contributors:
  *     BitRanger - initial API and implementation
  ******************************************************************************/
-/**
- * @author BowenCai
- *
- */
-@java.lang.Deprecated
-package test.dao;
+package com.bitranger.parknshop.common.dao;
+
+import java.util.List;
+
+import com.bitranger.parknshop.common.model.PsItemInfo;
+
+public interface IPsItemInfoDAO {
+
+	public abstract void update(PsItemInfo detachedInstance);
+	
+	public abstract void save(PsItemInfo transientInstance);
+
+	public abstract void delete(PsItemInfo persistentInstance);
+
+	public abstract List<PsItemInfo> findByItemId(java.lang.Integer id);
+
+}

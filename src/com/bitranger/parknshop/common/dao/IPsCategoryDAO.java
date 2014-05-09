@@ -8,9 +8,21 @@
  * Contributors:
  *     BitRanger - initial API and implementation
  ******************************************************************************/
-/**
- * @author BowenCai
- *
- */
-@java.lang.Deprecated
-package test.dao;
+package com.bitranger.parknshop.common.dao;
+
+import java.util.List;
+
+import com.bitranger.parknshop.common.model.PsCategory;
+
+public interface IPsCategoryDAO {
+
+	public List<PsCategory> findAll();
+	
+	public abstract void save(PsCategory transientInstance);
+
+	public abstract void delete(PsCategory persistentInstance);
+
+	public abstract List<PsCategory> findAll(FetchOption option);
+
+	public abstract void update(PsCategory detachedInstance);
+}

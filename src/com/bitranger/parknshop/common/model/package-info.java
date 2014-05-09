@@ -9,8 +9,6 @@
  *     BitRanger - initial API and implementation
  ******************************************************************************/
 /**
- * @author BowenCai
- *
+ * 
  */
-@java.lang.Deprecated
-package test.dao;
+package com.bitranger.parknshop.common.model;

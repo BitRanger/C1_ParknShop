@@ -8,9 +8,16 @@
  * Contributors:
  *     BitRanger - initial API and implementation
  ******************************************************************************/
-/**
- * @author BowenCai
- *
- */
-@java.lang.Deprecated
-package test.dao;
+package com.bitranger.parknshop.seller;
+
+public enum OrderState {
+	UnPaid, 
+	UnDeliver, 
+	Delivering, 
+	Accepted, 
+	/**
+	 * 投诉了，在审核
+	 */
+	Blocked, 
+	Canceled
+}

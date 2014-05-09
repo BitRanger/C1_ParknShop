@@ -8,9 +8,8 @@
  * Contributors:
  *     BitRanger - initial API and implementation
  ******************************************************************************/
-/**
- * @author BowenCai
- *
- */
-@java.lang.Deprecated
-package test.dao;
+package com.bitranger.parknshop.common.dao;
+
+public enum SortOption {
+	ASCENDING, DESCENDING
+}
