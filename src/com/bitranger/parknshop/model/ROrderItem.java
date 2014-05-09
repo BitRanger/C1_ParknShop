@@ -32,7 +32,7 @@ public class ROrderItem implements java.io.Serializable {
 	private ROrderItemId id;
 	private PsItem psItem;
 	private PsOrder psOrder;
-	private Integer quantitiy;
+	private Integer quantity;
 	private String extra1;
 	private String extra2;
 
@@ -44,20 +44,20 @@ public class ROrderItem implements java.io.Serializable {
 
 	/** minimal constructor */
 	public ROrderItem(ROrderItemId id, PsItem psItem, PsOrder psOrder,
-			Integer quantitiy) {
+			Integer quantity) {
 		this.id = id;
 		this.psItem = psItem;
 		this.psOrder = psOrder;
-		this.quantitiy = quantitiy;
+		this.quantity = quantity;
 	}
 
 	/** full constructor */
 	public ROrderItem(ROrderItemId id, PsItem psItem, PsOrder psOrder,
-			Integer quantitiy, String extra1, String extra2) {
+			Integer quantity, String extra1, String extra2) {
 		this.id = id;
 		this.psItem = psItem;
 		this.psOrder = psOrder;
-		this.quantitiy = quantitiy;
+		this.quantity = quantity;
 		this.extra1 = extra1;
 		this.extra2 = extra2;
 	}
@@ -97,11 +97,11 @@ public class ROrderItem implements java.io.Serializable {
 
 	@Column(name = "quantitiy", nullable = false)
 	public Integer getQuantitiy() {
-		return this.quantitiy;
+		return this.quantity;
 	}
 
-	public void setQuantitiy(Integer quantitiy) {
-		this.quantitiy = quantitiy;
+	public void setQuantitiy(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	@Column(name = "extra_1", length = 120)
