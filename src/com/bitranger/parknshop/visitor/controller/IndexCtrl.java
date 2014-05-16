@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bitranger.parknshop.visitor.VisitorView;
+
 
 
 /**
@@ -13,11 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class IndexCtrl {
-
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ModelAndView index() {
-		return null;
+//						/abc/dev/category=2/tag=taggg
+	@RequestMapping(value="/abc/dev/category={data::int}/", method=RequestMethod.GET)
+	public ModelAndView index(Integer i) {
+		
+		return new ModelAndView(VisitorView.index);
 	}
-	
 	
 }

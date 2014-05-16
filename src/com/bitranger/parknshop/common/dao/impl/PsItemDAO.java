@@ -530,4 +530,11 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 		}
 	}
 
+	@Override
+	public List<PsItem> findByVoteInTag(Integer category, List<Integer> tagIds,
+			FetchOption op) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

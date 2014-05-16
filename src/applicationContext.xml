@@ -8,7 +8,7 @@
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="url"
-			value="jdbc:mysql://localhost:3456/bw_web">
+			value="jdbc:mysql://localhost:3456/c1_parknshop">
 		</property>
 		<property name="username" value="bitranger"></property>
 		<property name="password" value="123456"></property>
@@ -29,26 +29,11 @@
 		</property>
 		<property name="annotatedClasses">
 			<list>
-			<value>com.bitranger.parknshop.common.model.PsItemInfo</value>
-			<value>com.bitranger.parknshop.seller.model.PsRecipient</value>
-			<value>com.bitranger.parknshop.common.model.PsTag</value>
-			<value>com.bitranger.parknshop.common.model.PsComment</value>
-			<value>com.bitranger.parknshop.common.model.PsAdministator</value>
-			<value>com.bitranger.parknshop.seller.model.PsOrder</value>
-			<value>com.bitranger.parknshop.buyer.model.PsCustomer</value>
-			<value>com.bitranger.parknshop.common.model.PsCategory</value>
-			<value>com.bitranger.parknshop.seller.model.PsShop</value>
-			<value>com.bitranger.parknshop.seller.model.PsSeller</value>
-			<value>com.bitranger.parknshop.common.model.PsItem</value>
-			<value>com.bitranger.parknshop.view.seller.WkChapter</value>
-			<value>
-				com.bitranger.parknshop.view.seller.WkQuestion
-			</value>
-			<value>
-				com.bitranger.parknshop.view.seller.WkQuestionMeta
-			</value>
-			<value>com.bitranger.parknshop.view.seller.WkPaper</value></list>
+			</list>
 		</property>
 	</bean>
-
+	
+	<bean id="persistantMap" class="com.bitranger.parknshop.common.dao.impl.PersistantMap">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 </beans>

@@ -46,4 +46,11 @@ public class FetchOption {
 		this.sortOption = SortOption.DESCENDING;
 		return this;
 	}
+	
+	@Override
+	public String toString() {
+		return (sortOption == SortOption.ASCENDING ? "asc"
+				: "desc")
+		+ "offset " + offset + " limit " + limit;
+	}
 }
