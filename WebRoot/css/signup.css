@@ -1,0 +1,128 @@
+
+@import url("footer.css");
+
+#signupHeaderWrapper {
+    background-color: #022C74;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+#signupHeader {
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#signupLogoDiv {
+    margin-top: 18px;
+}
+
+#signupMainWrapper {
+    margin-top: 80px;
+    width:100%;
+    height: 450px;
+}
+#signupMain {
+    width: 1000px;
+    height: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#signMainLeft {
+    float: left;
+    position: relative;
+    background: url(../images/signup.jpg) no-repeat;
+    width: 585px;
+    height: 450px;
+    color: #4B4B4B;
+    margin-top: 20px;
+    background-position: 0 30px;
+}
+
+#signMainLeftText {
+    position: absolute;
+    left: 180px;
+    top: 0;
+    width: 400px;
+}
+
+#signMainLeftText h1 {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+#signMainLeftText ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+}
+
+#signMainLeftText li {
+    background: url(../images/ic-ad-list.gif) no-repeat 0 4px;
+    margin: 0;
+    padding-left: 25px;
+    display: list-item;
+}
+
+#signMainLeftText span {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+#signupMainRight {
+    float: right;
+    width: 350px;
+    margin-top: 20px;
+}
+
+#signupPanel {
+    width: 350px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px #ddd;
+    padding: 50px;
+}
+
+#signup_user_agreement input {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#signup_user_agreement span {
+    vertical-align: middle;
+    margin-left: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-top: -16px;
+}
+
+.signup_input {
+    outline: none;
+    border: 1px solid #bbbbbb;
+    margin: 10px 0;
+    width: 250px;
+    height: 32px;
+    padding: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+
+
+
+
+
+
+
+
+
+
