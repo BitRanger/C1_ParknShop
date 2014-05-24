@@ -27,6 +27,10 @@ public class PsItemInfo implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 419979042355348781L;
 	private Integer idItem;
 	private PsItem psItem;
 	private String description;

@@ -33,6 +33,10 @@ public class PsTag implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1285807807047826606L;
 	private Integer id;
 	private String name;
 	private Set<PsItem> psItems = new HashSet<PsItem>(0);

@@ -1,7 +1,6 @@
 package com.bitranger.parknshop.common.dao;
 
-import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Nullable;
 
@@ -15,7 +14,7 @@ public interface IPersistantMap {
 	public boolean containsKey(String key);
 
 	@Nullable
-	public <T> T  get(String key);
+	public Object get(String key);
 
 	public void put(String key, Object value);
 
@@ -25,8 +24,8 @@ public interface IPersistantMap {
 	 * @return null if failed
 	 */
 	@Nullable
-	public void remove(String key);
+	public Object remove(String key);
 
-	public List<String> keys();
+	public Set<String> keySet();
 	
 }

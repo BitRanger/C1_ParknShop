@@ -21,6 +21,10 @@ public class ROrderItemId implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -957261655329848045L;
 	private Integer idItem;
 	private Integer idOrder;
 

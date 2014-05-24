@@ -1,0 +1,107 @@
+
+.container
+{
+	margin-top: 15px;
+
+}
+
+.container img
+{
+	width: 100px;
+	height: 100px;
+}
+
+.container .row
+{
+	padding-left: auto;
+	padding-right: auto;
+}
+
+.container .row hr
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.container .col-md-1
+{
+	width: 110px;
+}
+
+.mytrade
+{
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.list-group-item
+{
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+}
+
+ul
+{
+	margin-left: 0px;
+	padding-left: 1px;
+}
+
+.info
+{
+	font-size: 17px;
+	color: #f60;
+	padding-left: 13px;
+}
+
+.remind
+{
+	font-size: 14px;
+	padding-left: 13px;
+
+}
+.selectall
+{
+	font-size: 14px;
+	padding-left: 13px;
+
+}
+.remind a
+{
+	padding-left:4px;
+	padding-right: 4px;
+}
+
+.baobei
+{
+
+}
+.descripton
+{
+	margin-left: 4px;
+}
+
+.baobei img
+{
+	height: 50px;
+	width: 50px;
+}
+
+.space
+{
+	height: 20px;
+}
+
+.space1
+{
+	height: 15px;
+}
+
+.price,.number,.complaint,.totolprice,.totolprice,.buyagain,.other
+{
+	text-align: center;
+	vertical-align: center;
+	font-size: 12px;
+
+}

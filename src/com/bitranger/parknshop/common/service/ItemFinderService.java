@@ -3,11 +3,14 @@ package com.bitranger.parknshop.common.service;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.bitranger.parknshop.common.fetch.ItemFinder;
+import com.bitranger.parknshop.common.dao.ItemFinder;
 import com.bitranger.parknshop.common.model.PsItem;
+import com.bitranger.parknshop.visitor.view.URLs;
 
 
 public class ItemFinderService {
@@ -19,12 +22,11 @@ public class ItemFinderService {
 	private String sPageNumber = null;
 	private String sOrderBy = null;
 	private String sAsd = null;
-	
+
 	@Autowired
 	@Qualifier(value="itemFinder")
 	private ItemFinder itemFinder;
-	
-	
+
 	public ItemFinderService categoryId(String id){
 		sCategoryId = id;
 		return this;
@@ -99,8 +101,11 @@ public class ItemFinderService {
 			}
 		}
 		
+		List<PsItem> items = null;
+		
 		if(asd){
-			return itemFinder.newFind().categoryId(categoryId)
+			
+			items = itemFinder.newFind().categoryId(categoryId)
 			   .tagIDs(tagIds)
 			   .maxPrice(maxPrice)
 			   .minPrice(minPrice)
@@ -108,9 +113,14 @@ public class ItemFinderService {
 			   .ascending()
 			   .page(pageNumber)
 			   .list();
+			this.clear();
+			
 		}
 		else{
-			return itemFinder.newFind().categoryId(categoryId)
+			
+			itemFinder.toString();
+			
+			items = itemFinder.newFind().categoryId(categoryId)
 			   .tagIDs(tagIds)
 			   .maxPrice(maxPrice)
 			   .minPrice(minPrice)
@@ -118,7 +128,9 @@ public class ItemFinderService {
 			   .descending()
 			   .page(pageNumber)
 			   .list();
-		}		
+			this.clear();
+		}	
+		return items;
 	}
 	
 	
@@ -130,5 +142,39 @@ public class ItemFinderService {
 	public void setItemFinder(ItemFinder itemFinder) {
 		this.itemFinder = itemFinder;
 	}
+	
+	/**
+	 * return the list of the items
+	 * @param request
+	 * @return
+	 */
+	
+	public List<PsItem> getItems(HttpServletRequest request){
+		
+		System.out.println(this.toString());
+		
+		return this.categoryId(request.getParameter(URLs.categoryId))
+    	 .tagIds(request.getParameterValues(URLs.tag))
+    	 .maxPrice(request.getParameter(URLs.maxPrice))
+    	 .minPrice(request.getParameter(URLs.minPrice))
+    	 .pageNumber(request.getParameter(URLs.pageNumber))
+    	 .orderBy(request.getParameter(URLs.orderBy))
+    	 .asd(request.getParameter(URLs.asd))
+    	 .list();
+		
+	}
 
+	/**
+	 * clear the attributes
+	 */
+	public void clear(){
+		
+		sCategoryId = null;
+		stagIds = null;
+		sMaxPrice = null;
+		sMinPrice = null;
+		sPageNumber = null;
+		sOrderBy = null;
+		sAsd = null;
+	}
 }

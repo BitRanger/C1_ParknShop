@@ -6,7 +6,7 @@
 1. Database and SQL:
 
 	1.1		use underscore rather than capital letter, 
-			e.g. `time_created` not `timeCreated` or `create_time`	
+			e.g. `time_created` not `timeCreated`
 	
 	1.2 	all entity start with `ps`, e.g. `ps_item`
 	

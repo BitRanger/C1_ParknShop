@@ -31,6 +31,10 @@ public class ROrderItem implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3025193995178003078L;
 	private ROrderItemId id;
 	private PsItem psItem;
 	private PsOrder psOrder;

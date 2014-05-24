@@ -41,6 +41,10 @@ public class PsCustomer implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8191548743733660119L;
 	private Integer id;
 	private String nickname;
 	private String email;
