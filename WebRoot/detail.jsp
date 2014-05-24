@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
   <title>Online Store</title>
@@ -13,255 +14,213 @@
     <%@ include file="include/categorybar.jsp" %>
 </div>
 <div id="mainContent">
-<div id="storeItemList">
-    <div class="row">
-        <div class="page-header">
-            <h4>The Long sleeve t-shirt men's Lapel T-shirts Mens </h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="thumbnail">
-                <a href="#"><img src="images/detail.jpg" alt="..."></a>
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a href="#"><img src="images/pro1.jpg" alt=""></a>
-                    </div>
+    <div id="storeItemList">
+        <div id="itemDetail">
+            <div id="itemDetail_PicShow">
+                <div id="itemDetail_PicShow_Big">
+                    <img id="itemDetail_PicShow_Big_img" src="images/detail/detail1.JPG">
                 </div>
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a href="#"><img src="images/pro2.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a href="#"><img src="images/pro3.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a href="#"><img src="images/pro1.jpg" alt=""></a>
-                    </div>
-                </div>
+                <ul id="itemDetail_PicShow_thumbnail_Set">
+                    <li class="itemDetail_PicShow_thumbnail_item">
+                        <a href="#"><img class="itemDetail_PicShow_thumbnail" src="images/detail/detail1.JPG"/></a>
+                    </li>
+                    <li class="itemDetail_PicShow_thumbnail_item">
+                        <a href="#"><img class="itemDetail_PicShow_thumbnail" src="images/detail/detail2.JPG"/></a>
+                    </li>
+                    <li class="itemDetail_PicShow_thumbnail_item">
+                        <a href="#"><img class="itemDetail_PicShow_thumbnail" src="images/detail/detail3.JPG"/></a>
+                    </li>
+                    <li class="itemDetail_PicShow_thumbnail_item">
+                        <a href="#"><img class="itemDetail_PicShow_thumbnail" src="images/detail/detail4.JPG"/></a>
+                    </li>
+                    <li class="itemDetail_PicShow_thumbnail_item">
+                        <a href="#"><img class="itemDetail_PicShow_thumbnail" src="images/detail/detail5.JPG"/></a>
+                    </li>
+                </ul>
             </div>
-        </div>
-                         <!--product size and color-->
-             <div class="col-md-6"> 
-                  <div class="row">
-                    <div class="col-md-6">
-                       <div class="row">
-                          <div class="page-header"> <h4>Select Color </h4> </div>
-                       </div>
-                        <input type="checkbox"  > <font size="4" color="red">red</font>
-                        <input type="checkbox"  > <font size="4" color="blue">blue</font>
-                        <input type="checkbox"  > <font size="4" color="black">black</font>
-                        <input type="checkbox"  > <font size="4" color="gree">gree</font>
+            <div id="itemDetail_Desc">
+                <div id="itemDetail_DescTitle">
+                    <h3>United Colors of Benetton Solid Men's Shorts</h3>
+                </div>
+                <div>
+                    <div id="itemDetail_price">
+                        <span class="itemDetail_intro">Price</span>
+                        <span>$</span>
+                        <span style="text-decoration: line-through">32.00</span>
                     </div>
-                   <div class="col-md-6">
-                        <div class="row">
-                           <div class="page-header"> <h4>Select Size</h4> </div>
-                       </div>
-                        <input type="checkbox"  > <font size="4" color="blue">28</font>
-                        <input type="checkbox"  > <font size="4" color="blue">30</font>
-                        <input type="checkbox"  > <font size="4" color="blue">32</font>
-                        <input type="checkbox"  > <font size="4" color="blue">35</font>
-                   </div>
+                    <div id="itemDetail_promotion">
+                        <span style="margin-top: 5px" class="itemDetail_intro">Promotion</span>
+                        <span style="font-size: 24px;color: #f40;">$26.00</span>
+                    </div>
+                    <div id="itemDetail_deliver">
+
+                    </div>
+                    <div id="itemDetail_size">
+                        <span style="margin-top: 5px" class="itemDetail_intro">Size</span>
+                        <ul>
+                            <li class="itemDetail_sizeItem"><a href="#"><span>42</span></a></li>
+                            <li class="itemDetail_sizeItem"><a href="#"><span>44</span></a></li>
+                            <li class="itemDetail_sizeItem"><a href="#"><span>46</span></a></li>
+                            <li class="itemDetail_sizeItem"><a href="#"><span>48</span></a></li>
+                            <li class="itemDetail_sizeItem"><a href="#"><span>50</span></a></li>
+                        </ul>
+                    </div>
+                    <div id="itemDetail_color">
+                        <span style="margin-top: 5px" class="itemDetail_intro">Color</span>
+                        <ul>
+                            <li class="itemDetail_colorItem"><a href="#"><span></span></a></li>
+                            <li class="itemDetail_colorItem"><a href="#"><span></span></a></li>
+                        </ul>
+                    </div>
+                    <div id="itemDetail_quantity">
+                        <span class="itemDetail_intro">Quantity</span>
+                        <span id="itemDetail_quantityChangeBar">
+                            <a href="#"  class="itemDetail_quantityChange">-</a>
+                            <input id="itemDetail_quantity_input" type="text"  value="1" maxlength="8">
+                            <a href="#" class="itemDetail_quantityChange">+</a>
+                         </span>
+                    </div>
+                    <div id="itemDetail_buy">
+                        <Button id="itemDetail_buyBtn">Buy Now</Button>
+                        <Button id="itemDetail_chartBtn">Add to Chart</Button>
+                    </div>
                 </div>
 
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="caption">
-                        <h5><b><font color="#ff0000">3516</font></b> </h5>
-                        <p>monthly sales</p>
-                    </div>
-                </div>
-                <div class="col-md-6" align="center">
-                    <div class="caption">
-                        <h5><b><font color="#0000ff">3236</font></b> </h5>
-                        <p>evaluate</p>
-                        <em><img src="images/evaluteStar.jpg" alt="">4.5</em>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="caption">
-                        <h5><b><font color="#00ff00">35156</font></b> </h5>
-                        <p>views</p>
-                    </div>
-                </div>
-              </div>
-               
-            <p><br>Price:   <b>$69.00</b> </p>
-            <p>Promotion: <font color="#ff0000"><b>$39.00</b> </font></p>
-            <!--输入框的最小值为0，即购买物品最少为0，最大值为100，即一次最多购买100件商品-->
-            <p>Quatityt:   <input type="number" value="1"  style="width:60px" min="0" max="100">  </p>
-              
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="comformOrder.html"><img src="images/BuyNow.jpg" alt="" style="border:2 outset #ffff00"></a>
-                </div>
-                <div class="col-md-6">
-                    <a href="#"><img src="images/AddToCart.jpg" alt="" style="border:2 outset #ffff00"></a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-<!--评价,宝贝详情-->
-<div class="navbar navbar-default" role="navigation">
-        <div class="navbar-collapse collapse">
-          <ul id="myTab"  class="nav nav-tabs">
-            <li><a href="#goodsDetails" data-toggle="tab">Goods details</a></li>
-            <li><a href="#commentDetails" data-toggle="tab">Comment Details</a></li>
-            <li><a href="#tradeRecords" data-toggle="tab">Trade Records</a></li>
-          </ul>
-          <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade"  id="goodsDetails">
-             <div class="row">
-                 <div class="page-header">
-                       <h4>Product Deatails</h4>
-                </div>
-            </div>
-            <table>
-              <tr>
-               <td width="40%">Type:&nbsp;&nbsp;fashion</td>
-               <td width="40%">Type:&nbsp;&nbsp;fashion</td>
-               <td width="40%">Type:&nbsp;&nbsp;fashion</td>  
-              </tr>
-              <tr>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-              </tr>
-              <tr>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-              </tr>
-              <tr>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-              </tr>
-              <tr>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-               <td>Type:&nbsp;&nbsp;fashion</td>
-              </tr>
-            </table>
-            </div>
-            <div class="tab-pane fade"  id="commentDetails">
-             <div class="row">
-                 <div class="page-header">
-                       <h4>Comment Details</h4>
-                  </div>
-              <p>Product comment: 4.6</p>  
-              <br>
-               <input type="radio">All&nbsp;&nbsp;&nbsp;&nbsp;
-               <input type="radio">Good comments&nbsp;&nbsp;&nbsp;&nbsp;
-               <input type="radio">middle comments&nbsp;&nbsp;&nbsp;&nbsp;
-               <input type="radio">bad comments&nbsp;&nbsp;&nbsp;&nbsp;
-               <input type="radio">Addtional comments&nbsp;&nbsp;&nbsp;&nbsp;
-              <br>
-              <br>
-              <br>
-              <table>
-              <tr>
-                <td width="20%"><a href="#"><img src="images/head.png" width="50px" height="50px"></a></td>
-                <td width="50%">This is the goods description.This is the goods description.This is the
-                                    goods description.</td>
-              </tr>
-               <tr>
-                <td width="20%"><a href="#"><img src="images/head.png" width="50px" height="50px"></a></td>
-                <td width="50%">This is the goods description.This is the goods description.This is the
-                                    goods description.</td>
-              </tr>
-               <tr>
-                <td width="20%"><a href="#"><img src="images/head.png" width="50px" height="50px"></a></td>
-                <td width="50%">This is the goods description.This is the goods description.This is the
-                                    goods description.</td>
-              </tr>
-             </table>
-            </div>
-         </div>
-            <div class="tab-pane fade"  id="tradeRecords">
-              <div class="row">
-                 <div class="page-header">
-                       <h4>Trade Records</h4>
-                </div>
-            </div>
-            <table>
-              <tr>
-               <td width=20%>UserName</td>
-               <td width=20%>Goods Name</td>
-               <td width=15%>Price</td>   
-               <td width=15%>Quality</td>
-               <td width=30%>Trade Date</td>
-               <td width=20%>Size</td>
-              </tr>
-              <tr>
-               <td>zhang3</td>
-               <td>clothes</td>
-               <td>$24.00</td>
-               <td>3</td>
-               <td>2013-05-15&nbsp;&nbsp;15:20:16</td> 
-               <td>XL</td> 
-              </tr>
-              <tr>
-               <td>li4</td>
-               <td>clothes</td>
-               <td>$51.00</td>
-               <td>1</td>
-               <td>2013-05-15&nbsp;&nbsp;15:20:16</td>  
-               <td>XL</td>
-              </tr>
-              <tr>
-               <td>wang5</td>
-               <td>clothes</td>
-               <td>$25.21</td>
-               <td>2</td>
-               <td>2013-05-15&nbsp;&nbsp;15:20:16</td>  
-               <td>XL</td>
-              </tr>
-            </table>
-            </div>
-          </div>
-        </div><!--/.nav-collapse -->
-    </div>
-    
-    <!-- 同类商品推荐 -->
-    <div class="row">
-        <div class="page-header">
-            <h4>Recommend </h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <a href="#"><img src="images/pro1.jpg" alt=""></a>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <a href="#"><img src="images/pro2.jpg" alt=""></a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <a href="#"><img src="images/pro3.jpg" alt=""></a>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <a href="#"><img src="images/pro1.jpg" alt=""></a>
-            </div>
-        </div>
-    </div>
-</div>
 
+        <div id="itemDesc">
+            <div id="itemDescTab">
+                <Button id="itemDescTabBtn_detail" class="itemDescTabBtn">Item Details</Button>
+                <Button id="itemDescTabBtn_comment" class="itemDescTabBtn">Comments</Button>
+                <Button id="itemDescTabBtn_record" class="itemDescTabBtn">Retail Record</Button>
+            </div>
+            <div id="itemDesc_Desc">
+                <ul id="itemDesc_attributes_list">
+                    <li title=" 国内知名品牌">品牌类型: 国内知名品牌</li>
+                    <li title=" 七分裤">裤长: 七分裤</li>
+                    <li title=" JS14CYP683D">货号: JS14CYP683D</li>
+                    <li title=" 军绿色 卡其色">颜色: 军绿色 卡其色</li>
+                    <li title=" 薄款纯棉长裤！透气！吸汗！舒爽 正反两面穿！纯棉休闲短裤七分裤 30（2.31尺） 31（2.39尺） 32（2.46尺） 33(2.54尺) 34(2.62尺) 35(2.69尺) 36(2.77尺) 38(2.92尺) 40(3.08尺) 42(3.23尺) 品牌授权！正品保障！假一赔十！">尺码: 薄款纯棉长裤！透气！吸汗！舒爽 正反两面穿！纯棉休闲短裤七分裤 30（2.31尺） 31（2.39尺） 32（2.46尺） 33(2.54尺) 34(2.62尺) 35(2.69尺) 36(2.77尺) 38(2.92尺) 40(3.08尺) 42(3.23尺) 品牌授权！正品保障！假一赔十！</li>
+                    <li title=" 口袋装饰">款式细节: 口袋装饰</li>
+                    <li title=" 水洗">工艺处理: 水洗</li>
+                    <li title=" Afs Jeep/战地吉普">品牌: Afs Jeep/战地吉普</li>
+                    <li title=" 棉">主材含量: 棉</li>
+                    <li title=" 95%以上">棉含量: 95%以上</li>
+                    <li title=" 夏季">适用季节: 夏季</li>
+                    <li title=" 休闲">适用场景: 休闲</li>
+                    <li title=" 青年">适用对象: 青年</li>
+                    <li title=" 薄款">厚薄: 薄款</li>
+                    <li title=" 2014年">上市时间: 2014年</li>
+                    <li title=" 棉">面料材质: 棉</li>
+                    <li title=" 沙滩裤">款式: 沙滩裤</li>
+                    <li title=" 青春流行">基础风格: 青春流行</li>
+                    <li title=" 工装军旅">细分风格: 工装军旅</li>
+                </ul>
+                <div id="itemDesc_in_detail">
+                    <img src="images/detail/desc1.jpg"/>
+                </div>
+            </div>
+            <div id="itemDesc_Comment">
+                <div id="itemdesc_comment_Overview">
+                    <span>The Impression: </span>
+                    <ul>
+                        <li>
+                            <a href="#">质量不错 (10)</a> 
+                        </li>
+                        <li>
+                            <a href="#">式样好 (4)</a>                            
+                        </li>
+                        <li>
+                            <a href="#">便宜 (3)</a>                            
+                        </li>
+                        <li>
+                            <a href="#">尺码很好 (3)</a>                           
+                        </li>
+                        <li>
+                            <a href="#">如实描述 (3)</a>  
+                        </li>
+                        <li>
+                            <a href="#">面料好 (3)</a>                            
+                        </li>
+                        <li>
+                            <a href="#">穿着美 (2)</a>                            
+                        </li>
+                        <li>
+                            <a href="#">态度不错 (2)</a>                           
+                        </li>
+                        <li class="tb-r-neg">
+                            <a href="#" data-act="impress" data-val="620-13">质量一般 (4)</a>                          
+                        </li>
+                        <li class="tb-r-neg">
+                            <a href="#" data-act="impress" data-val="223-13">不合身 (4)</a>                           
+                        </li>
+                    </ul>
+                </div>
+                <div id="itemdesc_comment_Spec">
+                    <ul>
+                        <%
+                            for (int i = 0; i < 10; i++) {
+                        %>
+                        <li>
+                            <div class="commentItem_left">
+                                <span>By&nbsp;<a href="#">Richard Fiske</a></span>
+                                <i style="margin-top: 5px" class="bitranger_3_star"></i>
+                            </div>
+                            <div class="commentItem_right">
+                                <div>
+                                    A quality product as expected. Well worth the money in the long run. I usually like to wait for the holiday time sales on Amazon to buy jeans but I just had to have them now.
+                                </div>
+                                <div style="margin-top: 10px">
+                                    <span>April 24, 2011</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span>Color: Grey, Size: 44</span>
+                                </div>
+                            </div>
+                        </li>
+                        <%
+                            }
+                        %>
+
+                    </ul>
+                </div>
+            </div>
+            <div id="itemDesc_Record">
+
+            </div>
+        </div>
+
+        <div id="itemRecommand">
+            <div style="margin: 10px 0 20px 0;">
+                CUSTOMERS WHO VIEWED THIS PRODUCT ALSO VIEWED
+            </div>
+            <ul>
+                <li>
+                    <a href="#"><img src="images/detail/recommand1.jpg"/></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/detail/recommand2.jpg"/></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/detail/recommand3.jpg"/></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/detail/recommand4.jpg"/></a>
+                </li>
+                <li>
+                    <a href="#"><img src="images/detail/recommand5.jpg"/></a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </div>
+
+<%@ include file="include/footer.jsp" %>
 
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
-<script src="js/index.js" type="text/javascript"></script>
+<script src="js/categorybar.js" type="text/javascript"></script>
+<script src="js/details.js" type="text/javascript"></script>
 </body>
 </html>

@@ -133,7 +133,7 @@
 <div class="content_container">
 <table width="100%" style="margin-bottom:1px;"  >
   <tr>
-    <td width= 300><a href="#"> <span class="badge"><h2>Shop Name</h2></span><h1>Three squirrels</h1><img src="images/shoplogo.jpg" /></a></a>
+    <td width= 300><a href="#"> <span class="badge"><h2>Shop Name</h2></span><h1>Three squirrels</h1><img src="images/shoplogo.jpg" </a></a>
 </td>
 
 <td >
@@ -145,7 +145,7 @@
   <button type="button" class="btn btn-default">Hot</button>
 </div>
  <div class="col-md-15">
-    <div class="thumbnail"><img src="images/lunbo.jpg"/> </a>
+    <div class="thumbnail"><img src="images/lunbo.jpg" </a>
       <div class="caption">
         <h3>clothes</h3>
         <p>description</p>
@@ -162,7 +162,7 @@
   <button type="button" class="btn btn-default">Hot</button>
 </div>
  <div class="col-md-15">
-    <div class="thumbnail"><img src="images/lunbo.jpg"/> </a>
+    <div class="thumbnail"><img src="images/lunbo.jpg" </a>
       <div class="caption">
         <h3>clothes</h3>
         <p>description</p>
@@ -174,7 +174,7 @@
 </td>
 </tr>
 <tr>
-      <td width= 300><a href="#"> <span class="badge"><h2>Shop Name</h2></span><h1>Three squirrels</h1><img src="images/shoplogo.jpg" /></a></a>
+      <td width= 300><a href="#"> <span class="badge"><h2>Shop Name</h2></span><h1>Three squirrels</h1><img src="images/shoplogo.jpg" </a></a>
 </td>
 <br><br>
 <td>
@@ -186,7 +186,7 @@
   <button type="button" class="btn btn-default">Hot</button>
 </div>
  <div class="col-md-15">
-    <div class="thumbnail"><img src="images/lunbo.jpg" /></a>
+    <div class="thumbnail"><img src="images/lunbo.jpg" </a>
       <div class="caption">
         <h3>clothes</h3>
         <p>description</p>
@@ -203,7 +203,7 @@
   <button type="button" class="btn btn-default">Hot</button>
 </div>
  <div class="col-md-15">
-    <div class="thumbnail"><img src="images/lunbo.jpg" /></a>
+    <div class="thumbnail"><img src="images/lunbo.jpg" </a>
       <div class="caption">
         <h3>clothes</h3>
         <p>description</p>

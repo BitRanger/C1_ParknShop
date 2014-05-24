@@ -117,6 +117,41 @@
     color: #999999;
 }
 
+.bitranger_1_star {
+    width: 80px;
+    height: 16px;
+    background: url(../images/ratestar.png) no-repeat -64px 0;
+    display: inline-block;
+}
+
+.bitranger_2_star {
+    width: 80px;
+    height: 16px;
+    background: url(../images/ratestar.png) no-repeat -48px 0;
+    display: inline-block;
+}
+
+.bitranger_3_star {
+    width: 80px;
+    height: 16px;
+    background: url(../images/ratestar.png) no-repeat -32px 0;
+    display: inline-block;
+}
+
+.bitranger_4_star {
+    width: 80px;
+    height: 16px;
+    background: url(../images/ratestar.png) no-repeat -16px 0;
+    display: inline-block;
+}
+
+.bitranger_5_star {
+    width: 80px;
+    height: 16px;
+    background: url(../images/ratestar.png) no-repeat 0 0;
+    display: inline-block;
+}
+
 
 
 

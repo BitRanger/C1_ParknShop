@@ -76,6 +76,7 @@
 
 <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
+<script src="js/categorybar.js" type="text/javascript"></script>
 <script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>

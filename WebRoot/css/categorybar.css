@@ -46,6 +46,7 @@
     border:none;
     box-shadow: 1px 3px 5px #929090;
     z-index: 999;
+    display: none;
 }
 
 .submenuPanel {
