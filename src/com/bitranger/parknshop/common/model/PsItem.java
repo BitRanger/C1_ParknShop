@@ -45,6 +45,8 @@ public class PsItem implements java.io.Serializable {
 
 	// Fields
 
+	private static final long serialVersionUID = -1092009857032674996L;
+	
 	private Integer id;
 	private PsShop psShop;
 	private PsCategory psCategory;

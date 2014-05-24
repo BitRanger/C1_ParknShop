@@ -1,6 +1,5 @@
 package com.bitranger.parknshop.visitor.controller;
 
-import java.beans.FeatureDescriptor;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,49 +11,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bitranger.parknshop.common.dao.FetchOption;
-import com.bitranger.parknshop.common.dao.impl.PsItemDAO;
+import com.bitranger.parknshop.common.fetch.ItemFetch;
+import com.bitranger.parknshop.common.fetch.ItemFinder;
 import com.bitranger.parknshop.common.model.PsItem;
-import com.bitranger.parknshop.visitor.VisitorView;
+import com.bitranger.parknshop.common.service.ItemFinderService;
+import com.bitranger.parknshop.visitor.RequestParamSetter;
+import com.bitranger.parknshop.visitor.views.Names;
+import com.bitranger.parknshop.visitor.views.URLs;
+import com.bitranger.parknshop.visitor.views.VisitorViews;
 
 
-/**
- *@author BowenCai
- *@since 9:29:01 AM
- */
 @Controller
 public class ItemList {
-
+	
+	
 	@Inject
-	PsItemDAO psItemDAO;
-
+	ItemFinder finder;
 	
-	@RequestMapping(value="/test", method=RequestMethod.GET)
-	public ModelAndView name(HttpServletRequest req, HttpServletResponse resp) {
-		ModelAndView mv = new ModelAndView(VisitorView.list);
-//		System.out.println(req.getQueryString());
-		String[] tags = req.getParameterValues("tag");
+	// product?category_id=23&tag=J
+	@RequestMapping(value=URLs.item_list, method=RequestMethod.GET)
+	public ModelAndView product(HttpServletRequest request, ModelAndView mv){
 		
-		/**
-		 * extract param
-		 */
 		
-		/**
-		 * get data
-		 */
-		List<PsItem> items = psItemDAO.findByCountFavouriteInCategory(1, FetchOption.newOption()
-														.offset(2)
-														.limit(4)
-														.ascending());
-		mv.addObject("item_list", items);
+		ItemFinderService itemFinderService = new ItemFinderService();
+		
+		List<PsItem> itemList =
+			itemFinderService.categoryId(request.getParameter(URLs.params.categoryId))
+					     	 .tagIds(request.getParameterValues(URLs.tag))
+					     	 .maxPrice(request.getParameter(URLs.maxPrice))
+					     	 .minPrice(request.getParameter(URLs.minPrice))
+					     	 .pageNumber(request.getParameter(URLs.pageNumber))
+					     	 .orderBy(request.getParameter(URLs.orderBy))
+					     	 .asd(request.getParameter(URLs.asd))
+					     	 .list();
+		
+		mv.setViewName(VisitorViews.itemList);
+		
+//		
+//		ItemFetch fetch = finder.findWith(new RequestParamSetter(request));
+//		itemList = fetch.list();
+		
+		mv.addObject(Names.ItemList, itemList);
+		
 		return mv;
+		
 	}
-	
-	public static Integer name(HttpServletRequest req) {
-		return null;
-	}
-
 }
-
-
-

@@ -5,9 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
@@ -78,6 +75,7 @@ public class PersistantMap extends HibernateDaoSupport implements IPersistantMap
 			}
 		});
 	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public<T> T  get(final String key) {
@@ -102,6 +100,7 @@ public class PersistantMap extends HibernateDaoSupport implements IPersistantMap
 	public void put(final String key, final Object value) {
 		Assert.isTrue(value instanceof Serializable, 
 				"value must be Serializable");
+		
 		getHibernateTemplate().execute(new HibernateCallback<Void>() {
 			@Override
 			public Void doInHibernate(Session session)

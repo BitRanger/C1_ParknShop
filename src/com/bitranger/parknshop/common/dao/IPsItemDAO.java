@@ -34,7 +34,7 @@ public interface IPsItemDAO {
 	 * @param keyword
 	 * @return
 	 */
-	public abstract List<PsItem> searchByKeyword(String keyword);
+	public List<PsItem> searchByKeyword(String keyword);
 
 	/**
 	 * sort by price
@@ -83,5 +83,5 @@ public interface IPsItemDAO {
 	public List<PsItem> findBySeller(Integer sellerId, FetchOption fetchOption);
 
 	public List<PsItem> findByShop(Integer shopId, FetchOption fetchOption);
-
+	
 }
