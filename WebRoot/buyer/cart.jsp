@@ -3,16 +3,16 @@
 <head>
   <title>Online Store</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <link rel="stylesheet" type="text/css" href="css/cart.css">
+  <link rel="stylesheet" type="text/css" href="../asset/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../asset/css/index.css">
+  <link rel="stylesheet" type="text/css" href="../asset/css/cart.css">
 </head>
 <body>
-<%@ include file="include/header.jsp" %>
+<%@ include file="../include/header.jsp" %>
 
 
 <div id="categorybarDiv">
-    <%@ include file="include/categorybar.jsp" %>
+    <%@ include file="../include/categorybar.jsp" %>
 </div>
 <div id="mainContent">
 <div id="storeItemList">
@@ -154,7 +154,7 @@
 
 
 
-<%@ include file="include/footer.jsp" %>
+<%@ include file="../include/footer.jsp" %>
 
 <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>

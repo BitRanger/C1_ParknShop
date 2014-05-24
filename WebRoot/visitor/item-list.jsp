@@ -7,10 +7,10 @@
   <link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
-<%@ include file="include/header.jsp" %>
+<%@ include file="../include/header.jsp" %>
 
 <div id="categorybarDiv">
-    <%@ include file="include/categorybar.jsp" %>
+    <%@ include file="../include/categorybar.jsp" %>
 </div>
 <div id="mainContent">
 <div id="storeItemList">
@@ -35,6 +35,19 @@
         </div>
     </div>
     <div class="storeItem">
+    <c:forEach value="${item-list}" item="item">
+    
+    ///item-detail?item-id=435435
+    
+    <c:url value="/item-detail"> 
+    <c:param name="item-id" value="${item.id}"/>
+    </c:url>
+    
+    <form action="/item-detail" method="get">
+    	<input name="item-id" value="${item.id}"/>
+    </form>
+    
+    
         <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
         <div class="caption">
             <a href="detail.jsp">

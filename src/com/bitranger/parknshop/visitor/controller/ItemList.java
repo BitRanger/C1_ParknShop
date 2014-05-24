@@ -16,14 +16,12 @@ import com.bitranger.parknshop.common.fetch.ItemFinder;
 import com.bitranger.parknshop.common.model.PsItem;
 import com.bitranger.parknshop.common.service.ItemFinderService;
 import com.bitranger.parknshop.visitor.RequestParamSetter;
-import com.bitranger.parknshop.visitor.views.Names;
 import com.bitranger.parknshop.visitor.views.URLs;
 import com.bitranger.parknshop.visitor.views.VisitorViews;
 
 
 @Controller
 public class ItemList {
-	
 	
 	@Inject
 	ItemFinder finder;
@@ -35,23 +33,25 @@ public class ItemList {
 		
 		ItemFinderService itemFinderService = new ItemFinderService();
 		
-		List<PsItem> itemList =
-			itemFinderService.categoryId(request.getParameter(URLs.params.categoryId))
-					     	 .tagIds(request.getParameterValues(URLs.tag))
-					     	 .maxPrice(request.getParameter(URLs.maxPrice))
-					     	 .minPrice(request.getParameter(URLs.minPrice))
-					     	 .pageNumber(request.getParameter(URLs.pageNumber))
-					     	 .orderBy(request.getParameter(URLs.orderBy))
-					     	 .asd(request.getParameter(URLs.asd))
-					     	 .list();
+//		List<PsItem> itemList =
+//			itemFinderService.categoryId(request.getParameter(URLs.params.categoryId))
+//					     	 .tagIds(request.getParameterValues(URLs.tag))
+//					     	 .maxPrice(request.getParameter(URLs.maxPrice))
+//					     	 .minPrice(request.getParameter(URLs.minPrice))
+//					     	 .pageNumber(request.getParameter(URLs.pageNumber))
+//					     	 .orderBy(request.getParameter(URLs.orderBy))
+//					     	 .asd(request.getParameter(URLs.asd))
+//					     	 .list();
 		
+		mv.setViewName("/visitor/item_list.jsp");
+
 		mv.setViewName(VisitorViews.itemList);
 		
 //		
 //		ItemFetch fetch = finder.findWith(new RequestParamSetter(request));
 //		itemList = fetch.list();
 		
-		mv.addObject(Names.ItemList, itemList);
+//		mv.addObject(Names.ItemList, itemList);
 		
 		return mv;
 		
