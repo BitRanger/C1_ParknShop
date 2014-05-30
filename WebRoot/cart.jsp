@@ -38,7 +38,19 @@
     				<p>版本类型：港澳台</p>
     			</li>
     			<li>
-    				
+    				<span>173</span>
+    				<span>172</span>
+    			</li>
+    			<li>
+    				<span id="itemDetail_quantityChangeBar">
+                    	<a href="#" class="itemDetail_quantityChange">-</a>
+                        <input id="itemDetail_quantity_input" type="text" value="1" maxlength="8">
+                        <a href="#" class="itemDetail_quantityChange">+</a>
+                    </span>
+    			</li>
+    			<li>
+    				<span>Move to Collection</span>
+    				<span>Delete</span>
     			</li>
     		</ul>
     	</div>
