@@ -18,12 +18,24 @@
                     <li class="headerListItem">
                         <a class="headerListItemLink" href="#"><span class="glyphicon glyphicon-bell"></span></a>
                     </li>
-                    <li class="headerListItem">
-                        <a class="headerListItemLink" href="signup.jsp">Signup</a>
-                    </li>
-                    <li class="headerListItem">
-                        <a class="headerListItemLink" href="#" data-toggle="modal" data-target="#login_modal">Login</a>
-                    </li>
+                    <% if (session.getAttribute("username") != null) { %>
+                        <li class="headerListItem">
+                            <a class="headerListItemLink" href="signup.jsp">
+                               <%=session.getAttribute("username") %>
+                            </a>
+                        </li>
+                        <li class="headerListItem">
+                            <a class="headerListItemLink" href="#">Logout</a>
+                        </li>
+                    <% } else { %>
+                        <li class="headerListItem">
+                            <a class="headerListItemLink" href="signup.jsp">Signup</a>
+                        </li>
+                        <li class="headerListItem">
+                            <a class="headerListItemLink" href="#" data-toggle="modal" data-target="#login_modal">Login</a>
+                        </li>                  
+                    <%} %>
+                    
                 </ul>
             </div>
             <div id="headerRightDown">
