@@ -1,3 +1,4 @@
+
 package com.bitranger.parknshop.buyer.controller;
 
 import java.sql.Timestamp;
@@ -8,17 +9,20 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import com.bitranger.parknshop.buyer.dao.IPsCustomerDAO;
 import com.bitranger.parknshop.buyer.model.PsCustomer;
 
+/**
+ * @author Yu Bowen
+ * Controller for Register
+ */
 @Controller
 public class CustomerRegister {
 	@Autowired
 	public IPsCustomerDAO psCustomerDao;
 	
 	// TODO method must be POST after debug
-	@RequestMapping(value="/registerCustomer")//, method=RequestMethod.POST)
+	@RequestMapping(value="/register")//, method=RequestMethod.POST)
 	public String registerCustomer(String username, String email, String password)
 	{
 		Timestamp now = new Timestamp(System.currentTimeMillis());
