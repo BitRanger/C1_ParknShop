@@ -28,6 +28,6 @@ public class CustomerRegister {
 		Timestamp now = new Timestamp(System.currentTimeMillis());
 		PsCustomer toAdd = new PsCustomer(username, email, password, new Short((short)0) , now);
 		psCustomerDao.save(toAdd);
-		return "index";
+		return "forward:/";
 	}
 }
