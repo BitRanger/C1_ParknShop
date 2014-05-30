@@ -25,10 +25,10 @@ public class RequestParamSetter implements IFetchParamSetter{
 
 	@Override
 	public void setParams(ItemFetch oneFetch) {
-		String cat = request.getParameter(URLs.categoryId);
+		String cat = request.getParameter(URLs.params.categoryId);
 			Integer num = Converter.slient.toInteger(cat);
 			oneFetch.categoryId(num == null ? 0 : num);
-		String[] tags = request.getParameterValues(URLs.tag);
+		String[] tags = request.getParameterValues(URLs.params.tag);
 		
 	}
 

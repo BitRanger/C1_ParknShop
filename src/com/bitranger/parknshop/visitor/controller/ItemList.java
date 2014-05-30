@@ -37,12 +37,12 @@ public class ItemList {
 		
 		List<PsItem> itemList =
 			itemFinderService.categoryId(request.getParameter(URLs.params.categoryId))
-					     	 .tagIds(request.getParameterValues(URLs.tag))
-					     	 .maxPrice(request.getParameter(URLs.maxPrice))
-					     	 .minPrice(request.getParameter(URLs.minPrice))
-					     	 .pageNumber(request.getParameter(URLs.pageNumber))
-					     	 .orderBy(request.getParameter(URLs.orderBy))
-					     	 .asd(request.getParameter(URLs.asd))
+					     	 .tagIds(request.getParameterValues(URLs.params.tag))
+					     	 .maxPrice(request.getParameter(URLs.params.maxPrice))
+					     	 .minPrice(request.getParameter(URLs.params.minPrice))
+					     	 .pageNumber(request.getParameter(URLs.params.pageNumber))
+					     	 .orderBy(request.getParameter(URLs.params.orderBy))
+					     	 .asd(request.getParameter(URLs.params.asd))
 					     	 .list();
 		
 		mv.setViewName(VisitorViews.itemList);

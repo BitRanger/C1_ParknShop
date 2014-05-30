@@ -3,6 +3,7 @@
 <head>
   <title>Online Store</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/index.css">
   <link rel="stylesheet" type="text/css" href="css/cart.css">

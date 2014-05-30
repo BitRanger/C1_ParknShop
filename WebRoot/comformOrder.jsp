@@ -10,6 +10,7 @@
 <body>
 <%@ include file="include/header.jsp" %>
 
+
 <div id="categorybarDiv">
     <%@ include file="include/categorybar.jsp" %>
 </div>

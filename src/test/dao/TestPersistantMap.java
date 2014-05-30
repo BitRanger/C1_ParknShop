@@ -42,12 +42,11 @@ public class TestPersistantMap {
 		as.add("ret43w7cjm2398yrx");
 		as.add("456s7t68we74g6s4g564gw6er4g6e5r4gw864ryg");
 		persistantMap.put("kkk4", as);
-		List<String> o = persistantMap.get("kkk3");
+		List<String> o = (List<String>) persistantMap.get("kkk3");
 		for (String string : o) {
 			System.err.println(string);
 		}
 		persistantMap.remove("kkk4");
-		o = persistantMap.keys();
 		for (String string : o) {
 			System.err.println(string);
 		}
