@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.buyer.controller;
+package com.bitranger.parknshop.common.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,6 +23,6 @@ public class CustomerLogout {
 		{
 			session.removeAttribute("currentCustomer");
 		}
-		return "forward:/";
+		return "redirect:/";
 	}
 }

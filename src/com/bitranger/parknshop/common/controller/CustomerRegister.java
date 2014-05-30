@@ -1,5 +1,5 @@
 
-package com.bitranger.parknshop.buyer.controller;
+package com.bitranger.parknshop.common.controller;
 
 import java.sql.Timestamp;
 
@@ -28,6 +28,7 @@ public class CustomerRegister {
 		Timestamp now = new Timestamp(System.currentTimeMillis());
 		PsCustomer toAdd = new PsCustomer(username, email, password, new Short((short)0) , now);
 		psCustomerDao.save(toAdd);
-		return "forward:/";
+		
+		return "redirect:/";
 	}
 }

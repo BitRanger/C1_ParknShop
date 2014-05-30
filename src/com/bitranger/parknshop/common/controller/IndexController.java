@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.buyer.controller;
+package com.bitranger.parknshop.common.controller;
 
 import java.util.List;
 

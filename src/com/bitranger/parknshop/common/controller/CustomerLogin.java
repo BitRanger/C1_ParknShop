@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.buyer.controller;
+package com.bitranger.parknshop.common.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,15 +21,15 @@ public class CustomerLogin {
 	private IPsCustomerDAO psCustomerDao;
 	
 	@RequestMapping("/login")
-	public @ResponseBody String customerLogin(HttpServletRequest req, String email, String password)
+	public String customerLogin(HttpServletRequest req, String email, String password)
 	{
 		HttpSession session = req.getSession();
 		if(session.getAttribute("currentCustomer") != null)
-			return "already";
+			return "redirect:/";
 		PsCustomer persistCustomer = psCustomerDao.findByEmail(email);
-		if(persistCustomer == null)
-			return "failed";
+		if(persistCustomer == null || !persistCustomer.getPassword().equals(password))
+			return "redirect:/";
 		session.setAttribute("currentCustomer", persistCustomer);
-		return "success";
+		return "redirect:/";
 	}
 }
