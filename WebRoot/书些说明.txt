@@ -1,0 +1,12 @@
+1. 页面上需要的内容在bootstrap上面找，尽量模仿（能用bootstrap的代码就尽量用），不要自己随意发挥，实现功能不了的我们在讨论。
+2. 网页上的内容添加在131行后面空白处。
+3. 目前网页还不支持缩放，你们写的页面目前只要在浏览器全屏显示正确就行。
+4. 浏览器尽量用chrome。
+
+
+注:
+bootstrap网址:http://v3.bootcss.com/getting-started/ 
+
+周红 写collection.html页面。
+淡淡 些cart.html页面。
+具体你们也可以商量一下分工。
