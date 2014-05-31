@@ -10,4 +10,5 @@ public class VisitorParams {
 	
 	// product parameters
 	public static final String productItemList = "product_item_list";
+	public static final String itemCount = "item_count";
 }

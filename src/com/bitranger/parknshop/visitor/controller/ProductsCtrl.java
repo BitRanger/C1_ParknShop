@@ -1,6 +1,7 @@
 package com.bitranger.parknshop.visitor.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,14 +25,17 @@ public class ProductsCtrl {
 	private ItemFinderService itemFinderService;
 	
 	
-	@RequestMapping(value="/product", method=RequestMethod.GET)
+	@RequestMapping(value=VisitorView.itemCtrlMapping, method=RequestMethod.GET)
 	public ModelAndView product(HttpServletRequest request, HttpServletResponse response){
 		
-		
 		List<PsItem> itemList = itemFinderService.getItems(request);
-					
+		
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject(VisitorParams.productItemList, itemList);
+		mv.addObject(VisitorParams.itemCount, itemList.size());
+		
 		mv.setViewName(VisitorView.product);
 	
 		return mv;

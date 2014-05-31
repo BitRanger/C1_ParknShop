@@ -22,7 +22,7 @@
         %>
         <div class="storeItemListRow">
             <div class="storeItemListRowTitle">
-                <h1>Fashion
+                <h1><a href="itemlist?category_id=1">Fashion</a>
                     <small>Some of new products in this month</small>
                 </h1>
             </div>

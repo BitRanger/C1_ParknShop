@@ -8,7 +8,7 @@
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/bw_web">
+			value="jdbc:mysql://localhost:3306/c1_parknshop">
 		</property>
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="username" value="bitranger"></property>
@@ -51,28 +51,32 @@
 		</property>
 	</bean>
 		
-	<bean name="psItemService" class="com.bitranger.parknshop.common.service.impl.PsItemService">
+	<bean id="psItemService" class="com.bitranger.parknshop.common.service.impl.PsItemService">
 		<property name="psItemDAO" ref="psItemDao"></property>
 	</bean>
 	
-	<bean name="psTagDao" class="com.bitranger.parknshop.common.dao.impl.PsTagDAO">
+	<bean id="psTagDao" class="com.bitranger.parknshop.common.dao.impl.PsTagDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
-	<bean name="psCategoryDao" class="com.bitranger.parknshop.common.dao.impl.PsCategoryDAO">
+	<bean id="psCategoryDao" class="com.bitranger.parknshop.common.dao.impl.PsCategoryDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean name="psItemDao" class="com.bitranger.parknshop.common.dao.impl.PsItemDAO">
+	<bean id="psItemDao" class="com.bitranger.parknshop.common.dao.impl.PsItemDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean name="itemFinder" class="com.bitranger.parknshop.common.dao.ItemFinder">
+	<bean id="itemFinder" class="com.bitranger.parknshop.common.dao.ItemFinder">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
-	<bean name="itemFinderService" class="com.bitranger.parknshop.common.service.ItemFinderService">
+	<bean id="itemFinderService" class="com.bitranger.parknshop.common.service.ItemFinderService">
 		<property name="itemFinder" ref="itemFinder"></property>
+	</bean>
+	
+	<bean id="psItemInfoDAO" class="com.bitranger.parknshop.common.dao.impl.PsItemInfoDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
 </beans>

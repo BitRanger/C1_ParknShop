@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <title>Online Store</title>
@@ -15,236 +16,40 @@
 </div>
 <div id="mainContent">
 <div id="storeItemList">
-<div class="storeItemListRow">
-    <div class="storeItemListRowTitle">
-        <h1>Fashion
-            <small>Some of new products in this month</small>
-        </h1>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-</div>
-<div class="storeItemListRow">
-    <div class="storeItemListRowTitle">
-        <h1>Fashion
-            <small>Some of new products in this month</small>
-        </h1>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-</div>
-<div class="storeItemListRow">
-    <div class="storeItemListRowTitle">
-        <h1>Fashion
-            <small>Some of new products in this month</small>
-        </h1>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
-    <div class="storeItem">
-        <a href="detail.jsp"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        <div class="caption">
-            <a href="detail.jsp">
-                <h7>
-                    This is the goods description.This is the goods description.This is the
-                    goods description.
-                </h7>
-            </a>
-            <h5><b>style-clothes</b> </h5>
-            <p>Price: $50.00</p>
-            <p>Available</p>
-        </div>
-    </div>
+
+<c:choose>
+	<c:when test="${item_count eq 0 }">
+		泥煤的！！！
+	</c:when>
+	<c:otherwise>
+		<c:forEach begin="0" end="${(item_count - 1) /5 }" varStatus="s">
+			<div class="storeItemListRow">
+    			<div class="storeItemListRowTitle">
+       				 <h1>Fashion
+          				  <small>Some of new products in this month</small>
+       				 </h1>
+   				</div>
+				
+				<c:forEach begin="${s.index * 5 }" end="${s.index * 5 + 4 > item_count - 1 ? item_count - 1 : s.index * 5 + 4 }" varStatus="vs">
+					<div class="storeItem">
+       					<a href="item?id=${product_item_list[vs.index].id}"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
+        				<div class="caption">
+        				    <a href="detail.jsp">
+                				<h7>
+                		  			${product_item_list[vs.index].name}
+               					</h7>
+            				</a>
+          					<h5><b>${product_item_list[vs.index].introduction}</b> </h5>
+            				<p>Price: ${product_item_list[vs.index].price }</p>
+            				<p>Vote: ${product_item_list[vs.index].vote}</p>
+        				</div>
+    				</div>
+				</c:forEach>	
+			</div>	
+		</c:forEach>
+	</c:otherwise>	
+</c:choose>
+
 </div>
 </div>
 </div>

@@ -55,6 +55,7 @@ public class PsItem implements java.io.Serializable {
 	private String name;
 	private String introduction;
 	private Double price;
+	private String urlPicture;
 	private String extra1;
 	private String extra2;
 	private Timestamp timeCreated;
@@ -78,12 +79,13 @@ public class PsItem implements java.io.Serializable {
 
 	/** minimal constructor */
 	public PsItem(PsShop psShop, PsCategory psCategory, String name,
-			Double price, Timestamp timeCreated, Integer countPurchase,
+			Double price, String urlPicture, Timestamp timeCreated, Integer countPurchase,
 			Integer countFavourite, Integer countClick, Double vote) {
 		this.psShop = psShop;
 		this.psCategory = psCategory;
 		this.name = name;
 		this.price = price;
+		this.urlPicture = urlPicture;
 		this.timeCreated = timeCreated;
 		this.countPurchase = countPurchase;
 		this.countFavourite = countFavourite;
@@ -93,7 +95,7 @@ public class PsItem implements java.io.Serializable {
 
 	/** full constructor */
 	public PsItem(PsShop psShop, PsCategory psCategory, String name,
-			String introduction, Double price, String extra1, String extra2,
+			String introduction, String url_picture, Double price, String extra1, String extra2,
 			Timestamp timeCreated, Integer countPurchase,
 			Integer countFavourite, Integer countClick, Double vote,
 			Set<PsCustomer> psCustomers, Set<PsComment> psComments,
@@ -104,6 +106,7 @@ public class PsItem implements java.io.Serializable {
 		this.name = name;
 		this.introduction = introduction;
 		this.price = price;
+		this.urlPicture = url_picture;
 		this.extra1 = extra1;
 		this.extra2 = extra2;
 		this.timeCreated = timeCreated;
@@ -296,4 +299,14 @@ public class PsItem implements java.io.Serializable {
 		this.ROrderItems = ROrderItems;
 	}
 
+	@Column(name="url_picture", length=1024)
+	public String getUrlPicture() {
+		return urlPicture;
+	}
+
+	public void setUrlPicture(String urlPicture) {
+		this.urlPicture = urlPicture;
+	}
+
+	
 }
