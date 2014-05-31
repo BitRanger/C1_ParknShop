@@ -17,137 +17,44 @@
 </div>
 <div id="mainContent">
 <div id="storeItemList">
-    <!-- 新加 -->
-    <div class="row1">
-        <div class="row">
-            <div class="col-md-12">
-                <h3>
-                    <b>
-                        <span class="glyphicon glyphicon-shopping-cart"></span>
-                        MY CART
-                    </b>
-                </h3>
-            </div>
-        </div>
+    <div id="cartTitle">
+        <h3><b><span class="glyphicon glyphicon-shopping-cart"></span>MY CART</b></h3>
     </div>
-
-
-    <div class="tab">
-        <table class="table table-bordered" >
-            <tr>
-                <td align="center" valign="middle">Goods</td>
-                <td align="center" valign="middle">Price</td>
-                <td align="center" valign="middle">Quantity</td>
-                <td align="center" valign="middle">Operation</td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"><!--  Check me out -->
-                            <img src="images/cartpic.jpg">
-                            Goods Description
-                        </label>
-                    </div>
-                </td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;">¥318.00</td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;">
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
-
-                    <!-- <input type="text" width="30" height="10" placeholder="1"> -->
-                    <input name="" type="text" style="width:30px; height:22px;" placeholder="1"/>
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;"><a href="#">Delete</a></td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"><!--  Check me out -->
-                            <img src="images/cartpic.jpg">
-                            Goods Description
-                        </label>
-                    </div>
-                </td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;">¥318.00</td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;">
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
-
-                    <!-- <input type="text" width="30" height="10" placeholder="1"> -->
-                    <input name="" type="text" style="width:30px; height:22px;" placeholder="1"/>
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;"><a href="#">Delete</a></td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"><!--  Check me out -->
-                            <img src="images/cartpic.jpg">
-                            Goods Description
-                        </label>
-                    </div>
-                </td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;">¥318.00</td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;">
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-minus"></span>
-                    </button>
-
-                    <!-- <input type="text" width="30" height="10" placeholder="1"> -->
-                    <input name="" type="text" style="width:30px; height:22px;" placeholder="1"/>
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </td>
-
-                <td align="center" valign="middle" style="height:80px; line-height:80px;"><a href="#">Delete</a></td>
-            </tr>
-        </table>
+    <div>
+    	<div class="cartItem">
+    		<ul>
+    			<li><input type="checkbox"></li>
+    			<li>
+    				<div><img src="images/cartpic.png"/></div>  
+    				<div>
+    					<div>现货送豪礼 Apple/苹果 iPhone 4s 全新正品 原装无锁智能手机</div>
+    					<div></div>
+    				</div>				
+    			</li>
+    			<li>
+    				<p>机身颜色：白色</p>
+    				<p>套餐类型：官方标配</p>
+    				<p>机身内存：32G</p>
+    				<p>版本类型：港澳台</p>
+    			</li>
+    			<li>
+    				<span>173</span>
+    				<span>172</span>
+    			</li>
+    			<li>
+    				<span id="itemDetail_quantityChangeBar">
+                    	<a href="#" class="itemDetail_quantityChange">-</a>
+                        <input id="itemDetail_quantity_input" type="text" value="1" maxlength="8">
+                        <a href="#" class="itemDetail_quantityChange">+</a>
+                    </span>
+    			</li>
+    			<li>
+    				<span>Move to Collection</span>
+    				<span>Delete</span>
+    			</li>
+    		</ul>
+    	</div>
     </div>
-
-    <div class="tab1">
-        <div class="row">
-            <div class="col-md-9"></div>
-            <div class="col-md-2">Total：</div>
-            <div class="col-md-1">$318.00</div>
-        </div>
-    </div>
-
-    <div class="tab2">
-        <div class="col-md-2">
-            <a href="index.jsp"><button type="button" class="btn btn-default">< Go on Shopping</button></a>
-        </div>
-        <div class="col-md-8"></div>
-        <div class="col-md-2">
-            <a href="comformOrder.jsp"><button type="button" class="btn btn-danger">Set Settle ></button></a>
-        </div>
-
-
-
-
-</div>
 </div>
 
 </div>

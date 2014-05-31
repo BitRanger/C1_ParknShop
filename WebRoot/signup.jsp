@@ -42,10 +42,10 @@
         </div>
         <div id="signupMainRight">
             <div id="signupPanel">
-                <form style="margin:0">
-                    <input class="signup_input" type="text" placeholder="Pick a username"><br>
-                    <input class="signup_input" type="text" placeholder="Your email"><br>
-                    <input class="signup_input" type="password" placeholder="Create a password"><br>
+                <form style="margin:0" action="<%=request.getContextPath()%>/register" method="post">
+                    <input name="username" class="signup_input" type="text" placeholder="Pick a username"><br>
+                    <input name="email" class="signup_input" type="text" placeholder="Your email"><br>
+                    <input name="password" class="signup_input" type="password" placeholder="Create a password"><br>
                     <input class="signup_input" type="password" placeholder="Confirm password"><br>
                     <div id="signup_user_agreement">
                         <input type="checkbox">

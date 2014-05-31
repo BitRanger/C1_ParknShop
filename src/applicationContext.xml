@@ -66,8 +66,12 @@
 	<bean id="psItemDao" class="com.bitranger.parknshop.common.dao.impl.PsItemDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+
+	<bean name="psCustomerDao" class="com.bitranger.parknshop.buyer.dao.impl.PsCustomerDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
-	<bean id="itemFinder" class="com.bitranger.parknshop.common.dao.ItemFinder">
+	<bean name="itemFinder" class="com.bitranger.parknshop.common.dao.ItemFinder">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
