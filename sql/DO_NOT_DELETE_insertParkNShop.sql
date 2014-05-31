@@ -1,0 +1,18 @@
+INSERT INTO `c1_parknshop`.`ps_seller` (`nickname`, `person_id_num`, `email`, `password`, `status`, `time_created`) VALUES ('BossGao', '123', '33323232323@qq.com', '123', '0', '2011-2-3');
+INSERT INTO `c1_parknshop`.`ps_seller` (`nickname`, `person_id_num`, `email`, `password`, `status`, `time_created`) VALUES ('DoubleWen', '345', 'ewrfnsdjkfn@163.com', '123', '0', '2013-5-6');
+INSERT INTO `c1_parknshop`.`ps_seller` (`nickname`, `person_id_num`, `email`, `password`, `status`, `time_created`) VALUES ('Mr.AJ', '789', 'MRAJ@nwpu.com', '123', '0', '2014-5-24');
+INSERT INTO `c1_parknshop`.`ps_shop` (`id_seller`, `name`, `status`, `introduction`, `time_created`, `vote`) VALUES ('1', 'Welcome Electronic', '0', 'Come and buy', '2012-2-3', '4');
+INSERT INTO `c1_parknshop`.`ps_shop` (`id_seller`, `name`, `status`, `introduction`, `time_created`, `vote`) VALUES ('1', 'Baby shopping', '0', 'lovely baby', '2012-2-3', '4.8');
+INSERT INTO `c1_parknshop`.`ps_shop` (`id_seller`, `name`, `status`, `introduction`, `time_created`, `vote`) VALUES ('1', 'Nike Profession', '0', 'all nike is here', '2012-2-3', '4.0');
+INSERT INTO `c1_parknshop`.`ps_shop` (`id_seller`, `name`, `status`, `introduction`, `time_created`, `vote`) VALUES ('1', 'Nice Taste', '0', 'attract you ', '2013-4-24', '3.5');
+INSERT INTO `c1_parknshop`.`ps_shop` (`id_seller`, `name`, `status`, `introduction`, `time_created`, `vote`) VALUES ('2', 'Reading Ocean', '0', 'find whatever', '2013-4-5', '5.0');
+INSERT INTO `c1_parknshop`.`ps_shop` (`id_seller`, `name`, `status`, `introduction`, `time_created`, `vote`) VALUES ('2', 'Computer Shopping', '0', 'co', '2012-2-3', '3.4');
+INSERT INTO `c1_parknshop`.`ps_shop` (`id_seller`, `name`, `status`, `introduction`, `time_created`, `vote`) VALUES ('3', 'LiNing', '0', 'anything is possible', '2014-4-5', '4.8');
+INSERT INTO `c1_parknshop`.`ps_category` (`name`) VALUES ('ELECTRONICS');
+INSERT INTO `c1_parknshop`.`ps_category` (`name`) VALUES ('MEN');
+INSERT INTO `c1_parknshop`.`ps_category` (`name`) VALUES ('WOMEN');
+INSERT INTO `c1_parknshop`.`ps_category` (`name`) VALUES ('BABY&KIDS');
+INSERT INTO `c1_parknshop`.`ps_category` (`name`) VALUES ('BOOKS&MEDIA');
+INSERT INTO `c1_parknshop`.`ps_category` (`name`) VALUES ('FOOD');
+INSERT INTO `c1_parknshop`.`ps_category` (`name`) VALUES ('HOME&KITCHEN');
+INSERT INTO `c1_parknshop`.`ps_item` (`id_shop`, `id_category`, `name`, `introduction`, `price`, `url_picture`, `count_purchase`, `count_favourite`, `count_click`, `vote`) VALUES ('1', '1', 'Dell computer', 'It is very fast', '4500.00', 'sasa', '4', '4', '4', '5');

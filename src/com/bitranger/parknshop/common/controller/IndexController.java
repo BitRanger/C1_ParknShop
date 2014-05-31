@@ -1,5 +1,7 @@
 package com.bitranger.parknshop.common.controller;
 
+import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,24 +13,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitranger.parknshop.buyer.model.PsCustomer;
+import com.bitranger.parknshop.common.dao.FetchOption;
 import com.bitranger.parknshop.common.dao.IPsCategoryDAO;
+import com.bitranger.parknshop.common.dao.IPsItemDAO;
+import com.bitranger.parknshop.common.dao.SortOption;
 import com.bitranger.parknshop.common.model.PsCategory;
+import com.bitranger.parknshop.common.model.PsItem;
 
 /**
  * @author Yu Bowen
  * Controller for showing index
+ * Request-wide-attributes:
+ * 	psCategories: List<PsCategory> indicating all the categories
+ *  psIndexDisplay: HashMap<Integer, List<PsItem>> indicating first ten items for each
+ *  	category
+ *  
  */
 @Controller
 public class IndexController {
 	@Autowired
 	private IPsCategoryDAO psCategoryDao;
 	
+	@Autowired
+	private IPsItemDAO psItemDao;
+	
 	@RequestMapping("/")
 	public String showIndex(HttpServletRequest req)
 	{
 		List<PsCategory> psCategories = psCategoryDao.findAll();
 		req.setAttribute("psCategories", psCategories);
-		
-		return "index";
+		HashMap<Integer, List<PsItem>> psIndexDisplay = new HashMap<>();
+		for(PsCategory cate : psCategories)
+		{
+			FetchOption op = new FetchOption();
+			op.limit=10;
+			op.offset=0;
+			op.sortOption = SortOption.DESCENDING;
+			psIndexDisplay.put(cate.getId(), psItemDao.findByCountPurchaseInCategory(cate.getId(), op));
+		}
+		req.setAttribute("psIndexDisplay", psIndexDisplay);
+		return "indexView";
 	}
 }

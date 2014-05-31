@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,12 +24,12 @@ public class CustomerRegister {
 	
 	// TODO method must be POST after debug
 	@RequestMapping(value="/register")//, method=RequestMethod.POST)
-	public String registerCustomer(String username, String email, String password)
+	public String registerCustomer(HttpServletRequest req, String username, String email, String password)
 	{
 		Timestamp now = new Timestamp(System.currentTimeMillis());
 		PsCustomer toAdd = new PsCustomer(username, email, password, new Short((short)0) , now);
 		psCustomerDao.save(toAdd);
-		
+		req.getSession().setAttribute("currentCustomer", toAdd);
 		return "redirect:/";
 	}
 }

@@ -104,12 +104,11 @@ public class PsSellerDAO extends HibernateDaoSupport implements IPsSellerDAO {
 						public List<PsSeller> doInHibernate(Session arg0)
 								throws HibernateException, SQLException {
 							SQLQuery query = arg0
-									.createSQLQuery("select * from ps_seller as P order by P.id "+
+									.createSQLQuery("select * from ps_seller as P order by P.id  "+
 											(fetchOption.sortOption == SortOption.ASCENDING ? "asc"
 													: "desc"));
 							query.addEntity(PsCustomer.class);
 							return query.list();
-
 						}
 
 					});

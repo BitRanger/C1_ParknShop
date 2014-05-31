@@ -86,7 +86,7 @@ public class PsCategoryDAO extends HibernateDaoSupport implements IPsCategoryDAO
 								throws HibernateException, SQLException {
 							String hql = "FROM PsCategory ORDER BY id "
 									+ (option.sortOption == SortOption.ASCENDING 
-										? "ASC" : "DESC");
+										? " ASC " : " DESC ");
 
 							return session.createQuery(hql)
 									.setFirstResult(option.offset)

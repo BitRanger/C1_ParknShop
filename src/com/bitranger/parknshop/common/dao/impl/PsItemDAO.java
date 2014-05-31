@@ -146,8 +146,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 											+ " and P.price > ? and P.price < ? "
 											+ "order by price "
 											+ (option.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ " offset ? limit ?");
+													: "desc ")
+													+ "limit ?, ?");
 
 							query.setInteger(0, psCategoryId)
 									.setDouble(1, priceMin)
@@ -178,8 +178,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select * from ps_item as P where P.id_category = ? "
 											+ "order by count_purchase "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ "offset ? limit ?");
+													: "desc ")
+											+ "limit ?, ?");
 
 							query.setInteger(0, psCategoryId)
 									.setInteger(1, op.offset)
@@ -211,8 +211,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select * from ps_item as P where P.id_category = ? "
 											+ "order by count_favourite "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ "offset ? limit ?");
+													: "desc ")
+											+ " limit ?, ?");
 
 							query.setInteger(0, psCategoryId)
 									.setInteger(1, op.offset)
@@ -244,8 +244,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select * from ps_item as P where P.id_category = ? "
 											+ "order by vote "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ "offset ? limit ?");
+													: "desc ")
+											+ "limit ?, ?");
 
 							query.setInteger(0, psCategoryId)
 									.setInteger(1, op.offset)
@@ -277,8 +277,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 											+ " and P.price > ? and P.price < ? "
 											+ "order by price "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ " offset ? limit ?");
+													: "desc ")
+											+ "limit ?,  ?");
 
 							query.setInteger(0, psTagId).setDouble(1, priceMin)
 									.setDouble(2, priceMax)
@@ -309,8 +309,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select P.* from ps_item as P where P.id in (select R.id_item from r_tag_item as R where R.id_tag = ? ) "
 											+ "order by count_purchase "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ " offset ? limit ?");
+													: "desc ")
+											+ "limit ?, ?");
 
 							query.setInteger(0, psTagId)
 									.setInteger(1, op.offset)
@@ -340,8 +340,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select P.* from ps_item as P where P.id in (select R.id_item from r_tag_item as R where R.id_tag = ? ) "
 											+ "order by count_favourite "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ " offset ? limit ?");
+													: "desc ")
+													+ "limit ?, ?");
 
 							query.setInteger(0, psTagId)
 									.setInteger(1, op.offset)
@@ -371,8 +371,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select P.* from ps_item as P where P.id in (select R.id_item from r_tag_item as R where R.id_tag = ? ) "
 											+ "order by vote "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ " offset ? limit ?");
+													: "desc ")
+													+ "limit ?, ?");
 
 							query.setInteger(0, psTagId)
 									.setInteger(1, op.offset)
@@ -453,8 +453,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select * from ps_item as P where P.id_shop = ? "
 											+ "order by name "
 											+ (fetchOption.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ "offset ? limit ?");
+													: "desc ")
+													+ "limit ?, ?");
 
 							query.setInteger(0, shopId)
 									.setInteger(1, fetchOption.offset)
@@ -484,8 +484,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select * from ps_item "
 											+ "order by count_purchase "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ "offset ? limit ?");
+													: "desc ")
+													+ "limit ?, ?");
 
 							query.setInteger(0, op.offset)
 									.setInteger(1, op.limit);
@@ -514,8 +514,8 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 									.createSQLQuery("select * from ps_item "
 											+ "order by count_favourite "
 											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc")
-											+ "offset ? limit ?");
+													: "desc ")
+													+ "limit ?, ?");
 
 							query.setInteger(0, op.offset)
 									.setInteger(1, op.limit);
