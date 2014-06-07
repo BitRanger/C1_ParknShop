@@ -23,10 +23,13 @@ import com.bitranger.parknshop.common.model.PsItem;
 /**
  * @author Yu Bowen
  * This is a controller for preparing for data used in indexView.jsp 
- **************** List of Attributes *********************
- * 	psCategories: List<PsCategory> indicating all the categories
+ **************** List of Req Attributes *********************
  *  psIndexDisplay: HashMap<Integer, List<PsItem>> indicating first ten items for each
  *  	category
+ *********************************************************
+ *
+ **************** List of Session Attributes *********************
+ * 	psCategories: List<PsCategory> indicating all the categories
  *********************************************************
  */
 @Controller
@@ -41,7 +44,7 @@ public class IndexController {
 	public String showIndex(HttpServletRequest req)
 	{
 		List<PsCategory> psCategories = psCategoryDao.findAll();
-		req.setAttribute("psCategories", psCategories);
+		req.getSession().setAttribute("psCategories", psCategories);
 		HashMap<Integer, List<PsItem>> psIndexDisplay = new HashMap<>();
 		for(PsCategory cate : psCategories)
 		{

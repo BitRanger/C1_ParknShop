@@ -10,6 +10,8 @@
  ******************************************************************************/
 package com.bitranger.parknshop.buyer.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -39,6 +41,7 @@ public class CartCustomerItem implements java.io.Serializable {
 	private Integer quantity;
 	private String extra1;
 	private String extra2;
+	private Timestamp timeCreated;
 
 	// Constructors
 
@@ -125,6 +128,15 @@ public class CartCustomerItem implements java.io.Serializable {
 
 	public void setExtra2(String extra2) {
 		this.extra2 = extra2;
+	}
+	
+	@Column(name = "time_created", nullable = false, length = 19)
+	public Timestamp getTimeCreated() {
+		return this.timeCreated;
+	}
+
+	public void setTimeCreated(Timestamp timeCreated) {
+		this.timeCreated = timeCreated;
 	}
 	@Override
 	public int hashCode() {

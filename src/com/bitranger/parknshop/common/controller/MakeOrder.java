@@ -49,7 +49,7 @@ public class MakeOrder {
 	private ICartCustomerItemDAO psCartCustomerItemDao;
 
 	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger
-			.getLogger("primary");
+			.getLogger(MakeOrder.class.getName());
 
 	@RequestMapping("/submitOrder")
 	public String submitOrder(HttpServletRequest req, String address,
@@ -57,9 +57,12 @@ public class MakeOrder {
 		if (address == null || postalCode == null || recipientName == null
 				|| recipientPhone == null)
 			return "redirect:/";
+		
 		log.debug("Order submitted.");
+		
 		PsCustomer currentCustomer = (PsCustomer) req.getSession()
 				.getAttribute("currentCustomer");
+		
 		if (currentCustomer == null) {
 			log.error("User haven't logged in but submitted an order.");
 			return "redirect:/";

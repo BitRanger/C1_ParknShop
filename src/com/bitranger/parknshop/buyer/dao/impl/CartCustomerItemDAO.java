@@ -63,7 +63,7 @@ public class CartCustomerItemDAO extends HibernateDaoSupport implements ICartCus
 		log.debug("getting CartCustomerItem instance with id: " + id);
 		try {
 			CartCustomerItem instance = (CartCustomerItem) getHibernateTemplate()
-					.get("com.bitranger.CartCustomerItem", id);
+					.get("com.bitranger.parknshop.buyer.model.CartCustomerItem", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -90,13 +90,13 @@ public class CartCustomerItemDAO extends HibernateDaoSupport implements ICartCus
 							SQLQuery query = session
 							.createSQLQuery(
 						"select * from cart_customer_item as C where C.id_customer = ?"
-								+ " order by time_created "
+								+ " order by C.time_created "
 								+ (option.sortOption == SortOption.ASCENDING ? "asc"
 													: "desc")
-								+ " offset ? limit ?");
+								+ " limit ? offset ?");
 							query.setInteger(0, psCustomerId);
-							query.setInteger(1, option.offset);
-							query.setInteger(2, option.limit);
+							query.setInteger(1, option.limit);
+							query.setInteger(2, option.offset);
 							query.addEntity(CartCustomerItem.class);
 							return query.list();
 						}

@@ -71,7 +71,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 		log.debug("getting PsOrder instance with id: " + id);
 		try {
 			PsOrder instance = (PsOrder) getHibernateTemplate().get(
-					"com.bitranger.PsOrder", id);
+					"com.bitranger.parknshop.seller.model.PsOrder", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

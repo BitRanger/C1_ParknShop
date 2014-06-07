@@ -2,7 +2,7 @@
 <div id="storeHeaderWrapper">
     <div id="storeHeader">
         <div id="logoDiv">
-            <a href="index.jsp"><img id="logoImg" src="images/logo.jpg"/></a>
+            <a href="<%=request.getContextPath()%>/"><img id="logoImg" src="images/logo.jpg"/></a>
         </div>
         <div id="headerRight">
             <div id="headerRightUp">
@@ -53,7 +53,7 @@
                     </form>
                 </div>
                 <div id="cartDiv">
-                    <a href="cart.jsp"><button id="cartBtn">Cart</button></a>
+                    <a href="<%=request.getContextPath()%>/cart"><button id="cartBtn">Cart</button></a>
                 </div>
             </div>
         </div>

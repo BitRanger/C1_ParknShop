@@ -37,10 +37,7 @@ import com.bitranger.parknshop.seller.model.PsShop;
  * PsItem entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "ps_item", catalog = "c1_parknshop", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "count_purchase"),
-		@UniqueConstraint(columnNames = "count_click"),
-		@UniqueConstraint(columnNames = "count_favourite") })
+@Table(name = "ps_item", catalog = "c1_parknshop")
 public class PsItem implements java.io.Serializable {
 
 	// Fields
@@ -154,7 +151,7 @@ public class PsItem implements java.io.Serializable {
 		this.psCategory = psCategory;
 	}
 
-	@Column(name = "name", nullable = false, length = 45)
+	@Column(name = "name", nullable = false, length = 200)
 	public String getName() {
 		return this.name;
 	}
@@ -163,7 +160,7 @@ public class PsItem implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "introduction", length = 500)
+	@Column(name = "introduction", length = 5000)
 	public String getIntroduction() {
 		return this.introduction;
 	}
@@ -208,7 +205,7 @@ public class PsItem implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@Column(name = "count_purchase", unique = true, nullable = false)
+	@Column(name = "count_purchase", unique = false, nullable = false)
 	public Integer getCountPurchase() {
 		return this.countPurchase;
 	}
@@ -217,7 +214,7 @@ public class PsItem implements java.io.Serializable {
 		this.countPurchase = countPurchase;
 	}
 
-	@Column(name = "count_favourite", unique = true, nullable = false)
+	@Column(name = "count_favourite", unique = false, nullable = false)
 	public Integer getCountFavourite() {
 		return this.countFavourite;
 	}
@@ -226,7 +223,7 @@ public class PsItem implements java.io.Serializable {
 		this.countFavourite = countFavourite;
 	}
 
-	@Column(name = "count_click", unique = true, nullable = false)
+	@Column(name = "count_click", unique = false, nullable = false)
 	public Integer getCountClick() {
 		return this.countClick;
 	}

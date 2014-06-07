@@ -9,4 +9,11 @@ public class Utility {
 		log.error(message);
 		return "redirect:/";
 	}
+	
+	public static String slice(String title, int len)
+	{
+		if(title.length() <= len)
+			return title;
+		return title.substring(0, len) + "...";
+	}
 }
