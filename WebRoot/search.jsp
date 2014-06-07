@@ -1,65 +1,231 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <title>Online Store</title>
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/storeHeader.css">
+    <link rel="stylesheet" type="text/css" href="css/categorybar.css">
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/search.css">
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
 
-
 <div id="categorybarDiv">
     <%@ include file="include/categorybar.jsp" %>
 </div>
+
 <div id="mainContent">
 <div id="storeItemList">
+   <div class="property-list">
+      <div class="row-all">
+         <span>All catalog> 27568 thousand pieces of goods.</span>
+        </div>
+    </div>
+   <div class="property-list">
+           <div class="row-item">
+               <div class="row-item-name">
+                   <span>Brand:</span>
+                  </div>
+                <div class="row-item-content">
+                    <ul style="list-style:none;">
+                       <li class="item-style"><a href="#"> 李宁</a></li>
+                       <li class="item-style"><a href="#">阿迪王</a></li>
+                       <li class="item-style"><a href="#"> 耐克</a></li>
+                        <li class="item-style"><a href="#"> 李宁</a></li>
+                        <li class="item-style"><a href="#">阿迪王</a></li>
+                        <li class="item-style"><a href="#"> 耐克</a></li>
+                      </ul>
+                  </div>
+            </div> 
+           <div class="row-item">
+               <div class="row-item-name">
+                   <span>Brand:</span>
+                  </div>
+                <div class="row-item-content">
+                    <ul style="list-style:none;">
+                        <li class="item-style"><a href="#"> 李宁</a></li>
+                        <li class="item-style"><a href="#">阿迪王</a></li>
+                        <li class="item-style"><a href="#"> 耐克</a></li>
+                        <li class="item-style"><a href="#"> 李宁</a></li>
+                        <li class="item-style"><a href="#">阿迪王</a></li>
+                        <li class="item-style"><a href="#"> 耐克</a></li>
+                      </ul>
+                  </div>
+            </div> 
+           <div class="row-item">
+               <div class="row-item-name">
+                   <span>Brand:</span>
+                  </div>
+                <div class="row-item-content">
+                    <ul style="list-style:none;">
+                        <li class="item-style"><a href="#"> 李宁</a></li>
+                        <li class="item-style"><a href="#">阿迪王</a></li>
+                        <li class="item-style"><a href="#"> 耐克</a></li>
+                        <li class="item-style"><a href="#"> 李宁</a></li>
+                        <li class="item-style"><a href="#">阿迪王</a></li>
+                        <li class="item-style"><a href="#"> 耐克</a></li>
+                      </ul>
+                  </div>
+            </div> 
+           <div class="row-item">
+               <div class="row-item-name">
+                   <span>Brand:</span>
+                  </div>
+                <div class="row-item-content">
+                    <ul style="list-style:none;" >
+                        <li class="item-style"><a href="#"> 李宁</a></li>
+                        <li class="item-style"><a href="#">阿迪王</a></li>
+                        <li class="item-style"><a href="#"> 耐克</a></li>
+                        <li class="item-style"><a href="#"> 李宁</a></li>
+                        <li class="item-style"><a href="#">阿迪王</a></li>
+                        <li class="item-style"><a href="#"> 耐克</a></li>
+                      </ul>
+                  </div>
+            </div>
+     </div>
+   <div class="property-list">
+       <div class="row-item">
+           <div class="row-item-name">
+               <span>Sort:</span>
+           </div>
+           <div class="row-item-content">
+               <ul style="list-style:none;" >
+                   <li class="item-style"><a href="#"> Price</a></li>
+                   <li class="item-style"><a href="#">Popularity</a></li>
+                   <li class="item-style"><a href="#">Sales-volume</a></li>
+                   <li class="item-style"><a href="#">Price</a></li>
+                   <li class="item-style"><a href="#">Popularity</a></li>
+                   <li class="item-style"><a href="#">Sales-volume</a></li>
+               </ul>
+           </div>
+       </div>
+      </div>
 
-<c:choose>
-	<c:when test="${item_count eq 0 }">
-		泥煤的！！！
-	</c:when>
-	<c:otherwise>
-		<c:forEach begin="0" end="${(item_count - 1) /5 }" varStatus="s">
-			<div class="storeItemListRow">
-    			<div class="storeItemListRowTitle">
-       				 <h1>Fashion
-          				  <small>Some of new products in this month</small>
-       				 </h1>
-   				</div>
-				
-				<c:forEach begin="${s.index * 5 }" end="${s.index * 5 + 4 > item_count - 1 ? item_count - 1 : s.index * 5 + 4 }" varStatus="vs">
-					<div class="storeItem">
-       					<a href="item?id=${product_item_list[vs.index].id}"><img width="180px" src="images/lunbo.jpg" alt="..."></a>
-        				<div class="caption">
-        				    <a href="detail.jsp">
-                				<h7>
-                		  			${product_item_list[vs.index].name}
-               					</h7>
-            				</a>
-          					<h5><b>${product_item_list[vs.index].introduction}</b> </h5>
-            				<p>Price: ${product_item_list[vs.index].price }</p>
-            				<p>Vote: ${product_item_list[vs.index].vote}</p>
-        				</div>
-    				</div>
-				</c:forEach>	
-			</div>	
-		</c:forEach>
-	</c:otherwise>	
-</c:choose>
-
+   <div class="storeItemListRow">
+            <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+            </div>
+            <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+            </div>
+            <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+            </div>
+            <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+            </div>
+            <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+            </div>
+        </div>
+   <div class="storeItemListRow">
+    <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+    
+    <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+        <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+        <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+    <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+</div>
+   <div class="storeItemListRow">
+    <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+    
+    <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+        <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+        <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
+    <div class="storeItem">
+                <a href="detail.jsp"><img width="180px" src="images/dress_demo.jpg" alt="..."></a>
+                <div class="storeItemDesc">
+                    <h5><a class="storeItemLink" href="detail.jsp">Spring break graphic tee, Men T-shirt This is the goods description.</a> </h5>
+                    <p>Price: $50.00</p>
+                </div>
+      </div>
 </div>
 </div>
 </div>
-
 
 
 <%@ include file="include/footer.jsp" %>
 
 <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
-<script src="js/index.js" type="text/javascript"></script>
+<script src="js/categorybar.js" type="text/javascript"></script>
+<script src="js/common.js" type="text/javascript"></script>
 </body>
 </html>

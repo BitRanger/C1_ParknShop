@@ -1,7 +1,4 @@
-<%@page import="com.bitranger.parknshop.buyer.model.PsCustomer"%>
-<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
-<script src="js/header.js" type="text/javascript"></script>
-
+<%@page import="com.bitranger.parknshop.buyer.model.*" %>
 <div id="storeHeaderWrapper">
     <div id="storeHeader">
         <div id="logoDiv">
@@ -17,19 +14,20 @@
                         <a class="headerListItemLink" href="#">24x7 Customer Care</a>
                     </li>
                     <li class="headerListItem">
-                        <a class="headerListItemLink" href="#">Track Order</a>
+                        <a class="headerListItemLink" onclick="trackOrder()" href="javascript:void(0)">Track Order</a>
                     </li>
                     <li class="headerListItem">
                         <a class="headerListItemLink" href="#"><span class="glyphicon glyphicon-bell"></span></a>
                     </li>
-                    <% if (session.getAttribute("currentCustomer") != null) { %>
+                    <% PsCustomer currentCustomer = (PsCustomer)session.getAttribute("currentCustomer");
+                       if (currentCustomer != null) { %>
                         <li class="headerListItem">
-                            <a class="headerListItemLink" href="signup.jsp">
-                               <%= ((PsCustomer)session.getAttribute("currentCustomer")).getNickname() %>
+                            <a class="headerListItemLink" href="<%=request.getContextPath()%>/customer/<%=currentCustomer.getId()%>">
+                               <%=currentCustomer.getNickname() %>
                             </a>
                         </li>
                         <li class="headerListItem">
-                            <a class="headerListItemLink" href="<%= request.getContextPath() %>/logout">Logout</a>
+                            <a class="headerListItemLink" href="<%=request.getContextPath()%>/logout">Logout</a>
                         </li>
                     <% } else { %>
                         <li class="headerListItem">
@@ -71,11 +69,11 @@
             </div>
             <div id="login_main_body" class="modal-body">
                 <div id="login_main_body_left">
-                    <form style="margin: 0" id="loginForm" action="<%=request.getContextPath()%>/login" method="post" >
+                    <form style="margin: 0" action="<%=request.getContextPath()%>/login">
                         <label class="login_input_text_label">Email</label>
-                        <input name="email" class="login_input_text" type="text"><br>
+                        <input class="login_input_text" type="text" name="email" /><br>
                         <label class="login_input_text_label">Password</label>
-                        <input name="password" class="login_input_text" type="password"><br>
+                        <input class="login_input_text" type="password" name="password" /><br>
 
                         <b><input style="margin: 5px 0;vertical-align: middle;" type="checkbox"></b>
                         <span><label style="margin: 0;vertical-align: middle;font-size: 12px;font-weight: 200;">Stay signed in</label></span>
@@ -85,7 +83,7 @@
                             To protect your privacy, remember to sign out when you're done shopping.
                             <a class="login_link" href="#">Learn more</a>
                         </p>
-                        <input id="login_btn" type="submit" value="Login" />
+                        <input id="login_btn" type="submit" value="Login">
                         <span style="margin-left: 20px;font-size: 12px;">
                             No account?&nbsp;&nbsp;
                             <a class="login_link" href="#">Sign up</a>

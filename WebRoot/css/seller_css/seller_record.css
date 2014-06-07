@@ -1,0 +1,145 @@
+#record_nav {
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+#record_date {
+
+}
+
+#record_date select {
+    background-color: #DDDADA;
+    height: 25px;
+    border: 1px solid #999999;
+    margin: 3px;
+    color: #333333;
+    outline: none;
+}
+
+#record_date option {
+    background-color: #ffffff;
+}
+
+#recordTableDiv {
+
+}
+
+#recordTable {
+    border: 1px solid #999999;
+    width: 100%;
+    box-shadow: 0 1px 3px #999999;
+}
+
+#recordTableHeader {
+    height: 30px;
+    background-color: #056314;
+    color: #ffffff;
+}
+
+#recordTableHeader th {
+    font-weight: normal;
+    font-size: 14px;
+    text-shadow: 0 0px 1px #FFFFFF;
+}
+
+#recordTableHeader th:nth-child(1) {
+    width: 270px;
+    padding-left: 20px;
+}
+
+#recordTableHeader th:nth-child(2) {
+    width: 110px;
+    text-align: center;
+}
+
+#recordTableHeader th:nth-child(3) {
+    width: 60px;
+    text-align: center;
+}
+
+#recordTableHeader th:nth-child(4) {
+    width: 80px;
+    text-align: center;
+}
+
+#recordTableHeader th:nth-child(5) {
+    width: 120px;
+    text-align: center;
+}
+
+#recordTableHeader th:nth-child(6) {
+    text-align: center;
+}
+
+
+.recordRow {
+
+}
+
+.recordRow td{
+    border-top: 1px solid #999999;
+    font-size: 12px;
+}
+
+.recordRow td:nth-child(1) {
+    width: 270px;
+    height: 100px;
+    padding-left: 20px;
+}
+
+.recordRow td:nth-child(2) {
+    width: 110px;
+    text-align: center;
+}
+
+.recordRow td:nth-child(3) {
+    width: 60px;
+    text-align: center;
+}
+
+.recordRow td:nth-child(4) {
+    width: 80px;
+    text-align: center;
+}
+
+.recordRow td:nth-child(5) {
+    width: 120px;
+    text-align: center;
+}
+
+.recordRow td:nth-child(6) {
+    text-align: center;
+}
+
+.recordItemImgDiv {
+    float: left;
+    width: 90px;
+}
+
+.recordItemImgDiv img {
+    width: 80px;
+}
+
+.recordItemDescDiv {
+    width: 150px;
+    padding: 10px 0;
+}
+
+.recordItemDesc {
+
+}
+
+.recordItemExtra {
+
+}
+
+
+
+
+
+
+
+
+
+
+

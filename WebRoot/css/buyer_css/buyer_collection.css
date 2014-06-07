@@ -1,0 +1,28 @@
+.collectionItemRow {
+    height: 290px;
+}
+
+.collectionItem {
+    display: inline-block;
+    width: 180px;
+    height: 270px;
+    margin: 8px 12px;
+    box-shadow: 0 0 8px #494848;
+    background-color: #58915C;
+    color: #ffffff;
+}
+
+.collectionItemDesc {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.collectionItemLink {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.collectionItemLink:hover {
+    color: #6080ff;
+    text-decoration: underline;
+}

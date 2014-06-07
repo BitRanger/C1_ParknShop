@@ -13,8 +13,14 @@ import com.bitranger.parknshop.buyer.model.PsCustomer;
 
 /**
  * @author Yu Bowen
- *
+ * "/login"
+ * Input:
+ * 		email, password combination for login
+ * Output:
+ * 		currentCustomer set if customer log in
+ * 		currentSeller	set	if seller	log in
  */
+//TODO This login function is non-functioning for seller, Due to LACK for information
 @Controller
 public class CustomerLogin {
 	@Autowired

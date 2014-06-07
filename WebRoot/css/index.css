@@ -6,50 +6,7 @@
 
 @import url("footer.css");
 
-body {
-    background-color: #eeeeee;
-}
-#mainContent {
-    margin-top: 10px;
-}
 
-#storeItemList {
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
-.storeItemListRow {
-    height: 320px;
-}
 
-.storeItemListRowTitle {
-    height: 40px;
-}
-
-.storeItem {
-    display: inline-block;
-    width: 180px;
-    height: 280px;
-    margin: 8px;
-}
-
-.storeItem:hover {
-    display: inline-block;
-    width: 180px;
-    height: 280px;
-    margin: 8px;
-    box-shadow: 3px 3px 8px #999;
-    cursor: pointer;
-}
-
-.storeItemDesc {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.storeItemLink {
-    color:#333333;
-    text-decoration: none;
-}
 

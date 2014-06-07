@@ -1,0 +1,113 @@
+@import url("../storeHeader.css");
+
+@import url("../footer.css");
+
+@import url("seller_basicInfo.css");
+
+@import url("seller_security.css");
+
+@import url("seller_publish.css");
+
+@import url("seller_list.css");
+
+@import url("seller_recycle.css");
+
+@import url("seller_record.css");
+
+@import url("seller_notification.css");
+
+@import url("seller_finance.css");
+
+#seller_center {
+    display: table;
+    position: relative;
+    min-height: 500px;
+}
+
+#sellerControl {
+    width: 180px;
+    padding: 10px;
+    background-color: #001F55;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+#sellerAvatar {
+    width: 160px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+#sellerAvatar img {
+    width: 140px;
+}
+
+#sellerControl ul{
+    margin: 0;
+    padding: 0;
+}
+
+#sellerControl li{
+    list-style: none;
+    height: 30px;
+    width: 140px;
+    background-color: #133D58;
+    margin: 1px 10px;
+    color: #ffffff;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+#sellerControl li span{
+
+}
+
+.sellerContent {
+    display: none;
+    width: 800px;
+    background-color: #ffffff;
+    padding: 30px;
+    margin-left: 180px;
+    min-height: 500px;
+}
+
+#seller_basicInfo {
+
+}
+
+#seller_security {
+
+}
+
+#seller_collection {
+
+}
+
+#seller_history {
+    display: block;
+}
+
+#seller_address {
+
+}
+
+#seller_notification {
+
+}
+
+#seller_game {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

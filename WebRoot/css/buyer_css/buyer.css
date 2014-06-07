@@ -1,0 +1,111 @@
+
+@import url("buyer_basicInfo.css");
+
+@import url("buyer_security.css");
+
+@import url("buyer_collection.css");
+
+@import url("buyer_history.css");
+
+@import url("buyer_address.css");
+
+@import url("buyer_notification.css");
+
+@import url("buyer_game.css");
+
+
+
+
+#buyer_center {
+    display: table;
+    position: relative;
+    min-height: 500px;
+}
+
+#buyerControl {
+    width: 180px;
+    padding: 10px;
+    background-color: #001F55;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+#buyerAvatar {
+    width: 160px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+#buyerAvatar img {
+    width: 140px;
+}
+
+#buyerControl ul{
+    margin: 0;
+    padding: 0;
+}
+
+#buyerControl li{
+    list-style: none;
+    height: 30px;
+    width: 140px;
+    background-color: #133D58;
+    margin: 1px 10px;
+    color: #ffffff;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+#buyerControl li span{
+
+}
+
+.buyerContent {
+    display: none;
+    width: 800px;
+    background-color: #ffffff;
+    padding: 30px;
+    margin-left: 180px;
+    min-height: 500px;
+}
+
+#buyer_basicInfo {
+
+}
+
+#buyer_security {
+
+}
+
+#buyer_collection {
+
+}
+
+#buyer_history {
+    display: block;
+}
+
+#buyer_address {
+
+}
+
+#buyer_notification {
+
+}
+
+#buyer_game {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

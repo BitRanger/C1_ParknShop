@@ -22,12 +22,12 @@ import com.bitranger.parknshop.common.model.PsItem;
 
 /**
  * @author Yu Bowen
- * Controller for showing index
- * Request-wide-attributes:
+ * This is a controller for preparing for data used in indexView.jsp 
+ **************** List of Attributes *********************
  * 	psCategories: List<PsCategory> indicating all the categories
  *  psIndexDisplay: HashMap<Integer, List<PsItem>> indicating first ten items for each
  *  	category
- *  
+ *********************************************************
  */
 @Controller
 public class IndexController {
