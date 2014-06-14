@@ -310,7 +310,8 @@ public class Base64 {
          *          the byte array to encode
          * @return  A String containing the resulting Base64 encoded characters
          */
-        public String encodeToString(byte[] src) {
+        @SuppressWarnings("deprecation")
+		public String encodeToString(byte[] src) {
             byte[] encoded = encode(src);
             return new String(encoded, 0, 0, encoded.length);
         }

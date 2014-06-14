@@ -47,39 +47,39 @@
 			<value>com.bitranger.parknshop.buyer.model.PsCustomer</value>
 			<value>com.bitranger.parknshop.buyer.model.CartCustomerItemId</value>
 			<value>com.bitranger.parknshop.buyer.model.CartCustomerItem</value>			
+
 			<value>com.bitranger.parknshop.common.ads.PsAdItem</value>
 			<value>com.bitranger.parknshop.common.ads.PsItemPromotInfo</value>
 			<value>com.bitranger.parknshop.common.ads.PsPromotItem</value>
-			<value>temp.PsRecipient</value>
-			<value>temp.PsNoticeCustomer</value>
-			<value>temp.PsItemPromotInfo</value>
-			<value>temp.PsAdItem</value>
-			<value>temp.PsCustomer</value>
-			<value>temp.PsComment</value>
-			<value>temp.CartCustomerItem</value>
-			<value>temp.PsCustomerAcc</value>
-			<value>temp.PsItem</value>
-			<value>temp.PsTag</value>
-			<value>temp.PsOrder</value>
-			<value>temp.PsSellerAcc</value>
-			<value>temp.PsPromotItem</value>
-			<value>temp.PsItemInfo</value>
-			<value>temp.ROrderItem</value>
-			<value>temp.PsShop</value>
-			<value>temp.PsSeller</value>
-			<value>temp.PsNoticeSeller</value>
-			<value>temp.PsCategory</value>
-			<value>temp.CustomerFavouriteItem</value>
-			<value>temp.CustomerFavouriteShop</value>
-			<value>temp.PsAdministator</value>
-			<value>temp.PsNoticeAdmin</value>
-			<value>temp.PsConfigVal</value>
-			<value>temp.PsKeyValue</value>
-			<value>temp.PsConfigKey</value>
-			<value>temp.PsAdminAcc</value></list>
+			</list>
 		</property>
 	</bean>
+		
+	<bean id="psItemService" class="com.bitranger.parknshop.common.service.impl.PsItemService">
+		<property name="psItemDAO" ref="psItemDao"></property>
+	</bean>
 	
+	<bean id="psTagDao" class="com.bitranger.parknshop.common.dao.impl.PsTagDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="psCategoryDao" class="com.bitranger.parknshop.common.dao.impl.PsCategoryDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psItemDao" class="com.bitranger.parknshop.common.dao.impl.PsItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean name="psCustomerDao" class="com.bitranger.parknshop.buyer.dao.impl.PsCustomerDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="psCartCustomerItemDao" class="com.bitranger.parknshop.buyer.dao.impl.CartCustomerItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+<<<<<<< HEAD
 	
 	<bean id="psTagDAO" class="com.bitranger.parknshop.common.dao.impl.PsTagDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
@@ -101,16 +101,6 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="itemFinder" class="com.bitranger.parknshop.common.fetch.ItemFinder">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-
-	<bean id="itemFinderService" class="com.bitranger.parknshop.common.service.ItemFinderService">
-		<property name="itemFinder" ref="itemFinder"></property>
-	</bean>
-	
-	
-	
 	<bean id="psAdItemDAO" class="com.bitranger.parknshop.common.ads.PsAdItemDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
@@ -129,5 +119,24 @@
 		</property>
 	</bean>
 
+	<bean id="psSellerDao" class="com.bitranger.parknshop.seller.dao.impl.PsSellerDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psOrderDao" class="com.bitranger.parknshop.seller.dao.impl.PsOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="itemFinder" class="com.bitranger.parknshop.common.dao.ItemFinder">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="itemFinderService" class="com.bitranger.parknshop.common.service.ItemFinderService">
+		<property name="itemFinder" ref="itemFinder"></property>
+	</bean>
+	
+	<bean id="psItemInfoDAO" class="com.bitranger.parknshop.common.dao.impl.PsItemInfoDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
 </beans>

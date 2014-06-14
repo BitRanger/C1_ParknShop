@@ -1,0 +1,125 @@
+.historyItem {
+    box-shadow: 0 1px 3px #206943;
+}
+
+.historyItemTitle {
+    height: 40px;
+    margin: 0;
+    background-color: #206943;
+    padding: 10px 15px;
+    color: #ffffff;
+}
+
+.historyItemTitle li {
+    list-style: none;
+    float: left;
+    margin: 0 10px;
+}
+
+.historyItemTitle a {
+    color: #26F0C7;
+    text-decoration: none;
+}
+
+.historyItemTitle a:hover {
+    color: #26F0C7;
+    text-decoration: underline;
+}
+
+.historyItemContent {
+    margin: 0;
+    height: 120px;
+    padding: 15px;
+}
+
+.historyItemContent li {
+    list-style: none;
+    float: left;
+
+}
+
+.historyItemContent li:nth-child(1) {
+    width: 250px;
+    height: 100px;
+}
+
+.historyItemContent li:nth-child(2) {
+    width: 120px;
+    padding: 10px 0;
+    margin-left: 20px;
+}
+
+.historyItemContent li:nth-child(2) span {
+    display: inline-block;
+    width: 60px;
+}
+
+.historyItemContent li:nth-child(3) {
+    width: 100px;
+    padding: 10px 0;
+}
+
+.historyItemContent li:nth-child(4) {
+    width: 80px;
+    margin-left: 10px;
+    padding: 10px 0;
+}
+
+.historyItemContent li:nth-child(5) {
+    width: 100px;
+    margin-left: 10px;
+    padding: 10px 0;
+}
+
+
+.historyItemImgDiv {
+    margin: 10px;
+}
+
+.historyItemImgDiv img {
+    width:80px;
+}
+
+.historyItemDescDiv {
+    width: 150px;
+    padding: 10px 0;
+}
+
+
+
+.historyItemDesc {
+    width: 150px;
+    font-size: 12px;
+}
+
+.historyItemExtra {
+
+}
+
+.historyActionLink {
+    font-size: 12px;
+    text-decoration: none;
+    color: #206943;
+    text-shadow: 0px 0px 1px #8F998D;
+}
+
+.historyActionLink:hover {
+    font-size: 12px;
+    text-decoration: underline;
+    color: #206943;
+    text-shadow: 0px 0px 1px #8F998D;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

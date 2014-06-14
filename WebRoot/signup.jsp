@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Jack
+  User: Kaidi
   Date: 5/17/2014
   Time: 09:44
   To change this template use File | Settings | File Templates.
@@ -11,6 +11,7 @@
     <title>Online Store</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
     <link rel="stylesheet" type="text/css" href="css/signup.css">
 </head>
 <body>
@@ -19,7 +20,6 @@
         <div id="signupLogoDiv">
             <a href="index.jsp"><img style="width:180px" src="images/logo.jpg"/></a>
         </div>
-
     </div>
 </div>
 <div id="signupMainWrapper">
@@ -42,16 +42,21 @@
         </div>
         <div id="signupMainRight">
             <div id="signupPanel">
-                <form style="margin:0">
-                    <input class="signup_input" type="text" placeholder="Pick a username"><br>
-                    <input class="signup_input" type="text" placeholder="Your email"><br>
-                    <input class="signup_input" type="password" placeholder="Create a password"><br>
-                    <input class="signup_input" type="password" placeholder="Confirm password"><br>
+                <div class="signupMessage">Sign up, trade world</div>
+                <form style="margin:0" id="signupForm" method="post" action="<%=request.getContextPath()%>/register">
+                    <input class="signup_input" type="text" name="username" placeholder="Pick a username"><br>
+                    <input class="signup_input" type="text" name="email" placeholder="Your email"><br>
+                    <input class="signup_input" type="password" name="password" placeholder="Create a password"><br>
+                    <input class="signup_input" type="password" name="pwconfirm" placeholder="Confirm password"><br>
+                    <div id="signup_type">
+                        <input type="radio" checked="checked" name="buyer" value="buyer">Buyer
+                        <input style="margin-left: 30px" type="radio" name="seller" value="seller">Seller
+                    </div>
                     <div id="signup_user_agreement">
                         <input type="checkbox">
                         <span>I have read and accepted the <a href="#">User Agreement</a> </span>
                     </div>
-                    <input class="signup_input" type="submit" value="Signup"><br>
+                    <input class="signup_input" type="submit" value="Signup" onclick="deal_signup()"><br>
                 </form>
             </div>
         </div>
@@ -64,7 +69,7 @@
 
 <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
-<script src="js/index.js" type="text/javascript"></script>
+<script src="js/signup.js" type="text/javascript"></script>
 </body>
 </html>
 

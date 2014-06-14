@@ -1,6 +1,5 @@
 package com.bitranger.parknshop.visitor.controller;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bitranger.parknshop.common.dao.IPsCategoryDAO;
 import com.bitranger.parknshop.common.dao.IPsItemDAO;
 import com.bitranger.parknshop.common.dao.IPsTagDAO;
-import com.bitranger.parknshop.common.service.ads.AdCenter;
 
 
 
@@ -25,21 +23,22 @@ import com.bitranger.parknshop.common.service.ads.AdCenter;
 @Controller
 public class IndexCtrl {
 
-	@Inject
+	@Autowired
+	@Qualifier(value="psTagDao")
 	IPsTagDAO psTagDao;
 	
-	@Inject
+	@Autowired
+	@Qualifier(value="psCategoryDao")
 	IPsCategoryDAO categoryDao;
 	
-	@Inject
+	@Autowired
+	@Qualifier(value="psItemDao")
 	IPsItemDAO psItemDao;
 	
-	@Autowired
-	AdCenter adCenter;
-	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
-	public ModelAndView index() {
-		adCenter.itemAdService.forIndexPage(10);
+	public ModelAndView index(HttpServletRequest request,
+								HttpServletResponse response) {
+		
 //		// get the ads
 //		
 //		// -------------------------

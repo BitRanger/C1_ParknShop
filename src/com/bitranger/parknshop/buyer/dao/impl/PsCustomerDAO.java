@@ -96,9 +96,12 @@ public class PsCustomerDAO extends HibernateDaoSupport implements IPsCustomerDAO
 	public PsCustomer findByEmail(String email) {
 		log.debug("finding PsCustomer instance with email: " + email);
 		try {
-			String queryString = "from PsComment as model where model."
-					+ email + "= ?";
-			return (PsCustomer) getHibernateTemplate().find(queryString, email).get(0);
+			String queryString = "from PsCustomer as model where model."
+					+ "email" + "= ?";
+			List<PsCustomer> customers = getHibernateTemplate().find(queryString, email);
+			if(customers.isEmpty())
+				return null;
+			return (PsCustomer)customers.get(0);
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);
 			throw re;

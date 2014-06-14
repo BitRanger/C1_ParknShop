@@ -12,10 +12,6 @@ build/
 *.war
 *.ear
 
-*.jpg
-*.JPG
-*.png
-*.PNG
 *.bak
 *.backup
 

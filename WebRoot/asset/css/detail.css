@@ -174,7 +174,7 @@
 #itemDetail_buyBtn {
     border: none;
     background-color: #F09015;
-    width: 120px;
+    width: 140px;
     height: 40px;
     font-size: 18px;
     color: #ffffff;
@@ -183,7 +183,7 @@
 #itemDetail_chartBtn {
     border: none;
     background-color: #F05B15;
-    width: 120px;
+    width: 140px;
     height: 40px;
     font-size: 18px;
     color: #ffffff;
@@ -212,6 +212,7 @@
     padding: 0;
     float: left;
     outline: none;
+    background-color: #dddddd;
 }
 
 

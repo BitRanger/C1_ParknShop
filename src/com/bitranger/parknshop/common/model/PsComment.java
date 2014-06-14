@@ -32,6 +32,10 @@ public class PsComment implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 513105740575185692L;
 	private Integer id;
 	private PsItem psItem;
 	private PsCustomer psCustomer;

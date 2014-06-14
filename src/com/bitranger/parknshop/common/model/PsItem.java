@@ -37,14 +37,12 @@ import com.bitranger.parknshop.seller.model.PsShop;
  * PsItem entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "ps_item", catalog = "c1_parknshop", uniqueConstraints = {
-		@UniqueConstraint(columnNames = "count_purchase"),
-		@UniqueConstraint(columnNames = "count_click"),
-		@UniqueConstraint(columnNames = "count_favourite") })
+@Table(name = "ps_item", catalog = "c1_parknshop")
 public class PsItem implements java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	public static final long serialVersionUID = -1092009857032674996L;
 	
 	public Integer id;
@@ -64,8 +62,7 @@ public class PsItem implements java.io.Serializable {
 	public Set<PsComment> psComments = new HashSet<PsComment>(0);
 	public Set<PsTag> psTags = new HashSet<PsTag>(0);
 	public PsItemInfo psItemInfo;
-	public Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(
-			0);
+	public Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(0);
 	public Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
 
 	// Constructors
@@ -76,7 +73,6 @@ public class PsItem implements java.io.Serializable {
 
 	/** minimal constructor */
 	public PsItem(PsShop psShop, PsCategory psCategory, String name, Double price) {
-		
 		this.psShop = psShop;
 		this.psCategory = psCategory;
 		this.name = name;
@@ -85,7 +81,7 @@ public class PsItem implements java.io.Serializable {
 
 	/** full constructor */
 	public PsItem(PsShop psShop, PsCategory psCategory, String name,
-			String introduction, Double price, String extra1, String extra2,
+			String introduction, String url_picture, Double price, String extra1, String extra2,
 			Timestamp timeCreated, Integer countPurchase,
 			Integer countFavourite, Integer countClick, Double vote,
 			Set<PsCustomer> psCustomers, Set<PsComment> psComments,
@@ -96,6 +92,7 @@ public class PsItem implements java.io.Serializable {
 		this.name = name;
 		this.introduction = introduction;
 		this.price = price;
+		this.urlPicture = url_picture;
 		this.extra1 = extra1;
 		this.extra2 = extra2;
 		this.timeCreated = timeCreated;
@@ -143,7 +140,7 @@ public class PsItem implements java.io.Serializable {
 		this.psCategory = psCategory;
 	}
 
-	@Column(name = "name", nullable = false, length = 45)
+	@Column(name = "name", nullable = false, length = 200)
 	public String getName() {
 		return this.name;
 	}
@@ -152,7 +149,7 @@ public class PsItem implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "introduction", length = 500)
+	@Column(name = "introduction", length = 5000)
 	public String getIntroduction() {
 		return this.introduction;
 	}
@@ -197,7 +194,7 @@ public class PsItem implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@Column(name = "count_purchase", unique = true, nullable = false)
+	@Column(name = "count_purchase", unique = false, nullable = false)
 	public Integer getCountPurchase() {
 		return this.countPurchase;
 	}
@@ -206,7 +203,7 @@ public class PsItem implements java.io.Serializable {
 		this.countPurchase = countPurchase;
 	}
 
-	@Column(name = "count_favourite", unique = true, nullable = false)
+	@Column(name = "count_favourite", unique = false, nullable = false)
 	public Integer getCountFavourite() {
 		return this.countFavourite;
 	}
@@ -215,7 +212,7 @@ public class PsItem implements java.io.Serializable {
 		this.countFavourite = countFavourite;
 	}
 
-	@Column(name = "count_click", unique = true, nullable = false)
+	@Column(name = "count_click", unique = false, nullable = false)
 	public Integer getCountClick() {
 		return this.countClick;
 	}
@@ -288,4 +285,14 @@ public class PsItem implements java.io.Serializable {
 		this.ROrderItems = ROrderItems;
 	}
 
+	@Column(name="url_picture", length=1024)
+	public String getUrlPicture() {
+		return urlPicture;
+	}
+
+	public void setUrlPicture(String urlPicture) {
+		this.urlPicture = urlPicture;
+	}
+
+	
 }

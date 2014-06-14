@@ -139,8 +139,8 @@ public class PsCommentDAO extends HibernateDaoSupport implements IPsCommentDAO{
 					SQLQuery query = arg0.createSQLQuery(
 					"select * from ps_comment where id_customer = ? " +
 					"order by time_created " + (option.sortOption == SortOption.ASCENDING 
-												? "asc" : "desc")
-					+ " offset ? limit ?");
+												? " asc " : " desc ")
+					+ "limit ?, ?");
 					query.setInteger(0, customerId);
 					query.setInteger(1, option.offset);
 					query.setInteger(2, option.limit);
@@ -168,8 +168,8 @@ public class PsCommentDAO extends HibernateDaoSupport implements IPsCommentDAO{
 							SQLQuery query = session.createSQLQuery(
 							"select * from ps_comment where id_item = ? "
 							+ " order by time_created " + (option.sortOption == SortOption.ASCENDING 
-														? "asc" : "desc")
-							+ " offset ? limit ?");
+								? " asc " : " desc ")
+								+ "limit ?, ?");
 
 							query.setInteger(0, itemId);
 							query.setInteger(1, option.offset);

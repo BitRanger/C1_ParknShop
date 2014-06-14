@@ -1,6 +1,9 @@
 package com.bitranger.parknshop.visitor.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,31 +13,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bitranger.parknshop.common.dao.IPsItemInfoDAO;
 import com.bitranger.parknshop.common.model.PsItem;
-import com.bitranger.parknshop.common.service.ItemFinderService;
-import com.bitranger.parknshop.visitor.views.Names;
-import com.bitranger.parknshop.visitor.views.VisitorViews;
-
-
+import com.bitranger.parknshop.common.model.PsItemInfo;
+import com.bitranger.parknshop.common.service.IPsItemService;
 
 @Controller
 public class ItemCtrl {
 
 	@Autowired
-	private ItemFinderService itemFinderService;
+	IPsItemService psItemService;
 	
+	@Autowired 
+	IPsItemInfoDAO psItemInfoDAO;
 	
-	@RequestMapping(value="/product", method=RequestMethod.GET)
-	public ModelAndView product(HttpServletRequest request, HttpServletResponse response){
+	@RequestMapping(value="/item", method=RequestMethod.GET)
+	public org.springframework.web.servlet.ModelAndView item(HttpServletRequest request, HttpServletResponse response) {
 		
-		
-		List<PsItem> itemList = itemFinderService.getItems(request);
-					
 		ModelAndView mv = new ModelAndView();
-		mv.addObject(Names.model.itemList, itemList);
-		mv.setViewName(VisitorViews.itemList);
-	
+		
+		Integer itemId = Integer.parseInt(request.getParameter("id"));
+		PsItem item = psItemService.findById(itemId);
+		List<PsItemInfo> itemInfos = psItemInfoDAO.findByItemId(itemId); 
+		
+		mv.addObject("item", item);
+		mv.addObject("itemInfoList", itemInfos);
+		mv.addObject("urlList", splitPicUrl(item.getUrlPicture()));
+		
+		mv.setViewName("detail");
+		
 		return mv;
+	}
+	
+	
+	/**
+	 * split the urlPicture
+	 * @param urlPic
+	 * @return
+	 */
+	public List<String> splitPicUrl(String urlPic) {
+
+		List<String> list = Arrays.asList(urlPic.split("@"));
+		
+		return list;
 		
 	}
 }

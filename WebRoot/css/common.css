@@ -1,0 +1,110 @@
+body {
+    background-color: #eeeeee;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+#mainContent {
+    margin-top: 10px;
+}
+
+#storeItemList {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.storeItemListRow {
+    height: 320px;
+}
+
+.storeItemListRowTitle {
+    height: 40px;
+}
+
+.storeItem {
+    display: inline-block;
+    width: 180px;
+    height: 280px;
+    margin: 8px;
+}
+
+.storeItem:hover {
+    display: inline-block;
+    width: 180px;
+    height: 280px;
+    margin: 8px;
+    box-shadow: 3px 3px 8px #999;
+    cursor: pointer;
+}
+
+.storeItemDesc {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.storeItemLink {
+    color:#333333;
+    text-decoration: none;
+}
+
+
+.common_label {
+    font-weight: normal;
+    width: 80px;
+    margin: 0 10px 0 0;
+    font-size: 14px;
+    text-shadow: 0 1px 1px #AAAAAA;
+}
+
+.common_input {
+    outline: none;
+    border: 1px solid #bbbbbb;
+    margin: 10px 0;
+    width: 180px;
+    height: 28px;
+    padding: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+
+
+.common_btn {
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #404040;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #efefef;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.1);
+    position: relative;
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+
+#basicInfo_div {
+
+}
+
+#basicInfo_div>div {
+    margin: 5px 0;
+}
+
+
+#basicInfo_nav {
+    margin-bottom: 20px;
+}
+
+#basicInfo_basic {
+    margin: 10px 15px;
+}
+
+.basicInfo_label {
+    font-weight: normal;
+    width: 80px;
+    margin: 0 10px 0 0;
+    font-size: 14px;
+    text-shadow: 0 1px 1px #AAAAAA;
+}
+
+.basicInfo_input {
+    outline: none;
+    border: 1px solid #bbbbbb;
+    margin: 10px 0;
+    width: 180px;
+    height: 28px;
+    padding: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+
+#gender_select {
+    width:200px;
+    margin-left: 5px;
+}
+
+#gender_select input[type=radio] {
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+}
+
+#basicInfo_address {
+
+}
+#basicInfo_address select {
+    background-color: #DDDADA;
+    height: 25px;
+    border: 1px solid #999999;
+    margin: 3px;
+    color: #333333;
+    outline: none;
+}
+
+#basicInfo_address option {
+    background-color: #ffffff;
+}
+
+#basicInfo_address input {
+    width: 300px;
+}
+
+#hometown {
+
+}
+
+#hometown select{
+    background-color: #DDDADA;
+    height: 25px;
+    border: 1px solid #999999;
+    margin: 3px;
+    color: #333333;
+    outline: none;
+}
+
+#hometown option{
+    background-color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+

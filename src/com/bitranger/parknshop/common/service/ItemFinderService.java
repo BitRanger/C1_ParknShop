@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-import com.bitranger.parknshop.common.fetch.ItemFinder;
+import com.bitranger.parknshop.common.dao.ItemFinder;
 import com.bitranger.parknshop.common.model.PsItem;
 import com.bitranger.parknshop.visitor.views.Names;
+
 
 
 public class ItemFinderService {
@@ -160,6 +161,7 @@ public class ItemFinderService {
     	 .pageNumber(request.getParameter(Names.params.pageNumber))
     	 .orderBy(request.getParameter(Names.params.orderBy))
     	 .asd(request.getParameter(Names.params.asd))
+
     	 .list();
 		
 	}

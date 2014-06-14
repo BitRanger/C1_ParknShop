@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/index.css">
   <link rel="stylesheet" type="text/css" href="css/detail.css">
+  <link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
@@ -222,5 +223,6 @@
 <script src="js/bootstrap.js" type="text/javascript"></script>
 <script src="js/categorybar.js" type="text/javascript"></script>
 <script src="js/details.js" type="text/javascript"></script>
+<script src="js/common.js" type="text/javascript"></script>
 </body>
 </html>
