@@ -41,6 +41,8 @@ public class PsCustomer implements java.io.Serializable {
 
 	// Fields
 
+	private static final long serialVersionUID = -8191548743733660119L;
+
 	private Integer id;
 	private String nickname;
 	private String email;
@@ -169,7 +171,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")
 	public Set<CartCustomerItem> getCartCustomerItems() {
 		return this.cartCustomerItems;
 	}
@@ -178,7 +180,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.cartCustomerItems = cartCustomerItems;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")
 	public Set<PsOrder> getPsOrders() {
 		return this.psOrders;
 	}
@@ -187,7 +189,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.psOrders = psOrders;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomers")
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomers")
 	public Set<PsItem> getPsItems() {
 		return this.psItems;
 	}
@@ -205,7 +207,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.psRecipients = psRecipients;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")
 	public Set<PsComment> getPsComments() {
 		return this.psComments;
 	}

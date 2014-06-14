@@ -90,7 +90,7 @@ public class CartCustomerItem implements java.io.Serializable {
 		this.psItem = psItem;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", nullable = false, insertable = false, updatable = false)
 	public PsCustomer getPsCustomer() {
 		return this.psCustomer;

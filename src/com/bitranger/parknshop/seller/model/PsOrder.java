@@ -1,19 +1,6 @@
-/*******************************************************************************
- * Copyright (c) 2014 BitRanger.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * 
- * Contributors:
- *     BitRanger - initial API and implementation
- ******************************************************************************/
 package com.bitranger.parknshop.seller.model;
 
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,11 +9,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.bitranger.parknshop.buyer.model.PsCustomer;
-import com.bitranger.parknshop.common.model.ROrderItem;
 
 /**
  * PsOrder entity. @author MyEclipse Persistence Tools
@@ -37,19 +20,15 @@ public class PsOrder implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = 8206814688416812312L;
+	private static final long serialVersionUID = 6373864068325376498L;
 	private Integer id;
-	private PsCustomer psCustomer;
+	private PsRecipient psRecipient;
+	private Integer idCustomer;
 	private Integer idShop;
 	private Short status;
 	private String trackingNumber;
-	private String address;
-	private String postalCode;
-	private String nameRecipient;
-	private String phoneRecipient;
 	private Double priceTotal;
 	private Timestamp timeCreated;
-	private Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
 
 	// Constructors
 
@@ -58,9 +37,10 @@ public class PsOrder implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsOrder(PsCustomer psCustomer, Integer idShop, Short status,
-			Double priceTotal, Timestamp timeCreated) {
-		this.psCustomer = psCustomer;
+	public PsOrder(PsRecipient psRecipient, Integer idCustomer, Integer idShop,
+			Short status, Double priceTotal, Timestamp timeCreated) {
+		this.psRecipient = psRecipient;
+		this.idCustomer = idCustomer;
 		this.idShop = idShop;
 		this.status = status;
 		this.priceTotal = priceTotal;
@@ -68,21 +48,16 @@ public class PsOrder implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PsOrder(PsCustomer psCustomer, Integer idShop, Short status,
-			String trackingNumber, String address, String postalCode,
-			String nameRecipient, String phoneRecipient, Double priceTotal,
-			Timestamp timeCreated, Set<ROrderItem> ROrderItems) {
-		this.psCustomer = psCustomer;
+	public PsOrder(PsRecipient psRecipient, Integer idCustomer, Integer idShop,
+			Short status, String trackingNumber, Double priceTotal,
+			Timestamp timeCreated) {
+		this.psRecipient = psRecipient;
+		this.idCustomer = idCustomer;
 		this.idShop = idShop;
 		this.status = status;
 		this.trackingNumber = trackingNumber;
-		this.address = address;
-		this.postalCode = postalCode;
-		this.nameRecipient = nameRecipient;
-		this.phoneRecipient = phoneRecipient;
 		this.priceTotal = priceTotal;
 		this.timeCreated = timeCreated;
-		this.ROrderItems = ROrderItems;
 	}
 
 	// Property accessors
@@ -98,13 +73,22 @@ public class PsOrder implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_customer", nullable = false)
-	public PsCustomer getPsCustomer() {
-		return this.psCustomer;
+	@JoinColumn(name = "id_recip_addr", nullable = false)
+	public PsRecipient getPsRecipient() {
+		return this.psRecipient;
 	}
 
-	public void setPsCustomer(PsCustomer psCustomer) {
-		this.psCustomer = psCustomer;
+	public void setPsRecipient(PsRecipient psRecipient) {
+		this.psRecipient = psRecipient;
+	}
+
+	@Column(name = "id_customer", nullable = false)
+	public Integer getIdCustomer() {
+		return this.idCustomer;
+	}
+
+	public void setIdCustomer(Integer idCustomer) {
+		this.idCustomer = idCustomer;
 	}
 
 	@Column(name = "id_shop", nullable = false)
@@ -125,49 +109,13 @@ public class PsOrder implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@Column(name = "tracking_number", length = 45)
+	@Column(name = "tracking_number", length = 65535)
 	public String getTrackingNumber() {
 		return this.trackingNumber;
 	}
 
 	public void setTrackingNumber(String trackingNumber) {
 		this.trackingNumber = trackingNumber;
-	}
-
-	@Column(name = "address", length = 200)
-	public String getAddress() {
-		return this.address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	@Column(name = "postal_code", length = 45)
-	public String getPostalCode() {
-		return this.postalCode;
-	}
-
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	@Column(name = "name_recipient", length = 45)
-	public String getNameRecipient() {
-		return this.nameRecipient;
-	}
-
-	public void setNameRecipient(String nameRecipient) {
-		this.nameRecipient = nameRecipient;
-	}
-
-	@Column(name = "phone_recipient", length = 45)
-	public String getPhoneRecipient() {
-		return this.phoneRecipient;
-	}
-
-	public void setPhoneRecipient(String phoneRecipient) {
-		this.phoneRecipient = phoneRecipient;
 	}
 
 	@Column(name = "price_total", nullable = false, precision = 15)
@@ -186,15 +134,6 @@ public class PsOrder implements java.io.Serializable {
 
 	public void setTimeCreated(Timestamp timeCreated) {
 		this.timeCreated = timeCreated;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psOrder")
-	public Set<ROrderItem> getROrderItems() {
-		return this.ROrderItems;
-	}
-
-	public void setROrderItems(Set<ROrderItem> ROrderItems) {
-		this.ROrderItems = ROrderItems;
 	}
 
 }

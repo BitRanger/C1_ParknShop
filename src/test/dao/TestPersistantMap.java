@@ -3,6 +3,8 @@ package test.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,21 +24,18 @@ import com.bitranger.parknshop.common.dao.impl.PersistantMap;
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 public class TestPersistantMap {
 
-	@Before
-	public void setUp() throws Exception {
-	}
 
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Autowired
+	@Inject
 	public PersistantMap persistantMap;
 	
+	@Before
+	public void setUp() throws Exception {
+
+		System.out.println("PersistantMapTest.test()");
+	}
+
 	@Test
 	public void test() {
-		System.out.println("PersistantMapTest.test()");
 		ArrayList<String> as = new ArrayList<String>();
 		as.add("1234");
 		as.add("ret43w7cjm2398yrx");
@@ -57,6 +56,13 @@ public class TestPersistantMap {
 //		System.out.println(t.xxString);
 //		System.out.println("PersistantMapTest.test()");
 	}
+	
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	
+
 
 }
 

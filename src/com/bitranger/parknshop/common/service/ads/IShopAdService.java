@@ -2,7 +2,6 @@ package com.bitranger.parknshop.common.service.ads;
 
 
 
-
-public interface ShopAdService {
+public interface IShopAdService {
 
 }

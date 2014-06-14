@@ -5,10 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.LockMode;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -29,30 +31,6 @@ import com.bitranger.parknshop.seller.model.PsOrder;
  */
 public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 	private static final Logger log = LoggerFactory.getLogger(PsOrderDAO.class);
-
-	@Override
-	public void save(PsOrder transientInstance) {
-		log.debug("saving PsOrder instance");
-		try {
-			getHibernateTemplate().save(transientInstance);
-			log.debug("save successful");
-		} catch (RuntimeException re) {
-			log.error("save failed", re);
-			throw re;
-		}
-	}
-
-	@Override
-	public void delete(PsOrder persistentInstance) {
-		log.debug("deleting PsOrder instance");
-		try {
-			getHibernateTemplate().delete(persistentInstance);
-			log.debug("delete successful");
-		} catch (RuntimeException re) {
-			log.error("delete failed", re);
-			throw re;
-		}
-	}
 
 	@Override
 	public void update(PsOrder detachedInstance) {
@@ -217,8 +195,67 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 		}
 	}
 
-	@SuppressWarnings({ "unused", "unchecked" })
-	private List<PsOrder> findByProperty(String propertyName, Object value) {
+//=============================================================================
+	// property constants
+	public static final String ID_CUSTOMER = "idCustomer";
+	public static final String ID_SHOP = "idShop";
+	public static final String STATUS = "status";
+	public static final String TRACKING_NUMBER = "trackingNumber";
+	public static final String PRICE_TOTAL = "priceTotal";
+
+	protected void initDao() {
+		// do nothing
+	}
+
+	public void save(PsOrder transientInstance) {
+		log.debug("saving PsOrder instance");
+		try {
+			getHibernateTemplate().save(transientInstance);
+			log.debug("save successful");
+		} catch (RuntimeException re) {
+			log.error("save failed", re);
+			throw re;
+		}
+	}
+
+	public void delete(PsOrder persistentInstance) {
+		log.debug("deleting PsOrder instance");
+		try {
+			getHibernateTemplate().delete(persistentInstance);
+			log.debug("delete successful");
+		} catch (RuntimeException re) {
+			log.error("delete failed", re);
+			throw re;
+		}
+	}
+
+	public PsOrder findById(java.lang.Integer id) {
+		log.debug("getting PsOrder instance with id: " + id);
+		try {
+			PsOrder instance = (PsOrder) getHibernateTemplate().get(
+					"temp.PsOrder", id);
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
+
+	public List<PsOrder> findByExample(PsOrder instance) {
+		log.debug("finding PsOrder instance by example");
+		try {
+			List<PsOrder> results = (List<PsOrder>) getHibernateTemplate()
+					.findByExample(instance);
+			log.debug("find by example successful, result size: "
+					+ results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+
+	public List findByProperty(String propertyName, Object value) {
 		log.debug("finding PsOrder instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -230,4 +267,75 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 			throw re;
 		}
 	}
+
+	public List<PsOrder> findByIdCustomer(Object idCustomer) {
+		return findByProperty(ID_CUSTOMER, idCustomer);
+	}
+
+	public List<PsOrder> findByIdShop(Object idShop) {
+		return findByProperty(ID_SHOP, idShop);
+	}
+
+	public List<PsOrder> findByStatus(Object status) {
+		return findByProperty(STATUS, status);
+	}
+
+	public List<PsOrder> findByTrackingNumber(Object trackingNumber) {
+		return findByProperty(TRACKING_NUMBER, trackingNumber);
+	}
+
+	public List<PsOrder> findByPriceTotal(Object priceTotal) {
+		return findByProperty(PRICE_TOTAL, priceTotal);
+	}
+
+	public List findAll() {
+		log.debug("finding all PsOrder instances");
+		try {
+			String queryString = "from PsOrder";
+			return getHibernateTemplate().find(queryString);
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+
+	public PsOrder merge(PsOrder detachedInstance) {
+		log.debug("merging PsOrder instance");
+		try {
+			PsOrder result = (PsOrder) getHibernateTemplate().merge(
+					detachedInstance);
+			log.debug("merge successful");
+			return result;
+		} catch (RuntimeException re) {
+			log.error("merge failed", re);
+			throw re;
+		}
+	}
+
+	public void attachDirty(PsOrder instance) {
+		log.debug("attaching dirty PsOrder instance");
+		try {
+			getHibernateTemplate().saveOrUpdate(instance);
+			log.debug("attach successful");
+		} catch (RuntimeException re) {
+			log.error("attach failed", re);
+			throw re;
+		}
+	}
+
+	public void attachClean(PsOrder instance) {
+		log.debug("attaching clean PsOrder instance");
+		try {
+			getHibernateTemplate().lock(instance, LockMode.NONE);
+			log.debug("attach successful");
+		} catch (RuntimeException re) {
+			log.error("attach failed", re);
+			throw re;
+		}
+	}
+
+	public static PsOrderDAO getFromApplicationContext(ApplicationContext ctx) {
+		return (PsOrderDAO) ctx.getBean("PsOrderDAO");
+	}
+	
 }

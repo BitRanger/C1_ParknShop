@@ -45,28 +45,28 @@ public class PsItem implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = -1092009857032674996L;
+	public static final long serialVersionUID = -1092009857032674996L;
 	
-	private Integer id;
-	private PsShop psShop;
-	private PsCategory psCategory;
-	private String name;
-	private String introduction;
-	private Double price;
-	private String extra1;
-	private String extra2;
-	private Timestamp timeCreated;
-	private Integer countPurchase;
-	private Integer countFavourite;
-	private Integer countClick;
-	private Double vote;
-	private Set<PsCustomer> psCustomers = new HashSet<PsCustomer>(0);
-	private Set<PsComment> psComments = new HashSet<PsComment>(0);
-	private Set<PsTag> psTags = new HashSet<PsTag>(0);
-	private PsItemInfo psItemInfo;
-	private Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(
+	public Integer id;
+	public PsShop psShop;
+	public PsCategory psCategory;
+	public String name;
+	public String introduction;
+	public Double price;
+	public String extra1;
+	public String extra2;
+	public Timestamp timeCreated = new Timestamp(System.currentTimeMillis());
+	public Integer countPurchase = 0;
+	public Integer countFavourite = 0;
+	public Integer countClick = 0;
+	public Double vote = 0.0;
+	public Set<PsCustomer> psCustomers = new HashSet<PsCustomer>(0);
+	public Set<PsComment> psComments = new HashSet<PsComment>(0);
+	public Set<PsTag> psTags = new HashSet<PsTag>(0);
+	public PsItemInfo psItemInfo;
+	public Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(
 			0);
-	private Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
+	public Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
 
 	// Constructors
 
@@ -75,18 +75,12 @@ public class PsItem implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsItem(PsShop psShop, PsCategory psCategory, String name,
-			Double price, Timestamp timeCreated, Integer countPurchase,
-			Integer countFavourite, Integer countClick, Double vote) {
+	public PsItem(PsShop psShop, PsCategory psCategory, String name, Double price) {
+		
 		this.psShop = psShop;
 		this.psCategory = psCategory;
 		this.name = name;
 		this.price = price;
-		this.timeCreated = timeCreated;
-		this.countPurchase = countPurchase;
-		this.countFavourite = countFavourite;
-		this.countClick = countClick;
-		this.vote = vote;
 	}
 
 	/** full constructor */

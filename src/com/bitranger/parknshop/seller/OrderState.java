@@ -10,14 +10,18 @@
  ******************************************************************************/
 package com.bitranger.parknshop.seller;
 
-public enum OrderState {
-	UnPaid, 
-	UnDeliver, 
-	Delivering, 
-	Accepted, 
+public class OrderState {
+	
+	public static final Short UnPaid = 1;
+	public static final Short UnDeliver = 2; 
+	public static final Short Delivering = 3; 
+	public static final Short Accepted = 4;
+	
 	/**
 	 * 投诉了，在审核
 	 */
-	Blocked, 
-	Canceled
+	public static final Short Blocked = 5;
+	public static final Short Canceled = 6;
+
+	public static final Short OK = 7;
 }

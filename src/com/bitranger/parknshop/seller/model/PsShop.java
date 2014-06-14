@@ -41,7 +41,7 @@ public class PsShop implements java.io.Serializable {
 	private String name;
 	private Short status;
 	private String introduction;
-	private Timestamp timeCreated;
+	private Timestamp timeCreated = new Timestamp(System.currentTimeMillis());;
 	private Double vote;
 	private Set<PsItem> psItems = new HashSet<PsItem>(0);
 
@@ -52,12 +52,10 @@ public class PsShop implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsShop(PsSeller psSeller, String name, Short status,
-			Timestamp timeCreated) {
+	public PsShop(PsSeller psSeller, String name, Short status) {
 		this.psSeller = psSeller;
 		this.name = name;
 		this.status = status;
-		this.timeCreated = timeCreated;
 	}
 
 	/** full constructor */

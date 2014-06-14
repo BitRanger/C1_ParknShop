@@ -3,13 +3,13 @@ package com.bitranger.parknshop.visitor.views;
 
 
 
-public class URLs {
+public class Names {
 
-	public static final String item_list = "item-list";
+	public static class URLs {
+		public static final String item_list = "item-list";
 
-	public static final String item_detail = "item-detail";
-
-	
+		public static final String item_detail = "item-detail";
+	}
 	//			/item?tag=a&b&c&category_id=3
 	
 	// form <input name="category_id">
@@ -28,7 +28,8 @@ public class URLs {
 		
 	}
 	
-	public static class modelNames {
+	public static class model {
+		
 		public static final String itemList = "item-list";
 		public static final String item = "item";
 	}

@@ -133,7 +133,7 @@
 <div class="content_container">
 <table width="100%" style="margin-bottom:1px;"  >
   <tr>
-    <td width= 300><a href="#"> <span class="badge"><h2>Shop Name</h2></span><h1>Three squirrels</h1><img src="images/shoplogo.jpg" </a></a>
+    <td width= 300><a href="#"> <span class="badge"><h2>Shop Name</h2></span><h1>Three squirrels</h1><img src="images/shoplogo.jpg"/> </a></a>
 </td>
 
 <td >

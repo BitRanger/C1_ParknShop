@@ -6,7 +6,7 @@ import com.bitranger.parknshop.common.fetch.IFetchParamSetter;
 import com.bitranger.parknshop.common.fetch.ItemFetch;
 import com.bitranger.parknshop.util.Converter;
 import com.bitranger.parknshop.util.Str;
-import com.bitranger.parknshop.visitor.views.URLs;
+import com.bitranger.parknshop.visitor.views.Names;
 
 
 
@@ -25,10 +25,10 @@ public class RequestParamSetter implements IFetchParamSetter{
 
 	@Override
 	public void setParams(ItemFetch oneFetch) {
-		String cat = request.getParameter(URLs.categoryId);
+		String cat = request.getParameter(Names.params.categoryId);
 			Integer num = Converter.slient.toInteger(cat);
 			oneFetch.categoryId(num == null ? 0 : num);
-		String[] tags = request.getParameterValues(URLs.tag);
+		String[] tags = request.getParameterValues(Names.params.tag);
 		
 	}
 

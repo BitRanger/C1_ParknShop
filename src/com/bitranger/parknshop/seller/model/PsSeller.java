@@ -39,7 +39,7 @@ public class PsSeller implements java.io.Serializable {
 	private String email;
 	private String password;
 	private Short status;
-	private Timestamp timeCreated;
+	private Timestamp timeCreated = new Timestamp(System.currentTimeMillis());
 	private Set<PsShop> psShops = new HashSet<PsShop>(0);
 
 	// Constructors
@@ -49,12 +49,12 @@ public class PsSeller implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsSeller(String nickname, String personIdNum, String password,
-			Timestamp timeCreated) {
+	public PsSeller(String nickname, String personIdNum, String password, String email) {
+		
 		this.nickname = nickname;
 		this.personIdNum = personIdNum;
 		this.password = password;
-		this.timeCreated = timeCreated;
+		this.email = email;
 	}
 
 	/** full constructor */

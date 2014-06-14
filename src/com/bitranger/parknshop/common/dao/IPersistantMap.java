@@ -1,6 +1,5 @@
 package com.bitranger.parknshop.common.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.Nullable;

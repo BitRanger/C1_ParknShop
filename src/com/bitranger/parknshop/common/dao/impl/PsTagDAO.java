@@ -1,8 +1,14 @@
 package com.bitranger.parknshop.common.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bitranger.parknshop.common.dao.IPsTagDAO;
@@ -84,4 +90,30 @@ public class PsTagDAO extends HibernateDaoSupport implements IPsTagDAO {
 		}
 		return retList;
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<PsTag> selectTopTags(int category, List<String> items)
+	{
+		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsTag>>() {
+
+			@Override
+			public List<PsTag> doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				
+				StringBuilder b = new StringBuilder(512);
+				b.append("select * from ");
+				
+				SQLQuery q = session.createSQLQuery("");
+				
+				return q.addEntity(PsTag.class).list();
+			}
+			
+		});
+		
+	}
 }
+
+
+
+

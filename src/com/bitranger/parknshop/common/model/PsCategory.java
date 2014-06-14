@@ -77,7 +77,7 @@ public class PsCategory implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCategory")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCategory")
 	public Set<PsItem> getPsItems() {
 		return this.psItems;
 	}

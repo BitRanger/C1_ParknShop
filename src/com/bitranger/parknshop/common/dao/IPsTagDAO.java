@@ -30,5 +30,8 @@ public interface IPsTagDAO {
 	 * @return
 	 */
 	public List<PsTag> findTagsOfItems(List<PsItem> items);
+	
+
+	public List<PsTag> selectTopTags(int category, List<String> items);
 
 }

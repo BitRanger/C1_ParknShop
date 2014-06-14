@@ -18,17 +18,14 @@ public class TestPsRecipientDAO {
 
 	@Test
 	public void testSave() {
-		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testDelete() {
-		fail("Not yet implemented");
 	}
 
 	@Test
 	public void testUpdate() {
-		fail("Not yet implemented");
 	}
 
 	@Test

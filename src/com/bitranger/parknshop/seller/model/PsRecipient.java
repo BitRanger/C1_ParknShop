@@ -1,15 +1,8 @@
-/*******************************************************************************
- * Copyright (c) 2014 BitRanger.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * 
- * Contributors:
- *     BitRanger - initial API and implementation
- ******************************************************************************/
 package com.bitranger.parknshop.seller.model;
 
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,10 +11,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.bitranger.parknshop.buyer.model.PsCustomer;
-
 
 /**
  * PsRecipient entity. @author MyEclipse Persistence Tools
@@ -32,13 +25,18 @@ public class PsRecipient implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = -6623732588341787931L;
+	private static final long serialVersionUID = 3655644545008399172L;
 	private Integer id;
 	private PsCustomer psCustomer;
 	private String nameRecipient;
 	private String addresss;
 	private String postalCode;
 	private String phoneNumber;
+	private String country = "P.R.CHINA";
+	private String province;
+	private String city;
+	private String detailedAddr;
+	private Set<PsOrder> psOrders = new HashSet<PsOrder>(0);
 
 	// Constructors
 
@@ -46,14 +44,34 @@ public class PsRecipient implements java.io.Serializable {
 	public PsRecipient() {
 	}
 
-	/** full constructor */
+	/** minimal constructor */
 	public PsRecipient(PsCustomer psCustomer, String nameRecipient,
-			String addresss, String postalCode, String phoneNumber) {
+			String addresss, String postalCode, String phoneNumber,
+			String city, String detailedAddr) {
 		this.psCustomer = psCustomer;
 		this.nameRecipient = nameRecipient;
 		this.addresss = addresss;
 		this.postalCode = postalCode;
 		this.phoneNumber = phoneNumber;
+		this.city = city;
+		this.detailedAddr = detailedAddr;
+	}
+
+	/** full constructor */
+	public PsRecipient(PsCustomer psCustomer, String nameRecipient,
+			String addresss, String postalCode, String phoneNumber,
+			String country, String province, String city, String detailedAddr,
+			Set<PsOrder> psOrders) {
+		this.psCustomer = psCustomer;
+		this.nameRecipient = nameRecipient;
+		this.addresss = addresss;
+		this.postalCode = postalCode;
+		this.phoneNumber = phoneNumber;
+		this.country = country;
+		this.province = province;
+		this.city = city;
+		this.detailedAddr = detailedAddr;
+		this.psOrders = psOrders;
 	}
 
 	// Property accessors
@@ -78,7 +96,7 @@ public class PsRecipient implements java.io.Serializable {
 		this.psCustomer = psCustomer;
 	}
 
-	@Column(name = "name_recipient", nullable = false, length = 45)
+	@Column(name = "name_recipient", nullable = false, length = 65535)
 	public String getNameRecipient() {
 		return this.nameRecipient;
 	}
@@ -87,7 +105,7 @@ public class PsRecipient implements java.io.Serializable {
 		this.nameRecipient = nameRecipient;
 	}
 
-	@Column(name = "addresss", nullable = false, length = 100)
+	@Column(name = "addresss", nullable = false, length = 65535)
 	public String getAddresss() {
 		return this.addresss;
 	}
@@ -96,7 +114,7 @@ public class PsRecipient implements java.io.Serializable {
 		this.addresss = addresss;
 	}
 
-	@Column(name = "postal_code", nullable = false, length = 20)
+	@Column(name = "postal_code", nullable = false, length = 65535)
 	public String getPostalCode() {
 		return this.postalCode;
 	}
@@ -105,13 +123,58 @@ public class PsRecipient implements java.io.Serializable {
 		this.postalCode = postalCode;
 	}
 
-	@Column(name = "phone_number", nullable = false, length = 45)
+	@Column(name = "phone_number", nullable = false, length = 65535)
 	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	@Column(name = "country", length = 65535)
+	public String getCountry() {
+		return this.country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	@Column(name = "province", length = 65535)
+	public String getProvince() {
+		return this.province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	@Column(name = "city", nullable = false, length = 65535)
+	public String getCity() {
+		return this.city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	@Column(name = "detailed_addr", nullable = false, length = 65535)
+	public String getDetailedAddr() {
+		return this.detailedAddr;
+	}
+
+	public void setDetailedAddr(String detailedAddr) {
+		this.detailedAddr = detailedAddr;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psRecipient")
+	public Set<PsOrder> getPsOrders() {
+		return this.psOrders;
+	}
+
+	public void setPsOrders(Set<PsOrder> psOrders) {
+		this.psOrders = psOrders;
 	}
 
 }

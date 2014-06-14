@@ -1,6 +1,6 @@
 package com.bitranger.parknshop.common.service.ads;
 
-import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 
@@ -11,10 +11,41 @@ import javax.inject.Inject;
  */
 public class AdCenter {
 
-	@Inject
-	public ItemAdService itemAdService;
+	@Autowired
+	public IItemAdService itemAdService;
 	
-	@Inject
-	public ShopAdService shopAdService;
+	@Autowired
+	public IShopAdService shopAdService;
+	
+	
+	
+	/**
+	 * @return the itemAdService
+	 */
+	public IItemAdService getItemAdService() {
+		return itemAdService;
+	}
+
+	/**
+	 * @param itemAdService the itemAdService to set
+	 */
+	public void setItemAdService(IItemAdService itemAdService) {
+		this.itemAdService = itemAdService;
+	}
+
+	/**
+	 * @return the shopAdService
+	 */
+	public IShopAdService getShopAdService() {
+		return shopAdService;
+	}
+
+	/**
+	 * @param shopAdService the shopAdService to set
+	 */
+	public void setShopAdService(IShopAdService shopAdService) {
+		this.shopAdService = shopAdService;
+	}
+
 	
 }

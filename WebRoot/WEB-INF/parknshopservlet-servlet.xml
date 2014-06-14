@@ -9,15 +9,24 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+        
+    <mvc:resources location="asset/css/" mapping="css/**"/>
+    <mvc:resources location="asset/fonts/" mapping="fonts/**"/> 
+    <mvc:resources location="asset/images/" mapping="images/**"/>
+    <mvc:resources location="asset/js/" mapping="js/**"/>
 
-	<context:component-scan base-package="com.bitranger.example.controller"/>
-
+    <context:component-scan base-package="com.bitranger.parknshop.admin.controller"></context:component-scan>
+    <context:component-scan base-package="com.bitranger.parknshop.buyer.controller"></context:component-scan>
+    <context:component-scan base-package="com.bitranger.parknshop.seller.controller"></context:component-scan>
+    <context:component-scan base-package="com.bitranger.parknshop.visitor.controller"></context:component-scan>
+    
+    	
 	<mvc:annotation-driven />
-
+	       
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+
 </beans>

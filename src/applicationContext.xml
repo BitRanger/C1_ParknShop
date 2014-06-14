@@ -8,8 +8,9 @@
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="url"
-			value="jdbc:mysql://localhost:3456/c1_parknshop">
+			value="jdbc:mysql://localhost:3306/c1_parknshop">
 		</property>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="username" value="bitranger"></property>
 		<property name="password" value="123456"></property>
 	</bean>
@@ -29,11 +30,104 @@
 		</property>
 		<property name="annotatedClasses">
 			<list>
-			</list>
+			<value>com.bitranger.parknshop.common.model.PsItemInfo</value>			
+			<value>com.bitranger.parknshop.common.model.PsTag</value>
+			<value>com.bitranger.parknshop.common.model.PsComment</value>
+			<value>com.bitranger.parknshop.common.model.PsAdministator</value>						
+			<value>com.bitranger.parknshop.common.model.PsCategory</value>
+			<value>com.bitranger.parknshop.common.model.PsItem</value>
+			<value>com.bitranger.parknshop.common.model.ROrderItem</value>
+			<value>com.bitranger.parknshop.common.model.ROrderItemId</value>
+			
+			<value>com.bitranger.parknshop.seller.model.PsRecipient</value>
+			<value>com.bitranger.parknshop.seller.model.PsOrder</value>
+			<value>com.bitranger.parknshop.seller.model.PsShop</value>
+			<value>com.bitranger.parknshop.seller.model.PsSeller</value>
+			
+			<value>com.bitranger.parknshop.buyer.model.PsCustomer</value>
+			<value>com.bitranger.parknshop.buyer.model.CartCustomerItemId</value>
+			<value>com.bitranger.parknshop.buyer.model.CartCustomerItem</value>			
+			<value>com.bitranger.parknshop.common.ads.PsAdItem</value>
+			<value>com.bitranger.parknshop.common.ads.PsItemPromotInfo</value>
+			<value>com.bitranger.parknshop.common.ads.PsPromotItem</value>
+			<value>temp.PsRecipient</value>
+			<value>temp.PsNoticeCustomer</value>
+			<value>temp.PsItemPromotInfo</value>
+			<value>temp.PsAdItem</value>
+			<value>temp.PsCustomer</value>
+			<value>temp.PsComment</value>
+			<value>temp.CartCustomerItem</value>
+			<value>temp.PsCustomerAcc</value>
+			<value>temp.PsItem</value>
+			<value>temp.PsTag</value>
+			<value>temp.PsOrder</value>
+			<value>temp.PsSellerAcc</value>
+			<value>temp.PsPromotItem</value>
+			<value>temp.PsItemInfo</value>
+			<value>temp.ROrderItem</value>
+			<value>temp.PsShop</value>
+			<value>temp.PsSeller</value>
+			<value>temp.PsNoticeSeller</value>
+			<value>temp.PsCategory</value>
+			<value>temp.CustomerFavouriteItem</value>
+			<value>temp.CustomerFavouriteShop</value>
+			<value>temp.PsAdministator</value>
+			<value>temp.PsNoticeAdmin</value>
+			<value>temp.PsConfigVal</value>
+			<value>temp.PsKeyValue</value>
+			<value>temp.PsConfigKey</value>
+			<value>temp.PsAdminAcc</value></list>
 		</property>
 	</bean>
 	
-	<bean id="persistantMap" class="com.bitranger.parknshop.common.dao.impl.PersistantMap">
-		<property name="sessionFactory" ref="sessionFactory"/>
+	
+	<bean id="psTagDAO" class="com.bitranger.parknshop.common.dao.impl.PsTagDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+	
+	<bean id="psSellerDAO" class="com.bitranger.parknshop.seller.dao.impl.PsSellerDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psShopDAO" class="com.bitranger.parknshop.seller.dao.impl.PsShopDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psCategoryDAO" class="com.bitranger.parknshop.common.dao.impl.PsCategoryDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psItemDAO" class="com.bitranger.parknshop.common.dao.impl.PsItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="itemFinder" class="com.bitranger.parknshop.common.fetch.ItemFinder">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="itemFinderService" class="com.bitranger.parknshop.common.service.ItemFinderService">
+		<property name="itemFinder" ref="itemFinder"></property>
+	</bean>
+	
+	
+	
+	<bean id="psAdItemDAO" class="com.bitranger.parknshop.common.ads.PsAdItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="psItemPromotInfoDAO" class="com.bitranger.parknshop.common.ads.PsItemPromotInfoDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>	
+	<bean id="psPromotItemDAO" class="com.bitranger.parknshop.common.ads.PsPromotItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="adCenter" class="com.bitranger.parknshop.common.service.ads.AdCenter">
+		<property name="itemAdService">
+			<bean class="com.bitranger.parknshop.common.service.ads.ItemAdService">
+				<property name="psAdItemDAO" ref="psAdItemDAO"></property>
+			</bean>
+		</property>
+	</bean>
+
+	
 </beans>

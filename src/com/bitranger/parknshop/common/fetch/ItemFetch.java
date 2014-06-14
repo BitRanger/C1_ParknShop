@@ -32,31 +32,31 @@ public final class ItemFetch {
 		this.hibernate = t;
 	}
 	
-	@Nonnull
+	@Nonnull public
 	Integer categoryId = -1;
 	
-	@Nullable
+	@Nullable public
 	List<Integer> tagIds = null;
 
-	@Nullable
+	@Nullable public
 	Double maxPrice = Double.MAX_VALUE;
 	
-	@Nullable
+	@Nullable public
 	Double minPrice = 0.0;
 
-	@Nonnull
+	@Nonnull public
 	Integer pageNumber = 1;
 
 	/**
 	 * if null, no order and sort option
 	 */
-	@Nullable
+	@Nullable public
 	String orderBy = null;
 	/**
 	 * if orderBy is null, this one is null
 	 * by default it is descending
 	 */
-	@Nullable
+	@Nullable public
 	boolean asd = false;
 
 	HibernateTemplate hibernate;
@@ -97,7 +97,7 @@ public final class ItemFetch {
 			builder.append(" order by ").append(orderBy)
 			.append(asd ? " asc " : " desc ");
 		}
-		builder.append(" offset ? limit ? ");
+		builder.append("limit ?, ?");
 		
 System.out.println("ItemFinder.Fetch.getQuery()");
 System.out.println(builder.toString());

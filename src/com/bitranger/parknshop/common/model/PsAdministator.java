@@ -60,7 +60,7 @@ public class PsAdministator implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "email", nullable = false, length = 45)
+	@Column(name = "email", nullable = false, length = 65536)
 	public String getEmail() {
 		return this.email;
 	}
@@ -69,7 +69,7 @@ public class PsAdministator implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "name", nullable = false, length = 45)
+	@Column(name = "name", nullable = false, length = 65536)
 	public String getName() {
 		return this.name;
 	}
@@ -78,7 +78,7 @@ public class PsAdministator implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "password", nullable = false, length = 45)
+	@Column(name = "password", nullable = false, length = 65536)
 	public String getPassword() {
 		return this.password;
 	}
