@@ -44,7 +44,6 @@ limit 0, 32
  */
 public class ItemAdService implements IItemAdService {
 
-	@Autowired
 	public PsAdItemDAO psAdItemDAO;
 	
 	@SuppressWarnings("unchecked")

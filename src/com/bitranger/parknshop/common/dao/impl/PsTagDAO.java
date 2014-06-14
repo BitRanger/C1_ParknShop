@@ -95,7 +95,6 @@ public class PsTagDAO extends HibernateDaoSupport implements IPsTagDAO {
 		return retList;
 	}
 	
-	
 	/*
 	 select TG.*, sum(TG.id) as TG_C from ps_tag as TG
 		inner join r_tag_item	as RTI 	on RTI.id_tag 	= TG.id

@@ -49,11 +49,10 @@ public class PsCustomer implements java.io.Serializable {
 	private Date birthday;
 	private Timestamp timeCreated;
 	private Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(
-			0);
-	private Set<PsOrder> psOrders = new HashSet<PsOrder>(0);
-	private Set<PsItem> psItems = new HashSet<PsItem>(0);
-	private Set<PsRecipient> psRecipients = new HashSet<PsRecipient>(0);
-	private Set<PsComment> psComments = new HashSet<PsComment>(0);
+			32);
+	private Set<PsOrder> psOrders = new HashSet<PsOrder>(32);
+	private Set<PsRecipient> psRecipients = new HashSet<PsRecipient>(32);
+	private Set<PsComment> psComments = new HashSet<PsComment>(32);
 
 	// Constructors
 
@@ -75,7 +74,7 @@ public class PsCustomer implements java.io.Serializable {
 	public PsCustomer(String nickname, String email, String password,
 			Short gender, String name, Date birthday, Timestamp timeCreated,
 			Set<CartCustomerItem> cartCustomerItems, Set<PsOrder> psOrders,
-			Set<PsItem> psItems, Set<PsRecipient> psRecipients,
+			Set<PsRecipient> psRecipients,
 			Set<PsComment> psComments) {
 				
 		this.nickname = nickname;
@@ -87,7 +86,6 @@ public class PsCustomer implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 		this.cartCustomerItems = cartCustomerItems;
 		this.psOrders = psOrders;
-		this.psItems = psItems;
 		this.psRecipients = psRecipients;
 		this.psComments = psComments;
 	}
@@ -184,15 +182,6 @@ public class PsCustomer implements java.io.Serializable {
 
 	public void setPsOrders(Set<PsOrder> psOrders) {
 		this.psOrders = psOrders;
-	}
-
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomers")
-	public Set<PsItem> getPsItems() {
-		return this.psItems;
-	}
-
-	public void setPsItems(Set<PsItem> psItems) {
-		this.psItems = psItems;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")

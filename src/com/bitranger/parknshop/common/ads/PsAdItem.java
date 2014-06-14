@@ -50,10 +50,10 @@ public class PsAdItem implements java.io.Serializable {
 	}
 	
 	
-	public boolean isValid() {
-		Date date = new Date();
-		return timeStart.before(date) && timeEnd.after(date);
-	}
+//	public boolean isValid() {
+//		Date date = new Date();
+//		return timeStart.before(date) && timeEnd.after(date);
+//	}
 
 	// Property accessors
 	@Id

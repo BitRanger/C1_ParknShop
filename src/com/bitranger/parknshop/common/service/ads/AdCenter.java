@@ -11,13 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class AdCenter {
 
-	@Autowired
 	public IItemAdService itemAdService;
 	
-	@Autowired
 	public IShopAdService shopAdService;
-	
-	
 	
 	/**
 	 * @return the itemAdService
