@@ -4,10 +4,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.LockMode;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -28,108 +30,18 @@ import com.bitranger.parknshop.common.model.PsItem;
  * @author MyEclipse Persistence Tools
  */
 public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
-	private static final Logger log = LoggerFactory.getLogger(PsItemDAO.class);
-	// property constants
-	public static final String NAME = "name";
-	public static final String INTRODUCTION = "introduction";
-	public static final String PRICE = "price";
-	public static final String URL_PICTURE = "urlPicture";
-	public static final String EXTRA1 = "extra1";
-	public static final String EXTRA2 = "extra2";
-	public static final String COUNT_PURCHASE = "countPurchase";
-	public static final String COUNT_FAVOURITE = "countFavourite";
-	public static final String COUNT_CLICK = "countClick";
-	public static final String VOTE = "vote";
-
+	
 	@Override
-	public void save(PsItem transientInstance) {
-		log.debug("saving PsItem instance");
-		try {
-			getHibernateTemplate().save(transientInstance);
-			log.debug("save successful");
-		} catch (RuntimeException re) {
-			log.error("save failed", re);
-			throw re;
-		}
+	public List<PsItem> searchByKeyword(String keyword) {
+		return null;
 	}
-
-	@Override
-	public void delete(PsItem persistentInstance) {
-		log.debug("deleting PsItem instance");
-		try {
-			getHibernateTemplate().delete(persistentInstance);
-			log.debug("delete successful");
-		} catch (RuntimeException re) {
-			log.error("delete failed", re);
-			throw re;
-		}
-	}
-
-	@Override
-	public PsItem findById(java.lang.Integer id) {
-		log.debug("getting PsItem instance with id: " + id);
-		try {
-			PsItem instance = (PsItem) getHibernateTemplate().get(
-					"com.bitranger.parknshop.common.model.PsItem", id);
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
-	}
-
-	public List<PsItem> findByExample(PsItem instance) {
-		log.debug("finding PsItem instance by example");
-		try {
-			@SuppressWarnings({ "unchecked", "cast" })
-			List<PsItem> results = (List<PsItem>) getHibernateTemplate()
-					.findByExample(instance);
-			log.debug("find by example successful, result size: "
-					+ results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<PsItem> findByProperty(String propertyName, Object value) {
-		log.debug("finding PsItem instance with property: " + propertyName
-				+ ", value: " + value);
-		try {
-			String queryString = "from PsItem as model where model."
-					+ propertyName + "= ?";
-			return getHibernateTemplate().find(queryString, value);
-		} catch (RuntimeException re) {
-			log.error("find by property name failed", re);
-			throw re;
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	public List<PsItem> findAll() {
-		log.debug("finding all PsItem instances");
-		try {
-			String queryString = "from PsItem";
-			return getHibernateTemplate().find(queryString);
-		} catch (RuntimeException re) {
-			log.error("find all failed", re);
-			throw re;
-		}
-	}
-
+	
 	@Override
 	public void update(PsItem detachedInstance) {
 		getHibernateTemplate().update(detachedInstance);
 	}
 
-	@Override
-	public List<PsItem> searchByKeyword(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PsItem> findByPriceInCategory(final Integer psCategoryId,
@@ -530,4 +442,171 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 		}
 	}
 
+	private static final Logger log = LoggerFactory.getLogger(PsItemDAO.class);
+	// property constants
+	public static final String NAME = "name";
+	public static final String INTRODUCTION = "introduction";
+	public static final String PRICE = "price";
+	public static final String URL_PICTURE = "urlPicture";
+	public static final String EXTRA1 = "extra1";
+	public static final String EXTRA2 = "extra2";
+	public static final String COUNT_PURCHASE = "countPurchase";
+	public static final String COUNT_FAVOURITE = "countFavourite";
+	public static final String COUNT_CLICK = "countClick";
+	public static final String VOTE = "vote";
+
+	protected void initDao() {
+		// do nothing
+	}
+
+	public void save(PsItem transientInstance) {
+		log.debug("saving PsItem instance");
+		try {
+			getHibernateTemplate().save(transientInstance);
+			log.debug("save successful");
+		} catch (RuntimeException re) {
+			log.error("save failed", re);
+			throw re;
+		}
+	}
+
+	public void delete(PsItem persistentInstance) {
+		log.debug("deleting PsItem instance");
+		try {
+			getHibernateTemplate().delete(persistentInstance);
+			log.debug("delete successful");
+		} catch (RuntimeException re) {
+			log.error("delete failed", re);
+			throw re;
+		}
+	}
+
+	public PsItem findById(java.lang.Integer id) {
+		log.debug("getting PsItem instance with id: " + id);
+		try {
+			PsItem instance = (PsItem) getHibernateTemplate().get(
+					"temp.PsItem", id);
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
+
+	public List<PsItem> findByExample(PsItem instance) {
+		log.debug("finding PsItem instance by example");
+		try {
+			List<PsItem> results = (List<PsItem>) getHibernateTemplate()
+					.findByExample(instance);
+			log.debug("find by example successful, result size: "
+					+ results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+
+	public List findByProperty(String propertyName, Object value) {
+		log.debug("finding PsItem instance with property: " + propertyName
+				+ ", value: " + value);
+		try {
+			String queryString = "from PsItem as model where model."
+					+ propertyName + "= ?";
+			return getHibernateTemplate().find(queryString, value);
+		} catch (RuntimeException re) {
+			log.error("find by property name failed", re);
+			throw re;
+		}
+	}
+
+	public List<PsItem> findByName(Object name) {
+		return findByProperty(NAME, name);
+	}
+
+	public List<PsItem> findByIntroduction(Object introduction) {
+		return findByProperty(INTRODUCTION, introduction);
+	}
+
+	public List<PsItem> findByPrice(Object price) {
+		return findByProperty(PRICE, price);
+	}
+
+	public List<PsItem> findByUrlPicture(Object urlPicture) {
+		return findByProperty(URL_PICTURE, urlPicture);
+	}
+
+	public List<PsItem> findByExtra1(Object extra1) {
+		return findByProperty(EXTRA1, extra1);
+	}
+
+	public List<PsItem> findByExtra2(Object extra2) {
+		return findByProperty(EXTRA2, extra2);
+	}
+
+	public List<PsItem> findByCountPurchase(Object countPurchase) {
+		return findByProperty(COUNT_PURCHASE, countPurchase);
+	}
+
+	public List<PsItem> findByCountFavourite(Object countFavourite) {
+		return findByProperty(COUNT_FAVOURITE, countFavourite);
+	}
+
+	public List<PsItem> findByCountClick(Object countClick) {
+		return findByProperty(COUNT_CLICK, countClick);
+	}
+
+	public List<PsItem> findByVote(Object vote) {
+		return findByProperty(VOTE, vote);
+	}
+
+	public List findAll() {
+		log.debug("finding all PsItem instances");
+		try {
+			String queryString = "from PsItem";
+			return getHibernateTemplate().find(queryString);
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+
+	public PsItem merge(PsItem detachedInstance) {
+		log.debug("merging PsItem instance");
+		try {
+			PsItem result = (PsItem) getHibernateTemplate().merge(
+					detachedInstance);
+			log.debug("merge successful");
+			return result;
+		} catch (RuntimeException re) {
+			log.error("merge failed", re);
+			throw re;
+		}
+	}
+
+	public void attachDirty(PsItem instance) {
+		log.debug("attaching dirty PsItem instance");
+		try {
+			getHibernateTemplate().saveOrUpdate(instance);
+			log.debug("attach successful");
+		} catch (RuntimeException re) {
+			log.error("attach failed", re);
+			throw re;
+		}
+	}
+
+	public void attachClean(PsItem instance) {
+		log.debug("attaching clean PsItem instance");
+		try {
+			getHibernateTemplate().lock(instance, LockMode.NONE);
+			log.debug("attach successful");
+		} catch (RuntimeException re) {
+			log.error("attach failed", re);
+			throw re;
+		}
+	}
+
+	public static PsItemDAO getFromApplicationContext(ApplicationContext ctx) {
+		return (PsItemDAO) ctx.getBean("PsItemDAO");
+	}
 }

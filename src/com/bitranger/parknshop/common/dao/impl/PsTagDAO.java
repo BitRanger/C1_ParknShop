@@ -31,10 +31,12 @@ public class PsTagDAO extends HibernateDaoSupport implements IPsTagDAO {
 	// property constants
 	public static final String NAME = "name";
 
+	@Override
 	protected void initDao() {
 		// do nothing
 	}
 
+	@Override
 	public void save(PsTag transientInstance) {
 		log.debug("saving PsTag instance");
 		try {
@@ -46,6 +48,7 @@ public class PsTagDAO extends HibernateDaoSupport implements IPsTagDAO {
 		}
 	}
 
+	@Override
 	public void delete(PsTag persistentInstance) {
 		log.debug("deleting PsTag instance");
 		try {
@@ -57,6 +60,7 @@ public class PsTagDAO extends HibernateDaoSupport implements IPsTagDAO {
 		}
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public List<PsTag> findAll() {
 		log.debug("finding all PsTag instances");
@@ -90,26 +94,60 @@ public class PsTagDAO extends HibernateDaoSupport implements IPsTagDAO {
 		}
 		return retList;
 	}
+	
+	
+	/*
+	 select TG.*, sum(TG.id) as TG_C from ps_tag as TG
+		inner join r_tag_item	as RTI 	on RTI.id_tag 	= TG.id
+		inner join ps_item 		as IT 	on IT.id 		= RTI.id_item
+		inner join ps_category 	as CAT 	on CAT.id 		= IT.id_category
+where CAT.id = ?
+group by TG.id
+order by TG_C
+limit 0, 64
+	 */
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<PsTag> selectTopTags(int category, List<String> items)
-	{
+	public List<PsTag> selectTopTags(final int category, final int limit) {
+		
 		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsTag>>() {
 
 			@Override
 			public List<PsTag> doInHibernate(Session session)
 					throws HibernateException, SQLException {
-				
-				StringBuilder b = new StringBuilder(512);
-				b.append("select * from ");
-				
-				SQLQuery q = session.createSQLQuery("");
-				
-				return q.addEntity(PsTag.class).list();
+				SQLQuery query = session.createSQLQuery(
+"select TG.* sum(TG.id) as TG_C from ps_tag as TG"
++"		inner join r_tag_item as RTI on RTI.id_t"
++"		inner join ps_item as IT on IT.id = RTI.id_item"
++"		inner join ps_category as CAT on CAT.id = IT.id_category"
++"where CAT.id = ?"
++"group by TG.id"
++"order by TG_C"
++"limit 0, ?");
+				query.addEntity(PsTag.class);
+				query.setInteger(0, category);
+				query.setInteger(1, limit);
+				return query.list();
 			}
-			
 		});
+	}
+
+	@Override
+	public List<PsTag> selectTopTags(int category, List<String> items)
+	{
+		throw new RuntimeException("not implemented yet");
+//		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsTag>>() {
+//
+//			@Override
+//			public List<PsTag> doInHibernate(Session session)
+//					throws HibernateException, SQLException {
+//				StringBuilder b = new StringBuilder(512);
+//				b.append("select * from ");
+//				SQLQuery q = session.createSQLQuery("");
+//				return q.addEntity(PsTag.class).list();
+//			}
+//		});
 		
 	}
 }

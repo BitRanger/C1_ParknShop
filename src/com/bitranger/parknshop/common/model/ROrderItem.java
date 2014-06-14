@@ -81,7 +81,7 @@ public class ROrderItem implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_item", nullable = false, insertable = false, updatable = false)
 	public PsItem getPsItem() {
 		return this.psItem;
@@ -91,7 +91,7 @@ public class ROrderItem implements java.io.Serializable {
 		this.psItem = psItem;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_order", nullable = false, insertable = false, updatable = false)
 	public PsOrder getPsOrder() {
 		return this.psOrder;

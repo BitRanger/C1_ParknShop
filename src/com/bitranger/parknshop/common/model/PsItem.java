@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2014 BitRanger.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * 
- * Contributors:
- *     BitRanger - initial API and implementation
- ******************************************************************************/
 package com.bitranger.parknshop.common.model;
 
 import java.sql.Timestamp;
@@ -21,16 +11,15 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import com.bitranger.parknshop.buyer.model.CartCustomerItem;
-import com.bitranger.parknshop.buyer.model.PsCustomer;
+import com.bitranger.parknshop.buyer.model.CustomerFavouriteItem;
+import com.bitranger.parknshop.common.ads.PsPromotItem;
 import com.bitranger.parknshop.seller.model.PsShop;
 
 /**
@@ -42,28 +31,29 @@ public class PsItem implements java.io.Serializable {
 
 	// Fields
 
-<<<<<<< HEAD
-	public static final long serialVersionUID = -1092009857032674996L;
-	
-	public Integer id;
-	public PsShop psShop;
-	public PsCategory psCategory;
-	public String name;
-	public String introduction;
-	public Double price;
-	public String extra1;
-	public String extra2;
-	public Timestamp timeCreated = new Timestamp(System.currentTimeMillis());
-	public Integer countPurchase = 0;
-	public Integer countFavourite = 0;
-	public Integer countClick = 0;
-	public Double vote = 0.0;
-	public Set<PsCustomer> psCustomers = new HashSet<PsCustomer>(0);
-	public Set<PsComment> psComments = new HashSet<PsComment>(0);
-	public Set<PsTag> psTags = new HashSet<PsTag>(0);
-	public PsItemInfo psItemInfo;
-	public Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(0);
-	public Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
+	private Integer id;
+	private PsShop psShop;
+	private PsCategory psCategory;
+	private String name;
+	private String introduction;
+	private Double price;
+	private String urlPicture;
+	private String extra1;
+	private String extra2;
+	private Timestamp timeCreated;
+	private Integer countPurchase;
+	private Integer countFavourite;
+	private Integer countClick;
+	private Double vote;
+	private Set<CustomerFavouriteItem> customerFavouriteItems = new HashSet<CustomerFavouriteItem>(
+			32);
+	private Set<PsPromotItem> psPromotItems = new HashSet<PsPromotItem>(0);
+	private Set<PsComment> psComments = new HashSet<PsComment>(0);
+	private Set<PsTag> psTags = new HashSet<PsTag>(0);
+	private PsItemInfo psItemInfo;
+	private Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(
+			32);
+	private Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
 
 	// Constructors
 
@@ -72,19 +62,27 @@ public class PsItem implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsItem(PsShop psShop, PsCategory psCategory, String name, Double price) {
+	public PsItem(PsShop psShop, PsCategory psCategory, String name,
+			Double price, Timestamp timeCreated, Integer countPurchase,
+			Integer countFavourite, Integer countClick, Double vote) {
 		this.psShop = psShop;
 		this.psCategory = psCategory;
 		this.name = name;
 		this.price = price;
+		this.timeCreated = timeCreated;
+		this.countPurchase = countPurchase;
+		this.countFavourite = countFavourite;
+		this.countClick = countClick;
+		this.vote = vote;
 	}
 
 	/** full constructor */
 	public PsItem(PsShop psShop, PsCategory psCategory, String name,
-			String introduction, String url_picture, Double price, String extra1, String extra2,
-			Timestamp timeCreated, Integer countPurchase,
-			Integer countFavourite, Integer countClick, Double vote,
-			Set<PsCustomer> psCustomers, Set<PsComment> psComments,
+			String introduction, Double price, String urlPicture,
+			String extra1, String extra2, Timestamp timeCreated,
+			Integer countPurchase, Integer countFavourite, Integer countClick,
+			Double vote, Set<CustomerFavouriteItem> customerFavouriteItems,
+			Set<PsPromotItem> psPromotItems, Set<PsComment> psComments,
 			Set<PsTag> psTags, PsItemInfo psItemInfo,
 			Set<CartCustomerItem> cartCustomerItems, Set<ROrderItem> ROrderItems) {
 		this.psShop = psShop;
@@ -92,7 +90,7 @@ public class PsItem implements java.io.Serializable {
 		this.name = name;
 		this.introduction = introduction;
 		this.price = price;
-		this.urlPicture = url_picture;
+		this.urlPicture = urlPicture;
 		this.extra1 = extra1;
 		this.extra2 = extra2;
 		this.timeCreated = timeCreated;
@@ -100,7 +98,8 @@ public class PsItem implements java.io.Serializable {
 		this.countFavourite = countFavourite;
 		this.countClick = countClick;
 		this.vote = vote;
-		this.psCustomers = psCustomers;
+		this.customerFavouriteItems = customerFavouriteItems;
+		this.psPromotItems = psPromotItems;
 		this.psComments = psComments;
 		this.psTags = psTags;
 		this.psItemInfo = psItemInfo;
@@ -130,7 +129,7 @@ public class PsItem implements java.io.Serializable {
 		this.psShop = psShop;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_category", nullable = false)
 	public PsCategory getPsCategory() {
 		return this.psCategory;
@@ -140,7 +139,7 @@ public class PsItem implements java.io.Serializable {
 		this.psCategory = psCategory;
 	}
 
-	@Column(name = "name", nullable = false, length = 200)
+	@Column(name = "name", nullable = false)
 	public String getName() {
 		return this.name;
 	}
@@ -149,7 +148,7 @@ public class PsItem implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@Column(name = "introduction", length = 5000)
+	@Column(name = "introduction", length = 65535)
 	public String getIntroduction() {
 		return this.introduction;
 	}
@@ -167,7 +166,16 @@ public class PsItem implements java.io.Serializable {
 		this.price = price;
 	}
 
-	@Column(name = "extra_1", length = 120)
+	@Column(name = "url_picture", length = 65535)
+	public String getUrlPicture() {
+		return this.urlPicture;
+	}
+
+	public void setUrlPicture(String urlPicture) {
+		this.urlPicture = urlPicture;
+	}
+
+	@Column(name = "extra_1", length = 65535)
 	public String getExtra1() {
 		return this.extra1;
 	}
@@ -176,7 +184,7 @@ public class PsItem implements java.io.Serializable {
 		this.extra1 = extra1;
 	}
 
-	@Column(name = "extra_2", length = 120)
+	@Column(name = "extra_2", length = 65535)
 	public String getExtra2() {
 		return this.extra2;
 	}
@@ -194,7 +202,7 @@ public class PsItem implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@Column(name = "count_purchase", unique = false, nullable = false)
+	@Column(name = "count_purchase", nullable = false)
 	public Integer getCountPurchase() {
 		return this.countPurchase;
 	}
@@ -203,7 +211,7 @@ public class PsItem implements java.io.Serializable {
 		this.countPurchase = countPurchase;
 	}
 
-	@Column(name = "count_favourite", unique = false, nullable = false)
+	@Column(name = "count_favourite", nullable = false)
 	public Integer getCountFavourite() {
 		return this.countFavourite;
 	}
@@ -212,7 +220,7 @@ public class PsItem implements java.io.Serializable {
 		this.countFavourite = countFavourite;
 	}
 
-	@Column(name = "count_click", unique = false, nullable = false)
+	@Column(name = "count_click", nullable = false)
 	public Integer getCountClick() {
 		return this.countClick;
 	}
@@ -230,17 +238,29 @@ public class PsItem implements java.io.Serializable {
 		this.vote = vote;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "customer_favourite_item", catalog = "c1_parknshop", joinColumns = { @JoinColumn(name = "id_item", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_customer", nullable = false, updatable = false) })
-	public Set<PsCustomer> getPsCustomers() {
-		return this.psCustomers;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
+				mappedBy = "psItem")
+	public Set<CustomerFavouriteItem> getCustomerFavouriteItems() {
+		return this.customerFavouriteItems;
 	}
 
-	public void setPsCustomers(Set<PsCustomer> psCustomers) {
-		this.psCustomers = psCustomers;
+	public void setCustomerFavouriteItems(
+			Set<CustomerFavouriteItem> customerFavouriteItems) {
+		this.customerFavouriteItems = customerFavouriteItems;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psItem")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
+			mappedBy = "psItem")
+	public Set<PsPromotItem> getPsPromotItems() {
+		return this.psPromotItems;
+	}
+
+	public void setPsPromotItems(Set<PsPromotItem> psPromotItems) {
+		this.psPromotItems = psPromotItems;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
+			mappedBy = "psItem")
 	public Set<PsComment> getPsComments() {
 		return this.psComments;
 	}
@@ -249,7 +269,8 @@ public class PsItem implements java.io.Serializable {
 		this.psComments = psComments;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psItems")
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
+			mappedBy = "psItems")
 	public Set<PsTag> getPsTags() {
 		return this.psTags;
 	}
@@ -258,7 +279,7 @@ public class PsItem implements java.io.Serializable {
 		this.psTags = psTags;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "psItem")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psItem")
 	public PsItemInfo getPsItemInfo() {
 		return this.psItemInfo;
 	}
@@ -267,7 +288,8 @@ public class PsItem implements java.io.Serializable {
 		this.psItemInfo = psItemInfo;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psItem")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
+			mappedBy = "psItem")
 	public Set<CartCustomerItem> getCartCustomerItems() {
 		return this.cartCustomerItems;
 	}
@@ -276,7 +298,8 @@ public class PsItem implements java.io.Serializable {
 		this.cartCustomerItems = cartCustomerItems;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psItem")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
+			mappedBy = "psItem")
 	public Set<ROrderItem> getROrderItems() {
 		return this.ROrderItems;
 	}
@@ -285,14 +308,4 @@ public class PsItem implements java.io.Serializable {
 		this.ROrderItems = ROrderItems;
 	}
 
-	@Column(name="url_picture", length=1024)
-	public String getUrlPicture() {
-		return urlPicture;
-	}
-
-	public void setUrlPicture(String urlPicture) {
-		this.urlPicture = urlPicture;
-	}
-
-	
 }

@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2014 BitRanger.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * 
- * Contributors:
- *     BitRanger - initial API and implementation
- ******************************************************************************/
 package com.bitranger.parknshop.common.model;
 
 import java.util.HashSet;
@@ -31,12 +21,11 @@ public class PsCategory implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2906574866680065588L;
 	private Integer id;
 	private String name;
+	private String description;
+	private String extral1;
+	private String extral2;
 	private Set<PsItem> psItems = new HashSet<PsItem>(0);
 
 	// Constructors
@@ -51,8 +40,12 @@ public class PsCategory implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PsCategory(String name, Set<PsItem> psItems) {
+	public PsCategory(String name, String description, String extral1,
+			String extral2, Set<PsItem> psItems) {
 		this.name = name;
+		this.description = description;
+		this.extral1 = extral1;
+		this.extral2 = extral2;
 		this.psItems = psItems;
 	}
 
@@ -68,13 +61,40 @@ public class PsCategory implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "name", nullable = false, length = 45)
+	@Column(name = "name", nullable = false)
 	public String getName() {
 		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Column(name = "description", length = 65535)
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Column(name = "extral_1", length = 65535)
+	public String getExtral1() {
+		return this.extral1;
+	}
+
+	public void setExtral1(String extral1) {
+		this.extral1 = extral1;
+	}
+
+	@Column(name = "extral_2", length = 65535)
+	public String getExtral2() {
+		return this.extral2;
+	}
+
+	public void setExtral2(String extral2) {
+		this.extral2 = extral2;
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCategory")

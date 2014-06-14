@@ -36,7 +36,7 @@ public class PsRecipient implements java.io.Serializable {
 	private String province;
 	private String city;
 	private String detailedAddr;
-	private Set<PsOrder> psOrders = new HashSet<PsOrder>(0);
+	private Set<PsOrder> psOrders = new HashSet<PsOrder>(32);
 
 	// Constructors
 
@@ -86,7 +86,7 @@ public class PsRecipient implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", nullable = false)
 	public PsCustomer getPsCustomer() {
 		return this.psCustomer;

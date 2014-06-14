@@ -69,7 +69,9 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 						public List<PsOrder> doInHibernate(Session arg0)
 								throws HibernateException, SQLException {
 							SQLQuery query = arg0
-									.createSQLQuery("select * from ps_order as P where P.id_customer = ? and P.time_created > ? and P.time_created < ?");
+									.createSQLQuery(
+"select * from ps_order as P where P.id_customer = ? and P.time_created > ? " +
+"+ and P.time_created < ?");
 							query.setInteger(0, id)
 									.setDate(1, from)
 									.setDate(2, to);
@@ -97,7 +99,8 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 						public List<PsOrder> doInHibernate(Session arg0)
 								throws HibernateException, SQLException {
 							SQLQuery query = arg0
-									.createSQLQuery("select * from ps_order as P where P.id_customer = ? and P.status = ?");
+									.createSQLQuery(
+"select * from ps_order as P where P.id_customer = ? and P.status = ?");
 							query.setInteger(0, id)
 								.setString(1, state.toString());
 							query.addEntity(PsOrder.class);
@@ -124,7 +127,9 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 						public List<PsOrder> doInHibernate(Session arg0)
 								throws HibernateException, SQLException {
 							SQLQuery query = arg0
-									.createSQLQuery("select * from ps_order as P where P.id_shop = ? and P.time_created > ? and P.time_created < ?");
+									.createSQLQuery(
+"select * from ps_order as P where P.id_shop = ? and P.time_created > ? " +
+" and P.time_created < ?");
 							query.setInteger(0, id)
 									.setDate(1, from)
 									.setDate(2, to);
@@ -152,7 +157,8 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 						public List<PsOrder> doInHibernate(Session arg0)
 								throws HibernateException, SQLException {
 							SQLQuery query = arg0
-									.createSQLQuery("select * from ps_order as P where P.id_shop = ? and P.status = ?");
+									.createSQLQuery(
+"select * from ps_order as P where P.id_shop = ? and P.status = ?");
 							query.setInteger(0, id)
 								.setString(1, state.toString());
 							query.addEntity(PsOrder.class);
@@ -195,10 +201,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 		}
 	}
 
-//=============================================================================
 	// property constants
-	public static final String ID_CUSTOMER = "idCustomer";
-	public static final String ID_SHOP = "idShop";
 	public static final String STATUS = "status";
 	public static final String TRACKING_NUMBER = "trackingNumber";
 	public static final String PRICE_TOTAL = "priceTotal";
@@ -268,14 +271,6 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 		}
 	}
 
-	public List<PsOrder> findByIdCustomer(Object idCustomer) {
-		return findByProperty(ID_CUSTOMER, idCustomer);
-	}
-
-	public List<PsOrder> findByIdShop(Object idShop) {
-		return findByProperty(ID_SHOP, idShop);
-	}
-
 	public List<PsOrder> findByStatus(Object status) {
 		return findByProperty(STATUS, status);
 	}
@@ -337,5 +332,4 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 	public static PsOrderDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (PsOrderDAO) ctx.getBean("PsOrderDAO");
 	}
-	
 }

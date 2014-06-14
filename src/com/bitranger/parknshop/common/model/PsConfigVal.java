@@ -19,10 +19,6 @@ public class PsConfigVal implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -956014206279247596L;
 	private Integer id;
 	private PsConfigKey psConfigKey;
 	private String val;
@@ -56,7 +52,7 @@ public class PsConfigVal implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_key", nullable = false)
 	public PsConfigKey getPsConfigKey() {
 		return this.psConfigKey;

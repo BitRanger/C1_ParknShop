@@ -87,7 +87,7 @@ public class PsConfigKey implements java.io.Serializable {
 		this.name = name;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psConfigKey")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psConfigKey")
 	public Set<PsConfigVal> getPsConfigVals() {
 		return this.psConfigVals;
 	}

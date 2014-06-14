@@ -107,7 +107,7 @@ public class PsAdministator implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "psAdministator")
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psAdministator")
 	public PsNoticeAdmin getPsNoticeAdmin() {
 		return this.psNoticeAdmin;
 	}

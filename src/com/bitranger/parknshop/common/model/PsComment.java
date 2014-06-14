@@ -77,7 +77,7 @@ public class PsComment implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_item", nullable = false)
 	public PsItem getPsItem() {
 		return this.psItem;
@@ -87,7 +87,7 @@ public class PsComment implements java.io.Serializable {
 		this.psItem = psItem;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", nullable = false)
 	public PsCustomer getPsCustomer() {
 		return this.psCustomer;

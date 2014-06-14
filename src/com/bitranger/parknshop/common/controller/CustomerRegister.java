@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitranger.parknshop.buyer.dao.IPsCustomerDAO;
@@ -55,14 +56,31 @@ public class CustomerRegister {
 	 * @return
 	 */
 	@RequestMapping(value="/register")//, method=RequestMethod.POST)
-	public String registerCustomer(HttpServletRequest req, String username, String email, String password, String buyer, String seller)
+	public String registerCustomer(HttpServletRequest req, 
+		 @RequestParam	String username, 
+		 String email, 
+		 String password, 
+		 String buyer, 
+		 String seller)
 	{
 		log.debug("User " + username + " Logged in.");
 		if(seller!=null)
 		{
 			log.debug("Seller Logged in.");
 			Timestamp now = new Timestamp(System.currentTimeMillis());
-			PsSeller toAdd = new PsSeller(username, email, password, now);
+			
+//			public PsSeller(String nickname, String personIdNum, String password, String email) {
+//				
+//				this.nickname = nickname;
+//				this.personIdNum = personIdNum;
+//				this.password = password;
+//				this.email = email;
+//			}
+//			this.nickname = nickname;
+//			this.personIdNum = personIdNum;
+//			this.password = password;
+//			this.email = email;
+			PsSeller toAdd = new PsSeller(username, email, password);
 			psSellerDao.save(toAdd);
 			req.getSession().setAttribute("currentCustomer", toAdd);
 		}

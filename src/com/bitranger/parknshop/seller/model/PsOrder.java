@@ -1,6 +1,9 @@
 package com.bitranger.parknshop.seller.model;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +12,11 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.bitranger.parknshop.buyer.model.PsCustomer;
+import com.bitranger.parknshop.common.model.ROrderItem;
 
 /**
  * PsOrder entity. @author MyEclipse Persistence Tools
@@ -20,15 +27,15 @@ public class PsOrder implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = 6373864068325376498L;
 	private Integer id;
 	private PsRecipient psRecipient;
-	private Integer idCustomer;
-	private Integer idShop;
+	private PsCustomer psCustomer;
+	private PsShop psShop;
 	private Short status;
 	private String trackingNumber;
 	private Double priceTotal;
 	private Timestamp timeCreated;
+	private Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
 
 	// Constructors
 
@@ -37,27 +44,30 @@ public class PsOrder implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsOrder(PsRecipient psRecipient, Integer idCustomer, Integer idShop,
-			Short status, Double priceTotal, Timestamp timeCreated) {
+	public PsOrder(PsRecipient psRecipient, PsCustomer psCustomer,
+			PsShop psShop, Short status, Double priceTotal,
+			Timestamp timeCreated) {
 		this.psRecipient = psRecipient;
-		this.idCustomer = idCustomer;
-		this.idShop = idShop;
+		this.psCustomer = psCustomer;
+		this.psShop = psShop;
 		this.status = status;
 		this.priceTotal = priceTotal;
 		this.timeCreated = timeCreated;
 	}
 
 	/** full constructor */
-	public PsOrder(PsRecipient psRecipient, Integer idCustomer, Integer idShop,
-			Short status, String trackingNumber, Double priceTotal,
-			Timestamp timeCreated) {
+	public PsOrder(PsRecipient psRecipient, PsCustomer psCustomer,
+			PsShop psShop, Short status, String trackingNumber,
+			Double priceTotal, Timestamp timeCreated,
+			Set<ROrderItem> ROrderItems) {
 		this.psRecipient = psRecipient;
-		this.idCustomer = idCustomer;
-		this.idShop = idShop;
+		this.psCustomer = psCustomer;
+		this.psShop = psShop;
 		this.status = status;
 		this.trackingNumber = trackingNumber;
 		this.priceTotal = priceTotal;
 		this.timeCreated = timeCreated;
+		this.ROrderItems = ROrderItems;
 	}
 
 	// Property accessors
@@ -82,22 +92,24 @@ public class PsOrder implements java.io.Serializable {
 		this.psRecipient = psRecipient;
 	}
 
-	@Column(name = "id_customer", nullable = false)
-	public Integer getIdCustomer() {
-		return this.idCustomer;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_customer", nullable = false)
+	public PsCustomer getPsCustomer() {
+		return this.psCustomer;
 	}
 
-	public void setIdCustomer(Integer idCustomer) {
-		this.idCustomer = idCustomer;
+	public void setPsCustomer(PsCustomer psCustomer) {
+		this.psCustomer = psCustomer;
 	}
 
-	@Column(name = "id_shop", nullable = false)
-	public Integer getIdShop() {
-		return this.idShop;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_shop", nullable = false)
+	public PsShop getPsShop() {
+		return this.psShop;
 	}
 
-	public void setIdShop(Integer idShop) {
-		this.idShop = idShop;
+	public void setPsShop(PsShop psShop) {
+		this.psShop = psShop;
 	}
 
 	@Column(name = "status", nullable = false)
@@ -134,6 +146,15 @@ public class PsOrder implements java.io.Serializable {
 
 	public void setTimeCreated(Timestamp timeCreated) {
 		this.timeCreated = timeCreated;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psOrder")
+	public Set<ROrderItem> getROrderItems() {
+		return this.ROrderItems;
+	}
+
+	public void setROrderItems(Set<ROrderItem> ROrderItems) {
+		this.ROrderItems = ROrderItems;
 	}
 
 }

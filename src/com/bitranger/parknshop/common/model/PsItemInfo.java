@@ -65,7 +65,7 @@ public class PsItemInfo implements java.io.Serializable {
 		this.idItem = idItem;
 	}
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@PrimaryKeyJoinColumn
 	public PsItem getPsItem() {
 		return this.psItem;

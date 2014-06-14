@@ -49,10 +49,9 @@ public class PsSeller implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsSeller(String nickname, String personIdNum, String password, String email) {
+	public PsSeller(String nickname, String password, String email) {
 		
 		this.nickname = nickname;
-		this.personIdNum = personIdNum;
 		this.password = password;
 		this.email = email;
 	}
@@ -136,7 +135,7 @@ public class PsSeller implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psSeller")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psSeller")
 	public Set<PsShop> getPsShops() {
 		return this.psShops;
 	}

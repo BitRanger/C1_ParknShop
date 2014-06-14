@@ -9,11 +9,11 @@
   <link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
 <body>
-<%@ include file="include/header.jsp" %>
+<%@ include file="../include/header.jsp" %>
 
 
 <div id="categorybarDiv">
-    <%@ include file="include/categorybar.jsp" %>
+    <%@ include file="../include/categorybar.jsp" %>
 </div>
 <div id="mainContent">
 
@@ -188,7 +188,7 @@
 
 
 
-<%@ include file="include/footer.jsp" %>
+<%@ include file="../include/footer.jsp" %>
 
 <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
