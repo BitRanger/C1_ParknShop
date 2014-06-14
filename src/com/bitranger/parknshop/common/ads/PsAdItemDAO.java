@@ -61,7 +61,7 @@ public class PsAdItemDAO extends HibernateDaoSupport {
 		log.debug("getting PsAdItem instance with id: " + id);
 		try {
 			PsAdItem instance = (PsAdItem) getHibernateTemplate().get(
-					"temp.PsAdItem", id);
+					"com.bitranger.parknshop.common.ads.PsAdItem", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

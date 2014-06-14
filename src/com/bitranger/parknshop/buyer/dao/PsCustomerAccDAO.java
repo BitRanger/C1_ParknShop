@@ -57,7 +57,7 @@ public class PsCustomerAccDAO extends HibernateDaoSupport {
 		log.debug("getting PsCustomerAcc instance with id: " + id);
 		try {
 			PsCustomerAcc instance = (PsCustomerAcc) getHibernateTemplate()
-					.get("temp.PsCustomerAcc", id);
+					.get("com.bitranger.parknshop.buyer.model.PsCustomerAcc", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

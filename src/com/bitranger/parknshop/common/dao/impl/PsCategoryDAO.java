@@ -71,7 +71,7 @@ public class PsCategoryDAO extends HibernateDaoSupport implements IPsCategoryDAO
 		log.debug("getting PsCategory instance with id: " + id);
 		try {
 			PsCategory instance = (PsCategory) getHibernateTemplate().get(
-					"temp.PsCategory", id);
+					"com.bitranger.parknshop.common.model.PsCategory", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

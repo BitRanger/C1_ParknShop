@@ -18,7 +18,7 @@ import com.bitranger.parknshop.seller.model.PsSellerAcc;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see temp.PsSellerAcc
+ * @see PsSellerAcc
  * @author MyEclipse Persistence Tools
  */
 public class PsSellerAccDAO extends HibernateDaoSupport {
@@ -57,7 +57,7 @@ public class PsSellerAccDAO extends HibernateDaoSupport {
 		log.debug("getting PsSellerAcc instance with id: " + id);
 		try {
 			PsSellerAcc instance = (PsSellerAcc) getHibernateTemplate().get(
-					"temp.PsSellerAcc", id);
+					"com.bitranger.parknshop.seller.model.PsSellerAcc", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

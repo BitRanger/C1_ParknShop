@@ -57,7 +57,7 @@ public class PsNoticeAdminDAO extends HibernateDaoSupport {
 		log.debug("getting PsNoticeAdmin instance with id: " + id);
 		try {
 			PsNoticeAdmin instance = (PsNoticeAdmin) getHibernateTemplate()
-					.get("temp.PsNoticeAdmin", id);
+					.get("com.bitranger.parknshop.admin.data.PsNoticeAdmin", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

@@ -23,6 +23,7 @@ import com.bitranger.parknshop.common.model.ROrderItem;
 import com.bitranger.parknshop.common.model.ROrderItemId;
 import com.bitranger.parknshop.seller.OrderState;
 import com.bitranger.parknshop.seller.dao.IPsOrderDAO;
+import com.bitranger.parknshop.seller.dao.IPsRecipientDAO;
 import com.bitranger.parknshop.seller.model.PsOrder;
 import com.bitranger.parknshop.seller.model.PsRecipient;
 
@@ -47,17 +48,17 @@ public class MakeOrder {
 
 	@Autowired
 	private ICartCustomerItemDAO psCartCustomerItemDao;
+	
+	@Autowired
+	private IPsRecipientDAO psRecipientDAO;
 
 	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger
 			.getLogger(MakeOrder.class.getName());
 
 	@RequestMapping("/submitOrder")
-	public String submitOrder(HttpServletRequest req, String address,
-			String postalCode, String recipientName, String recipientPhone) {
-		if (address == null || postalCode == null || recipientName == null
-				|| recipientPhone == null)
+	public String submitOrder(HttpServletRequest req, Integer psRecipientId) {
+		if (psRecipientId == null)
 			return "redirect:/";
-		
 		log.debug("Order submitted.");
 		
 		PsCustomer currentCustomer = (PsCustomer) req.getSession()
@@ -67,6 +68,11 @@ public class MakeOrder {
 			log.error("User haven't logged in but submitted an order.");
 			return "redirect:/";
 		}
+		
+		PsRecipient psRecipient = psRecipientDAO.findById(psRecipientId);
+		if(psRecipient == null || psRecipient.getPsCustomer().getId()!=currentCustomer.getId())
+			return Utility.error("Recipient ID is invalid.");
+		
 		FetchOption option = new FetchOption();
 		option.ascending();
 		option.offset = 0;
@@ -86,13 +92,11 @@ public class MakeOrder {
 		}
 		transientOrder.setROrderItems(orderItems);
 		transientOrder.setStatus(OrderStatus.UNPAID);
-		transientOrder.setPostalCode(postalCode);
 		transientOrder
 				.setTimeCreated(new Timestamp(System.currentTimeMillis()));
-		transientOrder.setNameRecipient(recipientName);
-		transientOrder.setPhoneRecipient(recipientPhone);
 		transientOrder.setPsCustomer(currentCustomer);
 		transientOrder.setPriceTotal(priceTotal);
+		transientOrder.setPsRecipient(psRecipient);
 		log.debug("Ready to save the transient order to the DB");
 		psOrderDao.save(transientOrder);
 		log.debug("Save successfully");

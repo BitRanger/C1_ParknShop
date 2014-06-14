@@ -24,7 +24,7 @@ import com.bitranger.parknshop.seller.model.PsNoticeSeller;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see temp.PsNoticeSeller
+ * @see PsNoticeSeller
  * @author MyEclipse Persistence Tools
  */
 public class PsNoticeSellerDAO extends HibernateDaoSupport implements IPsNoticeSellerDAO {
@@ -77,7 +77,7 @@ public class PsNoticeSellerDAO extends HibernateDaoSupport implements IPsNoticeS
 		log.debug("getting PsNoticeSeller instance with id: " + id);
 		try {
 			PsNoticeSeller instance = (PsNoticeSeller) getHibernateTemplate()
-					.get("temp.PsNoticeSeller", id);
+					.get("com.bitranger.parknshop.seller.model.PsNoticeSeller", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

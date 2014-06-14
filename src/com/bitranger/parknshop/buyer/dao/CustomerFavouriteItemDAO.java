@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bitranger.parknshop.buyer.model.CustomerFavouriteItem;
+import com.bitranger.parknshop.buyer.model.CustomerFavouriteItemId;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -53,11 +54,11 @@ public class CustomerFavouriteItemDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public CustomerFavouriteItem findById(temp.CustomerFavouriteItemId id) {
+	public CustomerFavouriteItem findById(CustomerFavouriteItemId id) {
 		log.debug("getting CustomerFavouriteItem instance with id: " + id);
 		try {
 			CustomerFavouriteItem instance = (CustomerFavouriteItem) getHibernateTemplate()
-					.get("temp.CustomerFavouriteItem", id);
+					.get("com.bitranger.parknshop.buyer.model.CustomerFavouriteItem", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

@@ -61,7 +61,7 @@ public class PsItemPromotInfoDAO extends HibernateDaoSupport {
 		log.debug("getting PsItemPromotInfo instance with id: " + id);
 		try {
 			PsItemPromotInfo instance = (PsItemPromotInfo) getHibernateTemplate()
-					.get("temp.PsItemPromotInfo", id);
+					.get("com.bitranger.parknshop.common.ads.PsItemPromotInfo", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

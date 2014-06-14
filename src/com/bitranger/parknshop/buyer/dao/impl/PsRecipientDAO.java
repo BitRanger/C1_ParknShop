@@ -64,7 +64,7 @@ public class PsRecipientDAO extends HibernateDaoSupport {
 		log.debug("getting PsRecipient instance with id: " + id);
 		try {
 			PsRecipient instance = (PsRecipient) getHibernateTemplate().get(
-					"temp.PsRecipient", id);
+					"com.bitranger.parknshop.seller.model.PsRecipient", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

@@ -59,7 +59,7 @@ public class PsConfigKeyDAO extends HibernateDaoSupport {
 		log.debug("getting PsConfigKey instance with id: " + id);
 		try {
 			PsConfigKey instance = (PsConfigKey) getHibernateTemplate().get(
-					"temp.PsConfigKey", id);
+					"com.bitranger.parknshop.common.model.PsConfigKey", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

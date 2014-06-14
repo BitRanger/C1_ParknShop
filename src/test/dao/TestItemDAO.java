@@ -49,7 +49,7 @@ import com.bitranger.parknshop.seller.model.PsShop;
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
 public class TestItemDAO extends TestSuite {
 	
-	@Inject
+/*	@Inject
 	PsCategoryDAO psCategoryDAO;
 	
 	
@@ -101,5 +101,5 @@ public class TestItemDAO extends TestSuite {
 		for (PsItem i : psItemDAO.findAll()) {
 			System.out.println(i.getName());
 		}
-	}
+	}*/
 }

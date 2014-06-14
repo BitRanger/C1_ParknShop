@@ -79,7 +79,7 @@ public class PsNoticeCustomerDAO extends HibernateDaoSupport implements IPsNotic
 		log.debug("getting PsNoticeCustomer instance with id: " + id);
 		try {
 			PsNoticeCustomer instance = (PsNoticeCustomer) getHibernateTemplate()
-					.get("temp.PsNoticeCustomer", id);
+					.get("com.bitranger.parknshop.buyer.model.PsNoticeCustomer", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

@@ -20,4 +20,5 @@ public interface IPsRecipientDAO {
 	public abstract void update(PsRecipient detachedInstance);
 	
 	public abstract List<PsRecipient> findByCustomId(Integer id);
+	public PsRecipient findById(Integer id);
 }

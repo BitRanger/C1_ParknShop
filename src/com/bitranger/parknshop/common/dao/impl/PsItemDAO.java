@@ -485,7 +485,7 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 		log.debug("getting PsItem instance with id: " + id);
 		try {
 			PsItem instance = (PsItem) getHibernateTemplate().get(
-					"temp.PsItem", id);
+					"com.bitranger.parknshop.common.model.PsItem", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

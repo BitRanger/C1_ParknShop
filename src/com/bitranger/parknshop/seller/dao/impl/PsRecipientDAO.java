@@ -25,7 +25,7 @@ import com.bitranger.parknshop.seller.model.PsRecipient;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see temp.PsRecipient
+ * @see PsRecipient
  * @author MyEclipse Persistence Tools
  */
 public class PsRecipientDAO extends HibernateDaoSupport implements IPsRecipientDAO  {
@@ -67,11 +67,11 @@ public class PsRecipientDAO extends HibernateDaoSupport implements IPsRecipientD
 		}
 	}
 
-	public PsRecipient findById(java.lang.Integer id) {
+	public PsRecipient findById(Integer id) {
 		log.debug("getting PsRecipient instance with id: " + id);
 		try {
 			PsRecipient instance = (PsRecipient) getHibernateTemplate().get(
-					"temp.PsRecipient", id);
+					"com.bitranger.parknshop.seller.model.PsRecipient", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
