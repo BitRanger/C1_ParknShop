@@ -50,6 +50,17 @@ public class PsAdminAccDAO extends HibernateDaoSupport {
 			throw re;
 		}
 	}
+	
+	public void update(PsAdminAcc persistentInstance) {
+		log.debug("deleting PsAdminAcc instance");
+		try {
+			getHibernateTemplate().update(persistentInstance);
+			log.debug("delete successful");
+		} catch (RuntimeException re) {
+			log.error("delete failed", re);
+			throw re;
+		}
+	}
 
 	public PsAdminAcc findById(java.lang.Integer id) {
 		log.debug("getting PsAdminAcc instance with id: " + id);

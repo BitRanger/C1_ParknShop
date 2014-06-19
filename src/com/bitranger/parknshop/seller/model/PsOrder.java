@@ -35,6 +35,9 @@ public class PsOrder implements java.io.Serializable {
 	private String trackingNumber;
 	private Double priceTotal;
 	private Timestamp timeCreated;
+	private Timestamp timePaid;
+	private Timestamp timeBeginDeliver;
+	private Timestamp timeFinished;
 	private Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
 
 	// Constructors
@@ -156,5 +159,31 @@ public class PsOrder implements java.io.Serializable {
 	public void setROrderItems(Set<ROrderItem> ROrderItems) {
 		this.ROrderItems = ROrderItems;
 	}
+	
+	@Column(name = "time_paid", nullable = true, length = 19)
+	public Timestamp getTimePaid() {
+		return timePaid;
+	}
 
+	public void setTimePaid(Timestamp timePaid) {
+		this.timePaid = timePaid;
+	}
+
+	@Column(name = "time_begindeliver", nullable = true, length = 19)
+	public Timestamp getTimeBeginDeliver() {
+		return timeBeginDeliver;
+	}
+
+	public void setTimeBeginDeliver(Timestamp timeBeginDeliver) {
+		this.timeBeginDeliver = timeBeginDeliver;
+	}
+
+	@Column(name = "time_finished", nullable = true, length = 19)
+	public Timestamp getTimeFinished() {
+		return timeFinished;
+	}
+
+	public void setTimeFinished(Timestamp timeFinished) {
+		this.timeFinished = timeFinished;
+	}
 }

@@ -41,6 +41,17 @@ public class PsSellerAccDAO extends HibernateDaoSupport {
 			throw re;
 		}
 	}
+	
+	public void update(PsSellerAcc transientInstance) {
+		log.debug("updating PsSellerAcc instance");
+		try {
+			getHibernateTemplate().update(transientInstance);
+			log.debug("update successful");
+		} catch (RuntimeException re) {
+			log.error("update failed", re);
+			throw re;
+		}
+	}
 
 	public void delete(PsSellerAcc persistentInstance) {
 		log.debug("deleting PsSellerAcc instance");

@@ -2,10 +2,14 @@ DELETE FROM `c1_parknshop`.`ps_item`;
 DELETE FROM `c1_parknshop`.`ps_shop`;
 DELETE FROM `c1_parknshop`.`ps_seller`;
 DELETE FROM `c1_parknshop`.`ps_category`;
+DELETE FROM `c1_parknshop`.`ps_administrator`;
+DELETE FROM `c1_parknshop`.`ps_admin_acc`;
 ALTER TABLE `c1_parknshop`.`ps_seller` AUTO_INCREMENT = 1;
 ALTER TABLE `c1_parknshop`.`ps_item` AUTO_INCREMENT = 1;
 ALTER TABLE `c1_parknshop`.`ps_shop` AUTO_INCREMENT = 1;
 ALTER TABLE `c1_parknshop`.`ps_category` AUTO_INCREMENT = 1;
+ALTER TABLE `c1_parknshop`.`ps_administrator` AUTO_INCREMENT = 1;
+ALTER TABLE `c1_parknshop`.`ps_admin_acc` AUTO_INCREMENT = 1;
 
 INSERT INTO `c1_parknshop`.`ps_seller` (`nickname`, `person_id_num`, `email`, `password`, `status`, `time_created`) VALUES ('BossGao', '123', '33323232323@qq.com', '123', '0', '2011-2-3');
 INSERT INTO `c1_parknshop`.`ps_seller` (`nickname`, `person_id_num`, `email`, `password`, `status`, `time_created`) VALUES ('DoubleWen', '345', 'ewrfnsdjkfn@163.com', '123', '0', '2013-5-6');
@@ -39,3 +43,6 @@ OS X Mavericks，了不起的先进操作系统。', '9888.00', '41JTBoB4j7L._AA160_.jpg', '
 INSERT INTO `c1_parknshop`.`ps_item` (`id_shop`, `id_category`, `name`, `introduction`, `price`, `url_picture`, `count_purchase`, `count_favourite`, `count_click`, `vote`, `time_created`) VALUES ('1', '1', 'ThinkPad X240-20AL001-HCD(联想)12.5英寸笔记本电脑(i3-4010U 4G 1TB 蓝牙 指纹识别 摄像头 6芯电池 win8系统)', 'ThinkPad X240为适应新的变化，为满足便携商务的需求，为满足“另一种声音”的需求 应运而生 
 X240搭载全新第四代智能英特尔酷睿处理器，较上一代速度提升11%，更多尖端科技为你带来更卓越的娱乐性能。
 X240屏幕180°开合的设计可以满足用户更多灵活性的使用全新的TrackPad五键合一','4826.00','41qlRzTtkPL._AA160_.jpg',100, 100, 2000, 5,'2014/6/7 20:49');
+
+INSERT INTO `c1_parknshop`.`ps_administrator` (`id`, `email`, `name`, `password`, `time_created`) VALUES (1, 'admin@parknshop.com', 'Super', 'admin', '2014/6/7 7:00');
+INSERT INTO `c1_parknshop`.`ps_admin_acc` (`id_admin`, `balance`, `time_created`) VALUES (1, 1000000.0, '2014/6/7 7:00');

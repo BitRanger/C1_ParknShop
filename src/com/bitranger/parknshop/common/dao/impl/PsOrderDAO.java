@@ -191,7 +191,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<PsOrder> findAll(OrderState state) {
+	public List<PsOrder> findAll(Short state) {
 		log.debug("finding all PsOrder instances by state");
 		try {
 			String queryString = "from PsOrder p where p.status=?";

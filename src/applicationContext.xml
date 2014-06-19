@@ -17,6 +17,15 @@
 						</bean>
 					</property>
 				</bean>
+				<bean
+					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">
+					<property name="period" value="3600000" />
+					<property name="runnable">
+						<bean class="com.bitranger.parknshop.task.OrderChecker">
+							<property name="sessionFactory" ref="sessionFactory"></property>
+						</bean>
+					</property>
+				</bean>
 			</list>
 		</property>
 	</bean>
@@ -91,6 +100,11 @@
 			</bean>
 		</property>
 	</bean>
+
+<!-- 	<bean id="transactionManager" -->
+<!-- 		class="org.springframework.orm.hibernate3.HibernateTransactionManager"> -->
+<!-- 		<property name="sessionFactory" ref="sessionFactory"></property> -->
+<!-- 	</bean> -->
 
 	<bean id="psItemService"
 		class="com.bitranger.parknshop.common.service.impl.PsItemService">
@@ -172,4 +186,14 @@
 	<bean id="psRecipientDAO" class="com.bitranger.parknshop.seller.dao.impl.PsRecipientDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
+
+	<bean id="psAdminAccDao" class="com.bitranger.parknshop.admin.data.PsAdminAccDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="psSellerAccDao" class="com.bitranger.parknshop.seller.dao.PsSellerAccDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+
 </beans>

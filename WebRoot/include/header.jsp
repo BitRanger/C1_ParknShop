@@ -74,7 +74,10 @@
                         <input class="login_input_text" type="text" name="email" /><br>
                         <label class="login_input_text_label">Password</label>
                         <input class="login_input_text" type="password" name="password" /><br>
-
+                        <div>
+                            <input type="radio" name="role" value="buyer" checked="checked" />Buyer
+                            <input type="radio" name="role" value="seller" />Seller
+                        </div>
                         <b><input style="margin: 5px 0;vertical-align: middle;" type="checkbox"></b>
                         <span><label style="margin: 0;vertical-align: middle;font-size: 12px;font-weight: 200;">Stay signed in</label></span>
                         <span style="vertical-align: middle;margin-left: 20px;"><a class="login_link" href="#">Forget Password?</a></span><br>
@@ -83,6 +86,7 @@
                             To protect your privacy, remember to sign out when you're done shopping.
                             <a class="login_link" href="#">Learn more</a>
                         </p>
+                        
                         <input id="login_btn" type="submit" value="Login">
                         <span style="margin-left: 20px;font-size: 12px;">
                             No account?&nbsp;&nbsp;

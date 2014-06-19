@@ -57,36 +57,25 @@ public class CustomerRegister {
 	 */
 	@RequestMapping(value="/register")//, method=RequestMethod.POST)
 	public String registerCustomer(HttpServletRequest req, 
-		 @RequestParam	String username, 
+		 String username, 
 		 String email, 
 		 String password, 
-		 String buyer, 
-		 String seller)
+		 String role)
 	{
-		log.debug("User " + username + " Logged in.");
-		if(seller!=null)
+		if(email==null || password==null || role==null)
+			return Utility.error("Param Error.");
+		if(role.equals("seller"))
 		{
-			log.debug("Seller Logged in.");
+			log.debug("Seller Try to sign up.");
 			Timestamp now = new Timestamp(System.currentTimeMillis());
-			
-//			public PsSeller(String nickname, String personIdNum, String password, String email) {
-//				
-//				this.nickname = nickname;
-//				this.personIdNum = personIdNum;
-//				this.password = password;
-//				this.email = email;
-//			}
-//			this.nickname = nickname;
-//			this.personIdNum = personIdNum;
-//			this.password = password;
-//			this.email = email;
 			PsSeller toAdd = new PsSeller(username, email, password);
+			toAdd.setTimeCreated(now);
 			psSellerDao.save(toAdd);
-			req.getSession().setAttribute("currentCustomer", toAdd);
+			req.getSession().setAttribute("currentSeller", toAdd);
 		}
-		else if(buyer!=null)
+		else if(role.equals("buyer"))
 		{
-			log.debug("Buyer Logged in.");
+			log.debug("Buyer Try to sign up.");
 			Timestamp now = new Timestamp(System.currentTimeMillis());
 			PsCustomer toAdd = new PsCustomer(username, email, password, new Short((short)0) , now);
 			psCustomerDao.save(toAdd);

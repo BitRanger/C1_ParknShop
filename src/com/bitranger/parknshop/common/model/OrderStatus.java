@@ -6,4 +6,5 @@ public class OrderStatus {
 	public final static Short DELIVERING = 2;
 	public final static Short FINISHED = 3;
 	public final static Short EXCEPTION = 4;
+	public final static Short CANCELLED = 5;
 }
