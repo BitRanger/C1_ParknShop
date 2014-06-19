@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.common.controller;
+package com.bitranger.parknshop.buyer.controller;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -24,18 +24,15 @@ import com.bitranger.parknshop.common.model.PsItem;
  *
  */
 @Controller
-public class AddCartController {
+public class DeleteCartItemController {
 	@Autowired
 	CartCustomerItemDAO psCartCustomerItemDao;
 
 	@Autowired
 	PsItemDAO psItemDao;
 
-	@RequestMapping(value = "/addcart")
+	@RequestMapping(value = "/deleteCartItem")
 	public String addCart(HttpServletRequest req, Integer itemId) {
-		PsItem psItem = psItemDao.findById(itemId);
-		if(psItem == null)
-			return Utility.error("Unexisted item");
 		PsCustomer currentCustomer = (PsCustomer) req.getSession()
 				.getAttribute("currentCustomer");
 		if (currentCustomer == null)
@@ -43,17 +40,9 @@ public class AddCartController {
 		CartCustomerItem item = psCartCustomerItemDao.findById(new CartCustomerItemId(currentCustomer.getId(), itemId));
 		if(item != null)
 		{
-				item.setQuantity(item.getQuantity()+1);
-				psCartCustomerItemDao.update(item);
-				return "redirect:/";
+				psCartCustomerItemDao.delete(item);
+				return "redirect:/cart";
 		}
-		CartCustomerItem transientItem = new CartCustomerItem();
-		transientItem.setId(new CartCustomerItemId(currentCustomer.getId(), itemId));
-		transientItem.setPsCustomer(currentCustomer);
-		transientItem.setPsItem(psItem);
-		transientItem.setQuantity(1);
-		transientItem.setTimeCreated(new Timestamp(System.currentTimeMillis()));
-		psCartCustomerItemDao.save(transientItem);
-		return "redirect:/";
+		return "redirect:/cart";
 	}
 }

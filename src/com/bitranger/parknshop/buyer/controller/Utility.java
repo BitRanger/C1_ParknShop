@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.common.controller;
+package com.bitranger.parknshop.buyer.controller;
 
 public class Utility {
 	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger

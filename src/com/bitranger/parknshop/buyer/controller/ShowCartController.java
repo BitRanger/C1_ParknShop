@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.common.controller;
+package com.bitranger.parknshop.buyer.controller;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -15,34 +15,37 @@ import com.bitranger.parknshop.buyer.model.CartCustomerItem;
 import com.bitranger.parknshop.buyer.model.CartCustomerItemId;
 import com.bitranger.parknshop.buyer.model.PsCustomer;
 import com.bitranger.parknshop.common.dao.FetchOption;
+import com.bitranger.parknshop.common.dao.SortOption;
 import com.bitranger.parknshop.common.dao.impl.PsItemDAO;
 import com.bitranger.parknshop.common.model.PsItem;
 
 /**
  * @author Zhang Qinchuan
  * @author Yu Bowen
- *
+ * 
+ * Attributes in Request
+ *	cartCustomerItems - List<CartCustomerItem>
  */
 @Controller
-public class DeleteCartItemController {
+public class ShowCartController {
 	@Autowired
 	CartCustomerItemDAO psCartCustomerItemDao;
 
 	@Autowired
 	PsItemDAO psItemDao;
 
-	@RequestMapping(value = "/deleteCartItem")
-	public String addCart(HttpServletRequest req, Integer itemId) {
+	@RequestMapping(value = "/cart")
+	public String showCart(HttpServletRequest req) {
 		PsCustomer currentCustomer = (PsCustomer) req.getSession()
 				.getAttribute("currentCustomer");
 		if (currentCustomer == null)
 			return Utility.error("Not Login");
-		CartCustomerItem item = psCartCustomerItemDao.findById(new CartCustomerItemId(currentCustomer.getId(), itemId));
-		if(item != null)
-		{
-				psCartCustomerItemDao.delete(item);
-				return "redirect:/cart";
-		}
-		return "redirect:/cart";
+		FetchOption option = new FetchOption();
+		option.offset=0;
+		option.limit=10000;
+		option.sortOption=SortOption.DESCENDING;
+		List<CartCustomerItem> cartCustomerItems = psCartCustomerItemDao.findByCustomerId(currentCustomer.getId(), option);
+		req.setAttribute("cartCustomerItems", cartCustomerItems);
+		return "cartView";
 	}
 }

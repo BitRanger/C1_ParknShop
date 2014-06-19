@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.common.controller;
+package com.bitranger.parknshop.buyer.controller;
 
 import java.util.Dictionary;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-<%@page import="com.bitranger.parknshop.common.controller.Utility"%>
+<%@page import="com.bitranger.parknshop.buyer.controller.Utilityy"%>
 <%@page import="com.bitranger.parknshop.common.model.PsItem"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>

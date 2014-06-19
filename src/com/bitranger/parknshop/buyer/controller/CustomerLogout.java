@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.common.controller;
+package com.bitranger.parknshop.buyer.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

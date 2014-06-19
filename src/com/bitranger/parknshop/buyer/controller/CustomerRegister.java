@@ -1,5 +1,5 @@
 
-package com.bitranger.parknshop.common.controller;
+package com.bitranger.parknshop.buyer.controller;
 
 import java.sql.Timestamp;
 import java.util.logging.ConsoleHandler;
