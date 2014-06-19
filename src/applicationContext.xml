@@ -21,9 +21,7 @@
 					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">
 					<property name="period" value="3600000" />
 					<property name="runnable">
-						<bean class="com.bitranger.parknshop.task.OrderChecker">
-							<property name="sessionFactory" ref="sessionFactory"></property>
-						</bean>
+						<bean class="com.bitranger.parknshop.task.OrderChecker" />
 					</property>
 				</bean>
 			</list>

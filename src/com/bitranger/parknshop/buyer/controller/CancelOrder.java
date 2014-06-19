@@ -21,8 +21,8 @@ import com.bitranger.parknshop.seller.model.PsOrder;
 import com.bitranger.parknshop.seller.model.PsSellerAcc;
 
 /**
- * This class is a controller for confirming that the order has received
- * successfully.
+ * This class is a controller for canceling an order.
+ * 
  * 
  * @author Yu Bowen
  * @author Zhang Qinchuan
@@ -63,7 +63,19 @@ public class CancelOrder {
 		}
 		if(psOrder.getStatus().equals(OrderStatus.UNPAID))
 		{
-			
+			log.info("From unpaid order.");
+			psOrder.setStatus(OrderStatus.CANCELLED);
+			psOrderDao.update(psOrder);
+		}else if(psOrder.getStatus().equals(OrderStatus.PAID))
+		{
+			log.info("From paid order.");
+			psOrder.setStatus(OrderStatus.CANCELLED);
+			psOrderDao.update(psOrder);
+			PsAdminAcc psAdminAcc = psAdminAccDao.findById(1);
+			psAdminAcc.setBalance(psAdminAcc.getBalance()
+					- psOrder.getPriceTotal());
+			// TODO: Refund to the customer here.
+			psAdminAccDao.update(psAdminAcc);
 		}
 		return "redirect:/";
 	}

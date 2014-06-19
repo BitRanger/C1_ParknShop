@@ -24,7 +24,7 @@ import com.bitranger.parknshop.seller.model.PsSellerAcc;
  * 
  */
 public class OrderChecker implements Runnable {
-
+	
 	@Autowired
 	IPsOrderDAO psOrderDao;
 
