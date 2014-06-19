@@ -11,17 +11,10 @@
 package com.bitranger.parknshop.seller;
 
 public class OrderState {
-	
-	public static final Short UnPaid = 1;
-	public static final Short UnDeliver = 2; 
-	public static final Short Delivering = 3; 
-	public static final Short Accepted = 4;
-	
-	/**
-	 * 投诉了，在审核
-	 */
-	public static final Short Blocked = 5;
-	public static final Short Canceled = 6;
-
-	public static final Short OK = 7;
+	public static final Short UnPaid = 0;
+	public static final Short UnDeliver = 1; 
+	public static final Short Delivering = 2; 
+	public static final Short Accepted = 3;
+	public static final Short Blocked = 6;
+	public static final Short Canceled = 5;
 }

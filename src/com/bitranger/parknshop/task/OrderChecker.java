@@ -86,6 +86,10 @@ public class OrderChecker implements Runnable {
 				double balance = account.getBalance();
 				account.setBalance(balance + psOrder.getPriceTotal());
 				psSellerAccDao.update(account);
+				
+				PsAdminAcc psAdminAcc = psAdminAccDao.findById(1);
+				psAdminAcc.setBalance(psAdminAcc.getBalance() - psOrder.getPriceTotal());
+				psAdminAccDao.update(psAdminAcc);
 			}
 		}
 	}
