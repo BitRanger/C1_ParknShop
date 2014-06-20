@@ -1,14 +1,12 @@
 package com.bitranger.parknshop.common.ads;
 
 import java.sql.Timestamp;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -20,11 +18,7 @@ public class PsAdItem implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7193757448686415312L;
-	private Integer id;
+	private Integer idPromot;
 	private PsPromotItem psPromotItem;
 	private Timestamp timeStart;
 	private Timestamp timeEnd;
@@ -35,12 +29,14 @@ public class PsAdItem implements java.io.Serializable {
 	// Constructors
 
 	/** default constructor */
-	public PsAdItem() {}
+	public PsAdItem() {
+	}
 
 	/** full constructor */
-	public PsAdItem(Integer id, PsPromotItem psPromotItem, Timestamp timeStart,
-			Timestamp timeEnd, Double weight, Double price, Integer numFetched) {
-		this.id = id;
+	public PsAdItem(Integer idPromot, PsPromotItem psPromotItem,
+			Timestamp timeStart, Timestamp timeEnd, Double weight,
+			Double price, Integer numFetched) {
+		this.idPromot = idPromot;
 		this.psPromotItem = psPromotItem;
 		this.timeStart = timeStart;
 		this.timeEnd = timeEnd;
@@ -48,26 +44,20 @@ public class PsAdItem implements java.io.Serializable {
 		this.price = price;
 		this.numFetched = numFetched;
 	}
-	
-	
-//	public boolean isValid() {
-//		Date date = new Date();
-//		return timeStart.before(date) && timeEnd.after(date);
-//	}
 
 	// Property accessors
 	@Id
-	@Column(name = "id", unique = true, nullable = false)
-	public Integer getId() {
-		return this.id;
+	@Column(name = "id_promot", unique = true, nullable = false)
+	public Integer getIdPromot() {
+		return this.idPromot;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdPromot(Integer idPromot) {
+		this.idPromot = idPromot;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_promot", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
 	public PsPromotItem getPsPromotItem() {
 		return this.psPromotItem;
 	}

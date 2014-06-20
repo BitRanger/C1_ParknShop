@@ -22,7 +22,7 @@ public class PsNoticeSeller implements java.io.Serializable {
 	private Integer idSeller;
 	private PsSeller psSeller;
 	private Timestamp timeCreated;
-	private String source;
+	private String source = "SYSTEM";
 	private String message;
 	private Short isValid;
 

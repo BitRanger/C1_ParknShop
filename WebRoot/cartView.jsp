@@ -1,4 +1,4 @@
-<%@page import="com.bitranger.parknshop.buyer.controller.Utilityy"%>
+<%@page import="com.bitranger.parknshop.buyer.controller.Utility"%>
 <%@page import="com.bitranger.parknshop.common.model.PsItem"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
@@ -77,7 +77,7 @@
 			</div>
 			<div id="cartTitle">
 				<h3>
-					<a href="<%=request.getContextPath()%>/cashier"><b>GO TO CASHIER</b></a>
+					<a href="<%=request.getContextPath()%>/confirmOrder"><b>GO TO CASHIER</b></a>
 				</h3>
 			</div>
 		</div>

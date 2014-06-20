@@ -10,18 +10,18 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 /**
  * A data access object (DAO) providing persistence and search support for
- * PsAdministator entities. Transaction control of the save(), update() and
+ * PsAdministrator entities. Transaction control of the save(), update() and
  * delete() operations can directly support Spring container-managed
  * transactions or they can be augmented to handle user-managed Spring
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see PsAdministator
+ * @see PsAdministrator
  * @author MyEclipse Persistence Tools
  */
-public class PsAdministatorDAO extends HibernateDaoSupport {
+public class PsAdministratorDAO extends HibernateDaoSupport {
 	private static final Logger log = LoggerFactory
-			.getLogger(PsAdministatorDAO.class);
+			.getLogger(PsAdministratorDAO.class);
 	// property constants
 	public static final String EMAIL = "email";
 	public static final String NAME = "name";
@@ -31,8 +31,8 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		// do nothing
 	}
 
-	public void save(PsAdministator transientInstance) {
-		log.debug("saving PsAdministator instance");
+	public void save(PsAdministrator transientInstance) {
+		log.debug("saving PsAdministrator instance");
 		try {
 			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
@@ -42,8 +42,8 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public void delete(PsAdministator persistentInstance) {
-		log.debug("deleting PsAdministator instance");
+	public void delete(PsAdministrator persistentInstance) {
+		log.debug("deleting PsAdministrator instance");
 		try {
 			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
@@ -53,11 +53,11 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public PsAdministator findById(java.lang.Integer id) {
-		log.debug("getting PsAdministator instance with id: " + id);
+	public PsAdministrator findById(java.lang.Integer id) {
+		log.debug("getting PsAdministrator instance with id: " + id);
 		try {
-			PsAdministator instance = (PsAdministator) getHibernateTemplate()
-					.get("com.bitranger.parknshop.admin.data.PsAdministator", id);
+			PsAdministrator instance = (PsAdministrator) getHibernateTemplate()
+					.get("com.bitranger.parknshop.admin.data.PsAdministrator", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -65,10 +65,10 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List<PsAdministator> findByExample(PsAdministator instance) {
-		log.debug("finding PsAdministator instance by example");
+	public List<PsAdministrator> findByExample(PsAdministrator instance) {
+		log.debug("finding PsAdministrator instance by example");
 		try {
-			List<PsAdministator> results = (List<PsAdministator>) getHibernateTemplate()
+			List<PsAdministrator> results = (List<PsAdministrator>) getHibernateTemplate()
 					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -80,10 +80,10 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 	}
 
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding PsAdministator instance with property: "
+		log.debug("finding PsAdministrator instance with property: "
 				+ propertyName + ", value: " + value);
 		try {
-			String queryString = "from PsAdministator as model where model."
+			String queryString = "from PsAdministrator as model where model."
 					+ propertyName + "= ?";
 			return getHibernateTemplate().find(queryString, value);
 		} catch (RuntimeException re) {
@@ -92,22 +92,22 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List<PsAdministator> findByEmail(Object email) {
+	public List<PsAdministrator> findByEmail(Object email) {
 		return findByProperty(EMAIL, email);
 	}
 
-	public List<PsAdministator> findByName(Object name) {
+	public List<PsAdministrator> findByName(Object name) {
 		return findByProperty(NAME, name);
 	}
 
-	public List<PsAdministator> findByPassword(Object password) {
+	public List<PsAdministrator> findByPassword(Object password) {
 		return findByProperty(PASSWORD, password);
 	}
 
 	public List findAll() {
-		log.debug("finding all PsAdministator instances");
+		log.debug("finding all PsAdministrator instances");
 		try {
-			String queryString = "from PsAdministator";
+			String queryString = "from PsAdministrator";
 			return getHibernateTemplate().find(queryString);
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
@@ -115,10 +115,10 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public PsAdministator merge(PsAdministator detachedInstance) {
-		log.debug("merging PsAdministator instance");
+	public PsAdministrator merge(PsAdministrator detachedInstance) {
+		log.debug("merging PsAdministrator instance");
 		try {
-			PsAdministator result = (PsAdministator) getHibernateTemplate()
+			PsAdministrator result = (PsAdministrator) getHibernateTemplate()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -128,8 +128,8 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public void attachDirty(PsAdministator instance) {
-		log.debug("attaching dirty PsAdministator instance");
+	public void attachDirty(PsAdministrator instance) {
+		log.debug("attaching dirty PsAdministrator instance");
 		try {
 			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -139,8 +139,8 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public void attachClean(PsAdministator instance) {
-		log.debug("attaching clean PsAdministator instance");
+	public void attachClean(PsAdministrator instance) {
+		log.debug("attaching clean PsAdministrator instance");
 		try {
 			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -150,8 +150,8 @@ public class PsAdministatorDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public static PsAdministatorDAO getFromApplicationContext(
+	public static PsAdministratorDAO getFromApplicationContext(
 			ApplicationContext ctx) {
-		return (PsAdministatorDAO) ctx.getBean("PsAdministatorDAO");
+		return (PsAdministratorDAO) ctx.getBean("PsAdministratorDAO");
 	}
 }

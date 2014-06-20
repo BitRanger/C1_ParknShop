@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2014 BitRanger.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * 
- * Contributors:
- *     BitRanger - initial API and implementation
- ******************************************************************************/
 package com.bitranger.parknshop.common.model;
 
 import java.sql.Timestamp;
@@ -32,14 +22,11 @@ public class PsComment implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 513105740575185692L;
 	private Integer id;
 	private PsItem psItem;
 	private PsCustomer psCustomer;
-	private Short score;
+	private Integer scoreItem;
+	private Integer scoreShop;
 	private String content;
 	private Timestamp timeCreated;
 
@@ -50,17 +37,21 @@ public class PsComment implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsComment(PsItem psItem, PsCustomer psCustomer) {
+	public PsComment(PsItem psItem, PsCustomer psCustomer, Integer scoreItem,
+			Integer scoreShop) {
 		this.psItem = psItem;
 		this.psCustomer = psCustomer;
+		this.scoreItem = scoreItem;
+		this.scoreShop = scoreShop;
 	}
 
 	/** full constructor */
-	public PsComment(PsItem psItem, PsCustomer psCustomer, Short score,
-			String content, Timestamp timeCreated) {
+	public PsComment(PsItem psItem, PsCustomer psCustomer, Integer scoreItem,
+			Integer scoreShop, String content, Timestamp timeCreated) {
 		this.psItem = psItem;
 		this.psCustomer = psCustomer;
-		this.score = score;
+		this.scoreItem = scoreItem;
+		this.scoreShop = scoreShop;
 		this.content = content;
 		this.timeCreated = timeCreated;
 	}
@@ -77,7 +68,7 @@ public class PsComment implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_item", nullable = false)
 	public PsItem getPsItem() {
 		return this.psItem;
@@ -87,7 +78,7 @@ public class PsComment implements java.io.Serializable {
 		this.psItem = psItem;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_customer", nullable = false)
 	public PsCustomer getPsCustomer() {
 		return this.psCustomer;
@@ -97,16 +88,25 @@ public class PsComment implements java.io.Serializable {
 		this.psCustomer = psCustomer;
 	}
 
-	@Column(name = "score")
-	public Short getScore() {
-		return this.score;
+	@Column(name = "score_item", nullable = false)
+	public Integer getScoreItem() {
+		return this.scoreItem;
 	}
 
-	public void setScore(Short score) {
-		this.score = score;
+	public void setScoreItem(Integer scoreItem) {
+		this.scoreItem = scoreItem;
 	}
 
-	@Column(name = "content", length = 45)
+	@Column(name = "score_shop", nullable = false)
+	public Integer getScoreShop() {
+		return this.scoreShop;
+	}
+
+	public void setScoreShop(Integer scoreShop) {
+		this.scoreShop = scoreShop;
+	}
+
+	@Column(name = "content", length = 65535)
 	public String getContent() {
 		return this.content;
 	}

@@ -1,0 +1,74 @@
+#confirmAdd_main {
+    background-color: #efefef;
+}
+
+#confirmAdd_main_head {
+    padding: 10px 20px 0 20px;
+    border: none;
+}
+
+#confirmAdd_main_close_btn {
+
+}
+
+#confirmAdd_main_head_title {
+    font-size: 16px;
+    color: #003272;
+    text-shadow: 0 1px 3px #AFAFAF;
+}
+
+#confirmAdd_main_body {
+    padding: 10px 20px 20px 20px;
+}
+
+#confirmAddr_div {
+
+}
+
+#confirmAddr_div > div {
+    margin: 5px 0;
+}
+
+#confirmAddr_district {
+    height: 30px;
+}
+#confirmAddr_district select {
+    background-color: #DDDADA;
+    height: 25px;
+    border: 1px solid #999999;
+    margin: 3px;
+    color: #333333;
+    outline: none;
+}
+
+#confirmAddr_district option {
+    background-color: #ffffff;
+}
+
+#confirmAddr_street {
+    width: 480px;
+    height: 60px;
+    border: 1px solid #bbbbbb;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    outline: none;
+    padding: 3px;
+}
+
+#confirmAddr_street {
+    width: 480px;
+    height: 60px;
+    border: 1px solid #bbbbbb;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    outline: none;
+    padding: 3px;
+}
+
+
+
+
+
+
+
+
+
+

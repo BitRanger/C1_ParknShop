@@ -31,9 +31,27 @@ import com.bitranger.parknshop.common.model.PsItem;
  */
 public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<PsItem> searchByKeyword(String keyword) {
-		return null;
+	public List<PsItem> searchByKeyword(final String q) {
+		
+		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsItem>>() {
+
+			@Override
+			public List<PsItem> doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				
+				SQLQuery query = session.createSQLQuery(
+" SELECT IT.*, " +
+" MATCH (`name`, `introduction`) AGAINST (? IN NATURAL LANGUAGE MODE) AS relevance "  +
+" FROM `ps_item` as IT " +
+" ORDER BY relevance DESC"
+);
+					query.setString(0, q);
+					query.addEntity(PsItem.class);
+					return query.list();
+			}
+		});
 	}
 	
 	@Override

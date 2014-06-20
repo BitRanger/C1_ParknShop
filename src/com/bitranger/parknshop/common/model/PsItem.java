@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.bitranger.parknshop.buyer.model.CartCustomerItem;
@@ -46,13 +45,13 @@ public class PsItem implements java.io.Serializable {
 	private Integer countClick;
 	private Double vote;
 	private Set<CustomerFavouriteItem> customerFavouriteItems = new HashSet<CustomerFavouriteItem>(
-			32);
-	private Set<PsPromotItem> psPromotItems = new HashSet<PsPromotItem>(0);
+			40);
+	private Set<PsPromotItem> psPromotItems = new HashSet<PsPromotItem>(30);
 	private Set<PsComment> psComments = new HashSet<PsComment>(0);
 	private Set<PsTag> psTags = new HashSet<PsTag>(0);
-	private PsItemInfo psItemInfo;
+	private Set<PsItemInfo> psItemInfos = new HashSet<PsItemInfo>(0);
 	private Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(
-			32);
+			40);
 	private Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
 
 	// Constructors
@@ -83,7 +82,7 @@ public class PsItem implements java.io.Serializable {
 			Integer countPurchase, Integer countFavourite, Integer countClick,
 			Double vote, Set<CustomerFavouriteItem> customerFavouriteItems,
 			Set<PsPromotItem> psPromotItems, Set<PsComment> psComments,
-			Set<PsTag> psTags, PsItemInfo psItemInfo,
+			Set<PsTag> psTags, Set<PsItemInfo> psItemInfos,
 			Set<CartCustomerItem> cartCustomerItems, Set<ROrderItem> ROrderItems) {
 		this.psShop = psShop;
 		this.psCategory = psCategory;
@@ -102,7 +101,7 @@ public class PsItem implements java.io.Serializable {
 		this.psPromotItems = psPromotItems;
 		this.psComments = psComments;
 		this.psTags = psTags;
-		this.psItemInfo = psItemInfo;
+		this.psItemInfos = psItemInfos;
 		this.cartCustomerItems = cartCustomerItems;
 		this.ROrderItems = ROrderItems;
 	}
@@ -238,8 +237,7 @@ public class PsItem implements java.io.Serializable {
 		this.vote = vote;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
-				mappedBy = "psItem")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psItem")
 	public Set<CustomerFavouriteItem> getCustomerFavouriteItems() {
 		return this.customerFavouriteItems;
 	}
@@ -249,8 +247,7 @@ public class PsItem implements java.io.Serializable {
 		this.customerFavouriteItems = customerFavouriteItems;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
-			mappedBy = "psItem")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psItem")
 	public Set<PsPromotItem> getPsPromotItems() {
 		return this.psPromotItems;
 	}
@@ -259,8 +256,7 @@ public class PsItem implements java.io.Serializable {
 		this.psPromotItems = psPromotItems;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
-			mappedBy = "psItem")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psItem")
 	public Set<PsComment> getPsComments() {
 		return this.psComments;
 	}
@@ -269,8 +265,7 @@ public class PsItem implements java.io.Serializable {
 		this.psComments = psComments;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
-			mappedBy = "psItems")
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psItems")
 	public Set<PsTag> getPsTags() {
 		return this.psTags;
 	}
@@ -279,17 +274,16 @@ public class PsItem implements java.io.Serializable {
 		this.psTags = psTags;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psItem")
-	public PsItemInfo getPsItemInfo() {
-		return this.psItemInfo;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psItem")
+	public Set<PsItemInfo> getPsItemInfos() {
+		return this.psItemInfos;
 	}
 
-	public void setPsItemInfo(PsItemInfo psItemInfo) {
-		this.psItemInfo = psItemInfo;
+	public void setPsItemInfos(Set<PsItemInfo> psItemInfos) {
+		this.psItemInfos = psItemInfos;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
-			mappedBy = "psItem")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psItem")
 	public Set<CartCustomerItem> getCartCustomerItems() {
 		return this.cartCustomerItems;
 	}
@@ -298,8 +292,7 @@ public class PsItem implements java.io.Serializable {
 		this.cartCustomerItems = cartCustomerItems;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
-			mappedBy = "psItem")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psItem")
 	public Set<ROrderItem> getROrderItems() {
 		return this.ROrderItems;
 	}

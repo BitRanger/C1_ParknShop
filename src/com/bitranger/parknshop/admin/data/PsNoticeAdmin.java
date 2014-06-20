@@ -20,15 +20,11 @@ public class PsNoticeAdmin implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5856611752593484843L;
 	private Integer idAdmin;
-	private PsAdministator psAdministator;
+	private PsAdministrator psAdministrator;
 	private Timestamp timeCreated;
 	private String message;
-	private String source;
+	private String source = "SYSTEM";
 	private Short isValid;
 
 	// Constructors
@@ -38,15 +34,15 @@ public class PsNoticeAdmin implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsNoticeAdmin(PsAdministator psAdministator, Timestamp timeCreated) {
-		this.psAdministator = psAdministator;
+	public PsNoticeAdmin(PsAdministrator psAdministrator, Timestamp timeCreated) {
+		this.psAdministrator = psAdministrator;
 		this.timeCreated = timeCreated;
 	}
 
 	/** full constructor */
-	public PsNoticeAdmin(PsAdministator psAdministator, Timestamp timeCreated,
+	public PsNoticeAdmin(PsAdministrator psAdministrator, Timestamp timeCreated,
 			String message, String source, Short isValid) {
-		this.psAdministator = psAdministator;
+		this.psAdministrator = psAdministrator;
 		this.timeCreated = timeCreated;
 		this.message = message;
 		this.source = source;
@@ -65,14 +61,14 @@ public class PsNoticeAdmin implements java.io.Serializable {
 		this.idAdmin = idAdmin;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
-	public PsAdministator getPsAdministator() {
-		return this.psAdministator;
+	public PsAdministrator getPsAdministrator() {
+		return this.psAdministrator;
 	}
 
-	public void setPsAdministator(PsAdministator psAdministator) {
-		this.psAdministator = psAdministator;
+	public void setPsAdministrator(PsAdministrator psAdministrator) {
+		this.psAdministrator = psAdministrator;
 	}
 
 	@Column(name = "time_created", nullable = false, length = 19)

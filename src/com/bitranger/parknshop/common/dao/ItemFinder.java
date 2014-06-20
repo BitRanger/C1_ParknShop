@@ -24,7 +24,7 @@ import com.bitranger.parknshop.visitor.view.VisitorView;
 
 
 /**
- * 用法示例
+ * 鐢ㄦ硶绀轰緥
  * 
  * 
  			List<PsItem> items=	finder.newFind()
@@ -35,10 +35,10 @@ import com.bitranger.parknshop.visitor.view.VisitorView;
 					.orderBy("price").ascending()
 					.list();
  * 
- * 注意 有 @Nullable 的是可选项
- * 有 @Nonnull 的是必填项
- * 对于 orderBy 可以不填，
- * 如果orderBy 设置了的话，排序默认是descending
+ * 娉ㄦ剰 鏈�@Nullable 鐨勬槸鍙�椤�
+ * 鏈�@Nonnull 鐨勬槸蹇呭～椤�
+ * 瀵逛簬 orderBy 鍙互涓嶅～锛�
+ * 濡傛灉orderBy 璁剧疆浜嗙殑璇濓紝鎺掑簭榛樿鏄痙escending
  *@author BowenCai
  *@since 8:36:57 AM
  */
@@ -98,6 +98,27 @@ public class ItemFinder extends HibernateDaoSupport {
 									.list();
 						}
 					});
+		}
+		
+		
+		@SuppressWarnings("unchecked")
+		public List<PsItem> search(final String q) {
+			return hibernate.executeFind(new HibernateCallback<List<PsItem>>() {
+				@Override
+					public List<PsItem> doInHibernate(Session session)
+								throws HibernateException, SQLException {
+					
+					SQLQuery query = session.createSQLQuery(
+" SELECT IT.*, " +
+" MATCH (`name`, `introduction`) AGAINST (? IN NATURAL LANGUAGE MODE) AS relevance "  +
+" FROM `ps_item` as IT " +
+" ORDER BY relevance DESC"
+);
+						query.setString(0, q);
+						query.addEntity(PsItem.class);
+						return query.list();
+					}
+				});
 		}
 		
 		final SQLQuery getQuery(Session session) {

@@ -21,7 +21,11 @@
 					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">
 					<property name="period" value="3600000" />
 					<property name="runnable">
-						<bean class="com.bitranger.parknshop.task.OrderChecker" />
+						<bean class="com.bitranger.parknshop.task.OrderChecker">
+							<property name="psOrderDao" ref="psOrderDao"></property>
+							<property name="psAdminAccDao" ref="psAdminAccDao"></property>
+							<property name="psSellerAccDao" ref="psSellerAccDao"></property>
+						</bean>
 					</property>
 				</bean>
 			</list>
@@ -46,12 +50,12 @@
 				<prop key="hibernate.dialect">
 					org.hibernate.dialect.MySQLDialect
 				</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+<!--  				<prop key="hibernate.hbm2ddl.auto">create</prop> -->
 			</props>
 		</property>
 		<property name="annotatedClasses">
 			<list>
-				<value>com.bitranger.parknshop.admin.data.PsAdministator</value>
+				<value>com.bitranger.parknshop.admin.data.PsAdministrator</value>
 				<value>com.bitranger.parknshop.admin.data.PsAdminAcc</value>
 				<value>com.bitranger.parknshop.admin.data.PsNoticeAdmin</value>
 

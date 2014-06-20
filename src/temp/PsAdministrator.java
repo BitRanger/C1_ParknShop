@@ -1,4 +1,4 @@
-package com.bitranger.parknshop.admin.data;
+package temp;
 
 import java.sql.Timestamp;
 import javax.persistence.Column;
@@ -11,35 +11,32 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * PsAdministator entity. @author MyEclipse Persistence Tools
+ * PsAdministrator entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "ps_administator", catalog = "c1_parknshop")
-public class PsAdministator implements java.io.Serializable {
+@Table(name = "ps_administrator", catalog = "c1_parknshop")
+public class PsAdministrator implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 177234981803364623L;
-	
 	private Integer id;
 	private String email;
 	private String name;
 	private String password;
 	private Timestamp timeCreated;
+	private Double psAdministatorcol;
+	private Double balance;
 	private PsNoticeAdmin psNoticeAdmin;
 	private PsAdminAcc psAdminAcc;
 
 	// Constructors
 
 	/** default constructor */
-	public PsAdministator() {
+	public PsAdministrator() {
 	}
 
 	/** minimal constructor */
-	public PsAdministator(String email, String name, String password,
+	public PsAdministrator(String email, String name, String password,
 			Timestamp timeCreated) {
 		this.email = email;
 		this.name = name;
@@ -48,13 +45,15 @@ public class PsAdministator implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PsAdministator(String email, String name, String password,
-			Timestamp timeCreated, PsNoticeAdmin psNoticeAdmin,
-			PsAdminAcc psAdminAcc) {
+	public PsAdministrator(String email, String name, String password,
+			Timestamp timeCreated, Double psAdministatorcol, Double balance,
+			PsNoticeAdmin psNoticeAdmin, PsAdminAcc psAdminAcc) {
 		this.email = email;
 		this.name = name;
 		this.password = password;
 		this.timeCreated = timeCreated;
+		this.psAdministatorcol = psAdministatorcol;
+		this.balance = balance;
 		this.psNoticeAdmin = psNoticeAdmin;
 		this.psAdminAcc = psAdminAcc;
 	}
@@ -107,7 +106,25 @@ public class PsAdministator implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psAdministator")
+	@Column(name = "ps_administatorcol", precision = 9)
+	public Double getPsAdministatorcol() {
+		return this.psAdministatorcol;
+	}
+
+	public void setPsAdministatorcol(Double psAdministatorcol) {
+		this.psAdministatorcol = psAdministatorcol;
+	}
+
+	@Column(name = "balance", precision = 9)
+	public Double getBalance() {
+		return this.balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "psAdministrator")
 	public PsNoticeAdmin getPsNoticeAdmin() {
 		return this.psNoticeAdmin;
 	}
@@ -116,7 +133,7 @@ public class PsAdministator implements java.io.Serializable {
 		this.psNoticeAdmin = psNoticeAdmin;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psAdministator")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "psAdministrator")
 	public PsAdminAcc getPsAdminAcc() {
 		return this.psAdminAcc;
 	}

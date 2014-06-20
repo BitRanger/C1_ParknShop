@@ -20,6 +20,7 @@
     <context:component-scan base-package="com.bitranger.parknshop.seller.controller"></context:component-scan>
     <context:component-scan base-package="com.bitranger.parknshop.visitor.controller"></context:component-scan>
     <context:component-scan base-package="com.bitranger.parknshop.common.controller"></context:component-scan>
+    <context:component-scan base-package="com.bitranger.parknshop.task"></context:component-scan>
     
     	
 	<mvc:annotation-driven />

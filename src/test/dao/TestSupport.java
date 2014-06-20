@@ -13,7 +13,7 @@
 //import org.springframework.beans.factory.annotation.Autowired;
 //
 //import com.bitranger.parknshop.common.model.PsItem;
-//import com.bitranger.parknshop.dao.PsAdministatorDAO;
+//import com.bitranger.parknshop.dao.PsAdministratorDAO;
 //import com.bitranger.parknshop.dao.PsCategoryDAO;
 //import com.bitranger.parknshop.dao.PsItemDAO;
 //import com.bitranger.parknshop.dao.PsSellerDAO;
@@ -22,7 +22,7 @@
 //
 //public class TestSupport {
 //	@Autowired
-//	PsAdministatorDAO psAdministatorDAO;
+//	PsAdministratorDAO psAdministratorDAO;
 //
 //	@Autowired
 //	PsSellerDAO psSellerDAO;

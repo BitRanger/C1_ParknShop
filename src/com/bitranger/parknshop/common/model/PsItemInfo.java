@@ -1,21 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2014 BitRanger.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * 
- * Contributors:
- *     BitRanger - initial API and implementation
- ******************************************************************************/
 package com.bitranger.parknshop.common.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,9 +17,8 @@ public class PsItemInfo implements java.io.Serializable {
 
 	// Fields
 
-	private Integer idItem;
+	private Integer id;
 	private PsItem psItem;
-	
 	private String description;
 	private String urlPic;
 
@@ -40,15 +29,15 @@ public class PsItemInfo implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsItemInfo(Integer idItem, PsItem psItem) {
-		this.idItem = idItem;
+	public PsItemInfo(Integer id, PsItem psItem) {
+		this.id = id;
 		this.psItem = psItem;
 	}
 
 	/** full constructor */
-	public PsItemInfo(Integer idItem, PsItem psItem, String description,
+	public PsItemInfo(Integer id, PsItem psItem, String description,
 			String urlPic) {
-		this.idItem = idItem;
+		this.id = id;
 		this.psItem = psItem;
 		this.description = description;
 		this.urlPic = urlPic;
@@ -56,17 +45,17 @@ public class PsItemInfo implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@Column(name = "id_item", unique = true, nullable = false)
-	public Integer getIdItem() {
-		return this.idItem;
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setIdItem(Integer idItem) {
-		this.idItem = idItem;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@PrimaryKeyJoinColumn
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_item", nullable = false)
 	public PsItem getPsItem() {
 		return this.psItem;
 	}
@@ -75,7 +64,7 @@ public class PsItemInfo implements java.io.Serializable {
 		this.psItem = psItem;
 	}
 
-	@Column(name = "description", length = 200)
+	@Column(name = "description", length = 65535)
 	public String getDescription() {
 		return this.description;
 	}
@@ -84,7 +73,7 @@ public class PsItemInfo implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "url_pic", length = 100)
+	@Column(name = "url_pic", length = 65535)
 	public String getUrlPic() {
 		return this.urlPic;
 	}

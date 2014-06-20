@@ -23,7 +23,7 @@ public class PsAdminAcc implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 898021265546066983L;
 	private Integer idAdmin;
-	private PsAdministator psAdministator;
+	private PsAdministrator psAdministrator;
 	private Double balance;
 	private Timestamp timeCreated;
 
@@ -34,10 +34,10 @@ public class PsAdminAcc implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PsAdminAcc(Integer idAdmin, PsAdministator psAdministator,
+	public PsAdminAcc(Integer idAdmin, PsAdministrator psAdministrator,
 			Double balance, Timestamp timeCreated) {
 		this.idAdmin = idAdmin;
-		this.psAdministator = psAdministator;
+		this.psAdministrator = psAdministrator;
 		this.balance = balance;
 		this.timeCreated = timeCreated;
 	}
@@ -55,12 +55,12 @@ public class PsAdminAcc implements java.io.Serializable {
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@PrimaryKeyJoinColumn
-	public PsAdministator getPsAdministator() {
-		return this.psAdministator;
+	public PsAdministrator getPsAdministrator() {
+		return this.psAdministrator;
 	}
 
-	public void setPsAdministator(PsAdministator psAdministator) {
-		this.psAdministator = psAdministator;
+	public void setPsAdministrator(PsAdministrator psAdministrator) {
+		this.psAdministrator = psAdministrator;
 	}
 
 	@Column(name = "balance", nullable = false, precision = 9)

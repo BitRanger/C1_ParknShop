@@ -6,6 +6,7 @@ import java.util.List;
 import javax.transaction.TransactionManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.bitranger.parknshop.admin.data.PsAdminAcc;
 import com.bitranger.parknshop.admin.data.PsAdminAccDAO;
@@ -23,16 +24,35 @@ import com.bitranger.parknshop.seller.model.PsSellerAcc;
  *         Transaction support is REQUIRED!
  * 
  */
+@Component
 public class OrderChecker implements Runnable {
-	
-	@Autowired
-	IPsOrderDAO psOrderDao;
-
-	@Autowired
+	private IPsOrderDAO psOrderDao;
 	private PsAdminAccDAO psAdminAccDao;
-
-	@Autowired
 	private PsSellerAccDAO psSellerAccDao;
+	
+	public IPsOrderDAO getPsOrderDao() {
+		return psOrderDao;
+	}
+
+	public void setPsOrderDao(IPsOrderDAO psOrderDao) {
+		this.psOrderDao = psOrderDao;
+	}
+
+	public PsAdminAccDAO getPsAdminAccDao() {
+		return psAdminAccDao;
+	}
+
+	public void setPsAdminAccDao(PsAdminAccDAO psAdminAccDao) {
+		this.psAdminAccDao = psAdminAccDao;
+	}
+
+	public PsSellerAccDAO getPsSellerAccDao() {
+		return psSellerAccDao;
+	}
+
+	public void setPsSellerAccDao(PsSellerAccDAO psSellerAccDao) {
+		this.psSellerAccDao = psSellerAccDao;
+	}
 
 	private Timestamp subtract(Timestamp left, Timestamp right) {
 		return new Timestamp(left.getTime() - right.getTime());
