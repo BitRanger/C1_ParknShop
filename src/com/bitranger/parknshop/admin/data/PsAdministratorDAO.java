@@ -52,6 +52,17 @@ public class PsAdministratorDAO extends HibernateDaoSupport {
 			throw re;
 		}
 	}
+	
+	public void update(PsAdministrator persistentInstance) {
+		log.debug("updating PsAdministrator instance");
+		try {
+			getHibernateTemplate().update(persistentInstance);
+			log.debug("update successful");
+		} catch (RuntimeException re) {
+			log.error("update failed", re);
+			throw re;
+		}
+	}
 
 	public PsAdministrator findById(java.lang.Integer id) {
 		log.debug("getting PsAdministrator instance with id: " + id);

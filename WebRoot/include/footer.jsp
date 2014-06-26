@@ -3,37 +3,37 @@
         <div id="promoLinkDiv">
             <div id="promoLinkDivContent">
                 <a class="promoLink" href="http://www.hutchison-whampoa.com/">
-                    <img border="0" src="images/logo/logo_1.jpg">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_1.jpg">
                 </a>
                 <a class="promoLink" href="http://www.aswatson.com/">
-                    <img border="0" src="images/logo/logo_2.jpg" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_2.jpg" hspace="4">
                 </a>
                 <a class="promoLink" href="http://www.moneyback.com.hk/">
-                    <img border="0" src="images/logo/logo_3.jpg" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_3.jpg" hspace="4">
                 </a>
                 <a class="promoLink" href="http://www.greatfoodhall.com/">
                     <img border="0" src="images/logo/logo_4.jpg" hspace="4">
                 </a>
                 <a class="promoLink" href="http://www.watsonswine.com/">
-                    <img border="0" src="images/logo/logo_5.jpg" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_5.jpg" hspace="4">
                 </a>
                 <a class="promoLink" href="http://www.watsons.com.hk">
-                    <img border="0" src="images/logo/logo_10.jpg" width="86" height="31" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_10.jpg" width="86" height="31" hspace="4">
                 </a>
                 <a class="promoLink" href="http://www.fortress.com.hk/">
-                    <img border="0" src="images/logo/logo_11.jpg" width="91" height="31" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_11.jpg" width="91" height="31" hspace="4">
                 </a>
                 <a class="promoLink" href="#">
-                    <img border="0" src="images/logo/logo_6.jpg" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_6.jpg" hspace="4">
                 </a>
                 <a href="#">
-                    <img border="0" src="images/logo/logo_7.jpg" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_7.jpg" hspace="4">
                 </a>
                 <a class="promoLink" href="#">
-                    <img border="0" src="images/logo/logo_8.jpg" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_8.jpg" hspace="4">
                 </a>
                 <a class="promoLink" href="#">
-                    <img border="0" src="images/logo/logo_9.jpg" hspace="4">
+                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_9.jpg" hspace="4">
                 </a>
             </div>
         </div>

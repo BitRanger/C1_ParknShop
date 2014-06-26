@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -30,6 +31,11 @@ public class PsItem implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8355515101071799874L;
+	
 	private Integer id;
 	private PsShop psShop;
 	private PsCategory psCategory;
@@ -46,7 +52,7 @@ public class PsItem implements java.io.Serializable {
 	private Double vote;
 	private Set<CustomerFavouriteItem> customerFavouriteItems = new HashSet<CustomerFavouriteItem>(
 			40);
-	private Set<PsPromotItem> psPromotItems = new HashSet<PsPromotItem>(30);
+	private Set<PsPromotItem> psPromotItems = new HashSet<PsPromotItem>(0);
 	private Set<PsComment> psComments = new HashSet<PsComment>(0);
 	private Set<PsTag> psTags = new HashSet<PsTag>(0);
 	private Set<PsItemInfo> psItemInfos = new HashSet<PsItemInfo>(0);
@@ -265,7 +271,16 @@ public class PsItem implements java.io.Serializable {
 		this.psComments = psComments;
 	}
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psItems")
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "r_tag_item", 
+	catalog = "c1_parknshop", 
+	joinColumns = { 
+			@JoinColumn(name = "id_item", nullable = false, updatable = false) 
+	}, 
+	inverseJoinColumns = { 
+			@JoinColumn(name = "id_tag", nullable = false, updatable = false) 
+	}
+)
 	public Set<PsTag> getPsTags() {
 		return this.psTags;
 	}
@@ -299,6 +314,156 @@ public class PsItem implements java.io.Serializable {
 
 	public void setROrderItems(Set<ROrderItem> ROrderItems) {
 		this.ROrderItems = ROrderItems;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((cartCustomerItems == null) ? 0 : cartCustomerItems
+						.hashCode());
+		result = prime * result
+				+ ((countClick == null) ? 0 : countClick.hashCode());
+		result = prime * result
+				+ ((countFavourite == null) ? 0 : countFavourite.hashCode());
+		result = prime * result
+				+ ((countPurchase == null) ? 0 : countPurchase.hashCode());
+		result = prime * result + ((extra1 == null) ? 0 : extra1.hashCode());
+		result = prime * result + ((extra2 == null) ? 0 : extra2.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((introduction == null) ? 0 : introduction.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result
+				+ ((psCategory == null) ? 0 : psCategory.hashCode());
+		result = prime * result
+				+ ((timeCreated == null) ? 0 : timeCreated.hashCode());
+		result = prime * result
+				+ ((urlPicture == null) ? 0 : urlPicture.hashCode());
+		result = prime * result + ((vote == null) ? 0 : vote.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof PsItem)) {
+			return false;
+		}
+		PsItem other = (PsItem) obj;
+		if (cartCustomerItems == null) {
+			if (other.cartCustomerItems != null) {
+				return false;
+			}
+		} else if (!cartCustomerItems.equals(other.cartCustomerItems)) {
+			return false;
+		}
+		if (countClick == null) {
+			if (other.countClick != null) {
+				return false;
+			}
+		} else if (!countClick.equals(other.countClick)) {
+			return false;
+		}
+		if (countFavourite == null) {
+			if (other.countFavourite != null) {
+				return false;
+			}
+		} else if (!countFavourite.equals(other.countFavourite)) {
+			return false;
+		}
+		if (countPurchase == null) {
+			if (other.countPurchase != null) {
+				return false;
+			}
+		} else if (!countPurchase.equals(other.countPurchase)) {
+			return false;
+		}
+		if (extra1 == null) {
+			if (other.extra1 != null) {
+				return false;
+			}
+		} else if (!extra1.equals(other.extra1)) {
+			return false;
+		}
+		if (extra2 == null) {
+			if (other.extra2 != null) {
+				return false;
+			}
+		} else if (!extra2.equals(other.extra2)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (introduction == null) {
+			if (other.introduction != null) {
+				return false;
+			}
+		} else if (!introduction.equals(other.introduction)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (price == null) {
+			if (other.price != null) {
+				return false;
+			}
+		} else if (!price.equals(other.price)) {
+			return false;
+		}
+		if (psCategory == null) {
+			if (other.psCategory != null) {
+				return false;
+			}
+		} else if (!psCategory.equals(other.psCategory)) {
+			return false;
+		}
+		if (timeCreated == null) {
+			if (other.timeCreated != null) {
+				return false;
+			}
+		} else if (!timeCreated.equals(other.timeCreated)) {
+			return false;
+		}
+		if (urlPicture == null) {
+			if (other.urlPicture != null) {
+				return false;
+			}
+		} else if (!urlPicture.equals(other.urlPicture)) {
+			return false;
+		}
+		if (vote == null) {
+			if (other.vote != null) {
+				return false;
+			}
+		} else if (!vote.equals(other.vote)) {
+			return false;
+		}
+		return true;
 	}
 
 }

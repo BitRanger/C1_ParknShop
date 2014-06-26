@@ -13,6 +13,35 @@ $(".sellerControlItem").click(function() {
     $(this).css("background-color", "#133D58");
 });
 
+$("#chooseCategoryBtn").click(function() {
+    $("#seller_categoryList").show();
+});
+
+$("#seller_categoryList").mouseleave(function() {
+    $(this).hide();
+});
+
+$(".seller_categoryListItem").mouseenter(function() {
+    $(this).css("background-color", "#189918");
+    $(this).css("color", "#ffffff");
+}).mouseleave(function() {
+    $(this).css("background-color", "#efefef");
+    $(this).css("color", "#333333");
+}).click(function() {
+    $("#sellerCategoryTag").show();
+});
+
+$(".sellerCategoryTagItem").click(function() {
+    if ($(this).data("state") == "0") {
+        $(this).css("background-color", "#189918");
+        $(this).css("color", "#ffffff");
+        $(this).data("state", "1");
+    } else {
+        $(this).css("background-color", "#efefef");
+        $(this).css("color", "#333333");
+        $(this).data("state", "0");
+    }
+});
 
 function choose_category() {
 

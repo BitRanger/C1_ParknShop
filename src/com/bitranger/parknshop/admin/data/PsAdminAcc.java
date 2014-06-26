@@ -24,7 +24,6 @@ public class PsAdminAcc implements java.io.Serializable {
 	private static final long serialVersionUID = 898021265546066983L;
 	private Integer idAdmin;
 	private PsAdministrator psAdministrator;
-	private Double balance;
 	private Timestamp timeCreated;
 
 	// Constructors
@@ -34,11 +33,9 @@ public class PsAdminAcc implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PsAdminAcc(Integer idAdmin, PsAdministrator psAdministrator,
-			Double balance, Timestamp timeCreated) {
+	public PsAdminAcc(Integer idAdmin, PsAdministrator psAdministrator, Timestamp timeCreated) {
 		this.idAdmin = idAdmin;
 		this.psAdministrator = psAdministrator;
-		this.balance = balance;
 		this.timeCreated = timeCreated;
 	}
 
@@ -61,15 +58,6 @@ public class PsAdminAcc implements java.io.Serializable {
 
 	public void setPsAdministrator(PsAdministrator psAdministrator) {
 		this.psAdministrator = psAdministrator;
-	}
-
-	@Column(name = "balance", nullable = false, precision = 9)
-	public Double getBalance() {
-		return this.balance;
-	}
-
-	public void setBalance(Double balance) {
-		this.balance = balance;
 	}
 
 	@Column(name = "time_created", nullable = false, length = 19)

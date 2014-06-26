@@ -85,7 +85,7 @@ public class PsOrder implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_recip_addr", nullable = false)
 	public PsRecipient getPsRecipient() {
 		return this.psRecipient;
@@ -95,7 +95,7 @@ public class PsOrder implements java.io.Serializable {
 		this.psRecipient = psRecipient;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", nullable = false)
 	public PsCustomer getPsCustomer() {
 		return this.psCustomer;
@@ -105,7 +105,7 @@ public class PsOrder implements java.io.Serializable {
 		this.psCustomer = psCustomer;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_shop", nullable = false)
 	public PsShop getPsShop() {
 		return this.psShop;
@@ -151,7 +151,7 @@ public class PsOrder implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psOrder")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psOrder")
 	public Set<ROrderItem> getROrderItems() {
 		return this.ROrderItems;
 	}

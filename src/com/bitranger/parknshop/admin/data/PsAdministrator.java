@@ -19,16 +19,12 @@ public class PsAdministrator implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 177234981803364623L;
-	
 	private Integer id;
 	private String email;
 	private String name;
 	private String password;
 	private Timestamp timeCreated;
+	private Double balance;
 	private PsNoticeAdmin psNoticeAdmin;
 	private PsAdminAcc psAdminAcc;
 
@@ -49,12 +45,13 @@ public class PsAdministrator implements java.io.Serializable {
 
 	/** full constructor */
 	public PsAdministrator(String email, String name, String password,
-			Timestamp timeCreated, PsNoticeAdmin psNoticeAdmin,
-			PsAdminAcc psAdminAcc) {
+			Timestamp timeCreated, Double balance,
+			PsNoticeAdmin psNoticeAdmin, PsAdminAcc psAdminAcc) {
 		this.email = email;
 		this.name = name;
 		this.password = password;
 		this.timeCreated = timeCreated;
+		this.balance = balance;
 		this.psNoticeAdmin = psNoticeAdmin;
 		this.psAdminAcc = psAdminAcc;
 	}
@@ -107,7 +104,16 @@ public class PsAdministrator implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psAdministrator")
+	@Column(name = "balance", precision = 9)
+	public Double getBalance() {
+		return this.balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "psAdministrator")
 	public PsNoticeAdmin getPsNoticeAdmin() {
 		return this.psNoticeAdmin;
 	}
@@ -116,7 +122,7 @@ public class PsAdministrator implements java.io.Serializable {
 		this.psNoticeAdmin = psNoticeAdmin;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psAdministrator")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "psAdministrator")
 	public PsAdminAcc getPsAdminAcc() {
 		return this.psAdminAcc;
 	}

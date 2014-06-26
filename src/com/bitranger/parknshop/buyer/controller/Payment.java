@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bitranger.parknshop.admin.data.PsAdminAcc;
 import com.bitranger.parknshop.admin.data.PsAdminAccDAO;
+import com.bitranger.parknshop.admin.data.PsAdministrator;
+import com.bitranger.parknshop.admin.data.PsAdministratorDAO;
 import com.bitranger.parknshop.buyer.dao.ICartCustomerItemDAO;
 import com.bitranger.parknshop.buyer.model.PsCustomer;
 import com.bitranger.parknshop.common.dao.IPsCategoryDAO;
@@ -25,7 +28,6 @@ import com.bitranger.parknshop.seller.model.PsOrder;
  *         payment.
  */
 @Controller
-@RequestMapping("/payment")
 public class Payment {
 	@Autowired
 	private IPsCategoryDAO psCategoryDao;
@@ -40,12 +42,14 @@ public class Payment {
 	private ICartCustomerItemDAO psCartCustomerItemDao;
 	
 	@Autowired
-	private PsAdminAccDAO psAdminAccDao;
+	private PsAdministratorDAO psAdministratorDao;
+	
+	
 
 	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger
 			.getLogger(Payment.class.getName());
 
-	@RequestMapping(value = "/begin")
+	@RequestMapping(value = "/submitPayment", method=RequestMethod.POST)
 	public String beginPayment(HttpServletRequest req, Integer psOrderId,
 			String bankCardId) {
 		PsCustomer currentCustomer = (PsCustomer) req.getSession()
@@ -60,17 +64,18 @@ public class Payment {
 		if (psOrder == null) {
 			return Utility.error("Payment: Order doesn't exist. ");
 		}
-		if (psOrder.getPsCustomer().getId() != currentCustomer.getId()) {
+		if (! psOrder.getPsCustomer().getId().equals(currentCustomer.getId())) {
 			return Utility
 					.error("The user attempted to pay an order which does not belong to him");
 		}
-		PsAdminAcc psAdminAcc = psAdminAccDao.findById(1);
-		Double balance = psAdminAcc.getBalance();
-		psAdminAcc.setBalance(balance + psOrder.getPriceTotal());
-		psAdminAccDao.update(psAdminAcc);
+		PsAdministrator psAdministrator = psAdministratorDao.findById(1);
+		psAdministrator.setBalance(psAdministrator.getBalance()
+				+ psOrder.getPriceTotal());
+		psAdministratorDao.update(psAdministrator);
+		
 		psOrder.setStatus(OrderStatus.PAID);
 		psOrder.setTimePaid(new Timestamp(System.currentTimeMillis()));
-		log.info("Current balance " + balance.toString());
+		log.info("Current balance " + psAdministrator.getBalance().toString());
 		psOrderDao.update(psOrder);
 		return "success_payment";
 	}

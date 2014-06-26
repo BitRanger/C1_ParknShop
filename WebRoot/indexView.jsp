@@ -45,6 +45,7 @@
 				<div class="storeItem">
 					<a href="<%=request.getContextPath()%>/item/<%=psItem.getId()%>"><img
 						width="180px"
+						height="180px"
 						src="<%=request.getContextPath()%>/images/<%=psItem.getUrlPicture()%>"
 						alt="..."></a>
 					<div class="storeItemDesc">

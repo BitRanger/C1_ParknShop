@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bitranger.parknshop.admin.data.PsAdminAcc;
 import com.bitranger.parknshop.admin.data.PsAdminAccDAO;
+import com.bitranger.parknshop.admin.data.PsAdministrator;
+import com.bitranger.parknshop.admin.data.PsAdministratorDAO;
 import com.bitranger.parknshop.buyer.model.CartCustomerItem;
 import com.bitranger.parknshop.buyer.model.CartCustomerItemId;
 import com.bitranger.parknshop.buyer.model.PsCustomer;
@@ -34,7 +36,7 @@ public class CancelOrder {
 	private PsOrderDAO psOrderDao;
 
 	@Autowired
-	private PsAdminAccDAO psAdminAccDao;
+	private PsAdministratorDAO psAdministratorDao;
 
 	@Autowired
 	private PsSellerAccDAO psSellerAccDao;
@@ -61,21 +63,19 @@ public class CancelOrder {
 		if (psOrder == null) {
 			return Utility.error("No such order.");
 		}
-		if(psOrder.getStatus().equals(OrderStatus.UNPAID))
-		{
+		if (psOrder.getStatus().equals(OrderStatus.UNPAID)) {
 			log.info("From unpaid order.");
 			psOrder.setStatus(OrderStatus.CANCELLED);
 			psOrderDao.update(psOrder);
-		}else if(psOrder.getStatus().equals(OrderStatus.PAID))
-		{
+		} else if (psOrder.getStatus().equals(OrderStatus.PAID)) {
 			log.info("From paid order.");
 			psOrder.setStatus(OrderStatus.CANCELLED);
 			psOrderDao.update(psOrder);
-			PsAdminAcc psAdminAcc = psAdminAccDao.findById(1);
-			psAdminAcc.setBalance(psAdminAcc.getBalance()
+			PsAdministrator psAdministrator = psAdministratorDao.findById(1);
+			psAdministrator.setBalance(psAdministrator.getBalance()
 					- psOrder.getPriceTotal());
 			// TODO: Refund to the customer here.
-			psAdminAccDao.update(psAdminAcc);
+			psAdministratorDao.update(psAdministrator);
 		}
 		return "redirect:/";
 	}

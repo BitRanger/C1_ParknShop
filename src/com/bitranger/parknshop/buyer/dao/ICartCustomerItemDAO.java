@@ -21,6 +21,8 @@ public interface ICartCustomerItemDAO {
 	public void save(CartCustomerItem transientInstance);
 
 	public void delete(CartCustomerItem persistentInstance);
+	
+	public void deleteAll(List<CartCustomerItem> items);
 
 	public CartCustomerItem findById(CartCustomerItemId id);
 

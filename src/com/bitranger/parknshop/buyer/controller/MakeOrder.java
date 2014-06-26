@@ -78,21 +78,22 @@ public class MakeOrder {
 						.equals(currentCustomer.getId())))
 			return Utility.error("Recipient ID is invalid.");
 
-		FetchOption option = new FetchOption();
-		option.ascending();
-		option.offset = 0;
-		option.limit = 100;
+//		FetchOption option = new FetchOption();
+//		option.ascending();
+//		option.offset = 0;
+//		option.limit = 100;
 		List<CartCustomerItem> cartItems = psCartCustomerItemDao
-				.findByCustomerId(currentCustomer.getId(), option);
+				.findByCustomerId(currentCustomer.getId(), new FetchOption().limit(100).ascending());
+		
 		Map<PsShop, Set<CartCustomerItem>> shopToPsOrder = new HashMap<PsShop, Set<CartCustomerItem>>();
 		for (CartCustomerItem item : cartItems) {
 			PsShop currentShop = item.getPsItem().getPsShop();
 			Set<CartCustomerItem> currentSet = shopToPsOrder.get(currentShop);
 			if (currentSet == null) {
 				currentSet = new HashSet<CartCustomerItem>();
-				shopToPsOrder.put(currentShop, currentSet);
 			}
 			currentSet.add(item);
+			shopToPsOrder.put(currentShop, currentSet);
 		}
 
 		for (PsShop psShop : shopToPsOrder.keySet()) {
@@ -117,11 +118,14 @@ public class MakeOrder {
 				orderItems.add(order_item);
 				priceTotal += item.getPsItem().getPrice() * item.getQuantity();
 			}
+			transientOrder.setPriceTotal(priceTotal);
 			transientOrder.setROrderItems(orderItems);
 			psOrderDao.update(transientOrder);
 			log.debug("Save successfully");
 		}
+		
+		psCartCustomerItemDao.deleteAll(cartItems);
 
-		return "redirect:/thankyou";
+		return "thankyou";
 	}
 }

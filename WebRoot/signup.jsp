@@ -43,7 +43,7 @@
         <div id="signupMainRight">
             <div id="signupPanel">
                 <div class="signupMessage">Sign up, trade world</div>
-                <form style="margin:0" id="signupForm" method="post" action="<%=request.getContextPath()%>/register">
+                <form style="margin:0" id="signupForm" method="post" submit="return deal_signup()" action="<%=request.getContextPath()%>/register">
                     <input class="signup_input" type="text" name="username" placeholder="Pick a username"><br>
                     <input class="signup_input" type="text" name="email" placeholder="Your email"><br>
                     <input class="signup_input" type="password" name="password" placeholder="Create a password"><br>
@@ -56,7 +56,7 @@
                         <input type="checkbox">
                         <span>I have read and accepted the <a href="#">User Agreement</a> </span>
                     </div>
-                    <input class="signup_input" type="submit" value="Signup" onclick="deal_signup()"><br>
+                    <input class="signup_input" type="submit" value="Signup" ><br>
                 </form>
             </div>
         </div>

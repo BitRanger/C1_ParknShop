@@ -117,6 +117,33 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 
 	@Override
 	@SuppressWarnings("unchecked")
+	public List<PsOrder> findByCustomerId(final Integer id) {
+		log.debug("findByCustomerId: " + id);
+		try {
+			return getHibernateTemplate().executeFind(
+					new HibernateCallback<List<PsOrder>>() {
+
+						@Override
+						public List<PsOrder> doInHibernate(Session arg0)
+								throws HibernateException, SQLException {
+							SQLQuery query = arg0
+									.createSQLQuery(
+"select * from ps_order as P where P.id_customer = ? order by P.id desc");
+							query.setInteger(0, id);
+							query.addEntity(PsOrder.class);
+							return query.list();
+
+						}
+
+					});
+		} catch (RuntimeException re) {
+			log.error("find by customerId failed", re);
+			throw re;
+		}
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
 	public List<PsOrder> findByShopId(final Integer id,final Date from,final Date to) {
 		log.debug("find by shop_id: " + id);
 		try {

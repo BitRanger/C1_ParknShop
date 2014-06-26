@@ -29,6 +29,7 @@ public interface IPsOrderDAO {
 	public abstract List<PsOrder> findByCustomerId(Integer id, OrderState state);
 	public abstract List<PsOrder> findByShopId(Integer id, Date from, Date to);
 	public abstract List<PsOrder> findByShopId(Integer id, OrderState state);
+	public abstract List<PsOrder> findByCustomerId(Integer id);
 	
 	public abstract List<PsOrder> findAll(Short state);
 	public abstract List<PsOrder> findAll(Date from, Date to);

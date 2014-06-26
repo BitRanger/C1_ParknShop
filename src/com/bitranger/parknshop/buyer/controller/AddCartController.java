@@ -4,7 +4,9 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transaction;
 
+import org.hibernate.FlushMode;
 import org.omg.CORBA.Current;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,6 +56,7 @@ public class AddCartController {
 		transientItem.setQuantity(1);
 		transientItem.setTimeCreated(new Timestamp(System.currentTimeMillis()));
 		psCartCustomerItemDao.save(transientItem);
+		org.springframework.orm.hibernate3.support.OpenSessionInViewFilter ss = new org.springframework.orm.hibernate3.support.OpenSessionInViewFilter();
 		return "redirect:/";
 	}
 }

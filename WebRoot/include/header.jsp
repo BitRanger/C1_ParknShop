@@ -2,7 +2,7 @@
 <div id="storeHeaderWrapper">
     <div id="storeHeader">
         <div id="logoDiv">
-            <a href="<%=request.getContextPath()%>/"><img id="logoImg" src="images/logo.jpg"/></a>
+            <a href="<%=request.getContextPath()%>/"><img id="logoImg" src="<%=request.getContextPath()%>/images/logo.jpg"/></a>
         </div>
         <div id="headerRight">
             <div id="headerRightUp">
@@ -22,7 +22,7 @@
                     <% PsCustomer currentCustomer = (PsCustomer)session.getAttribute("currentCustomer");
                        if (currentCustomer != null) { %>
                         <li class="headerListItem">
-                            <a class="headerListItemLink" href="<%=request.getContextPath()%>/customer/<%=currentCustomer.getId()%>">
+                            <a class="headerListItemLink" href="<%=request.getContextPath()%>/buyerCenter">
                                <%=currentCustomer.getNickname() %>
                             </a>
                         </li>
@@ -31,7 +31,7 @@
                         </li>
                     <% } else { %>
                         <li class="headerListItem">
-                            <a class="headerListItemLink" href="signup.jsp">Signup</a>
+                            <a class="headerListItemLink" href="<%=request.getContextPath()%>/signup.jsp">Signup</a>
                         </li>
                         <li class="headerListItem">
                             <a class="headerListItemLink" href="#" data-toggle="modal" data-target="#login_modal">Login</a>

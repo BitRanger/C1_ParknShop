@@ -23,7 +23,7 @@
 					<property name="runnable">
 						<bean class="com.bitranger.parknshop.task.OrderChecker">
 							<property name="psOrderDao" ref="psOrderDao"></property>
-							<property name="psAdminAccDao" ref="psAdminAccDao"></property>
+							<property name="psAdministratorDao" ref="psAdministratorDao"></property>
 							<property name="psSellerAccDao" ref="psSellerAccDao"></property>
 						</bean>
 					</property>
@@ -193,7 +193,15 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
+	<bean id="psAdministratorDao" class="com.bitranger.parknshop.admin.data.PsAdministratorDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
 	<bean id="psSellerAccDao" class="com.bitranger.parknshop.seller.dao.PsSellerAccDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psCommentDao" class="com.bitranger.parknshop.common.dao.impl.PsCommentDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 

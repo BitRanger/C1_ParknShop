@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import com.bitranger.parknshop.admin.data.PsAdminAcc;
 import com.bitranger.parknshop.admin.data.PsAdminAccDAO;
+import com.bitranger.parknshop.admin.data.PsAdministrator;
+import com.bitranger.parknshop.admin.data.PsAdministratorDAO;
 import com.bitranger.parknshop.common.model.OrderStatus;
 import com.bitranger.parknshop.seller.OrderState;
 import com.bitranger.parknshop.seller.dao.IPsOrderDAO;
@@ -27,7 +29,7 @@ import com.bitranger.parknshop.seller.model.PsSellerAcc;
 @Component
 public class OrderChecker implements Runnable {
 	private IPsOrderDAO psOrderDao;
-	private PsAdminAccDAO psAdminAccDao;
+	private PsAdministratorDAO psAdministratorDao;
 	private PsSellerAccDAO psSellerAccDao;
 	
 	public IPsOrderDAO getPsOrderDao() {
@@ -38,12 +40,12 @@ public class OrderChecker implements Runnable {
 		this.psOrderDao = psOrderDao;
 	}
 
-	public PsAdminAccDAO getPsAdminAccDao() {
-		return psAdminAccDao;
+	public PsAdministratorDAO getPsAdministratorDao() {
+		return psAdministratorDao;
 	}
 
-	public void setPsAdminAccDao(PsAdminAccDAO psAdminAccDao) {
-		this.psAdminAccDao = psAdminAccDao;
+	public void setPsAdministratorDao(PsAdministratorDAO psAdministratorDao) {
+		this.psAdministratorDao = psAdministratorDao;
 	}
 
 	public PsSellerAccDAO getPsSellerAccDao() {
@@ -56,7 +58,6 @@ public class OrderChecker implements Runnable {
 
 	private Timestamp subtract(Timestamp left, Timestamp right) {
 		return new Timestamp(left.getTime() - right.getTime());
-
 	}
 
 	private final Timestamp oneDay = new Timestamp(86400000);
@@ -84,10 +85,10 @@ public class OrderChecker implements Runnable {
 			if (subtract(now, paidTimestamp).after(threeDay)) {
 				psOrder.setStatus(OrderStatus.CANCELLED);
 				psOrderDao.update(psOrder);
-				PsAdminAcc psAdminAcc = psAdminAccDao.findById(1);
-				Double balance = psAdminAcc.getBalance();
-				psAdminAcc.setBalance(balance - psOrder.getPriceTotal());
-				psAdminAccDao.update(psAdminAcc);
+				PsAdministrator psAdministrator = psAdministratorDao.findById(1);
+				psAdministrator.setBalance(psAdministrator.getBalance()
+						- psOrder.getPriceTotal());
+				psAdministratorDao.update(psAdministrator);
 			}
 		}
 
@@ -106,10 +107,10 @@ public class OrderChecker implements Runnable {
 				double balance = account.getBalance();
 				account.setBalance(balance + psOrder.getPriceTotal());
 				psSellerAccDao.update(account);
-				
-				PsAdminAcc psAdminAcc = psAdminAccDao.findById(1);
-				psAdminAcc.setBalance(psAdminAcc.getBalance() - psOrder.getPriceTotal());
-				psAdminAccDao.update(psAdminAcc);
+				PsAdministrator psAdministrator = psAdministratorDao.findById(1);
+				psAdministrator.setBalance(psAdministrator.getBalance()
+						- psOrder.getPriceTotal());
+				psAdministratorDao.update(psAdministrator);
 			}
 		}
 	}
