@@ -38,6 +38,7 @@
 			<%
 				if (psOrder.getStatus().equals(OrderStatus.UNPAID)) {
 			%>
+<<<<<<< HEAD
 			<li><a
 				href="<%=request.getContextPath()%>/pay.jsp?orderId=<%=psOrder.getId()%>">Pay
 					Now</a></li>
@@ -49,6 +50,9 @@
 			%>
 			<li><a
 				href="<%=request.getContextPath()%>/confirmReceived?orderId=<%=psOrder.getId()%>">Confirm Received</a></li>
+=======
+				<a href="<%=request.getContextPath()%>/pay.jsp?orderId=<%=psOrder.getId()%>">Pay Now</a>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 			<%
 				}
 			%>
@@ -60,8 +64,14 @@
 
 			<li>
 				<div class="left historyItemImgDiv">
+<<<<<<< HEAD
 					<img src="<%=rOrderItem.getPsItem().getUrlPicture()%>" width="50"
 						height="50">
+=======
+					<img
+						src="<%=request.getContextPath()%>/images/<%=rOrderItem.getPsItem().getUrlPicture()%>"
+						width="50" height="50">
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 				</div>
 				<div class="left historyItemDescDiv">
 					<div class="historyItemDesc"><%=Utility.slice(rOrderItem.getPsItem()
@@ -70,8 +80,16 @@
 				</div>
 			</li>
 			<li><span>$<%=rOrderItem.getPsItem().getPrice()%></span><span><%=rOrderItem.getQuantitiy()%></span></li>
+<<<<<<< HEAD
 			<li><span><a class="historyActionLink"
 					href="<%=request.getContextPath()%>/comment?psItemId=<%=rOrderItem.getPsItem().getId()%>">Comment</a></span>
+=======
+			<li><span><a class="historyActionLink" href="#">SomeAction</a></span><br>
+				<span><a class="historyActionLink" href="#">Complaint</a></span></li>
+			<li><span><a class="historyActionLink" href="#">State</a></span><br>
+				<span><a class="historyActionLink" href="#">OrderDetail</a></span></li>
+			<li><span><a class="historyActionLink" href="#">Comment</a></span>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 			</li>
 
 		</ul>

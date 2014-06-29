@@ -17,8 +17,11 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.bitranger.parknshop.buyer.model.CartCustomerItem;
 import com.bitranger.parknshop.buyer.model.CustomerFavouriteItem;
 import com.bitranger.parknshop.buyer.model.CustomerFavouriteItemId;
+<<<<<<< HEAD
 import com.bitranger.parknshop.common.dao.FetchOption;
 import com.bitranger.parknshop.common.dao.SortOption;
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 /**
  * A data access object (DAO) providing persistence and search support for

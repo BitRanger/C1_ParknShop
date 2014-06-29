@@ -33,6 +33,7 @@ public class PsAdItem implements java.io.Serializable {
 	/** default constructor */
 	public PsAdItem() {
 	}
+<<<<<<< HEAD
 
 	/** minimal constructor */
 	public PsAdItem(Integer idPromot, PsPromotItem psPromotItem,
@@ -46,11 +47,17 @@ public class PsAdItem implements java.io.Serializable {
 		this.price = price;
 		this.numFetched = numFetched;
 	}
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 	/** full constructor */
 	public PsAdItem(Integer idPromot, PsPromotItem psPromotItem,
 			Timestamp timeStart, Timestamp timeEnd, Double weight,
+<<<<<<< HEAD
 			Double price, Integer numFetched, Integer id) {
+=======
+			Double price, Integer numFetched) {
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		this.idPromot = idPromot;
 		this.psPromotItem = psPromotItem;
 		this.timeStart = timeStart;

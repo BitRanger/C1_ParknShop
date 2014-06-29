@@ -50,9 +50,16 @@ public class PsPromotItem implements java.io.Serializable {
 	}
 
 	/** full constructor */
+<<<<<<< HEAD
 	public PsPromotItem(PsItem psItem, Timestamp timeCreated, String itemInfo,
 			String description, String picUrl,
 			Set<PsItemPromotInfo> psItemPromotInfos, PsAdItem psAdItem) {
+=======
+	public PsPromotItem(Integer id, PsItem psItem, Timestamp timeCreated,
+			String itemInfo, String description, String picUrl,
+			Set<PsItemPromotInfo> psItemPromotInfos, PsAdItem psAdItem) {
+		this.id = id;
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		this.psItem = psItem;
 		this.timeCreated = timeCreated;
 		this.itemInfo = itemInfo;
@@ -129,7 +136,11 @@ public class PsPromotItem implements java.io.Serializable {
 		this.psItemPromotInfos = psItemPromotInfos;
 	}
 
+<<<<<<< HEAD
 	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psPromotItem")
+=======
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "psPromotItem")
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	public PsAdItem getPsAdItem() {
 		return this.psAdItem;
 	}

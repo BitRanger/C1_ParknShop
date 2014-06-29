@@ -20,15 +20,19 @@ public class PsNoticeAdmin implements java.io.Serializable {
 
 	// Fields
 
+<<<<<<< HEAD
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 5648796209275448763L;
 	private Integer id;
+=======
+	private Integer idAdmin;
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	private PsAdministrator psAdministrator;
 	private Timestamp timeCreated;
 	private String message;
-	private String source;
+	private String source = "SYSTEM";
 	private Short isValid;
 
 	// Constructors
@@ -44,8 +48,13 @@ public class PsNoticeAdmin implements java.io.Serializable {
 	}
 
 	/** full constructor */
+<<<<<<< HEAD
 	public PsNoticeAdmin(PsAdministrator psAdministrator,
 			Timestamp timeCreated, String message, String source, Short isValid) {
+=======
+	public PsNoticeAdmin(PsAdministrator psAdministrator, Timestamp timeCreated,
+			String message, String source, Short isValid) {
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		this.psAdministrator = psAdministrator;
 		this.timeCreated = timeCreated;
 		this.message = message;
@@ -65,8 +74,13 @@ public class PsNoticeAdmin implements java.io.Serializable {
 		this.id = id;
 	}
 
+<<<<<<< HEAD
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_admin", nullable = false)
+=======
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	public PsAdministrator getPsAdministrator() {
 		return this.psAdministrator;
 	}

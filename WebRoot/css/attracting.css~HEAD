@@ -1,0 +1,145 @@
+
+#attracting {
+    width: 1000px;
+    height: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#attractingLeft {
+    float: left;
+    width: 700px;
+}
+
+#attractingBigShow {
+    width: 700px;
+}
+
+#attracting_cutting {
+    margin-top: 20px;
+}
+
+#discount_areaWrapper {
+    position: relative;
+    width: 700px; height: 160px;
+    overflow: hidden;
+}
+
+#discount_area {
+    position: absolute;
+    width: 2100px;
+    height: 160px;
+    background-color: #ffffff;
+}
+
+.discount_area_list {
+
+}
+
+.discountItem {
+    float: left;
+    height: 160px;
+    width: 140px;
+    border-right: 1px solid #eeeeee;
+    overflow: hidden;
+    padding: 20px 10px 10px 20px;
+}
+
+.discountItemImg {
+
+}
+
+#discount_title {
+    background-color: #333333;
+    height: 40px;
+}
+
+#discount_title_left {
+    float: left;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 38px;
+    margin-left: 10px;
+}
+
+#discount_title_right {
+    float: right;
+    color: #dddddd;
+    font-size: 13px;
+    line-height: 38px;
+    margin-right: 10px;
+}
+
+
+.discount_navBtn {
+    position: absolute;
+    top:65px;
+}
+
+#discount_leftBtn {
+    font-size: 28px;
+    color: rgba(10, 10, 10, 0.5);
+    text-decoration: none;
+    background-color: rgba(168, 168, 168, 0.6);
+}
+
+#discount_leftBtn:hover {
+    font-size: 28px;
+    color: rgba(10, 10, 10, 0.7);
+    text-decoration: none;
+    background-color: rgba(168, 168, 168, 0.9);
+    cursor: pointer;
+}
+
+#discount_rightBtn {
+    margin-left: 675px;
+    font-size: 28px;
+    color: rgba(10, 10, 10, 0.5);
+    text-decoration: none;
+    background-color: rgba(168, 168, 168, 0.6);
+}
+
+#discount_rightBtn:hover {
+    margin-left: 675px;
+    font-size: 28px;
+    color: rgba(10, 10, 10, 0.7);
+    text-decoration: none;
+    background-color: rgba(168, 168, 168, 0.9);
+    cursor: pointer;
+}
+
+#attractingRight {
+    float: left;
+    width: 300px;
+    padding-left: 20px;
+}
+
+#ad_span {
+    margin-left: 195px;
+}
+
+#ad_link {
+    font-size: 12px;
+    text-decoration: none;
+}
+
+#ad_link:hover {
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

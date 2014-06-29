@@ -115,7 +115,11 @@ public class PsAdministratorDAO extends HibernateDaoSupport {
 		return findByProperty(PASSWORD, password);
 	}
 
+<<<<<<< HEAD:src/com/bitranger/parknshop/admin/data/PsAdministratorDAO.java
 	public List<PsAdministrator> findAll() {
+=======
+	public List findAll() {
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79:src/com/bitranger/parknshop/admin/data/PsAdministratorDAO.java
 		log.debug("finding all PsAdministrator instances");
 		try {
 			String queryString = "from PsAdministrator";

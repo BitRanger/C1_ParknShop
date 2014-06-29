@@ -16,7 +16,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * methods provides additional information for how to configure it for the
  * desired type of transaction control.
  * 
- * @see temp.PsAdminAcc
+ * @see PsAdminAcc
  * @author MyEclipse Persistence Tools
  */
 public class PsAdminAccDAO extends HibernateDaoSupport {
@@ -50,12 +50,27 @@ public class PsAdminAccDAO extends HibernateDaoSupport {
 			throw re;
 		}
 	}
+	
+	public void update(PsAdminAcc persistentInstance) {
+		log.debug("deleting PsAdminAcc instance");
+		try {
+			getHibernateTemplate().update(persistentInstance);
+			log.debug("delete successful");
+		} catch (RuntimeException re) {
+			log.error("delete failed", re);
+			throw re;
+		}
+	}
 
 	public PsAdminAcc findById(java.lang.Integer id) {
 		log.debug("getting PsAdminAcc instance with id: " + id);
 		try {
 			PsAdminAcc instance = (PsAdminAcc) getHibernateTemplate().get(
+<<<<<<< HEAD
 					"PsAdminAcc", id);
+=======
+					"com.bitranger.parknshop.admin.data.PsAdminAcc", id);
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

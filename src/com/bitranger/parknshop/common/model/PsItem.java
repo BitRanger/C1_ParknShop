@@ -323,6 +323,13 @@ public class PsItem implements java.io.Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+<<<<<<< HEAD
+=======
+		result = prime
+				* result
+				+ ((cartCustomerItems == null) ? 0 : cartCustomerItems
+						.hashCode());
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		result = prime * result
 				+ ((countClick == null) ? 0 : countClick.hashCode());
 		result = prime * result
@@ -337,6 +344,11 @@ public class PsItem implements java.io.Serializable {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result
+<<<<<<< HEAD
+=======
+				+ ((psCategory == null) ? 0 : psCategory.hashCode());
+		result = prime * result
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 				+ ((timeCreated == null) ? 0 : timeCreated.hashCode());
 		result = prime * result
 				+ ((urlPicture == null) ? 0 : urlPicture.hashCode());

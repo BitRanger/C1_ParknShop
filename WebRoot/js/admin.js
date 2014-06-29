@@ -3,7 +3,10 @@
  */
 
 var isAdUpload = 0;
+<<<<<<< HEAD
 $("#admin_basicInfo").show();
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 $(".adminControlItem").click(function() {
     $(".adminContent").hide();
     $($(this).data("target")).show();
@@ -70,6 +73,7 @@ function previewImage(file)
          +sFilter+src+"\"'></div>";*/
     }
 }
+<<<<<<< HEAD
 
 
 $(".application_delete_btn").click(function() {
@@ -166,3 +170,5 @@ $("#adminLoginBtn").click(function() {
 
 
 
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79

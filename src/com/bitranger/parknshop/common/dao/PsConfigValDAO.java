@@ -17,7 +17,7 @@ import com.bitranger.parknshop.common.model.PsConfigVal;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see temp.PsConfigVal
+ * @see PsConfigVal
  * @author MyEclipse Persistence Tools
  */
 public class PsConfigValDAO extends HibernateDaoSupport {
@@ -56,7 +56,7 @@ public class PsConfigValDAO extends HibernateDaoSupport {
 		log.debug("getting PsConfigVal instance with id: " + id);
 		try {
 			PsConfigVal instance = (PsConfigVal) getHibernateTemplate().get(
-					"temp.PsConfigVal", id);
+					"com.bitranger.parknshop.common.model.PsConfigKey", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

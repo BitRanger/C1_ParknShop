@@ -5,6 +5,7 @@
   Time: 21:24
   To change this template use File | Settings | File Templates.
 --%>
+<<<<<<< HEAD
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.bitranger.parknshop.buyer.model.PsCustomer"%>
 <%@page import="java.util.List"%>
@@ -37,3 +38,14 @@
     </tr>
     <% } %>
 </table>
+=======
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79

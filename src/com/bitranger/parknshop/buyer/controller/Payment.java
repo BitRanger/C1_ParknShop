@@ -19,8 +19,11 @@ import com.bitranger.parknshop.common.dao.IPsCategoryDAO;
 import com.bitranger.parknshop.common.dao.IPsItemDAO;
 import com.bitranger.parknshop.common.model.OrderStatus;
 import com.bitranger.parknshop.seller.dao.IPsOrderDAO;
+<<<<<<< HEAD
 import com.bitranger.parknshop.seller.dao.PsNoticeSellerDAO;
 import com.bitranger.parknshop.seller.model.PsNoticeSeller;
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 import com.bitranger.parknshop.seller.model.PsOrder;
 
 /**
@@ -46,8 +49,12 @@ public class Payment {
 	@Autowired
 	private PsAdministratorDAO psAdministratorDao;
 	
+<<<<<<< HEAD
 	@Autowired
 	PsNoticeSellerDAO psNoticeSellerDAO;
+=======
+	
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger
 			.getLogger(Payment.class.getName());
@@ -80,6 +87,7 @@ public class Payment {
 		psOrder.setTimePaid(new Timestamp(System.currentTimeMillis()));
 		log.info("Current balance " + psAdministrator.getBalance().toString());
 		psOrderDao.update(psOrder);
+<<<<<<< HEAD
 		
 		PsNoticeSeller n = new PsNoticeSeller(psOrder.getPsShop().getPsSeller(),
 				new Timestamp(System.currentTimeMillis()), (short)1);
@@ -93,3 +101,8 @@ public class Payment {
 
 
 
+=======
+		return "success_payment";
+	}
+}
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79

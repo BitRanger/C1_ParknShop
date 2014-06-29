@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 <%@page import="com.bitranger.parknshop.common.ads.PsPromotItem"%>
 <%@page import="com.bitranger.parknshop.util.Str"%>
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 <%@page import="com.bitranger.parknshop.common.model.PsComment"%>
 <%@page import="com.bitranger.parknshop.common.model.PsItem"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
@@ -35,6 +38,7 @@
 				<div id="itemDetail_PicShow">
 					<div id="itemDetail_PicShow_Big">
 						<img id="itemDetail_PicShow_Big_img"
+<<<<<<< HEAD
 							src="<%=psItem.getUrlPicture().split(";")[0]%>">
 					</div>
 					<ul id="itemDetail_PicShow_thumbnail_Set">
@@ -46,6 +50,26 @@
 								class="itemDetail_PicShow_thumbnail"
 								src="<%=_u%>" /></a></li>
 					<%} %>
+=======
+							src="<%=request.getContextPath()%>/images/<%=psItem.getUrlPicture()%>">
+					</div>
+					<ul id="itemDetail_PicShow_thumbnail_Set">
+						<li class="itemDetail_PicShow_thumbnail_item"><a href="#"><img
+								class="itemDetail_PicShow_thumbnail"
+								src="<%=request.getContextPath()%>/images/<%=psItem.getUrlPicture()%>" /></a></li>
+						<li class="itemDetail_PicShow_thumbnail_item"><a href="#"><img
+								class="itemDetail_PicShow_thumbnail"
+								src="<%=request.getContextPath()%>/images/<%=psItem.getUrlPicture()%>" /></a></li>
+						<li class="itemDetail_PicShow_thumbnail_item"><a href="#"><img
+								class="itemDetail_PicShow_thumbnail"
+								src="<%=request.getContextPath()%>/images/<%=psItem.getUrlPicture()%>" /></a></li>
+						<li class="itemDetail_PicShow_thumbnail_item"><a href="#"><img
+								class="itemDetail_PicShow_thumbnail"
+								src="<%=request.getContextPath()%>/images/<%=psItem.getUrlPicture()%>" /></a></li>
+						<li class="itemDetail_PicShow_thumbnail_item"><a href="#"><img
+								class="itemDetail_PicShow_thumbnail"
+								src="<%=request.getContextPath()%>/images/<%=psItem.getUrlPicture()%>" /></a></li>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 					</ul>
 				</div>
 				<div id="itemDetail_Desc">
@@ -80,6 +104,7 @@
 							</ul>
 						</div>
 						<div id="itemDetail_buy">
+<<<<<<< HEAD
 						
 <a href="<%=request.getContextPath()%>/show_shop?psItemId=<%=psItem.getId()%>"><Button
 		id="itemDetail_buyBtn">View Shop</Button></a>
@@ -92,6 +117,19 @@
 						</div>
 					</div>
 
+=======
+							<a
+								href="<%=request.getContextPath()%>/addcollection?itemId=<%=psItem.getId()%>"><Button
+									id="itemDetail_buyBtn">Add Favourite</Button></a> <a
+								href="<%=request.getContextPath()%>/addcart?itemId=<%=psItem.getId()%>"><Button
+									id="itemDetail_chartBtn">Add to Cart</Button></a> <a href="#"
+								id="commentBtn" data-toggle="modal" data-target="#commentModal"><Button
+									id="itemDetail_commentBtn">Make Comment</Button></a>
+						</div>
+					</div>
+
+
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 				</div>
 			</div>
 
@@ -103,6 +141,7 @@
 					<Button id="itemDescTabBtn_record" class="itemDescTabBtn">Retail
 						Record</Button>
 				</div>
+<<<<<<< HEAD
 				<div id="itemDesc_Desc">
 					<div id="itemDesc_Desc_Desc">
 						<%=psItem.getIntroduction()%>
@@ -111,6 +150,9 @@
 					</div>
 					
 				</div>
+=======
+				<div id="itemDesc_Desc"></div>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 				<div id="itemDesc_Comment">
 					<div id="itemdesc_comment_Overview">
 						<span>The Impression: </span>
@@ -139,7 +181,11 @@
 								<div class="commentItem_left">
 									<span>By&nbsp;<a href="#"><%=psComment.getPsCustomer().getNickname()%></a></span>
 									<i
+<<<<<<< HEAD
 										style="margin-top: 5px; background: url(<%=request.getContextPath()%>/images/ratestar.png) no-repeat <%=psComment.getScore() * 16 - 80%>px 0;"
+=======
+										style="margin-top: 5px; background: url(<%=request.getContextPath()%>/images/ratestar.png) no-repeat <%=psComment.getScoreItem() * 16 - 80%>px 0;"
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 										class="bitranger_3_star"></i>
 								</div>
 								<div class="commentItem_right">
@@ -164,16 +210,21 @@
 				</div>
 				<div id="itemDesc_Record"></div>
 			</div>
+<<<<<<< HEAD
 			<%
 			String _body = psItem.getExtra1();
 			if (Str.Utils.notBlank(_body)) {
 				out.print(_body);
 			}
 			%>
+=======
+
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 			<div id="itemRecommand">
 				<div style="margin: 10px 0 20px 0;">CUSTOMERS WHO VIEWED THIS
 					PRODUCT ALSO VIEWED</div>
 				<ul>
+<<<<<<< HEAD
 				<%
 				List<PsPromotItem> ad_list = (List<PsPromotItem>)request.getAttribute("ad_list");
 				if (ad_list != null && ad_list.size() > 0)
@@ -186,6 +237,68 @@
 				<%} %>
 				</ul>
 			</div>
+=======
+					<li><a href="#"><img
+							src="<%=request.getContextPath()%>/images/detail/recommand1.jpg" /></a>
+					</li>
+					<li><a href="#"><img
+							src="<%=request.getContextPath()%>/images/detail/recommand2.jpg" /></a>
+					</li>
+					<li><a href="#"><img
+							src="<%=request.getContextPath()%>/images/detail/recommand3.jpg" /></a>
+					</li>
+					<li><a href="#"><img
+							src="<%=request.getContextPath()%>/images/detail/recommand4.jpg" /></a>
+					</li>
+					<li><a href="#"><img
+							src="<%=request.getContextPath()%>/images/detail/recommand5.jpg" /></a>
+					</li>
+				</ul>
+			</div>
+			<div class="modal fade" id="commentModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">Make Comment</h4>
+						</div>
+						<div class="modal-body">
+							<form id="commentForm" action="<%=request.getContextPath() %>/makeComment" method="post">
+								<input type="hidden" name="psItemId" value="<%=psItem.getId()%>">
+								<div>
+									<label>Item Score(0~5)</label> <span>0<input
+										type="radio" name="scoreItem" value="0"></span> <span>1<input
+										type="radio" name="scoreItem" value="1"></span> <span>2<input
+										type="radio" name="scoreItem" value="2"></span> <span>3<input
+										type="radio" name="scoreItem" value="3"></span> <span>4<input
+										type="radio" name="scoreItem" value="4"></span> <span>5<input
+										type="radio" name="scoreItem" value="5" checked="checked"></span>
+								</div>
+								<div>
+									<label>Shop Score(0~5)</label> <span>0<input
+										type="radio" name="scoreShop" value="0"></span> <span>1<input
+										type="radio" name="scoreShop" value="1"></span> <span>2<input
+										type="radio" name="scoreShop" value="2"></span> <span>3<input
+										type="radio" name="scoreShop" value="3"></span> <span>4<input
+										type="radio" name="scoreShop" value="4"></span> <span>5<input
+										type="radio" name="scoreShop" value="5" checked="checked"></span>
+								</div>
+								<label>Content</label>
+								<textarea rows="10" cols="60" name="content"></textarea>
+							</form>
+							<div class="modal-footer">
+								<button type="button" class="common_btn" id="payDoneModalBtn"
+									data-dismiss="modal" onclick="document.getElementById('commentForm').submit();">Submit</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+			</div>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		</div>
 
 	</div>

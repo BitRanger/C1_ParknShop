@@ -23,6 +23,10 @@ import com.bitranger.parknshop.common.dao.IPsItemDAO;
 import com.bitranger.parknshop.common.model.OrderStatus;
 import com.bitranger.parknshop.common.model.ROrderItem;
 import com.bitranger.parknshop.common.model.ROrderItemId;
+<<<<<<< HEAD
+=======
+import com.bitranger.parknshop.seller.OrderState;
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 import com.bitranger.parknshop.seller.dao.IPsOrderDAO;
 import com.bitranger.parknshop.seller.dao.IPsRecipientDAO;
 import com.bitranger.parknshop.seller.model.PsOrder;

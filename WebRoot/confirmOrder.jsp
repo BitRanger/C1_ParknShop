@@ -1,6 +1,10 @@
 <%@page import="com.bitranger.parknshop.buyer.controller.Utility"%>
 <%@page import="com.bitranger.parknshop.seller.model.PsRecipient"%>
+<<<<<<< HEAD
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="gbk"%>
+=======
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 <html>
 <head>
 <title>Online Store</title>
@@ -11,7 +15,11 @@
 <link rel="stylesheet" type="text/css" href="css/common.css">
 <script src="js/geo.js" type="text/javascript"></script>
 </head>
+<<<<<<< HEAD
 <body onload="setup();preselect('ÉÂÎ÷Ê¡');">
+=======
+<body onload="setup();preselect('é™•è¥¿çœ');">
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	<%@ include file="include/header.jsp"%>
 
 
@@ -46,12 +54,21 @@
 						}
 					%>
 					<!-- 					<div class="comfirm_address_item">
+<<<<<<< HEAD
 						<input type="radio" name="address" value="addr2"> <label>ÉÂÎ÷Ê¡
 							Î÷°²ÊÐ ±®ÁÖÇø ÓÑÒêÎ÷Â·127ºÅ £¨Ñî¿ªµØ ÊÕ£©</label> <em>18688722368</em>
 					</div>
 					<div class="comfirm_address_item">
 						<input type="radio" name="address" value="addr3"> <label>ÉÂÎ÷Ê¡
 							Î÷°²ÊÐ Á«ºþÇø ÀÍ¶¯ÄÏÂ·88ºÅÍúÔ°Ñ§Éú¹«Ô¢ £¨Ñî¿ªµØ ÊÕ£©</label> <em>18688722368</em>
+=======
+						<input type="radio" name="address" value="addr2"> <label>é™•è¥¿çœ
+							è¥¿å®‰å¸‚ ç¢‘æž—åŒº å‹è°Šè¥¿è·¯127å· ï¼ˆæ¨å¼€åœ° æ”¶ï¼‰</label> <em>18688722368</em>
+					</div>
+					<div class="comfirm_address_item">
+						<input type="radio" name="address" value="addr3"> <label>é™•è¥¿çœ
+							è¥¿å®‰å¸‚ èŽ²æ¹–åŒº åŠ³åŠ¨å—è·¯88å·æ—ºå›­å­¦ç”Ÿå…¬å¯“ ï¼ˆæ¨å¼€åœ° æ”¶ï¼‰</label> <em>18688722368</em>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 					</div> -->
 
 					<div>
@@ -82,7 +99,11 @@
 						<td>
 							<div class="left confirmItemImgDiv">
 								<img
+<<<<<<< HEAD
 									src="<%=cartItem.getPsItem().getUrlPicture()%>"
+=======
+									src="<%=request.getContextPath()%>/images/<%=cartItem.getPsItem().getUrlPicture()%>"
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 									width="50" height="50" />
 							</div>
 							<div class="left confirmItemDescDiv">
@@ -105,8 +126,13 @@
 				</table>
 			</div>
 			<div style="margin-top: 20px; height: 30px">
+<<<<<<< HEAD
             <a id="settleBtn" href="#" onclick="document.getElementById('address_form').submit();">Next</a>
         </div>
+=======
+				<input type="button" value="Submit Order" onclick="document.getElementById('address_form').submit();">
+			</div>
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		</div>
 	</div>
 

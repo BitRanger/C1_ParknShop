@@ -23,7 +23,7 @@ import com.bitranger.parknshop.seller.model.PsNoticeSeller;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see temp.PsNoticeSeller
+ * @see PsNoticeSeller
  * @author MyEclipse Persistence Tools
  */
 public class PsNoticeSellerDAO extends HibernateDaoSupport implements IPsNoticeSellerDAO {

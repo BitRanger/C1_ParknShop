@@ -83,21 +83,32 @@ function ajax_logout() {
 }
 
 
+<<<<<<< HEAD
 $("input[name=address]").click(function() {
     $("input[name=address]").parent().removeClass("comfirm_address_item_selected");
+=======
+$("input[name=psRecipientId]").click(function() {
+    $("input[name=psRecipientId]").parent().removeClass("comfirm_address_item_selected");
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
     $(this).parent().addClass("comfirm_address_item_selected");
 });
 
 $("input[name=payment]").click(function() {
+<<<<<<< HEAD
     $("#bankExtra").hide();
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
     $("input[name=payment]").parent().removeClass("payListItem_selected");
     $(this).parent().addClass("payListItem_selected");
 });
 
+<<<<<<< HEAD
 $("#bankSelectInput").click(function() {
     $("#bankExtra").show();
 });
 
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 $("#comfirm_addAddressBtn").click(function() {
     var province = document.getElementById("confirmAddr_div").province.value;
     var city = document.getElementById("confirmAddr_div").city.value;
@@ -108,7 +119,11 @@ $("#comfirm_addAddressBtn").click(function() {
     var phonenum = document.getElementById("confirmAddr_div").phonenum.value;
 
     var address = province + " " + city + " " + town + " " +
+<<<<<<< HEAD
         street + " " + "ï¼ˆ" + receiver + " æ”¶ï¼‰";
+=======
+    street + " " + "£¨" + receiver + " ÊÕ£©";
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
     $newAddr = $("<div class='comfirm_address_item'>" +
                  "<input type='radio' name='address' value=" + address + ">" +
@@ -123,6 +138,7 @@ $("#comfirm_addAddressBtn").click(function() {
     $('#newAddress').modal('hide')
 });
 
+<<<<<<< HEAD
 $(".itemCart_quantityChange").click(function() {
     if ($(this).html() == "+") {
         var num1 = $(this).prev().val();
@@ -137,6 +153,8 @@ $(".itemCart_quantityChange").click(function() {
     }
 });
 
+=======
+>>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 
 
