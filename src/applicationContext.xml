@@ -5,25 +5,43 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<bean
-		class="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean"
-		scope="singleton">
-		<property name="scheduledExecutorTasks">
-			<list>
-				<bean
-					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">
-					<property name="period" value="5000" />
-					<property name="runnable">
-						<bean
-							class="com.bitranger.parknshop.task.MaintainDB">
-								<property name="sessionFactory" ref="sessionFactory"></property>
-						</bean>
-					</property>
-				</bean>
-				
-			</list>
+	<bean id="springMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="username" />
+		<property name="password" value="password" />
+
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
 		</property>
 	</bean>
+
+	<bean id="EMailSender" class="com.bitranger.parknshop.mail.EMailSender">
+		<property name="sender" ref="springMailSender"/>
+	</bean>
+	
+<!-- 	<bean id="scheduledExecutor" -->
+<!-- 		class="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean" -->
+<!-- 		scope="singleton"> -->
+<!-- 		<property name="scheduledExecutorTasks"> -->
+<!-- 			<list> -->
+<!-- 				<bean -->
+<!-- 					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask"> -->
+<!-- 					<property name="period" value="5000" /> -->
+<!-- 					<property name="runnable"> -->
+<!-- 						<bean -->
+<!-- 							class="com.bitranger.parknshop.task.MaintainDB"> -->
+<!-- 								<property name="sessionFactory" ref="sessionFactory"></property> -->
+<!-- 						</bean> -->
+<!-- 					</property> -->
+<!-- 				</bean> -->
+				
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 	
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
@@ -50,10 +68,8 @@
 		</property>
 		<property name="annotatedClasses">
 			<list>
-			<value>com.bitranger.parknshop.admin.data.PsAdministator</value>
-			<value>com.bitranger.parknshop.admin.data.PsAdminAcc</value>
+			<value>com.bitranger.parknshop.admin.data.PsAdministrator</value>
 			<value>com.bitranger.parknshop.admin.data.PsNoticeAdmin</value>
-			
 			
 			<value>com.bitranger.parknshop.common.model.PsItem</value>	
 			<value>com.bitranger.parknshop.common.model.PsItemInfo</value>			
@@ -65,21 +81,25 @@
 			<value>com.bitranger.parknshop.common.model.ROrderItemId</value>
 			
 			
-			
 			<value>com.bitranger.parknshop.buyer.model.PsCustomer</value>
 			<value>com.bitranger.parknshop.buyer.model.CartCustomerItemId</value>
 			<value>com.bitranger.parknshop.buyer.model.CartCustomerItem</value>	
 			<value>com.bitranger.parknshop.buyer.model.CustomerFavouriteItem</value>
+			<value>com.bitranger.parknshop.buyer.model.CustomerFavouriteShop</value>
+			<value>com.bitranger.parknshop.buyer.model.PsNoticeCustomer</value>
 			
 			<value>com.bitranger.parknshop.seller.model.PsRecipient</value>
 			<value>com.bitranger.parknshop.seller.model.PsOrder</value>
+			<value>com.bitranger.parknshop.seller.model.PsOrderLog</value>
 			<value>com.bitranger.parknshop.seller.model.PsShop</value>
 			<value>com.bitranger.parknshop.seller.model.PsSeller</value>
+			<value>com.bitranger.parknshop.seller.model.PsSellerAcc</value>
+			<value>com.bitranger.parknshop.seller.model.PsNoticeSeller</value>
 					
-
 			<value>com.bitranger.parknshop.common.ads.PsAdItem</value>
 			<value>com.bitranger.parknshop.common.ads.PsItemPromotInfo</value>
 			<value>com.bitranger.parknshop.common.ads.PsPromotItem</value>
+			<value>com.bitranger.parknshop.seller.model.PsShopApply</value>
 			</list>
 		</property>
 	</bean>
@@ -95,6 +115,19 @@
 			</bean>
 		</property>
 	</bean>
+		
+	<bean id="psAdItemDAO" class="com.bitranger.parknshop.common.ads.PsAdItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psAdminAccDAO" class="com.bitranger.parknshop.admin.data.PsAdminAccDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psAdministratorDAO" class="com.bitranger.parknshop.admin.data.PsAdministratorDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	
 	<bean id="psItemService" class="com.bitranger.parknshop.common.service.impl.PsItemService">
 		<property name="psItemDAO" ref="psItemDao"></property>
@@ -140,9 +173,6 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
-	<bean id="psAdItemDAO" class="com.bitranger.parknshop.common.ads.PsAdItemDAO">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
 	<bean id="psItemPromotInfoDAO" class="com.bitranger.parknshop.common.ads.PsItemPromotInfoDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>	
@@ -169,5 +199,37 @@
 	<bean id="psItemInfoDAO" class="com.bitranger.parknshop.common.dao.impl.PsItemInfoDAO">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
+	
+	<bean id="psShopApplyDAO" class="com.bitranger.parknshop.seller.dao.PsShopApplyDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psNoticeAdminDAO" class="com.bitranger.parknshop.admin.data.PsNoticeAdminDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psNoticeCustomerDAO" class="com.bitranger.parknshop.buyer.dao.PsNoticeCustomerDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psNoticeSellerDAO" class="com.bitranger.parknshop.seller.dao.PsNoticeSellerDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="psRecipientDAO" class="com.bitranger.parknshop.seller.dao.impl.PsRecipientDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+		
+	<bean id="psCommentDao" class="com.bitranger.parknshop.common.dao.impl.PsCommentDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+		
+	<bean id="psCustomerFavouriteItemDao" class="com.bitranger.parknshop.buyer.dao.CustomerFavouriteItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="rOrderItemDAO" class="com.bitranger.parknshop.common.dao.impl.ROrderItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 </beans>

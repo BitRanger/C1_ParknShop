@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2014 BitRanger.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * 
- * Contributors:
- *     BitRanger - initial API and implementation
- ******************************************************************************/
 package com.bitranger.parknshop.seller.model;
 
 import java.sql.Timestamp;
@@ -32,15 +22,16 @@ public class PsSeller implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = 8841794082222736965L;
 	private Integer id;
 	private String nickname;
 	private String personIdNum;
 	private String email;
 	private String password;
 	private Short status;
-	private Timestamp timeCreated = new Timestamp(System.currentTimeMillis());
+	private Timestamp timeCreated;
+	private Double balance;
 	private Set<PsShop> psShops = new HashSet<PsShop>(0);
+	private Set<PsNoticeSeller> psNoticeSellers = new HashSet<PsNoticeSeller>(0);
 
 	// Constructors
 
@@ -49,24 +40,26 @@ public class PsSeller implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsSeller(String nickname, String password, String email) {
-		
-		this.nickname = nickname;
+	public PsSeller(String em, String password, Timestamp timeCreated) {
+		this.email = em;
 		this.password = password;
-		this.email = email;
+		this.timeCreated = timeCreated;
 	}
 
 	/** full constructor */
 	public PsSeller(String nickname, String personIdNum, String email,
 			String password, Short status, Timestamp timeCreated,
-			Set<PsShop> psShops) {
+			Double balance, Set<PsShop> psShops,
+			Set<PsNoticeSeller> psNoticeSellers) {
 		this.nickname = nickname;
 		this.personIdNum = personIdNum;
 		this.email = email;
 		this.password = password;
 		this.status = status;
 		this.timeCreated = timeCreated;
+		this.balance = balance;
 		this.psShops = psShops;
+		this.psNoticeSellers = psNoticeSellers;
 	}
 
 	// Property accessors
@@ -81,7 +74,7 @@ public class PsSeller implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "nickname", nullable = false, length = 45)
+	@Column(name = "nickname", nullable = false, length = 65535)
 	public String getNickname() {
 		return this.nickname;
 	}
@@ -90,7 +83,7 @@ public class PsSeller implements java.io.Serializable {
 		this.nickname = nickname;
 	}
 
-	@Column(name = "person_id_num", nullable = false, length = 45)
+	@Column(name = "person_id_num", length = 65535)
 	public String getPersonIdNum() {
 		return this.personIdNum;
 	}
@@ -99,7 +92,7 @@ public class PsSeller implements java.io.Serializable {
 		this.personIdNum = personIdNum;
 	}
 
-	@Column(name = "email", length = 45)
+	@Column(name = "email", length = 65535)
 	public String getEmail() {
 		return this.email;
 	}
@@ -108,7 +101,7 @@ public class PsSeller implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "password", nullable = false, length = 45)
+	@Column(name = "password", nullable = false, length = 65535)
 	public String getPassword() {
 		return this.password;
 	}
@@ -135,6 +128,15 @@ public class PsSeller implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
+	@Column(name = "balance", precision = 9)
+	public Double getBalance() {
+		return this.balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psSeller")
 	public Set<PsShop> getPsShops() {
 		return this.psShops;
@@ -144,4 +146,13 @@ public class PsSeller implements java.io.Serializable {
 		this.psShops = psShops;
 	}
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psSeller")
+	public Set<PsNoticeSeller> getPsNoticeSellers() {
+		return this.psNoticeSellers;
+	}
+
+	public void setPsNoticeSellers(Set<PsNoticeSeller> psNoticeSellers) {
+		this.psNoticeSellers = psNoticeSellers;
+	}
+	
 }

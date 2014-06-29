@@ -1,0 +1,34 @@
+@import url("../storeHeader.css");
+
+@import url("../categorybar.css");
+
+@import url("../footer.css");
+
+
+#about_us {
+    width: 960px;
+    margin: 50px 20px;
+    padding: 30px 30px;
+    border: 1px solid #bbbbbb;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px #bbbbbb;
+}
+
+#overview {
+    position: relative;
+}
+
+#overview h1{
+
+}
+
+#overview p{
+    width: 600px;
+}
+
+#overview img{
+    position: absolute;
+    right: 100px;
+    top: 0px;
+}
+

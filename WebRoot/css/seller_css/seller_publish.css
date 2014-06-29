@@ -6,8 +6,54 @@
 
 #publish_form>div {
     margin: 5px 0;
-
 }
+
+#seller_categoryList {
+    display: none;
+    width: 500px;
+    box-shadow: 0 1px 3px #999999;
+    border: 1px solid #999999;
+    margin-left: 95px;
+    background-color: #efefef;
+    margin-bottom: 25px;
+}
+
+.seller_categoryListItem {
+    width: 150px;
+    display: inline-block;
+    padding: 5px 10px;
+    color: #333333;
+    font-size: 13px;
+    text-shadow: 0 1px 1px #999999;
+    cursor: pointer;
+}
+
+#sellerCategoryTag {
+    display: none;
+}
+
+
+#sellerCategoryTagList {
+    margin-left: 5px;
+    display: table;
+}
+
+.sellerCategoryTagItem {
+    width: 60px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    height: 30px;
+    padding: 5px 0;
+    border: 1px solid #c7c7c7;
+    margin: 1px;
+    float: left;
+    color: #333333;
+    background-color: #efefef;
+    border-radius: 2px;
+}
+
+
 
 #publish_goodsDesc {
     width: 600px;

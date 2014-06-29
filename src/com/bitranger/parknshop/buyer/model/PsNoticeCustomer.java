@@ -4,9 +4,11 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,9 +20,7 @@ public class PsNoticeCustomer implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = -3449386865171715580L;
-
-	private Integer idCustomer;
+	private Integer id;
 	private PsCustomer psCustomer;
 	private Timestamp timeCreated;
 	private String source;
@@ -34,17 +34,14 @@ public class PsNoticeCustomer implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsNoticeCustomer(Integer idCustomer, PsCustomer psCustomer,
-			Short isValid) {
-		this.idCustomer = idCustomer;
+	public PsNoticeCustomer(PsCustomer psCustomer, Short isValid) {
 		this.psCustomer = psCustomer;
 		this.isValid = isValid;
 	}
 
 	/** full constructor */
-	public PsNoticeCustomer(Integer idCustomer, PsCustomer psCustomer,
-			Timestamp timeCreated, String source, String message, Short isValid) {
-		this.idCustomer = idCustomer;
+	public PsNoticeCustomer(PsCustomer psCustomer, Timestamp timeCreated,
+			String source, String message, Short isValid) {
 		this.psCustomer = psCustomer;
 		this.timeCreated = timeCreated;
 		this.source = source;
@@ -54,17 +51,18 @@ public class PsNoticeCustomer implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@Column(name = "id_customer", unique = true, nullable = false)
-	public Integer getIdCustomer() {
-		return this.idCustomer;
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setIdCustomer(Integer idCustomer) {
-		this.idCustomer = idCustomer;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@PrimaryKeyJoinColumn
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_customer", nullable = false)
 	public PsCustomer getPsCustomer() {
 		return this.psCustomer;
 	}

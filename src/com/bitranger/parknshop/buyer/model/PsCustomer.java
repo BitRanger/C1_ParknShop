@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2014 BitRanger.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
- * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
- * 
- * Contributors:
- *     BitRanger - initial API and implementation
- ******************************************************************************/
 package com.bitranger.parknshop.buyer.model;
 
 import java.sql.Timestamp;
@@ -21,14 +11,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.bitranger.parknshop.common.model.PsComment;
-import com.bitranger.parknshop.common.model.PsItem;
 import com.bitranger.parknshop.seller.model.PsOrder;
 import com.bitranger.parknshop.seller.model.PsRecipient;
 
@@ -40,6 +28,7 @@ import com.bitranger.parknshop.seller.model.PsRecipient;
 public class PsCustomer implements java.io.Serializable {
 
 	// Fields
+
 	private Integer id;
 	private String nickname;
 	private String email;
@@ -48,11 +37,17 @@ public class PsCustomer implements java.io.Serializable {
 	private String name;
 	private Date birthday;
 	private Timestamp timeCreated;
+	private Set<PsOrder> psOrders = new HashSet<PsOrder>(0);
 	private Set<CartCustomerItem> cartCustomerItems = new HashSet<CartCustomerItem>(
-			32);
-	private Set<PsOrder> psOrders = new HashSet<PsOrder>(32);
-	private Set<PsRecipient> psRecipients = new HashSet<PsRecipient>(32);
-	private Set<PsComment> psComments = new HashSet<PsComment>(32);
+			0);
+	private Set<CustomerFavouriteItem> customerFavouriteItems = new HashSet<CustomerFavouriteItem>(
+			0);
+	private Set<PsNoticeCustomer> psNoticeCustomers = new HashSet<PsNoticeCustomer>(
+			0);
+	private Set<CustomerFavouriteShop> customerFavouriteShops = new HashSet<CustomerFavouriteShop>(
+			0);
+	private Set<PsRecipient> psRecipients = new HashSet<PsRecipient>(0);
+	private Set<PsComment> psComments = new HashSet<PsComment>(0);
 
 	// Constructors
 
@@ -73,10 +68,11 @@ public class PsCustomer implements java.io.Serializable {
 	/** full constructor */
 	public PsCustomer(String nickname, String email, String password,
 			Short gender, String name, Date birthday, Timestamp timeCreated,
-			Set<CartCustomerItem> cartCustomerItems, Set<PsOrder> psOrders,
-			Set<PsRecipient> psRecipients,
-			Set<PsComment> psComments) {
-				
+			Set<PsOrder> psOrders, Set<CartCustomerItem> cartCustomerItems,
+			Set<CustomerFavouriteItem> customerFavouriteItems,
+			Set<PsNoticeCustomer> psNoticeCustomers,
+			Set<CustomerFavouriteShop> customerFavouriteShops,
+			Set<PsRecipient> psRecipients, Set<PsComment> psComments) {
 		this.nickname = nickname;
 		this.email = email;
 		this.password = password;
@@ -84,8 +80,11 @@ public class PsCustomer implements java.io.Serializable {
 		this.name = name;
 		this.birthday = birthday;
 		this.timeCreated = timeCreated;
-		this.cartCustomerItems = cartCustomerItems;
 		this.psOrders = psOrders;
+		this.cartCustomerItems = cartCustomerItems;
+		this.customerFavouriteItems = customerFavouriteItems;
+		this.psNoticeCustomers = psNoticeCustomers;
+		this.customerFavouriteShops = customerFavouriteShops;
 		this.psRecipients = psRecipients;
 		this.psComments = psComments;
 	}
@@ -102,7 +101,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "nickname", nullable = false, length = 45)
+	@Column(name = "nickname", nullable = false, length = 65535)
 	public String getNickname() {
 		return this.nickname;
 	}
@@ -111,7 +110,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.nickname = nickname;
 	}
 
-	@Column(name = "email", nullable = false, length = 45)
+	@Column(name = "email", nullable = false, length = 65535)
 	public String getEmail() {
 		return this.email;
 	}
@@ -120,7 +119,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "password", nullable = false, length = 45)
+	@Column(name = "password", nullable = false, length = 65535)
 	public String getPassword() {
 		return this.password;
 	}
@@ -138,7 +137,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.gender = gender;
 	}
 
-	@Column(name = "name", length = 45)
+	@Column(name = "name", length = 65535)
 	public String getName() {
 		return this.name;
 	}
@@ -166,16 +165,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")
-	public Set<CartCustomerItem> getCartCustomerItems() {
-		return this.cartCustomerItems;
-	}
-
-	public void setCartCustomerItems(Set<CartCustomerItem> cartCustomerItems) {
-		this.cartCustomerItems = cartCustomerItems;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
 	public Set<PsOrder> getPsOrders() {
 		return this.psOrders;
 	}
@@ -184,7 +174,45 @@ public class PsCustomer implements java.io.Serializable {
 		this.psOrders = psOrders;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+	public Set<CartCustomerItem> getCartCustomerItems() {
+		return this.cartCustomerItems;
+	}
+
+	public void setCartCustomerItems(Set<CartCustomerItem> cartCustomerItems) {
+		this.cartCustomerItems = cartCustomerItems;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+	public Set<CustomerFavouriteItem> getCustomerFavouriteItems() {
+		return this.customerFavouriteItems;
+	}
+
+	public void setCustomerFavouriteItems(
+			Set<CustomerFavouriteItem> customerFavouriteItems) {
+		this.customerFavouriteItems = customerFavouriteItems;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+	public Set<PsNoticeCustomer> getPsNoticeCustomers() {
+		return this.psNoticeCustomers;
+	}
+
+	public void setPsNoticeCustomers(Set<PsNoticeCustomer> psNoticeCustomers) {
+		this.psNoticeCustomers = psNoticeCustomers;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
+	public Set<CustomerFavouriteShop> getCustomerFavouriteShops() {
+		return this.customerFavouriteShops;
+	}
+
+	public void setCustomerFavouriteShops(
+			Set<CustomerFavouriteShop> customerFavouriteShops) {
+		this.customerFavouriteShops = customerFavouriteShops;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
 	public Set<PsRecipient> getPsRecipients() {
 		return this.psRecipients;
 	}
@@ -193,7 +221,7 @@ public class PsCustomer implements java.io.Serializable {
 		this.psRecipients = psRecipients;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psCustomer")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psCustomer")
 	public Set<PsComment> getPsComments() {
 		return this.psComments;
 	}

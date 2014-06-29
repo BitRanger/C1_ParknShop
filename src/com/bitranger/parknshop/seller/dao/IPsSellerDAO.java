@@ -18,8 +18,11 @@ import com.bitranger.parknshop.seller.model.PsSeller;
 
 public interface IPsSellerDAO {
 	public abstract void save(PsSeller transientInstance);
+
+	public PsSeller findById(Integer id);
+	
 	public abstract void delete(PsSeller persistentInstance);
 	public abstract void update(PsSeller detachedInstance);
 	public abstract PsSeller findByEmail(String email);
-	public abstract List<PsCustomer> findAll(FetchOption fetchOption);
+	public abstract List<PsSeller> findAll(FetchOption fetchOption);
 }

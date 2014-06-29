@@ -1,14 +1,24 @@
 package com.bitranger.parknshop.buyer.dao;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
+
+import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.bitranger.parknshop.buyer.model.CartCustomerItem;
 import com.bitranger.parknshop.buyer.model.CustomerFavouriteItem;
+import com.bitranger.parknshop.buyer.model.CustomerFavouriteItemId;
+import com.bitranger.parknshop.common.dao.FetchOption;
+import com.bitranger.parknshop.common.dao.SortOption;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -53,11 +63,11 @@ public class CustomerFavouriteItemDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public CustomerFavouriteItem findById(temp.CustomerFavouriteItemId id) {
+	public CustomerFavouriteItem findById(CustomerFavouriteItemId id) {
 		log.debug("getting CustomerFavouriteItem instance with id: " + id);
 		try {
 			CustomerFavouriteItem instance = (CustomerFavouriteItem) getHibernateTemplate()
-					.get("temp.CustomerFavouriteItem", id);
+					.get("com.bitranger.parknshop.buyer.model.CustomerFavouriteItem", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -90,6 +100,37 @@ public class CustomerFavouriteItemDAO extends HibernateDaoSupport {
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);
 			throw re;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<CustomerFavouriteItem> findByCustomerId(final Integer psCustomerId,
+			final FetchOption option) {
+		try {
+			return getHibernateTemplate().executeFind(
+					new HibernateCallback<List<CustomerFavouriteItem>>() {
+
+						@Override
+						public List<CustomerFavouriteItem> doInHibernate(
+								Session session) throws HibernateException,
+								SQLException {
+
+							SQLQuery query = session
+									.createSQLQuery("select * from customer_favourite_item as C where C.id_customer = ?"
+											+ " order by C.time_created "
+											+ (option.sortOption == SortOption.ASCENDING ? "asc"
+													: "desc")
+											+ " limit ? offset ?");
+							query.setInteger(0, psCustomerId);
+							query.setInteger(1, option.limit);
+							query.setInteger(2, option.offset);
+							query.addEntity(CustomerFavouriteItem.class);
+							return query.list();
+						}
+					});
+		} catch (RuntimeException e) {
+			log.error("get failed", e);
+			throw e;
 		}
 	}
 

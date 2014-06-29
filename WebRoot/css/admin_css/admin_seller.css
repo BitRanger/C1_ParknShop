@@ -1,0 +1,188 @@
+
+#dealSeller_nav {
+
+}
+
+#dealSeller_all {
+    margin: 30px 20px;
+}
+
+#all_sellers {
+    width: 100%;
+    border: 1px solid #2E8639;
+    box-shadow: 0 1px 3px #2C742C;
+}
+
+#all_sellers tr {
+    border-bottom: 1px solid #999999;
+}
+
+.admin_sellerTitle {
+    background-color: #60CE90;
+}
+
+.admin_sellerTitle th {
+    font-size: 16px;
+    font-weight: normal;
+    padding: 5px 10px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 1px 3px #000000;
+}
+
+.admin_sellerTitle th:nth-child(1) {
+
+}
+
+.admin_sellerTitle th:nth-child(2) {
+
+}
+
+.admin_sellerTitle th:nth-child(3) {
+
+}
+
+.admin_sellerTitle th:nth-child(4) {
+
+}
+
+.admin_sellerTitle th:nth-child(5) {
+    width: 200px;
+}
+
+.admin_sellerItem {
+
+}
+
+.admin_sellerItem td{
+    padding: 5px 10px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.admin_sellerItem td:nth-child(1) {
+
+}
+
+.admin_sellerItem td:nth-child(2) {
+
+}
+
+.admin_sellerItem td:nth-child(3) {
+
+}
+
+.admin_sellerItem td:nth-child(4) {
+
+}
+
+.admin_sellerItem td:nth-child(5) {
+    border-left: 1px solid #999999;
+    width: 200px;
+    background-color: #DBFFFE;
+}
+
+
+.admin_action {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    width:60px;
+    color: #CE0000;
+}
+
+.admin_action:hover {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    width:60px;
+    color: #1152DB;;
+    text-decoration: underline;
+}
+
+
+#dealSeller_apply {
+    margin: 30px 20px;
+}
+
+#all_applys {
+    width: 100%;
+    border: 1px solid #2E8639;
+    box-shadow: 0 1px 3px #2C742C;
+}
+
+#all_applys tr {
+    border-bottom: 1px solid #999999;
+}
+
+.admin_applyTitle {
+    background-color: #60CE90;
+}
+
+.admin_applyTitle th {
+    font-size: 16px;
+    font-weight: normal;
+    padding: 5px 10px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 1px 3px #000000;
+}
+
+.admin_applyTitle th:nth-child(1) {
+    width: 100px;
+}
+
+.admin_applyTitle th:nth-child(2) {
+    width: 360px;
+}
+
+.admin_applyTitle th:nth-child(3) {
+    width: 160px;
+}
+
+.admin_applyTitle th:nth-child(4) {
+
+}
+
+
+.admin_applyItem {
+    height: 100px;
+}
+
+.admin_applyItem td{
+    padding: 5px 10px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.admin_applyItem td:nth-child(1) {
+    width: 100px;
+}
+
+.admin_applyItem td:nth-child(2) {
+    width: 360px;
+}
+
+.admin_applyItem td:nth-child(3) {
+    width: 160px;
+}
+
+.admin_applyItem td:nth-child(4) {
+    border-left: 1px solid #999999;
+    background-color: #DBFFFE;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

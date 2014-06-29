@@ -83,6 +83,62 @@ function ajax_logout() {
 }
 
 
+$("input[name=address]").click(function() {
+    $("input[name=address]").parent().removeClass("comfirm_address_item_selected");
+    $(this).parent().addClass("comfirm_address_item_selected");
+});
+
+$("input[name=payment]").click(function() {
+    $("#bankExtra").hide();
+    $("input[name=payment]").parent().removeClass("payListItem_selected");
+    $(this).parent().addClass("payListItem_selected");
+});
+
+$("#bankSelectInput").click(function() {
+    $("#bankExtra").show();
+});
+
+$("#comfirm_addAddressBtn").click(function() {
+    var province = document.getElementById("confirmAddr_div").province.value;
+    var city = document.getElementById("confirmAddr_div").city.value;
+    var town = document.getElementById("confirmAddr_div").town.value;
+    var zipcode = document.getElementById("confirmAddr_div").zipcode.value;
+    var street = document.getElementById("confirmAddr_div").street.value;
+    var receiver = document.getElementById("confirmAddr_div").receiver.value;
+    var phonenum = document.getElementById("confirmAddr_div").phonenum.value;
+
+    var address = province + " " + city + " " + town + " " +
+        street + " " + "（" + receiver + " 收）";
+
+    $newAddr = $("<div class='comfirm_address_item'>" +
+                 "<input type='radio' name='address' value=" + address + ">" +
+                 "<label style='margin-left: 3px;'>" + address + "</label>" +
+                 "<em>" + phonenum + "</em>" +
+                 "</div>");
+    $("#address_form").append($newAddr);
+    $("input[name=address]").click(function() {
+        $("input[name=address]").parent().removeClass("comfirm_address_item_selected");
+        $(this).parent().addClass("comfirm_address_item_selected");
+    });
+    $('#newAddress').modal('hide')
+});
+
+$(".itemCart_quantityChange").click(function() {
+    if ($(this).html() == "+") {
+        var num1 = $(this).prev().val();
+        num1++;
+        $(this).prev().val(num1);
+    } else {
+        var num2 = $(this).next().val();
+        if (num2 > 1) {
+            num2--;
+        }
+        $(this).next().val(num2);
+    }
+});
+
+
+
 
 
 

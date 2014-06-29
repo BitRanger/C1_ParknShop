@@ -6,12 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <ul id="basicInfo_nav" class="nav nav-tabs">
         <li><a href="#basicInfo_avatar" data-toggle="tab">Avatar</a></li>
         <li class="active"><a href="#basicInfo_basic" data-toggle="tab">Basic</a></li>
-        <li><a href="#basicInfo_education" data-toggle="tab">Education</a></li>
-        <li><a href="#basicInfo_work" data-toggle="tab">Work</a></li>
+        <c:choose>
+        	<c:when test="${sessionScope.b == 'false'}">
+        		<li><a href="#basicInfo_education" data-toggle="tab">Apply for a shop</a></li>
+        	</c:when>
+        </c:choose>
+        
+       <!--  <li><a href="#basicInfo_work" data-toggle="tab">Work</a></li> -->
     </ul>
 
     <!-- Tab panes -->
@@ -61,24 +67,29 @@
         <div class="tab-pane active" id="basicInfo_basic">
             <form id="basicInfo_div">
                 <div>
-                    <label class="basicInfo_label">Username</label>
-                    <input class="basicInfo_input" type="text" name="username">
+                    <label class="basicInfo_label">NickName</label>
+                    <input class="basicInfo_input" type="text" name="username" value="${sessionScope.currentSeller.nickname}" disabled="disabled">
                 </div>
                 <div>
-                    <label class="basicInfo_label">Realname</label>
-                    <input class="basicInfo_input" type="text" name="realname">
+                    <label class="basicInfo_label">ID</label>
+                    <input class="basicInfo_input" type="text" name="realname" value="${sessionScope.currentSeller.personIdNum }" disabled="disabled">
                 </div>
                 <div>
                     <label class="basicInfo_label">E-mail</label>
-                    <input class="basicInfo_input" type="text" name="email">
+                    <input class="basicInfo_input" type="text" name="email" value="${sessionScope.currentSeller.email }" disabled="disabled">
                 </div>
-                <div style="height: 75px">
+                	<label class="basicInfo_label">RegisterTime</label>
+                	<input class="basicInfo_input" type="text" name="registertime" value="${sessionScope.currentSeller.timeCreated.year + 1900}-${sessionScope.currentSeller.timeCreated.month + 1}-${sessionScope.currentSeller.timeCreated.date}" disabled="disabled">
+                <div>
+                	
+                </div>
+                <!-- <div style="height: 75px">
                     <label class="basicInfo_label left">Gender</label>
                     <div class="left" id="gender_select">
-                        <input type="radio" checked="checked" name="gender" value="male">male<br>
-                        <input type="radio" name="gender" value="female">female<br>
-                        <input type="radio" name="gender" value="other">other<br>
-                    </div>
+                    <input type="radio" checked="checked" name="gender" value="male">male<br>
+                    <input type="radio" name="gender" value="female">female<br>
+                    <input type="radio" name="gender" value="other">other<br>
+                </div>
                 </div>
                 <div id="hometown">
                     <label class="basicInfo_label left">Howetown</label>
@@ -93,13 +104,20 @@
                             <option></option>
                         </select><br>
                     </div>
-                </div>
+                </div> -->
+                <!-- <div style="margin-left: 90px; margin-top: 30px">
+                    <input style="width: 80px" class="common_btn" value="Confirm">
+                </div> -->
             </form>
         </div>
-        <div class="tab-pane" id="basicInfo_education">
-ewe
+		<div class="tab-pane" id="basicInfo_education">
+			<textarea id="applyTextArea" ></textarea>
+			<div>
+        		<input class="common_btn" value="Confirm" id="apply_btn">
+       		 </div>
         </div>
-        <div class="tab-pane" id="basicInfo_work">hhh
-        </div>
+        
+        <!--  <div class="tab-pane" id="basicInfo_work">hhh
+        </div> -->
     </div>
 </div>

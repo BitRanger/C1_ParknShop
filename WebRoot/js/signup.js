@@ -7,10 +7,10 @@ var name_is_taken = false;
 
 function deal_signup() {
     if (check_signup()) {
-
+    	return true;
     }
+    return false;
 }
-
 
 function check_signup() {
     var username = document.getElementById("signupForm").username.value;

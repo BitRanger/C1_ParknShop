@@ -109,4 +109,18 @@ public class PsRecipientDAO extends HibernateDaoSupport implements
 			throw re;
 		}
 	}
+
+
+	@Override
+	public PsRecipient findById(java.lang.Integer id) {
+		log.debug("getting PsRecipient instance with id: " + id);
+		try {
+			PsRecipient instance = (PsRecipient) getHibernateTemplate().get(
+					"com.bitranger.parknshop.seller.model.PsRecipient", id);
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
 }

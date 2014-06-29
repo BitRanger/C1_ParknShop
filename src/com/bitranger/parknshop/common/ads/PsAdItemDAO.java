@@ -17,7 +17,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * methods provides additional information for how to configure it for the
  * desired type of transaction control.
  * 
- * @see com.bitranger.parknshop.common.ads.PsAdItem
+ * @see temp.PsAdItem
  * @author MyEclipse Persistence Tools
  */
 public class PsAdItemDAO extends HibernateDaoSupport {
@@ -27,17 +27,18 @@ public class PsAdItemDAO extends HibernateDaoSupport {
 	public static final String WEIGHT = "weight";
 	public static final String PRICE = "price";
 	public static final String NUM_FETCHED = "numFetched";
+	public static final String ID = "id";
 
 	protected void initDao() {
 		// do nothing
-	}
-	public HibernateTemplate hibernate() {
-		return getHibernateTemplate();
 	}
 
 	public void save(PsAdItem transientInstance) {
 		log.debug("saving PsAdItem instance");
 		try {
+			if (transientInstance.getNumFetched() == null) {
+				transientInstance.setNumFetched(0);
+			}
 			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
 		} catch (RuntimeException re) {
@@ -108,6 +109,10 @@ public class PsAdItemDAO extends HibernateDaoSupport {
 		return findByProperty(NUM_FETCHED, numFetched);
 	}
 
+	public List<PsAdItem> findById(Object id) {
+		return findByProperty(ID, id);
+	}
+
 	public List findAll() {
 		log.debug("finding all PsAdItem instances");
 		try {
@@ -156,5 +161,9 @@ public class PsAdItemDAO extends HibernateDaoSupport {
 
 	public static PsAdItemDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (PsAdItemDAO) ctx.getBean("PsAdItemDAO");
+	}
+
+	public HibernateTemplate hibernate() {
+		return getHibernateTemplate();
 	}
 }

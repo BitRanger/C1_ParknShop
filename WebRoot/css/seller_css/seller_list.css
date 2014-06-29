@@ -1,0 +1,120 @@
+
+#listTableDiv {
+
+}
+
+#listTable {
+    border: 1px solid #999999;
+    width: 100%;
+    box-shadow: 0 1px 3px #999999;
+}
+
+#listTableHeader {
+    height: 30px;
+    background-color: #056314;
+    color: #ffffff;
+}
+
+#listTableHeader th {
+    font-weight: normal;
+    font-size: 14px;
+    text-shadow: 0 0px 1px #FFFFFF;
+}
+
+#listTableHeader th:nth-child(1) {
+    width: 270px;
+    padding-left: 20px;
+}
+
+#listTableHeader th:nth-child(2) {
+    width: 110px;
+    text-align: center;
+}
+
+#listTableHeader th:nth-child(3) {
+    width: 60px;
+    text-align: center;
+}
+
+#listTableHeader th:nth-child(4) {
+    width: 80px;
+    text-align: center;
+}
+
+
+#listTableHeader th:nth-child(5) {
+    text-align: center;
+}
+
+
+.listRow {
+
+}
+
+.listRow td{
+    border-top: 1px solid #999999;
+    font-size: 12px;
+}
+
+.listRow td:nth-child(1) {
+    width: 270px;
+    height: 100px;
+    padding-left: 20px;
+}
+
+.listRow td:nth-child(2) {
+    width: 110px;
+    text-align: center;
+}
+
+.listRow td:nth-child(3) {
+    width: 60px;
+    text-align: center;
+}
+
+.listRow td:nth-child(4) {
+    width: 80px;
+    text-align: center;
+}
+
+.listRow td:nth-child(5) {
+    text-align: center;
+}
+
+.listItemImgDiv {
+    float: left;
+    width: 90px;
+}
+
+.listItemImgDiv img {
+    width: 80px;
+}
+
+.listItemDescDiv {
+    width: 150px;
+    padding: 10px 0;
+}
+
+.listItemDesc {
+
+}
+
+.listItemExtra {
+
+}
+
+.operationItem {
+    margin: 0 5px;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+

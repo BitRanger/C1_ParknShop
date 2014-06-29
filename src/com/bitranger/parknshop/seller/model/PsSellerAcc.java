@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
 /**
  * PsSellerAcc entity. @author MyEclipse Persistence Tools
  */
@@ -20,14 +21,11 @@ public class PsSellerAcc implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5726230087612097832L;
 	private Integer id;
 	private PsSeller psSeller;
+	private PsOrderLog psOrderLog;
 	private Timestamp timeCreated;
-	private Double balance;
+	private Double amount;
 
 	// Constructors
 
@@ -36,10 +34,12 @@ public class PsSellerAcc implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public PsSellerAcc(PsSeller psSeller, Timestamp timeCreated, Double balance) {
+	public PsSellerAcc(PsSeller psSeller, PsOrderLog psOrderLog,
+			Timestamp timeCreated, Double amount) {
 		this.psSeller = psSeller;
+		this.psOrderLog = psOrderLog;
 		this.timeCreated = timeCreated;
-		this.balance = balance;
+		this.amount = amount;
 	}
 
 	// Property accessors
@@ -54,7 +54,7 @@ public class PsSellerAcc implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_seller", nullable = false)
 	public PsSeller getPsSeller() {
 		return this.psSeller;
@@ -62,6 +62,16 @@ public class PsSellerAcc implements java.io.Serializable {
 
 	public void setPsSeller(PsSeller psSeller) {
 		this.psSeller = psSeller;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_order_log", nullable = false)
+	public PsOrderLog getPsOrderLog() {
+		return this.psOrderLog;
+	}
+
+	public void setPsOrderLog(PsOrderLog psOrderLog) {
+		this.psOrderLog = psOrderLog;
 	}
 
 	@Column(name = "time_created", nullable = false, length = 19)
@@ -73,13 +83,13 @@ public class PsSellerAcc implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@Column(name = "balance", nullable = false, precision = 9)
-	public Double getBalance() {
-		return this.balance;
+	@Column(name = "amount", nullable = false, precision = 9)
+	public Double getAmount() {
+		return this.amount;
 	}
 
-	public void setBalance(Double balance) {
-		this.balance = balance;
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
 }

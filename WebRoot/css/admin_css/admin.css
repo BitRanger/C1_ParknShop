@@ -1,0 +1,93 @@
+@import url("../storeHeader.css");
+
+@import url("../footer.css");
+
+@import url("admin_basicInfo.css");
+
+@import url("admin_security.css");
+
+@import url("admin_buyer.css");
+
+@import url("admin_seller.css");
+
+@import url("admin_ad.css");
+
+@import url("admin_notification.css");
+
+@import url("admin_finance.css");
+
+
+#adminHeaderWrapper {
+    background-color: #022C74;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+#adminHeader {
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#adminLogoDiv {
+    margin-top: 18px;
+}
+
+#admin_center {
+    display: table;
+    position: relative;
+    min-height: 500px;
+}
+
+#adminControl {
+    width: 180px;
+    padding: 10px;
+    background-color: #001F55;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+#adminAvatar {
+    width: 160px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+#adminAvatar img {
+    width: 140px;
+}
+
+#adminControl ul{
+    margin: 0;
+    padding: 0;
+}
+
+#adminControl li{
+    list-style: none;
+    height: 30px;
+    width: 140px;
+    background-color: #133D58;
+    margin: 1px 10px;
+    color: #ffffff;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+#adminControl li span{
+
+}
+
+.adminContent {
+    display: none;
+    width: 800px;
+    background-color: #ffffff;
+    padding: 30px;
+    margin-left: 180px;
+    min-height: 500px;
+}
+
+

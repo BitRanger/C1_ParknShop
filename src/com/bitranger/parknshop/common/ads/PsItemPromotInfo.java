@@ -1,9 +1,11 @@
 package com.bitranger.parknshop.common.ads;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -17,11 +19,7 @@ public class PsItemPromotInfo implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 542651408034196520L;
-	private Integer id;
+	private PsItemPromotInfoId id;
 	private PsPromotItem psPromotItem;
 	private String key;
 	private String value;
@@ -33,14 +31,14 @@ public class PsItemPromotInfo implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsItemPromotInfo(Integer id, PsPromotItem psPromotItem) {
+	public PsItemPromotInfo(PsItemPromotInfoId id, PsPromotItem psPromotItem) {
 		this.id = id;
 		this.psPromotItem = psPromotItem;
 	}
 
 	/** full constructor */
-	public PsItemPromotInfo(Integer id, PsPromotItem psPromotItem, String key,
-			String value) {
+	public PsItemPromotInfo(PsItemPromotInfoId id, PsPromotItem psPromotItem,
+			String key, String value) {
 		this.id = id;
 		this.psPromotItem = psPromotItem;
 		this.key = key;
@@ -48,18 +46,20 @@ public class PsItemPromotInfo implements java.io.Serializable {
 	}
 
 	// Property accessors
-	@Id
-	@Column(name = "id", unique = true, nullable = false)
-	public Integer getId() {
+	@EmbeddedId
+	@AttributeOverrides({
+			@AttributeOverride(name = "id", column = @Column(name = "id", nullable = false)),
+			@AttributeOverride(name = "idPromt", column = @Column(name = "id_promt", nullable = false)) })
+	public PsItemPromotInfoId getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(PsItemPromotInfoId id) {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_promt", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_promt", nullable = false, insertable = false, updatable = false)
 	public PsPromotItem getPsPromotItem() {
 		return this.psPromotItem;
 	}

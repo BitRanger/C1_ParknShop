@@ -4,10 +4,14 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.bitranger.parknshop.seller.model.PsOrderLog;
 
 /**
  * PsAdminAcc entity. @author MyEclipse Persistence Tools
@@ -18,13 +22,10 @@ public class PsAdminAcc implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 898021265546066983L;
-	private Integer idAdmin;
-	private PsAdministator psAdministator;
-	private Double balance;
+	private Integer id;
+	private PsAdministrator psAdministrator;
+	private PsOrderLog psOrderLog;
+	private Double amount;
 	private Timestamp timeCreated;
 
 	// Constructors
@@ -33,43 +34,62 @@ public class PsAdminAcc implements java.io.Serializable {
 	public PsAdminAcc() {
 	}
 
+	/** minimal constructor */
+	public PsAdminAcc(PsAdministrator psAdministrator, PsOrderLog psOrderLog,
+			Timestamp timeCreated) {
+		this.psAdministrator = psAdministrator;
+		this.psOrderLog = psOrderLog;
+		this.timeCreated = timeCreated;
+	}
+
 	/** full constructor */
-	public PsAdminAcc(Integer idAdmin, PsAdministator psAdministator,
-			Double balance, Timestamp timeCreated) {
-		this.idAdmin = idAdmin;
-		this.psAdministator = psAdministator;
-		this.balance = balance;
+	public PsAdminAcc(PsAdministrator psAdministrator, PsOrderLog psOrderLog,
+			Double amount, Timestamp timeCreated) {
+		this.psAdministrator = psAdministrator;
+		this.psOrderLog = psOrderLog;
+		this.amount = amount;
 		this.timeCreated = timeCreated;
 	}
 
 	// Property accessors
 	@Id
-	@Column(name = "id_admin", unique = true, nullable = false)
-	public Integer getIdAdmin() {
-		return this.idAdmin;
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setIdAdmin(Integer idAdmin) {
-		this.idAdmin = idAdmin;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@PrimaryKeyJoinColumn
-	public PsAdministator getPsAdministator() {
-		return this.psAdministator;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_admin", nullable = false)
+	public PsAdministrator getPsAdministrator() {
+		return this.psAdministrator;
 	}
 
-	public void setPsAdministator(PsAdministator psAdministator) {
-		this.psAdministator = psAdministator;
+	public void setPsAdministrator(PsAdministrator psAdministrator) {
+		this.psAdministrator = psAdministrator;
 	}
 
-	@Column(name = "balance", nullable = false, precision = 9)
-	public Double getBalance() {
-		return this.balance;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_order_log", nullable = false)
+	public PsOrderLog getPsOrderLog() {
+		return this.psOrderLog;
 	}
 
-	public void setBalance(Double balance) {
-		this.balance = balance;
+	public void setPsOrderLog(PsOrderLog psOrderLog) {
+		this.psOrderLog = psOrderLog;
+	}
+
+	@Column(name = "amount", precision = 9)
+	public Double getAmount() {
+		return this.amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
 	@Column(name = "time_created", nullable = false, length = 19)

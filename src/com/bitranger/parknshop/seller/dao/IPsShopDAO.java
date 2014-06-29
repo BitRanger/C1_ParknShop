@@ -32,4 +32,5 @@ public interface IPsShopDAO {
 	
 	public abstract List<PsShop> findAllSortByVote(FetchOption op);
 	public abstract List<PsShop> findAllSortByName(FetchOption op);
+	public abstract List<PsShop> findAll();
 }

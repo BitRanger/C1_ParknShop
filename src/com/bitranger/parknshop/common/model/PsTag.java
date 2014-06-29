@@ -80,7 +80,15 @@ public class PsTag implements java.io.Serializable {
 	}
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "r_tag_item", catalog = "c1_parknshop", joinColumns = { @JoinColumn(name = "id_tag", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "id_item", nullable = false, updatable = false) })
+	@JoinTable(name = "r_tag_item", 
+				catalog = "c1_parknshop", 
+				joinColumns = { 
+						@JoinColumn(name = "id_tag", nullable = false, updatable = false) 
+				}, 
+				inverseJoinColumns = { 
+						@JoinColumn(name = "id_item", nullable = false, updatable = false) 
+				}
+	)
 	public Set<PsItem> getPsItems() {
 		return this.psItems;
 	}

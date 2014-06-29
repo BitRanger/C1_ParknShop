@@ -5,7 +5,6 @@ import org.hibernate.LockMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 /**
@@ -16,7 +15,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see com.bitranger.parknshop.common.ads.PsItemPromotInfo
+ * @see temp.PsItemPromotInfo
  * @author MyEclipse Persistence Tools
  */
 public class PsItemPromotInfoDAO extends HibernateDaoSupport {
@@ -29,12 +28,7 @@ public class PsItemPromotInfoDAO extends HibernateDaoSupport {
 	protected void initDao() {
 		// do nothing
 	}
-	
-	public HibernateTemplate hibernate() {
-		return getHibernateTemplate();
-	}
 
-	
 	public void save(PsItemPromotInfo transientInstance) {
 		log.debug("saving PsItemPromotInfo instance");
 		try {
@@ -57,7 +51,7 @@ public class PsItemPromotInfoDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public PsItemPromotInfo findById(java.lang.Integer id) {
+	public PsItemPromotInfo findById(PsItemPromotInfoId id) {
 		log.debug("getting PsItemPromotInfo instance with id: " + id);
 		try {
 			PsItemPromotInfo instance = (PsItemPromotInfo) getHibernateTemplate()

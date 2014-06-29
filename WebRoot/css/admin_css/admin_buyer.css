@@ -1,0 +1,75 @@
+#all_buyers {
+    width: 100%;
+    border: 1px solid #2E8639;
+    box-shadow: 0 1px 3px #2C742C;
+    margin-top: 20px;
+}
+
+#all_buyers tr {
+    border-bottom: 1px solid #999999;
+}
+
+.admin_buyerTitle {
+    background-color: #60CE90;
+}
+
+.admin_buyerTitle th {
+    font-size: 16px;
+    font-weight: normal;
+    padding: 5px 10px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 1px 3px #000000;
+}
+
+.admin_buyerTitle th:nth-child(1) {
+
+}
+
+.admin_buyerTitle th:nth-child(2) {
+
+}
+
+.admin_buyerTitle th:nth-child(3) {
+
+}
+
+.admin_buyerTitle th:nth-child(4) {
+
+}
+
+.admin_buyerTitle th:nth-child(5) {
+    width: 200px;
+}
+
+.admin_buyerItem {
+
+}
+
+.admin_buyerItem td{
+    padding: 5px 10px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.admin_buyerItem td:nth-child(1) {
+
+}
+
+.admin_buyerItem td:nth-child(2) {
+
+}
+
+.admin_buyerItem td:nth-child(3) {
+
+}
+
+.admin_buyerItem td:nth-child(4) {
+
+}
+
+.admin_buyerItem td:nth-child(5) {
+    border-left: 1px solid #999999;
+    width: 200px;
+    background-color: #DBFFFE;
+}

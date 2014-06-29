@@ -1,0 +1,409 @@
+
+#mainContent {
+
+}
+
+#storeItemList {
+
+}
+
+#itemDetail {
+    height: 540px;
+    margin-top: 30px;
+}
+
+#itemDetail_PicShow {
+    height: 500px;
+    float: left;
+}
+
+#itemDetail_PicShow_Big {
+
+}
+
+#itemDetail_PicShow_Big_img {
+	max-height: 400px;
+	max-width: 400px;
+	display: table-cell;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#itemDetail_PicShow_thumbnail_Set {
+    margin-top: 20px;
+    padding: 0;
+}
+
+.itemDetail_PicShow_thumbnail_item {
+    display: table-cell;
+    padding: 0px 10px;
+}
+
+.itemDetail_PicShow_thumbnail {
+    width: 50px;
+    height: 50px;
+}
+
+#itemDetail_Desc {
+    height: 500px;
+    float: left;
+    width: 400px;
+    margin-left: 50px;
+}
+
+.itemDetail_intro {
+    display: inline-block;
+    float: left;
+    width: 90px;
+    font-size: 16px;
+}
+
+#itemDetail_DescTitle {
+
+}
+
+#itemDetail_price {
+    height: 25px;
+}
+
+#itemDetail_promotion {
+    height: 30px;
+}
+
+#itemDetail_deliver {
+
+}
+
+#itemDetail_size {
+    height: 50px;
+}
+
+#itemDetail_size a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+}
+
+#itemDetail_size ul span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff;
+    text-align: center;
+    color: #333333;
+    font-size: 16px;
+}
+
+.itemDetail_sizeItem {
+    display: inline;
+    float: left;
+    list-style: none;
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    margin: 5px;
+    border: 1px solid #999999;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+#itemDetail_color {
+    height: 50px;
+}
+
+.itemDetail_colorItem {
+    display: inline;
+    float: left;
+    list-style: none;
+    width: 30px;
+    height: 30px;
+    background-color: #999999;
+    margin: 5px;
+}
+
+#itemDetail_color ul span {
+
+}
+
+#itemDetail_quantity {
+    height: 40px;
+}
+
+#itemDetail_quantityChangeBar {
+    border: 1px solid #999999;
+    display: inline-block;
+}
+
+.itemDetail_quantityChange {
+    display: inline-block;
+    width: 30px;
+    height: 25px;
+    background-color: #cccccc;
+    margin: 0;
+    float: left;
+    text-align: center;
+    color: #333333;
+    font-size: 16px;
+}
+
+.itemDetail_quantityChange:hover {
+    text-decoration: none;
+    display: inline-block;
+    width: 30px;
+    height: 25px;
+    background-color: #cccccc;
+    margin: 0;
+    float: left;
+    text-align: center;
+    color: #333333;
+    font-size: 16px;
+}
+
+#itemDetail_quantity_input {
+    width: 45px;
+    height: 25px;
+    border: none;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+}
+
+#itemDetail_buy {
+    margin-top: 20px;
+}
+
+#itemDetail_buyBtn {
+    border: none;
+    background-color: #F09015;
+    width: 130px;
+    height: 40px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#itemDetail_chartBtn {
+    border: none;
+    background-color: #F05B15;
+    width: 130px;
+    height: 40px;
+    font-size: 18px;
+    color: #ffffff;
+    margin-left: 0px;
+}
+
+#itemDetail_commentBtn {
+    border: none;
+    background-color: #A05B15;
+    width: 140px;
+    height: 40px;
+    font-size: 18px;
+    color: #ffffff;
+    margin-left: 0px;
+}
+
+
+#itemDesc {
+
+}
+
+#itemDescTab {
+    height: 40px;
+    background-color: #cccccc;
+}
+
+#itemDescTabBtn_detail {
+    border-bottom: 3px solid #224499;
+}
+
+.itemDescTabBtn {
+    border: none;
+    width: 120px;
+    height: 40px;
+    padding: 0;
+    float: left;
+    outline: none;
+    background-color: #dddddd;
+}
+
+
+#itemDesc_Desc {
+    width: 800px;
+}
+
+#itemDesc_Desc_Desc {
+	padding: 20px;
+height: 200px;
+border-top: none;
+background-color: #dddddd;
+box-shadow: 3px 5px 4px #bbbbbb;
+}
+
+#itemDesc_Desc_Detail {
+	
+}
+
+
+#itemDesc_attributes_list {
+    padding: 20px;
+    height: 200px;
+    border-top: none;
+    background-color: #dddddd;
+    box-shadow: 3px 5px 4px #bbbbbb;
+}
+#itemDesc_attributes_list li {
+    display: inline;
+    float: left;
+    width: 206px;
+    height: 24px;
+    margin-right: 20px;
+    overflow: hidden;
+    text-indent: 5px;
+    line-height: 24px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#itemDesc_in_detail {
+    margin-bottom: 80px;
+    margin-top: 40px;
+}
+
+#itemDesc_Comment {
+    display: none;
+
+}
+
+#itemdesc_comment_Overview {
+    height: 100px;
+    margin-top: 20px;
+    margin-left: 38px;
+    border: 1px solid #999999;
+    margin-bottom: 20px;
+    width: 850px;
+    padding: 20px;
+    background-color: #dddddd;
+    box-shadow: 0px 2px 6px #999999;
+}
+
+#itemdesc_comment_Overview span {
+    float: left;
+    font-size: 16px;
+}
+
+#itemdesc_comment_Overview ul {
+    width: 600px;
+    height: 65px;
+    padding: 0;
+    margin: 0;
+    margin-left: 120px;
+}
+
+#itemdesc_comment_Overview li {
+    list-style: none;
+    float: left;
+    display: inline-block;
+}
+
+#itemdesc_comment_Overview li a {
+    height: 25px;
+    background-color: #F09611;
+    display: inline-block;
+    margin: 3px 5px;
+    padding: 0 5px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 13px;
+    line-height: 2;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px #f09611;
+}
+
+#itemdesc_comment_Spec {
+    width: 850px;
+}
+
+#itemdesc_comment_Spec li {
+    list-style: none;
+    display: list-item;
+    height: 80px;
+    border-bottom: 1px solid #999999;
+    margin-bottom: 30px;
+
+}
+
+.commentItem_left {
+    float: left;
+    width: 120px;
+}
+
+.commentItem_left a {
+    font-size: 13px;
+}
+
+.commentItem_right {
+    float: left;
+    width: 650px;
+    margin-left: 20px;
+}
+
+.commentItem_right div {
+    font-size: 13px;
+    color: #333333;
+}
+
+.commentItem_right span {
+    font-size: 12px;
+    color: #666666;
+}
+
+#itemDesc_Record {
+    display: none;
+}
+
+#itemRecommand {
+    height: 300px;
+    border-top: 1px solid #999999;
+}
+
+#itemRecommand ul {
+    height: 240px;
+    padding: 0 20px;
+}
+#itemRecommand li {
+    list-style: none;
+    display: inline;
+    float: left;
+    margin: 0 10px;
+    height: 200px;
+    background-color: #ffffff;
+}
+
+#itemRecommand li:hover {
+    list-style: none;
+    display: inline;
+    float: left;
+    margin: 0 10px;
+    height: 200px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px #999999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,11 +6,12 @@
 			<%
 				List<PsCategory> psCategories_bar = (List<PsCategory>) session
 						.getAttribute("psCategories");
+				if(psCategories_bar != null && psCategories_bar.size() > 0)
 				for (PsCategory psCategory : psCategories_bar) {
 			%>
 			<li id="<%=psCategory.getId()%>" class="categorybarListItem"><a
 				class="categorybarListItemLink"
-				href="<%=request.getContextPath()%>/category/<%=psCategory.getId()%>"><span><%=psCategory.getName()%></span></a>
+				href="<%=request.getContextPath()%>/itemlist?category_id=<%=psCategory.getId()%>"><span><%=psCategory.getName().split("&")[0]%></span></a>
 				<div id="sub_<%=psCategory.getId()%>" class="submenu">
 					<ul class="submenuPanel">
 						<li class="submenuItem submenuItemTitle"><a href="#"

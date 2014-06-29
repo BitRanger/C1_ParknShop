@@ -57,10 +57,14 @@ public class PsNoticeAdminDAO extends HibernateDaoSupport {
 		log.debug("getting PsNoticeAdmin instance with id: " + id);
 		try {
 			PsNoticeAdmin instance = (PsNoticeAdmin) getHibernateTemplate()
-					.get("temp.PsNoticeAdmin", id);
+					.get("com.bitranger.parknshop.admin.data.PsNoticeAdmin", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
+
+//			PsNoticeAdmin instance = (PsNoticeAdmin) getHibernateTemplate()
+//					.get(" PsNoticeAdmin ", id);
+//			return instance;
 			throw re;
 		}
 	}
@@ -104,7 +108,7 @@ public class PsNoticeAdminDAO extends HibernateDaoSupport {
 		return findByProperty(IS_VALID, isValid);
 	}
 
-	public List findAll() {
+	public List<PsNoticeAdmin> findAll() {
 		log.debug("finding all PsNoticeAdmin instances");
 		try {
 			String queryString = "from PsNoticeAdmin";

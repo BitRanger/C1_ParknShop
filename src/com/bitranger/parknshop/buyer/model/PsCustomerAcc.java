@@ -20,14 +20,10 @@ public class PsCustomerAcc implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4838726277454556091L;
 	private Integer id;
 	private PsCustomer psCustomer;
 	private Timestamp timeCreated;
-	private Double balance;
+	private Double amount;
 
 	// Constructors
 
@@ -37,10 +33,10 @@ public class PsCustomerAcc implements java.io.Serializable {
 
 	/** full constructor */
 	public PsCustomerAcc(PsCustomer psCustomer, Timestamp timeCreated,
-			Double balance) {
+			Double amount) {
 		this.psCustomer = psCustomer;
 		this.timeCreated = timeCreated;
-		this.balance = balance;
+		this.amount = amount;
 	}
 
 	// Property accessors
@@ -55,7 +51,7 @@ public class PsCustomerAcc implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_customer", nullable = false)
 	public PsCustomer getPsCustomer() {
 		return this.psCustomer;
@@ -74,13 +70,13 @@ public class PsCustomerAcc implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@Column(name = "balance", nullable = false, precision = 9)
-	public Double getBalance() {
-		return this.balance;
+	@Column(name = "amount", nullable = false, precision = 9)
+	public Double getAmount() {
+		return this.amount;
 	}
 
-	public void setBalance(Double balance) {
-		this.balance = balance;
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 
 }

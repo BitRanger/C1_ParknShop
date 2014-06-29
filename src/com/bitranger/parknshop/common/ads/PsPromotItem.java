@@ -7,13 +7,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.springframework.orm.hibernate3.HibernateTemplate;
 
 import com.bitranger.parknshop.common.model.PsItem;
 
@@ -26,49 +27,44 @@ public class PsPromotItem implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4105089983549286039L;
 	private Integer id;
 	private PsItem psItem;
 	private Timestamp timeCreated;
 	private String itemInfo;
 	private String description;
-	private Set<PsItemPromotInfo> psItemPromotInfos = 
-			new HashSet<PsItemPromotInfo>(32);
-	private Set<PsAdItem> psAdItems = new HashSet<PsAdItem>(16);
+	private String picUrl;
+	private Set<PsItemPromotInfo> psItemPromotInfos = new HashSet<PsItemPromotInfo>(
+			0);
+	private PsAdItem psAdItem;
 
 	// Constructors
 
-
-	
 	/** default constructor */
 	public PsPromotItem() {
 	}
 
 	/** minimal constructor */
-	public PsPromotItem(Integer id, PsItem psItem, Timestamp timeCreated) {
-		this.id = id;
+	public PsPromotItem(PsItem psItem, Timestamp timeCreated) {
 		this.psItem = psItem;
 		this.timeCreated = timeCreated;
 	}
 
 	/** full constructor */
-	public PsPromotItem(Integer id, PsItem psItem, Timestamp timeCreated,
-			String itemInfo, String description,
-			Set<PsItemPromotInfo> psItemPromotInfos, Set<PsAdItem> psAdItems) {
-		this.id = id;
+	public PsPromotItem(PsItem psItem, Timestamp timeCreated, String itemInfo,
+			String description, String picUrl,
+			Set<PsItemPromotInfo> psItemPromotInfos, PsAdItem psAdItem) {
 		this.psItem = psItem;
 		this.timeCreated = timeCreated;
 		this.itemInfo = itemInfo;
 		this.description = description;
+		this.picUrl = picUrl;
 		this.psItemPromotInfos = psItemPromotInfos;
-		this.psAdItems = psAdItems;
+		this.psAdItem = psAdItem;
 	}
 
 	// Property accessors
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return this.id;
@@ -78,7 +74,7 @@ public class PsPromotItem implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_item", nullable = false)
 	public PsItem getPsItem() {
 		return this.psItem;
@@ -115,7 +111,16 @@ public class PsPromotItem implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psPromotItem")
+	@Column(name = "pic_url")
+	public String getPicUrl() {
+		return this.picUrl;
+	}
+
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psPromotItem")
 	public Set<PsItemPromotInfo> getPsItemPromotInfos() {
 		return this.psItemPromotInfos;
 	}
@@ -124,13 +129,13 @@ public class PsPromotItem implements java.io.Serializable {
 		this.psItemPromotInfos = psItemPromotInfos;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psPromotItem")
-	public Set<PsAdItem> getPsAdItems() {
-		return this.psAdItems;
+	@OneToOne(fetch = FetchType.EAGER, mappedBy = "psPromotItem")
+	public PsAdItem getPsAdItem() {
+		return this.psAdItem;
 	}
 
-	public void setPsAdItems(Set<PsAdItem> psAdItems) {
-		this.psAdItems = psAdItems;
+	public void setPsAdItem(PsAdItem psAdItem) {
+		this.psAdItem = psAdItem;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
 import org.hibernate.SQLQuery;
@@ -14,7 +15,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.bitranger.parknshop.seller.OrderState;
 import com.bitranger.parknshop.seller.dao.IPsOrderDAO;
 import com.bitranger.parknshop.seller.model.PsOrder;
 
@@ -30,6 +30,7 @@ import com.bitranger.parknshop.seller.model.PsOrder;
  * @author MyEclipse Persistence Tools
  */
 public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
+
 	private static final Logger log = LoggerFactory.getLogger(PsOrderDAO.class);
 
 	@Override
@@ -89,7 +90,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<PsOrder> findByCustomerId(final Integer id, final OrderState state) {
+	public List<PsOrder> findByCustomerId(final Integer id, final Short state) {
 		log.debug("findByCustomerId: " + id);
 		try {
 			return getHibernateTemplate().executeFind(
@@ -102,7 +103,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 									.createSQLQuery(
 "select * from ps_order as P where P.id_customer = ? and P.status = ?");
 							query.setInteger(0, id)
-								.setString(1, state.toString());
+								.setShort(1, state);
 							query.addEntity(PsOrder.class);
 							return query.list();
 
@@ -115,6 +116,33 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 		}
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<PsOrder> findByCustomerId(final Integer id) {
+		log.debug("findByCustomerId: " + id);
+		try {
+			return getHibernateTemplate().executeFind(
+					new HibernateCallback<List<PsOrder>>() {
+
+						@Override
+						public List<PsOrder> doInHibernate(Session arg0)
+								throws HibernateException, SQLException {
+							SQLQuery query = arg0
+									.createSQLQuery(
+"select * from ps_order as P where P.id_customer = ? order by P.id desc");
+							query.setInteger(0, id);
+							query.addEntity(PsOrder.class);
+							return query.list();
+
+						}
+
+					});
+		} catch (RuntimeException re) {
+			log.error("find by customerId failed", re);
+			throw re;
+		}
+	}
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<PsOrder> findByShopId(final Integer id,final Date from,final Date to) {
@@ -144,15 +172,38 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 			throw re;
 		}
 	}
-
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<PsOrder> findByShopId(final Integer id,final OrderState state) {
+	public List<PsOrder> findByShopId(final Integer id) {
 		log.debug("findByCustomerId: " + id);
 		try {
 			return getHibernateTemplate().executeFind(
 					new HibernateCallback<List<PsOrder>>() {
+						@Override
+						public List<PsOrder> doInHibernate(Session arg0)
+								throws HibernateException, SQLException {
+							SQLQuery query = arg0
+									.createSQLQuery(
+"select * from ps_order as P where P.id_shop = ?");
+							query.setInteger(0, id);
+							query.addEntity(PsOrder.class);
+							return query.list();
 
+						}
+
+					});
+		} catch (RuntimeException re) {
+			log.error("find by shop id  failed", re);
+			throw re;
+		}
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<PsOrder> findByShopId(final Integer id,final Short state) {
+		log.debug("findByCustomerId: " + id);
+		try {
+			return getHibernateTemplate().executeFind(
+					new HibernateCallback<List<PsOrder>>() {
 						@Override
 						public List<PsOrder> doInHibernate(Session arg0)
 								throws HibernateException, SQLException {
@@ -160,7 +211,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 									.createSQLQuery(
 "select * from ps_order as P where P.id_shop = ? and P.status = ?");
 							query.setInteger(0, id)
-								.setString(1, state.toString());
+								.setShort(1, state);
 							query.addEntity(PsOrder.class);
 							return query.list();
 
@@ -175,12 +226,11 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<PsOrder> findAll(OrderState state) {
+	public List<PsOrder> findAll(Short state) {
 		log.debug("finding all PsOrder instances by state");
 		try {
 			String queryString = "from PsOrder p where p.status=?";
-			String para = state.toString();
-			return getHibernateTemplate().find(queryString, para);
+			return getHibernateTemplate().find(queryString, state);
 		} catch (RuntimeException re) {
 			log.error("find all by state failed", re);
 			throw re;
@@ -206,10 +256,12 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 	public static final String TRACKING_NUMBER = "trackingNumber";
 	public static final String PRICE_TOTAL = "priceTotal";
 
+	@Override
 	protected void initDao() {
 		// do nothing
 	}
 
+	@Override
 	public void save(PsOrder transientInstance) {
 		log.debug("saving PsOrder instance");
 		try {
@@ -221,6 +273,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 		}
 	}
 
+	@Override
 	public void delete(PsOrder persistentInstance) {
 		log.debug("deleting PsOrder instance");
 		try {
@@ -236,7 +289,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 		log.debug("getting PsOrder instance with id: " + id);
 		try {
 			PsOrder instance = (PsOrder) getHibernateTemplate().get(
-					"temp.PsOrder", id);
+					"com.bitranger.parknshop.seller.model.PsOrder", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -258,7 +311,7 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 		}
 	}
 
-	public List findByProperty(String propertyName, Object value) {
+	public List<PsOrder> findByProperty(String propertyName, Object value) {
 		log.debug("finding PsOrder instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -332,4 +385,51 @@ public class PsOrderDAO extends HibernateDaoSupport implements IPsOrderDAO {
 	public static PsOrderDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (PsOrderDAO) ctx.getBean("PsOrderDAO");
 	}
+		
+	/**
+	 
+select OD.* from ps_order as OD
+			inner join ps_shop as SH on SH.id = OD.id_shop
+where SH.id_seller = ?
+ 
+	 
+	 */
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<PsOrder> findBySellerId(final Integer id) {
+		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsOrder>>() {
+
+			@Override
+			public List<PsOrder> doInHibernate(Session arg0)
+					throws HibernateException, SQLException {
+				
+				SQLQuery query = arg0.createSQLQuery(
+" select OD.* from ps_order as OD " +
+"			inner join ps_shop as SH on SH.id = OD.id_shop " +
+" where SH.id_seller = ?");
+				query.addEntity(PsOrder.class);
+				query.setInteger(0, id);
+				return query.list();
+			}
+		});
+	}
+	
+	
+	@Override
+	public double countTnxVolumn() {
+		return getHibernateTemplate().execute(new HibernateCallback<Double>() {
+			@Override
+			public Double doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				SQLQuery query = session.createSQLQuery(
+" select sum(OD.price_total)as REV from ps_order as OD " +
+" where OD.status = 3" );
+				query.addScalar("REV", Hibernate.DOUBLE);
+				Double db = (Double) query.uniqueResult();
+				return db == null? 0.0 : db;
+			}
+		});
+	}
+
 }

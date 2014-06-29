@@ -31,9 +31,93 @@ import com.bitranger.parknshop.common.model.PsItem;
  */
 public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 	
+/**
+ select IT.*, count(IT.count_purchase) as CT from ps_item as IT
+where IT.id_category = ?
+order by IT.time_created desc
+limit 0, ?
+
+ */
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<PsItem> searchByKeyword(String keyword) {
-		return null;
+	public List<PsItem> selectLatest(final int categoryID, final int limit) {
+		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsItem>>() {
+
+			@Override
+			public List<PsItem> doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				
+				SQLQuery query = session.createSQLQuery(
+" select IT.*, count(IT.count_purchase) as CT from ps_item as IT " +
+" where IT.id_category = ? " +
+" order by IT.time_created desc " +
+" limit 0, ? "
+				);
+				query.addEntity(PsItem.class);
+				query.setInteger(0, categoryID);
+				query.setInteger(1, limit);
+				return query.list();
+			}
+		});
+	}
+	
+	/**
+select IT.*, count(IT.count_purchase) as CT from ps_item as IT
+where IT.id_category = ?
+order by CT desc
+limit 0, ? 
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PsItem> selectBestSellers(final int categoryID, final int limit) {
+		
+		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsItem>>() {
+
+			@Override
+			public List<PsItem> doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				
+				SQLQuery query = session.createSQLQuery(
+" select IT.*, count(IT.count_purchase) as CT from ps_item as IT " +
+" where IT.id_category = ? " +
+" order by CT desc " +
+" limit 0, ? "
+				);
+				query.addEntity(PsItem.class);
+				query.setInteger(0, categoryID);
+				query.setInteger(1, limit);
+				return query.list();
+			}
+		});
+ 	}
+	
+	
+	
+//	SELECT IT.*,
+//    MATCH (`name`, `introduction`) AGAINST (? IN NATURAL LANGUAGE MODE) AS relevance
+//FROM `ps_item` as IT
+//ORDER BY relevance DESC
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PsItem> searchByKeyword(final String q) {
+		
+		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsItem>>() {
+
+			@Override
+			public List<PsItem> doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				
+				SQLQuery query = session.createSQLQuery(
+" SELECT IT.*, " +
+" MATCH (`name`, `introduction`) AGAINST (? IN NATURAL LANGUAGE MODE) AS relevance "  +
+" FROM `ps_item` as IT " +
+" ORDER BY relevance DESC"
+);
+					query.setString(0, q);
+					query.addEntity(PsItem.class);
+					return query.list();
+			}
+		});
 	}
 	
 	@Override
@@ -423,11 +507,11 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 						public List<PsItem> doInHibernate(Session session)
 								throws HibernateException, SQLException {
 							SQLQuery query = session
-									.createSQLQuery("select * from ps_item "
-											+ "order by count_favourite "
-											+ (op.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc ")
-													+ "limit ?, ?");
+									.createSQLQuery(" select * from ps_item "
+											+ " order by count_favourite "
+											+ (op.sortOption == SortOption.ASCENDING ? " asc "
+													: " desc ")
+													+ " limit ?, ?");
 
 							query.setInteger(0, op.offset)
 									.setInteger(1, op.limit);
@@ -455,14 +539,17 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 	public static final String COUNT_CLICK = "countClick";
 	public static final String VOTE = "vote";
 
+	@Override
 	protected void initDao() {
 		// do nothing
 	}
 
+	@Override
 	public void save(PsItem transientInstance) {
 		log.debug("saving PsItem instance");
 		try {
 			getHibernateTemplate().save(transientInstance);
+			
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
@@ -470,6 +557,7 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 		}
 	}
 
+	@Override
 	public void delete(PsItem persistentInstance) {
 		log.debug("deleting PsItem instance");
 		try {
@@ -481,11 +569,12 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 		}
 	}
 
+	@Override
 	public PsItem findById(java.lang.Integer id) {
 		log.debug("getting PsItem instance with id: " + id);
 		try {
 			PsItem instance = (PsItem) getHibernateTemplate().get(
-					"temp.PsItem", id);
+					"com.bitranger.parknshop.common.model.PsItem", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -507,7 +596,7 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 		}
 	}
 
-	public List findByProperty(String propertyName, Object value) {
+	public List<PsItem> findByProperty(String propertyName, Object value) {
 		log.debug("finding PsItem instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
@@ -560,7 +649,7 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 		return findByProperty(VOTE, vote);
 	}
 
-	public List findAll() {
+	public List<PsItem> findAll() {
 		log.debug("finding all PsItem instances");
 		try {
 			String queryString = "from PsItem";
@@ -574,7 +663,7 @@ public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 	public PsItem merge(PsItem detachedInstance) {
 		log.debug("merging PsItem instance");
 		try {
-			PsItem result = (PsItem) getHibernateTemplate().merge(
+			PsItem result = getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;

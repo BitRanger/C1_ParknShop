@@ -1,37 +1,49 @@
+<%@page import="com.bitranger.parknshop.seller.model.PsSeller"%>
 <%@page import="com.bitranger.parknshop.buyer.model.*" %>
 <div id="storeHeaderWrapper">
     <div id="storeHeader">
         <div id="logoDiv">
-            <a href="<%=request.getContextPath()%>/"><img id="logoImg" src="images/logo.jpg"/></a>
+            <a href="<%=request.getContextPath()%>/"><img id="logoImg" src="<%=request.getContextPath()%>/images/logo.jpg"/></a>
         </div>
         <div id="headerRight">
             <div id="headerRightUp">
                 <ul id="headerList">
                     <li class="headerListItem">
-                        <a class="headerListItemLink" href="#">Download App</a>
+                        <a class="headerListItemLink" href="<%=request.getContextPath()%>/misc/app.jsp">Download App</a>
                     </li>
                     <li class="headerListItem">
-                        <a class="headerListItemLink" href="#">24x7 Customer Care</a>
+                        <a class="headerListItemLink" href="<%=request.getContextPath()%>/misc/customerCare.jsp">24x7 Customer Care</a>
                     </li>
-                    <li class="headerListItem">
-                        <a class="headerListItemLink" onclick="trackOrder()" href="javascript:void(0)">Track Order</a>
-                    </li>
-                    <li class="headerListItem">
-                        <a class="headerListItemLink" href="#"><span class="glyphicon glyphicon-bell"></span></a>
-                    </li>
+                   
                     <% PsCustomer currentCustomer = (PsCustomer)session.getAttribute("currentCustomer");
+                    	PsSeller s = (PsSeller)request.getSession().getAttribute("currentSeller");
                        if (currentCustomer != null) { %>
                         <li class="headerListItem">
-                            <a class="headerListItemLink" href="<%=request.getContextPath()%>/customer/<%=currentCustomer.getId()%>">
+                        <a class="headerListItemLink"  href="<%=request.getContextPath()%>/buyerCenter">Track Order</a>
+                    </li>
+                    <!-- 
+                    <li class="headerListItem">
+                        <a class="headerListItemLink" href="#"><span class="glyphicon glyphicon-bell"></span></a>
+                    </li> -->
+                        <li class="headerListItem">
+                            <a class="headerListItemLink" href="<%=request.getContextPath()%>/buyerCenter">
                                <%=currentCustomer.getNickname() %>
                             </a>
                         </li>
                         <li class="headerListItem">
                             <a class="headerListItemLink" href="<%=request.getContextPath()%>/logout">Logout</a>
                         </li>
-                    <% } else { %>
+                    <% } else if (s != null) { %>
                         <li class="headerListItem">
-                            <a class="headerListItemLink" href="signup.jsp">Signup</a>
+                        <a class="headerListItemLink" href="<%=request.getContextPath()%>/seller.jsp">
+                           <%=s.getEmail() %>
+                        </a>
+                    </li>
+                    <% 
+                    } else { %>
+                    
+                        <li class="headerListItem">
+                            <a class="headerListItemLink" href="<%=request.getContextPath()%>/signup.jsp">Signup</a>
                         </li>
                         <li class="headerListItem">
                             <a class="headerListItemLink" href="#" data-toggle="modal" data-target="#login_modal">Login</a>
@@ -74,7 +86,13 @@
                         <input class="login_input_text" type="text" name="email" /><br>
                         <label class="login_input_text_label">Password</label>
                         <input class="login_input_text" type="password" name="password" /><br>
-
+                        <div>
+                            <input type="radio" name="role" value="buyer" checked="checked" />Buyer
+                            <input type="radio" name="role" value="seller" />Seller
+                        </div>
+                        <br>
+                        <br>
+                        <!--  
                         <b><input style="margin: 5px 0;vertical-align: middle;" type="checkbox"></b>
                         <span><label style="margin: 0;vertical-align: middle;font-size: 12px;font-weight: 200;">Stay signed in</label></span>
                         <span style="vertical-align: middle;margin-left: 20px;"><a class="login_link" href="#">Forget Password?</a></span><br>
@@ -82,7 +100,8 @@
                         <p style="font-size: 12px;margin-left: 18px;color:#999999">
                             To protect your privacy, remember to sign out when you're done shopping.
                             <a class="login_link" href="#">Learn more</a>
-                        </p>
+                        </p>-->
+                        
                         <input id="login_btn" type="submit" value="Login">
                         <span style="margin-left: 20px;font-size: 12px;">
                             No account?&nbsp;&nbsp;

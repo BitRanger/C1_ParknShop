@@ -41,10 +41,12 @@ public class PsRecipientDAO extends HibernateDaoSupport implements IPsRecipientD
 	public static final String CITY = "city";
 	public static final String DETAILED_ADDR = "detailedAddr";
 
+	@Override
 	protected void initDao() {
 		// do nothing
 	}
 
+	@Override
 	public void save(PsRecipient transientInstance) {
 		log.debug("saving PsRecipient instance");
 		try {
@@ -56,6 +58,7 @@ public class PsRecipientDAO extends HibernateDaoSupport implements IPsRecipientD
 		}
 	}
 
+	@Override
 	public void delete(PsRecipient persistentInstance) {
 		log.debug("deleting PsRecipient instance");
 		try {
@@ -67,11 +70,12 @@ public class PsRecipientDAO extends HibernateDaoSupport implements IPsRecipientD
 		}
 	}
 
+	@Override
 	public PsRecipient findById(java.lang.Integer id) {
 		log.debug("getting PsRecipient instance with id: " + id);
 		try {
 			PsRecipient instance = (PsRecipient) getHibernateTemplate().get(
-					"temp.PsRecipient", id);
+					"com.bitranger.parknshop.seller.model.PsRecipient", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

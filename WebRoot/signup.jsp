@@ -43,20 +43,20 @@
         <div id="signupMainRight">
             <div id="signupPanel">
                 <div class="signupMessage">Sign up, trade world</div>
-                <form style="margin:0" id="signupForm" method="post" action="<%=request.getContextPath()%>/register">
+                <form style="margin:0" id="signupForm" method="post" onsubmit="return deal_signup()" action="<%=request.getContextPath()%>/register">
                     <input class="signup_input" type="text" name="username" placeholder="Pick a username"><br>
                     <input class="signup_input" type="text" name="email" placeholder="Your email"><br>
                     <input class="signup_input" type="password" name="password" placeholder="Create a password"><br>
                     <input class="signup_input" type="password" name="pwconfirm" placeholder="Confirm password"><br>
-                    <div id="signup_type">
-                        <input type="radio" checked="checked" name="buyer" value="buyer">Buyer
-                        <input style="margin-left: 30px" type="radio" name="seller" value="seller">Seller
+					<div id="signup_type">
+                        <input type="radio" checked="checked" name="role" value="buyer">Buyer
+                        <input style="margin-left: 30px" type="radio" name="role" value="seller">Seller
                     </div>
-                    <div id="signup_user_agreement">
+                     <div id="signup_user_agreement">
                         <input type="checkbox">
                         <span>I have read and accepted the <a href="#">User Agreement</a> </span>
                     </div>
-                    <input class="signup_input" type="submit" value="Signup" onclick="deal_signup()"><br>
+                    <input class="signup_input" type="submit" value="Signup" ><br>
                 </form>
             </div>
         </div>

@@ -86,6 +86,26 @@ public class ItemFinder extends HibernateDaoSupport {
 		boolean asd = false;
 
 		HibernateTemplate hibernate;
+
+		@SuppressWarnings("unchecked")
+		public List<PsItem> search(final String q) {
+			return hibernate.executeFind(new HibernateCallback<List<PsItem>>() {
+				@Override
+					public List<PsItem> doInHibernate(Session session)
+								throws HibernateException, SQLException {
+					
+					SQLQuery query = session.createSQLQuery(
+" SELECT IT.*, " +
+" MATCH (`name`, `introduction`) AGAINST (? IN NATURAL LANGUAGE MODE) AS relevance "  +
+" FROM `ps_item` as IT " +
+" ORDER BY relevance DESC"
+);
+						query.setString(0, q);
+						query.addEntity(PsItem.class);
+						return query.list();
+					}
+				});
+		}
 		
 		@SuppressWarnings("unchecked")
 		public List<PsItem> list() {
@@ -125,8 +145,8 @@ public class ItemFinder extends HibernateDaoSupport {
 			}
 			builder.append(" limit ? , ?");
 			
-			System.out.println("ItemFinder.Fetch.getQuery()");
-			System.out.println(builder.toString());
+//			System.out.println("ItemFinder.Fetch.getQuery()");
+//			System.out.println(builder.toString());
 			
 			Integer offset = (this.pageNumber - 1) * VisitorView.itemNumberPerPage;
 			SQLQuery query = session.createSQLQuery(builder.toString());

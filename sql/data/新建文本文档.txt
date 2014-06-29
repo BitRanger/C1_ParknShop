@@ -1,0 +1,29 @@
+insert into ps_promot_item(id_item, description, pic_url)
+	values(1, "test", "http://c1-parknshop.qiniudn.com/ad_item_20%20(1).jpg");
+insert into ps_ad_item(id_promot, time_end, weight)
+	values(1, str_to_date("2016-7-1",'%Y-%m-%d'), 20);
+
+insert into ps_promot_item(id_item, description, pic_url)
+	values(2, "test", "http://c1-parknshop.qiniudn.com/ad_item_20%20(2).jpg");
+insert into ps_ad_item(id_promot, time_end, weight)
+	values(2, str_to_date("2016-7-1",'%Y-%m-%d'), 20);
+
+insert into ps_promot_item(id_item, description, pic_url)
+	values(3, "test", "http://c1-parknshop.qiniudn.com/ad_item_20%20(3).jpg");
+insert into ps_ad_item(id_promot, time_end, weight)
+	values(3, str_to_date("2014-7-1",'%Y-%m-%d'), 20);
+
+insert into ps_promot_item(id_item, description, pic_url)
+	values(4, "test", "http://c1-parknshop.qiniudn.com/ad_item_20%20(4).jpg");
+insert into ps_ad_item(id_promot, time_end, weight)
+	values(4, str_to_date("2014-7-1",'%Y-%m-%d'), 20);
+
+insert into ps_promot_item(id_item, description, pic_url)
+	values(5, "test", "http://c1-parknshop.qiniudn.com/ad_item_20%20(5).jpg");
+insert into ps_ad_item(id_promot, time_end, weight)
+	values(5, str_to_date("2015-7-1",'%Y-%m-%d'), 20);
+
+insert into ps_promot_item(id_item, description, pic_url)
+	values(6, "test", "http://c1-parknshop.qiniudn.com/ad_item_20%20(6).jpg");
+insert into ps_ad_item(id_promot, time_end, weight)
+	values(6, str_to_date("2015-7-1",'%Y-%m-%d'), 20);

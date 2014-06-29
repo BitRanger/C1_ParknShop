@@ -23,7 +23,7 @@ public class PsAdminAccDAO extends HibernateDaoSupport {
 	private static final Logger log = LoggerFactory
 			.getLogger(PsAdminAccDAO.class);
 	// property constants
-	public static final String BALANCE = "balance";
+	public static final String AMOUNT = "amount";
 
 	protected void initDao() {
 		// do nothing
@@ -55,7 +55,7 @@ public class PsAdminAccDAO extends HibernateDaoSupport {
 		log.debug("getting PsAdminAcc instance with id: " + id);
 		try {
 			PsAdminAcc instance = (PsAdminAcc) getHibernateTemplate().get(
-					"temp.PsAdminAcc", id);
+					"PsAdminAcc", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -90,8 +90,8 @@ public class PsAdminAccDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List<PsAdminAcc> findByBalance(Object balance) {
-		return findByProperty(BALANCE, balance);
+	public List<PsAdminAcc> findByAmount(Object amount) {
+		return findByProperty(AMOUNT, amount);
 	}
 
 	public List findAll() {

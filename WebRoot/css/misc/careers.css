@@ -1,0 +1,48 @@
+@import url("../storeHeader.css");
+
+@import url("../categorybar.css");
+
+@import url("../footer.css");
+
+
+#careers {
+    width: 960px;
+    margin: 50px 20px;
+    padding: 30px 30px;
+    border: 1px solid #bbbbbb;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px #bbbbbb;
+}
+
+#careerDesc {
+    position: relative;
+    height: 240px;
+}
+
+#careerDesc h1{
+
+}
+
+#careerDesc p{
+    width: 450px;
+}
+
+#careerDesc img{
+    position: absolute;
+    right: 100px;
+    top: 0px;
+    width: 300px;
+}
+
+.listItemContent {
+    font-size: 13px;
+}
+
+.listItemContent table {
+    margin-left: 15px;
+    font-size: 13px;
+}
+
+.listItemContent table:nth-child(2) {
+    margin-top: 20px;
+}

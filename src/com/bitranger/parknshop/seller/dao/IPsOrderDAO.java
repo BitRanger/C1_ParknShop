@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.List;
 
 
-import com.bitranger.parknshop.seller.OrderState;
 import com.bitranger.parknshop.seller.model.PsOrder;
 
 public interface IPsOrderDAO {
@@ -25,13 +24,29 @@ public interface IPsOrderDAO {
 	
 	public abstract PsOrder findByOrderId(Integer id);
 	
+	public List<PsOrder> findByCustomerId(final Integer id, final Short state);
 	public abstract List<PsOrder> findByCustomerId(Integer id, Date from, Date to);
-	public abstract List<PsOrder> findByCustomerId(Integer id, OrderState state);
-	public abstract List<PsOrder> findByShopId(Integer id, Date from, Date to);
-	public abstract List<PsOrder> findByShopId(Integer id, OrderState state);
+	public List<PsOrder> findByCustomerId(final Integer id);
 	
-	public abstract List<PsOrder> findAll(OrderState state);
+	public abstract List<PsOrder> findBySellerId(Integer id);
+	
+
+	public List<PsOrder> findByShopId(final Integer id);
+	public abstract List<PsOrder> findByShopId(Integer id, Date from, Date to);
+	public abstract List<PsOrder> findByShopId(Integer id, Short state);
+	
+	public List<PsOrder> findAll(Short state);
 	public abstract List<PsOrder> findAll(Date from, Date to);
 
+	public double countTnxVolumn();
+//
+////	public int getAdCount(Date start, Date end);
+////	public double getAdAmont(Date start, Date end);
+//	public double getAdRevenue(Date start, Date end);
+////	
+////
+////	public int getTnxCount(Date start, Date end);
+////	public double getTnxAmont(Date start, Date end);
+//	public double getSaleRevenue(Date start, Date end);
 
 }

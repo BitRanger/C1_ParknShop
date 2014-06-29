@@ -4,9 +4,11 @@ import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,8 +20,7 @@ public class PsNoticeSeller implements java.io.Serializable {
 
 	// Fields
 
-	private static final long serialVersionUID = -1970012775343861972L;
-	private Integer idSeller;
+	private Integer id;
 	private PsSeller psSeller;
 	private Timestamp timeCreated;
 	private String source;
@@ -33,18 +34,16 @@ public class PsNoticeSeller implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsNoticeSeller(Integer idSeller, PsSeller psSeller,
-			Timestamp timeCreated, Short isValid) {
-		this.idSeller = idSeller;
+	public PsNoticeSeller(PsSeller psSeller, Timestamp timeCreated,
+			Short isValid) {
 		this.psSeller = psSeller;
 		this.timeCreated = timeCreated;
 		this.isValid = isValid;
 	}
 
 	/** full constructor */
-	public PsNoticeSeller(Integer idSeller, PsSeller psSeller,
-			Timestamp timeCreated, String source, String message, Short isValid) {
-		this.idSeller = idSeller;
+	public PsNoticeSeller(PsSeller psSeller, Timestamp timeCreated,
+			String source, String message, Short isValid) {
 		this.psSeller = psSeller;
 		this.timeCreated = timeCreated;
 		this.source = source;
@@ -54,17 +53,18 @@ public class PsNoticeSeller implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@Column(name = "id_seller", unique = true, nullable = false)
-	public Integer getIdSeller() {
-		return this.idSeller;
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setIdSeller(Integer idSeller) {
-		this.idSeller = idSeller;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@PrimaryKeyJoinColumn
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_seller", nullable = false)
 	public PsSeller getPsSeller() {
 		return this.psSeller;
 	}

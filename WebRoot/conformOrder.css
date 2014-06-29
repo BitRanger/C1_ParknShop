@@ -1,0 +1,190 @@
+@import url("include_css/comfirmNewAddr.css");
+
+
+
+
+.confirm_title_bar {
+    margin-top: 20px;
+    height: 36px;
+}
+
+.confirm_title {
+    font-size: 20px;
+    text-shadow: 0 1px 6px #000000;
+    color: #FFFFFF;
+}
+
+
+#address_form {
+
+}
+
+#addNewAddrBtn {
+    margin-left: 50px;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1A1A;
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    vertical-align: middle;
+    background-color: #E4E4E4;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 1px 2px rgba(0,0,0,.1);
+    outline: none;
+    border-radius: 3px;
+}
+
+.comfirm_address_item {
+    padding-left: 30px;
+    margin: 5px 0;
+}
+
+.comfirm_address_item_selected {
+    border: 1px solid #C46814;
+    background-color: #FFF5CC;
+    box-shadow: 1px 1px 3px #CC5F22;
+}
+
+input[type=radio] {
+    vertical-align: middle;
+    margin: 0 5px 0 0;
+}
+
+
+
+
+
+.confirm_link {
+    color: #3A860E;
+    font-size: 14px;
+    text-shadow: 0 1px 3px #0F7022;
+    text-decoration: none;
+}
+
+.confirm_link:hover {
+    color: #3A860E;
+    font-size: 14px;
+    text-shadow: 0 1px 3px #0F7022;
+    text-decoration: underline;
+}
+
+#confirmTableDiv {
+
+}
+
+#confirmTable {
+    border: 1px solid #999999;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#confirmTableHeader {
+    height: 30px;
+    background-color: #056314;
+    color: #ffffff;
+}
+
+#confirmTableHeader th {
+    font-weight: normal;
+    font-size: 14px;
+    text-shadow: 0 0px 1px #FFFFFF;
+}
+
+#confirmTableHeader th:nth-child(1) {
+    width: 350px;
+    padding-left: 20px;
+}
+
+#confirmTableHeader th:nth-child(2) {
+    width: 150px;
+    text-align: center;
+}
+
+#confirmTableHeader th:nth-child(3) {
+    width: 80px;
+    text-align: center;
+}
+
+#confirmTableHeader th:nth-child(4) {
+    width: 80px;
+    text-align: center;
+}
+
+#confirmTableHeader th:nth-child(5) {
+    text-align: center;
+}
+
+
+
+.confirmRow {
+
+}
+
+.confirmRow td{
+    border-top: 1px solid #999999;
+    font-size: 12px;
+}
+
+.confirmRow td:nth-child(1) {
+    width: 350px;
+    height: 100px;
+    padding-left: 20px;
+}
+
+.confirmRow td:nth-child(2) {
+    width: 150px;
+    text-align: center;
+}
+
+.confirmRow td:nth-child(3) {
+    width: 80px;
+    text-align: center;
+}
+
+.confirmRow td:nth-child(4) {
+    width: 80px;
+    text-align: center;
+}
+
+.confirmRow td:nth-child(5) {
+    text-align: center;
+}
+
+
+.confirmItemImgDiv {
+    float: left;
+    width: 90px;
+}
+
+.confirmItemImgDiv img {
+    width: 80px;
+}
+
+.confirmItemDescDiv {
+    width: 220px;
+    padding: 10px 0;
+}
+
+.confirmItemDesc {
+
+}
+
+.confirmItemExtra {
+
+}
+
+#settleBtn {
+    float: right;
+    margin-right: 30px;
+    background-color: #F19E7D;
+    color: #ffffff;
+    padding: 6px;
+    border-radius: 3px;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+}
+

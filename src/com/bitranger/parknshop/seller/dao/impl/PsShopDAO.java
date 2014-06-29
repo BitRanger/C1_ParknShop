@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import com.bitranger.parknshop.common.dao.FetchOption;
 import com.bitranger.parknshop.common.dao.SortOption;
 import com.bitranger.parknshop.seller.dao.IPsShopDAO;
+import com.bitranger.parknshop.seller.model.PsOrder;
 import com.bitranger.parknshop.seller.model.PsShop;
 
 /**
@@ -79,7 +80,7 @@ public class PsShopDAO extends HibernateDaoSupport implements IPsShopDAO {
 		log.debug("getting PsShop instance with id: " + id);
 		try {
 			PsShop instance = (PsShop) getHibernateTemplate().get(
-					"com.bitranger.PsShop", id);
+					"com.bitranger.parknshop.seller.model.PsShop", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -135,6 +136,17 @@ public class PsShopDAO extends HibernateDaoSupport implements IPsShopDAO {
 					});
 		} catch (RuntimeException re) {
 			log.error("find all seller failed", re);
+			throw re;
+		}
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<PsShop> findAll() {
+		try {
+			String queryString = "com.bitranger.parknshop.seller.model.PsShop";
+			return getHibernateTemplate().find(queryString);
+		} catch (RuntimeException re) {
+			log.error("find all by state failed", re);
 			throw re;
 		}
 	}

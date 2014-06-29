@@ -77,7 +77,7 @@
         <img style="width: 275px" src="images/imgad.gif"/>
         <img style="margin-top: 20px; width: 275px" src="images/imgad2.jpg"/>
         <span id="ad_span">
-            <a id="ad_link" href="#">Advertisement</a>
+            <a id="ad_link" >Advertisement</a>
         </span>
     </div>
 </div>

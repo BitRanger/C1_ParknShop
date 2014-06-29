@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.bitranger.parknshop.common.dao.ItemFinder;
 import com.bitranger.parknshop.common.model.PsItem;
+import com.bitranger.parknshop.util.Str;
 import com.bitranger.parknshop.visitor.views.Names;
 
 
@@ -151,8 +152,16 @@ public class ItemFinderService {
 	 */
 	
 	public List<PsItem> getItems(HttpServletRequest request){
+
+// /itemlist?searchBar=drgsdfsd&searchBtn=Search
+// /itemlist?category_id=4&page_number=2&order_by=vote&asd=desc#
 		
-		System.out.println(this.toString());
+		String key = request.getParameter("searchBar");
+		if (Str.Utils.notBlank(key)) {
+System.out.println("ItemFinderService.getItems()" + key);
+System.out.println(itemFinder.newFind().search(key).size());
+			return itemFinder.newFind().search(key);
+		}
 		
 		return this.categoryId(request.getParameter(Names.params.categoryId))
     	 .tagIds(request.getParameterValues(Names.params.tag))
@@ -161,7 +170,6 @@ public class ItemFinderService {
     	 .pageNumber(request.getParameter(Names.params.pageNumber))
     	 .orderBy(request.getParameter(Names.params.orderBy))
     	 .asd(request.getParameter(Names.params.asd))
-
     	 .list();
 		
 	}

@@ -1,0 +1,40 @@
+@import url("../storeHeader.css");
+
+@import url("../categorybar.css");
+
+@import url("../footer.css");
+
+
+#gift {
+    width: 960px;
+    margin: 50px 20px;
+    padding: 30px 30px;
+    border: 1px solid #bbbbbb;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px #bbbbbb;
+}
+
+#gift_title {
+    position: relative;
+}
+
+#gift_title h1{
+
+}
+
+#gift_title p{
+    width: 450px;
+}
+
+#gift_title img{
+    position: absolute;
+    right: 100px;
+    top: 0;
+}
+
+#gift_attention {
+    padding: 20px 450px 20px 20px;
+    background-color: #022C74;
+    color: #ffffff;
+    margin-top: 50px;
+}

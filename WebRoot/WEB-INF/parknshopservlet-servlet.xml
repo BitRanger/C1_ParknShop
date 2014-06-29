@@ -10,26 +10,36 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
         
-    <mvc:resources location="asset/css/" mapping="css/**"/>
-    <mvc:resources location="asset/fonts/" mapping="fonts/**"/> 
-    <mvc:resources location="asset/images/" mapping="images/**"/>
-    <mvc:resources location="asset/js/" mapping="js/**"/>
+    <mvc:resources location="css/" mapping="css/**"/>
+    <mvc:resources location="fonts/" mapping="fonts/**"/> 
+    <mvc:resources location="images/" mapping="images/**"/>
+    <mvc:resources location="js/" mapping="js/**"/>
 
-    <context:component-scan base-package="com.bitranger.parknshop.admin.controller"></context:component-scan>
+	<mvc:resources location="css/" mapping="admin/css/**"/>
+	<mvc:resources location="js/" mapping="admin/js/**"/>
+	<mvc:resources location="images/" mapping="admin/images/**"/>
+	<mvc:resources location="fonts/" mapping="admin/fonts/**"/>
+	<mvc:resources location="ckeditor/" mapping="admin/ckeditor/**"/>
+	<mvc:resources location="util/" mapping="admin/util/**"/>
+	
+	<mvc:resources location="css/" mapping="seller/css/**"/>
+	<mvc:resources location="js/" mapping="seller/js/**"/>
+	<mvc:resources location="images/" mapping="seller/images/**"/>
+	<mvc:resources location="fonts/" mapping="seller/fonts/**"/>
+	<mvc:resources location="ckeditor/" mapping="seller/ckeditor/**"/>
+	<mvc:resources location="util/" mapping="seller/util/**"/>
+        
+    <context:component-scan base-package="com.bitranger.parknshop.admin"></context:component-scan>
     <context:component-scan base-package="com.bitranger.parknshop.buyer.controller"></context:component-scan>
     <context:component-scan base-package="com.bitranger.parknshop.seller.controller"></context:component-scan>
     <context:component-scan base-package="com.bitranger.parknshop.visitor.controller"></context:component-scan>
-    
+    <context:component-scan base-package="com.bitranger.parknshop.common.controller"></context:component-scan>
     	
 	<mvc:annotation-driven />
 	       
-	<context:component-scan base-package="com.bitranger.parknshop.controller"/>
-	
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/view/" />
+		<property name="prefix" value="/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 

@@ -22,6 +22,10 @@ public class CustomerFavouriteShop implements java.io.Serializable {
 
 	// Fields
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4212079014996224031L;
 	private CustomerFavouriteShopId id;
 	private PsCustomer psCustomer;
 	private PsShop psShop;

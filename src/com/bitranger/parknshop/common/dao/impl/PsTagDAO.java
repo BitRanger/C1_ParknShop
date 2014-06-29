@@ -96,11 +96,10 @@ public class PsTagDAO extends HibernateDaoSupport implements IPsTagDAO {
 	}
 	
 	/*
-	 select TG.*, sum(TG.id) as TG_C from ps_tag as TG
+select TG.*, sum(TG.id) as TG_C from ps_tag as TG
 		inner join r_tag_item	as RTI 	on RTI.id_tag 	= TG.id
 		inner join ps_item 		as IT 	on IT.id 		= RTI.id_item
-		inner join ps_category 	as CAT 	on CAT.id 		= IT.id_category
-where CAT.id = ?
+where IT.id_category = 5
 group by TG.id
 order by TG_C
 limit 0, 64
@@ -116,14 +115,14 @@ limit 0, 64
 			public List<PsTag> doInHibernate(Session session)
 					throws HibernateException, SQLException {
 				SQLQuery query = session.createSQLQuery(
-"select TG.* sum(TG.id) as TG_C from ps_tag as TG"
-+"		inner join r_tag_item as RTI on RTI.id_t"
-+"		inner join ps_item as IT on IT.id = RTI.id_item"
-+"		inner join ps_category as CAT on CAT.id = IT.id_category"
-+"where CAT.id = ?"
-+"group by TG.id"
-+"order by TG_C"
-+"limit 0, ?");
+" select TG.*, sum(TG.id) as TG_C from ps_tag as TG "
++"		inner join r_tag_item as RTI on RTI.id_tag 	= TG.id "
++"		inner join ps_item as IT on IT.id = RTI.id_item "
++" where IT.id_category = ? "
++" group by TG.id "
++" order by TG_C "
++" limit 0, ? "
+);
 				query.addEntity(PsTag.class);
 				query.setInteger(0, category);
 				query.setInteger(1, limit);
@@ -148,6 +147,21 @@ limit 0, 64
 //			}
 //		});
 		
+	}
+
+	public List<PsTag> findTagByIds(String[] tagIds) {
+		
+		String str = "from PsTag p where ";
+		
+		for(int i = 0; i < tagIds.length; i++) {
+			str += "p.id = " + tagIds[i];
+			if(i != tagIds.length - 1) {
+				str += " or ";
+			}
+		}
+		
+		List<PsTag> tags = getHibernateTemplate().find(str);
+		return tags;
 	}
 }
 

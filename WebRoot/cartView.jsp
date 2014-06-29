@@ -1,4 +1,4 @@
-<%@page import="com.bitranger.parknshop.common.controller.Utility"%>
+<%@page import="com.bitranger.parknshop.buyer.controller.Utility"%>
 <%@page import="com.bitranger.parknshop.common.model.PsItem"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
@@ -39,7 +39,7 @@
 						<li>
 							<div class="left cartItemImgDiv">
 								<img
-									src="<%=request.getContextPath()%>/images/<%=item.getUrlPicture()%>" />
+									src="<%=item.getUrlPicture()%>" />
 							</div>
 							<div class="left cartItemDescDiv">
 								<div class="cartItemDesc">
@@ -77,7 +77,7 @@
 			</div>
 			<div id="cartTitle">
 				<h3>
-					<a href="<%=request.getContextPath()%>/cashier"><b>GO TO CASHIER</b></a>
+					<a href="<%=request.getContextPath()%>/confirmOrder"><b>GO TO CASHIER</b></a>
 				</h3>
 			</div>
 		</div>

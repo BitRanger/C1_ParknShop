@@ -1,0 +1,28 @@
+@import url("../storeHeader.css");
+
+@import url("../categorybar.css");
+
+@import url("../footer.css");
+
+
+#hotline {
+    width: 960px;
+    margin: 50px 20px;
+    padding: 30px 30px;
+    border: 1px solid #bbbbbb;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px #bbbbbb;
+}
+
+#hotline_title {
+    position: relative;
+}
+
+.listItemContent {
+    margin-left: 15px;
+}
+
+.listItemContent table {
+    font-size: 13px;
+}
+

@@ -1,13 +1,19 @@
 package com.bitranger.parknshop.common.ads;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
+
+import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
 import org.hibernate.LockMode;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 /**
@@ -18,7 +24,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
  * transactions. Each of these methods provides additional information for how
  * to configure it for the desired type of transaction control.
  * 
- * @see com.bitranger.parknshop.common.ads.PsPromotItem
+ * @see temp.PsPromotItem
  * @author MyEclipse Persistence Tools
  */
 public class PsPromotItemDAO extends HibernateDaoSupport {
@@ -27,12 +33,29 @@ public class PsPromotItemDAO extends HibernateDaoSupport {
 	// property constants
 	public static final String ITEM_INFO = "itemInfo";
 	public static final String DESCRIPTION = "description";
+	public static final String PIC_URL = "picUrl";
 
 	protected void initDao() {
 		// do nothing
 	}
-	public HibernateTemplate hibernate() {
-		return getHibernateTemplate();
+
+	@SuppressWarnings("unchecked")
+	public List<PsPromotItem> findBySeller(final int id) {
+		return getHibernateTemplate().executeFind(new HibernateCallback<List<PsPromotItem>>() {
+
+			@Override
+			public List<PsPromotItem> doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				SQLQuery q = session.createSQLQuery(
+" select IP.* from ps_promot_item as IP " +
+" inner join ps_item as IT on IT.id = IP.id_item " +
+" inner join ps_shop as SP on SP.id = IT.id_shop " +
+" where SP.id_seller = ? ");
+				q.setInteger(0, id);
+				q.addEntity(PsPromotItem.class);
+				return q.list();
+			}
+		});
 	}
 	
 	public void save(PsPromotItem transientInstance) {
@@ -104,6 +127,10 @@ public class PsPromotItemDAO extends HibernateDaoSupport {
 		return findByProperty(DESCRIPTION, description);
 	}
 
+	public List<PsPromotItem> findByPicUrl(Object picUrl) {
+		return findByProperty(PIC_URL, picUrl);
+	}
+
 	public List findAll() {
 		log.debug("finding all PsPromotItem instances");
 		try {
@@ -154,4 +181,53 @@ public class PsPromotItemDAO extends HibernateDaoSupport {
 			ApplicationContext ctx) {
 		return (PsPromotItemDAO) ctx.getBean("PsPromotItemDAO");
 	}
+	
+/**
+ select PI.* from ps_promot_item as PI 
+	inner join ps_ad_item as AD on AD.id_promot = PI.id
+where AD.time_start < CURRENT_TIMESTAMP and CURRENT_TIMESTAMP < AD.time_end
+
+ */
+	@SuppressWarnings("unchecked")
+	public List<PsPromotItem> findAllValid() {
+		log.debug("finding all PsPromotItem instances");
+		try {
+			return getHibernateTemplate().executeFind(new HibernateCallback<List<PsPromotItem>>() {
+
+				@Override
+				public List<PsPromotItem> doInHibernate(Session session)
+						throws HibernateException, SQLException {
+					SQLQuery q = session.createSQLQuery(
+			"		select PI.* from ps_promot_item as PI " +
+				"	inner join ps_ad_item as AD on AD.id_promot = PI.id " +
+			"	where AD.time_start < CURRENT_TIMESTAMP and CURRENT_TIMESTAMP < AD.time_end ");
+					q.addEntity(PsPromotItem.class);
+					return q.list();
+				}
+			});
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	
+public double calAdRevenue() {
+		
+		return getHibernateTemplate().execute(new HibernateCallback<Double>() {
+
+			@Override
+			public Double doInHibernate(Session session)
+					throws HibernateException, SQLException {
+				SQLQuery q = session.createSQLQuery(
+" select sum(AD.num_fetched * AD.weight) as ACC from ps_promot_item as PI  " +
+"	inner join ps_ad_item as AD on AD.id_promot = PI.id " +
+" where AD.time_start < CURRENT_TIMESTAMP  " +
+"		and CURRENT_TIMESTAMP < AD.time_end ");
+				q.addScalar("ACC", Hibernate.DOUBLE);
+				Double db = (Double) q.uniqueResult();
+				return db == null? 0.0 : db;
+			}
+		});
+	}
+	
 }

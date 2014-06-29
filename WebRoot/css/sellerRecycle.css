@@ -1,0 +1,40 @@
+@import url("storeHeader.css");
+
+@import url("categorybar.css");
+
+@import url("attracting.css");
+
+@import url("footer.css");
+
+#tablebox{
+    width:1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 85px;
+}
+
+
+.row .col-md-2{
+    padding: 10px;
+}
+
+.row .col-md-3{
+    padding: 10px;
+}
+
+.row .col-md-4{
+    padding: 10px;
+}
+
+.row .col-md-6{
+    padding: 10px;
+}
+
+.row .col-md-7{
+    padding: 10px;
+}
+
+.tablebox{
+    margin-left: 30px;
+    margin-right: 60px;
+}

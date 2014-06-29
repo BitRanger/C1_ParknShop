@@ -3,6 +3,8 @@ package com.bitranger.parknshop.seller.dao.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -16,6 +18,7 @@ import com.bitranger.parknshop.common.dao.FetchOption;
 import com.bitranger.parknshop.common.dao.SortOption;
 import com.bitranger.parknshop.seller.dao.IPsSellerDAO;
 import com.bitranger.parknshop.seller.model.PsSeller;
+import com.bitranger.parknshop.seller.model.PsShop;
 
 /**
  * A data access object (DAO) providing persistence and search support for
@@ -37,7 +40,20 @@ public class PsSellerDAO extends HibernateDaoSupport implements IPsSellerDAO {
 	public static final String EMAIL = "email";
 	public static final String PASSWORD = "password";
 	public static final String STATUS = "status";
-
+	
+	@Override
+	public PsSeller findById(Integer id) {
+		log.debug("getting PsShop instance with id: " + id);
+		try {
+			PsSeller instance = (PsSeller) getHibernateTemplate().get(
+					"com.bitranger.parknshop.seller.model.PsSeller", id);
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("get failed", re);
+			throw re;
+		}
+	}
+	
 	@Override
 	public void save(PsSeller transientInstance) {
 		log.debug("saving PsSeller instance");
@@ -74,18 +90,19 @@ public class PsSellerDAO extends HibernateDaoSupport implements IPsSellerDAO {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Nullable
 	@Override
 	public PsSeller findByEmail(String email) {
 		log.debug("getting PsSeller instance with email: " + email);
 		try {
-			PsSeller instance = 
-					(PsSeller) getHibernateTemplate()
+			@SuppressWarnings("cast")
+			List<PsSeller> ls = 
+					(List<PsSeller>) getHibernateTemplate()
 						.find(
-					"FROM com.bitranger.PsSeller WHERE email = ?"
-					, email)
-					.get(0);
-			
-			return instance;
+					"FROM com.bitranger.parknshop.seller.model.PsSeller WHERE email = ?"
+					, email);
+			return ls != null && ls.size() > 0 ? ls.get(0) : null;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;
@@ -94,7 +111,7 @@ public class PsSellerDAO extends HibernateDaoSupport implements IPsSellerDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<PsCustomer> findAll(final FetchOption fetchOption) {
+	public List<PsSeller> findAll(final FetchOption fetchOption) {
 		log.debug("find all PsSeller");
 		try {
 			return getHibernateTemplate().executeFind(
@@ -103,13 +120,14 @@ public class PsSellerDAO extends HibernateDaoSupport implements IPsSellerDAO {
 						@Override
 						public List<PsSeller> doInHibernate(Session arg0)
 								throws HibernateException, SQLException {
+							
 							SQLQuery query = arg0
-									.createSQLQuery("select * from ps_seller as P order by P.id "+
-											(fetchOption.sortOption == SortOption.ASCENDING ? "asc"
-													: "desc"));
-							query.addEntity(PsCustomer.class);
+							.createSQLQuery(
+"select * from ps_seller as P order by P.id "+
+(fetchOption.sortOption == SortOption.ASCENDING ? "asc" : "desc"));
+							
+							query.addEntity(PsSeller.class);
 							return query.list();
-
 						}
 
 					});

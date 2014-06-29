@@ -1,0 +1,45 @@
+@import url("../storeHeader.css");
+
+@import url("../categorybar.css");
+
+@import url("../footer.css");
+
+
+#questionTitle {
+    margin: 50px 20px 20px 20px;
+    font-size: 24px;
+}
+
+#accordion {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#moreQuestion {
+    margin: 50px 20px 20px 20px;
+    border: 1px solid #999999;
+    padding: 15px;
+    box-shadow: 0 1px 3px #999999;
+}
+
+#moreQuestion h3{
+
+}
+
+#moreQuestion p:nth-child(2){
+
+}
+
+#moreQuestion p:nth-child(3){
+
+}
+
+#moreQuestion p:nth-child(3) a {
+
+}
+
+.panel-default > .panel-heading-my {
+    background-color: #727272;
+    color: #ffffff;
+}

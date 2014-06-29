@@ -17,6 +17,11 @@ import com.bitranger.parknshop.common.model.PsItem;
 public interface IPsItemDAO {
 
 
+	public List<PsItem> selectBestSellers(int categoryID, int limit);
+
+	public List<PsItem> selectLatest(int categoryID, int limit);
+
+	public List<PsItem> findAll();
 	public abstract List<PsItem> findByCountPurchase(FetchOption op);
 	public abstract List<PsItem> findByCountFavourite(FetchOption op);
 	

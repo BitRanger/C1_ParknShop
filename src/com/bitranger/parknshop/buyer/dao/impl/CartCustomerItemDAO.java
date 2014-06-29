@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bitranger.parknshop.buyer.dao.ICartCustomerItemDAO;
 import com.bitranger.parknshop.buyer.model.CartCustomerItem;
+import com.bitranger.parknshop.buyer.model.PsCustomer;
 import com.bitranger.parknshop.common.dao.FetchOption;
 import com.bitranger.parknshop.common.dao.SortOption;
 
@@ -26,7 +27,8 @@ import com.bitranger.parknshop.common.dao.SortOption;
  * @see com.bitranger.parknshop.buyer.model.CartCustomerItem
  * @author MyEclipse Persistence Tools
  */
-public class CartCustomerItemDAO extends HibernateDaoSupport implements ICartCustomerItemDAO{
+public class CartCustomerItemDAO extends HibernateDaoSupport implements
+		ICartCustomerItemDAO {
 	private static final Logger log = LoggerFactory
 			.getLogger(CartCustomerItemDAO.class);
 	// property constants
@@ -45,7 +47,7 @@ public class CartCustomerItemDAO extends HibernateDaoSupport implements ICartCus
 			throw re;
 		}
 	}
-
+	
 	@Override
 	public void delete(CartCustomerItem persistentInstance) {
 		log.debug("deleting CartCustomerItem instance");
@@ -59,11 +61,13 @@ public class CartCustomerItemDAO extends HibernateDaoSupport implements ICartCus
 	}
 
 	@Override
-	public CartCustomerItem findById(com.bitranger.parknshop.buyer.model.CartCustomerItemId id) {
+	public CartCustomerItem findById(
+			com.bitranger.parknshop.buyer.model.CartCustomerItemId id) {
 		log.debug("getting CartCustomerItem instance with id: " + id);
 		try {
 			CartCustomerItem instance = (CartCustomerItem) getHibernateTemplate()
-					.get("com.bitranger.parknshop.buyer.model.CartCustomerItem", id);
+					.get("com.bitranger.parknshop.buyer.model.CartCustomerItem",
+							id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -88,12 +92,11 @@ public class CartCustomerItemDAO extends HibernateDaoSupport implements ICartCus
 								SQLException {
 
 							SQLQuery query = session
-							.createSQLQuery(
-						"select * from cart_customer_item as C where C.id_customer = ?"
-								+ " order by C.time_created "
-								+ (option.sortOption == SortOption.ASCENDING ? "asc"
+									.createSQLQuery("select * from cart_customer_item as C where C.id_customer = ?"
+											+ " order by C.time_created "
+											+ (option.sortOption == SortOption.ASCENDING ? "asc"
 													: "desc")
-								+ " limit ? offset ?");
+											+ " limit ? offset ?");
 							query.setInteger(0, psCustomerId);
 							query.setInteger(1, option.limit);
 							query.setInteger(2, option.offset);
@@ -114,5 +117,10 @@ public class CartCustomerItemDAO extends HibernateDaoSupport implements ICartCus
 
 
 
-	
+
+	@Override
+	public void deleteAll(List<CartCustomerItem> items) {
+		getHibernateTemplate().deleteAll(items);
+	}
+
 }

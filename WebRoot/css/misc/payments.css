@@ -1,0 +1,37 @@
+@import url("../storeHeader.css");
+
+@import url("../categorybar.css");
+
+@import url("../footer.css");
+
+
+#payments {
+    width: 960px;
+    margin: 50px 20px;
+    padding: 30px 30px;
+    border: 1px solid #bbbbbb;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px #bbbbbb;
+}
+
+#payments_title {
+    position: relative;
+}
+
+.imgRow {
+    height: 130px;
+}
+
+.imgRow>div {
+    float:left
+}
+
+.imgRow>div img{
+    margin: 10px 30px;
+    height: 60px;
+}
+
+.imgRow>div span{
+    text-align: center;
+    display: inherit;
+}

@@ -1,0 +1,55 @@
+@import url("../storeHeader.css");
+
+@import url("../categorybar.css");
+
+@import url("../footer.css");
+
+
+#appBg {
+    height: 500px;
+    width: 800px;
+    margin: 30px auto 30px auto;
+}
+
+#appImg {
+    height: 500px;
+}
+
+#appDesc {
+    float: left;
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 400px;
+    border: 1px solid #022C74;
+    height: 300px;
+    padding: 30px 60px 60px 60px;
+    background-color: #022C74;
+    box-shadow: 0 1px 10px #022C74;
+    color: #ffffff;
+}
+
+#appDesc h1 {
+
+}
+
+#appDesc p:nth-child(2) {
+    font-size: 18px;
+}
+
+#appDesc p:nth-child(3) {
+
+}
+
+#app_download_btn {
+    background-color: #FDD922;
+    display: inline-block;
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    text-decoration: none;
+    color: #022C74;
+    margin-top: 30px;
+}
+

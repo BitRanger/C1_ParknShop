@@ -35,6 +35,9 @@ public class PsOrder implements java.io.Serializable {
 	private String trackingNumber;
 	private Double priceTotal;
 	private Timestamp timeCreated;
+	private Timestamp timePaid;
+	private Timestamp timeBeginDeliver;
+	private Timestamp timeFinished;
 	private Set<ROrderItem> ROrderItems = new HashSet<ROrderItem>(0);
 
 	// Constructors
@@ -82,7 +85,7 @@ public class PsOrder implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_recip_addr", nullable = false)
 	public PsRecipient getPsRecipient() {
 		return this.psRecipient;
@@ -92,7 +95,7 @@ public class PsOrder implements java.io.Serializable {
 		this.psRecipient = psRecipient;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_customer", nullable = false)
 	public PsCustomer getPsCustomer() {
 		return this.psCustomer;
@@ -102,7 +105,7 @@ public class PsOrder implements java.io.Serializable {
 		this.psCustomer = psCustomer;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_shop", nullable = false)
 	public PsShop getPsShop() {
 		return this.psShop;
@@ -148,7 +151,7 @@ public class PsOrder implements java.io.Serializable {
 		this.timeCreated = timeCreated;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "psOrder")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "psOrder")
 	public Set<ROrderItem> getROrderItems() {
 		return this.ROrderItems;
 	}
@@ -156,5 +159,31 @@ public class PsOrder implements java.io.Serializable {
 	public void setROrderItems(Set<ROrderItem> ROrderItems) {
 		this.ROrderItems = ROrderItems;
 	}
+	
+	@Column(name = "time_paid", nullable = true, length = 19)
+	public Timestamp getTimePaid() {
+		return timePaid;
+	}
 
+	public void setTimePaid(Timestamp timePaid) {
+		this.timePaid = timePaid;
+	}
+
+	@Column(name = "time_begindeliver", nullable = true, length = 19)
+	public Timestamp getTimeBeginDeliver() {
+		return timeBeginDeliver;
+	}
+
+	public void setTimeBeginDeliver(Timestamp timeBeginDeliver) {
+		this.timeBeginDeliver = timeBeginDeliver;
+	}
+
+	@Column(name = "time_finished", nullable = true, length = 19)
+	public Timestamp getTimeFinished() {
+		return timeFinished;
+	}
+
+	public void setTimeFinished(Timestamp timeFinished) {
+		this.timeFinished = timeFinished;
+	}
 }

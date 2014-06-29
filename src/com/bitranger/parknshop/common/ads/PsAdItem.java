@@ -1,46 +1,44 @@
 package com.bitranger.parknshop.common.ads;
 
 import java.sql.Timestamp;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * PsAdItem entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "ps_ad_item", catalog = "c1_parknshop")
+@Table(name = "ps_ad_item", catalog = "c1_parknshop", uniqueConstraints = @UniqueConstraint(columnNames = "id"))
 public class PsAdItem implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -7193757448686415312L;
-	private Integer id;
+	private Integer idPromot;
 	private PsPromotItem psPromotItem;
 	private Timestamp timeStart;
 	private Timestamp timeEnd;
-	private Double weight;
-	private Double price;
-	private Integer numFetched;
+	private Double weight = 0.0;
+	private Double price = 0.0;
+	private Integer numFetched = 0;
+	private Integer id;
 
 	// Constructors
 
 	/** default constructor */
-	public PsAdItem() {}
+	public PsAdItem() {
+	}
 
-	/** full constructor */
-	public PsAdItem(Integer id, PsPromotItem psPromotItem, Timestamp timeStart,
-			Timestamp timeEnd, Double weight, Double price, Integer numFetched) {
-		this.id = id;
+	/** minimal constructor */
+	public PsAdItem(Integer idPromot, PsPromotItem psPromotItem,
+			Timestamp timeStart, Timestamp timeEnd, Double weight,
+			Double price, Integer numFetched) {
+		this.idPromot = idPromot;
 		this.psPromotItem = psPromotItem;
 		this.timeStart = timeStart;
 		this.timeEnd = timeEnd;
@@ -48,26 +46,34 @@ public class PsAdItem implements java.io.Serializable {
 		this.price = price;
 		this.numFetched = numFetched;
 	}
-	
-	
-//	public boolean isValid() {
-//		Date date = new Date();
-//		return timeStart.before(date) && timeEnd.after(date);
-//	}
 
-	// Property accessors
-	@Id
-	@Column(name = "id", unique = true, nullable = false)
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
+	/** full constructor */
+	public PsAdItem(Integer idPromot, PsPromotItem psPromotItem,
+			Timestamp timeStart, Timestamp timeEnd, Double weight,
+			Double price, Integer numFetched, Integer id) {
+		this.idPromot = idPromot;
+		this.psPromotItem = psPromotItem;
+		this.timeStart = timeStart;
+		this.timeEnd = timeEnd;
+		this.weight = weight;
+		this.price = price;
+		this.numFetched = numFetched;
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_promot", nullable = false)
+	// Property accessors
+	@Id
+	@Column(name = "id_promot", unique = true, nullable = false)
+	public Integer getIdPromot() {
+		return this.idPromot;
+	}
+
+	public void setIdPromot(Integer idPromot) {
+		this.idPromot = idPromot;
+	}
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@PrimaryKeyJoinColumn
 	public PsPromotItem getPsPromotItem() {
 		return this.psPromotItem;
 	}
@@ -119,6 +125,15 @@ public class PsAdItem implements java.io.Serializable {
 
 	public void setNumFetched(Integer numFetched) {
 		this.numFetched = numFetched;
+	}
+
+	@Column(name = "id", unique = true)
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }

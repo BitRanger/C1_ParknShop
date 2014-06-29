@@ -7,8 +7,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,9 +23,9 @@ public class PsNoticeAdmin implements java.io.Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5856611752593484843L;
-	private Integer idAdmin;
-	private PsAdministator psAdministator;
+	private static final long serialVersionUID = 5648796209275448763L;
+	private Integer id;
+	private PsAdministrator psAdministrator;
 	private Timestamp timeCreated;
 	private String message;
 	private String source;
@@ -38,15 +38,15 @@ public class PsNoticeAdmin implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public PsNoticeAdmin(PsAdministator psAdministator, Timestamp timeCreated) {
-		this.psAdministator = psAdministator;
+	public PsNoticeAdmin(PsAdministrator psAdministrator, Timestamp timeCreated) {
+		this.psAdministrator = psAdministrator;
 		this.timeCreated = timeCreated;
 	}
 
 	/** full constructor */
-	public PsNoticeAdmin(PsAdministator psAdministator, Timestamp timeCreated,
-			String message, String source, Short isValid) {
-		this.psAdministator = psAdministator;
+	public PsNoticeAdmin(PsAdministrator psAdministrator,
+			Timestamp timeCreated, String message, String source, Short isValid) {
+		this.psAdministrator = psAdministrator;
 		this.timeCreated = timeCreated;
 		this.message = message;
 		this.source = source;
@@ -56,23 +56,23 @@ public class PsNoticeAdmin implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id_admin", unique = true, nullable = false)
-	public Integer getIdAdmin() {
-		return this.idAdmin;
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setIdAdmin(Integer idAdmin) {
-		this.idAdmin = idAdmin;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@PrimaryKeyJoinColumn
-	public PsAdministator getPsAdministator() {
-		return this.psAdministator;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_admin", nullable = false)
+	public PsAdministrator getPsAdministrator() {
+		return this.psAdministrator;
 	}
 
-	public void setPsAdministator(PsAdministator psAdministator) {
-		this.psAdministator = psAdministator;
+	public void setPsAdministrator(PsAdministrator psAdministrator) {
+		this.psAdministrator = psAdministrator;
 	}
 
 	@Column(name = "time_created", nullable = false, length = 19)
