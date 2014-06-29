@@ -121,26 +121,6 @@ public class ItemFinder extends HibernateDaoSupport {
 		}
 		
 		
-		@SuppressWarnings("unchecked")
-		public List<PsItem> search(final String q) {
-			return hibernate.executeFind(new HibernateCallback<List<PsItem>>() {
-				@Override
-					public List<PsItem> doInHibernate(Session session)
-								throws HibernateException, SQLException {
-					
-					SQLQuery query = session.createSQLQuery(
-" SELECT IT.*, " +
-" MATCH (`name`, `introduction`) AGAINST (? IN NATURAL LANGUAGE MODE) AS relevance "  +
-" FROM `ps_item` as IT " +
-" ORDER BY relevance DESC"
-);
-						query.setString(0, q);
-						query.addEntity(PsItem.class);
-						return query.list();
-					}
-				});
-		}
-		
 		final SQLQuery getQuery(Session session) {
 			
 			boolean withTags = tagIds != null && tagIds.size() > 0;

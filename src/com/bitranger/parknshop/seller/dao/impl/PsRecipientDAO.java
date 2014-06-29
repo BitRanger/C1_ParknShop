@@ -70,12 +70,8 @@ public class PsRecipientDAO extends HibernateDaoSupport implements IPsRecipientD
 		}
 	}
 
-<<<<<<< HEAD
 	@Override
 	public PsRecipient findById(java.lang.Integer id) {
-=======
-	public PsRecipient findById(Integer id) {
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		log.debug("getting PsRecipient instance with id: " + id);
 		try {
 			PsRecipient instance = (PsRecipient) getHibernateTemplate().get(

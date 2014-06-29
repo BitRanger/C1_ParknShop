@@ -26,23 +26,15 @@ public interface IPsOrderDAO {
 	
 	public List<PsOrder> findByCustomerId(final Integer id, final Short state);
 	public abstract List<PsOrder> findByCustomerId(Integer id, Date from, Date to);
-	public List<PsOrder> findByCustomerId(final Integer id);
 	
 	public abstract List<PsOrder> findBySellerId(Integer id);
 	
 
 	public List<PsOrder> findByShopId(final Integer id);
 	public abstract List<PsOrder> findByShopId(Integer id, Date from, Date to);
-<<<<<<< HEAD
 	public abstract List<PsOrder> findByShopId(Integer id, Short state);
 	
 	public List<PsOrder> findAll(Short state);
-=======
-	public abstract List<PsOrder> findByShopId(Integer id, OrderState state);
-	public abstract List<PsOrder> findByCustomerId(Integer id);
-	
-	public abstract List<PsOrder> findAll(Short state);
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	public abstract List<PsOrder> findAll(Date from, Date to);
 
 	public double countTnxVolumn();
@@ -55,5 +47,6 @@ public interface IPsOrderDAO {
 ////	public int getTnxCount(Date start, Date end);
 ////	public double getTnxAmont(Date start, Date end);
 //	public double getSaleRevenue(Date start, Date end);
+	List<PsOrder> findByCustomerId(Integer id);
 
 }

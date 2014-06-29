@@ -16,17 +16,10 @@ import com.bitranger.parknshop.buyer.model.CartCustomerItem;
 import com.bitranger.parknshop.buyer.model.CartCustomerItemId;
 import com.bitranger.parknshop.buyer.model.PsCustomer;
 import com.bitranger.parknshop.common.model.OrderStatus;
-<<<<<<< HEAD
 import com.bitranger.parknshop.seller.dao.impl.PsOrderDAO;
 import com.bitranger.parknshop.seller.dao.impl.PsSellerDAO;
 import com.bitranger.parknshop.seller.model.PsOrder;
 import com.bitranger.parknshop.seller.model.PsSeller;
-=======
-import com.bitranger.parknshop.seller.OrderState;
-import com.bitranger.parknshop.seller.dao.PsSellerAccDAO;
-import com.bitranger.parknshop.seller.dao.impl.PsOrderDAO;
-import com.bitranger.parknshop.seller.model.PsOrder;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 import com.bitranger.parknshop.seller.model.PsSellerAcc;
 
 /**
@@ -46,14 +39,9 @@ public class ConfirmReceived {
 	private PsAdministratorDAO psAdministratorDao;
 
 	@Autowired
-<<<<<<< HEAD
 	PsSellerDAO psSellerDao;
 //	@Autowired
 //	private PsSellerAccDAO psSellerAccDao;
-=======
-	private PsSellerAccDAO psSellerAccDao;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
-
 	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger
 			.getLogger(MakeOrder.class.getName());
 
@@ -79,7 +67,6 @@ public class ConfirmReceived {
 		if (psOrder.getStatus().equals(OrderStatus.DELIVERING)) {
 			psOrder.setStatus(OrderStatus.FINISHED);
 			psOrderDao.update(psOrder);
-<<<<<<< HEAD
 //			@SuppressWarnings("unchecked")
 //			List<PsSellerAcc> psSellerAccs = psSellerAccDao.findByProperty(
 //					"id_seller", psOrder.getPsShop().getPsSeller().getId());
@@ -92,15 +79,6 @@ public class ConfirmReceived {
 //			double balance = account.getBalance();
 //			account.setBalance(balance + psOrder.getPriceTotal());
 //			psSellerAccDao.update(account);
-=======
-			@SuppressWarnings("unchecked")
-			List<PsSellerAcc> psSellerAccs = psSellerAccDao.findByProperty(
-					"id_seller", psOrder.getPsShop().getPsSeller().getId());
-			PsSellerAcc account = psSellerAccs.get(0);
-			double balance = account.getBalance();
-			account.setBalance(balance + psOrder.getPriceTotal());
-			psSellerAccDao.update(account);
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 			PsAdministrator psAdministrator = psAdministratorDao.findById(1);
 			psAdministrator.setBalance(psAdministrator.getBalance()

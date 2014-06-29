@@ -66,11 +66,7 @@ public class PsAdminAccDAO extends HibernateDaoSupport {
 		log.debug("getting PsAdminAcc instance with id: " + id);
 		try {
 			PsAdminAcc instance = (PsAdminAcc) getHibernateTemplate().get(
-<<<<<<< HEAD
-					"PsAdminAcc", id);
-=======
 					"com.bitranger.parknshop.admin.data.PsAdminAcc", id);
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

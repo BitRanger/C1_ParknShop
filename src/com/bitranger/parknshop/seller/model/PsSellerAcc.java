@@ -39,12 +39,7 @@ public class PsSellerAcc implements java.io.Serializable {
 		this.psSeller = psSeller;
 		this.psOrderLog = psOrderLog;
 		this.timeCreated = timeCreated;
-<<<<<<< HEAD
 		this.amount = amount;
-=======
-		this.balance = balance;
-		org.springframework.scheduling.concurrent.ScheduledExecutorTask task;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	}
 
 	// Property accessors

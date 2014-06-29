@@ -12,10 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ResponseBody;
-=======
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 import com.bitranger.parknshop.buyer.dao.ICartCustomerItemDAO;
 import com.bitranger.parknshop.buyer.dao.impl.CartCustomerItemDAO;
@@ -30,10 +27,6 @@ import com.bitranger.parknshop.common.model.PsComment;
 import com.bitranger.parknshop.common.model.PsItem;
 import com.bitranger.parknshop.common.model.ROrderItem;
 import com.bitranger.parknshop.common.model.ROrderItemId;
-<<<<<<< HEAD
-=======
-import com.bitranger.parknshop.seller.OrderState;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 import com.bitranger.parknshop.seller.dao.IPsOrderDAO;
 import com.bitranger.parknshop.seller.dao.IPsRecipientDAO;
 import com.bitranger.parknshop.seller.model.PsOrder;
@@ -72,25 +65,6 @@ public class MakeComment {
 			.getLogger(MakeComment.class.getName());
 
 	@RequestMapping("/makeComment")
-<<<<<<< HEAD
-	public @ResponseBody String makeComment(HttpServletRequest req, Integer psItemId, Integer scoreItem, Integer scoreShop, String content) {
-		if (psItemId == null || scoreItem==null || scoreShop==null  || content==null)
-			return "fail1";
-		if(scoreItem.compareTo(0)<0 || scoreItem.compareTo(5)>0 || scoreShop.compareTo(0)<0 || scoreShop.compareTo(5)>0)
-			return "fail2";
-		PsCustomer currentCustomer = (PsCustomer) req.getSession()
-				.getAttribute("currentCustomer");
-		if (currentCustomer == null) {
-			return "fail3";
-		}
-		PsItem psItem = psItemDao.findById(psItemId);
-		if(psItem == null)
-			return "fail4";
-		PsComment psComment = new PsComment();
-		psComment.setContent(content);
-		psComment.setScore(scoreItem.shortValue());
-//		psComment.set(scoreShop);
-=======
 	public String makeComment(HttpServletRequest req, Integer psItemId, Integer scoreItem, Integer scoreShop, String content) {
 		if (psItemId == null || scoreItem==null || scoreShop==null  || content==null)
 			return Utility.error("Parameter Not Enough");
@@ -108,16 +82,10 @@ public class MakeComment {
 		psComment.setContent(content);
 		psComment.setScoreItem(scoreItem);
 		psComment.setScoreShop(scoreShop);
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		psComment.setPsItem(psItem);
 		psComment.setTimeCreated(new Timestamp(System.currentTimeMillis()));
 		psComment.setPsCustomer(currentCustomer);
 		psCommentDao.save(psComment);
-<<<<<<< HEAD
 		return "success";
-=======
-		req.setAttribute("message", "Comment Successfully.");
-		return "displayinfo";
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	}
 }

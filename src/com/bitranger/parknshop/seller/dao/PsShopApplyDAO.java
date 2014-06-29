@@ -59,13 +59,8 @@ public class PsShopApplyDAO extends HibernateDaoSupport {
 	public PsShopApply findById(java.lang.Integer id) {
 		log.debug("getting PsShopApply instance with id: " + id);
 		try {
-<<<<<<< HEAD:src/com/bitranger/parknshop/seller/dao/PsShopApplyDAO.java
 			PsShopApply instance = (PsShopApply) getHibernateTemplate().get(
 					"com.bitranger.parknshop.seller.model.PsShopApply", id);
-=======
-			PsCustomerAcc instance = (PsCustomerAcc) getHibernateTemplate()
-					.get("com.bitranger.parknshop.buyer.model.PsCustomerAcc", id);
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79:src/com/bitranger/parknshop/buyer/dao/PsCustomerAccDAO.java
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

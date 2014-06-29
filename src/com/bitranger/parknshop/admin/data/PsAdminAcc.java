@@ -22,19 +22,10 @@ public class PsAdminAcc implements java.io.Serializable {
 
 	// Fields
 
-<<<<<<< HEAD
 	private Integer id;
 	private PsAdministrator psAdministrator;
 	private PsOrderLog psOrderLog;
 	private Double amount;
-=======
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 898021265546066983L;
-	private Integer idAdmin;
-	private PsAdministrator psAdministrator;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	private Timestamp timeCreated;
 
 	// Constructors
@@ -52,17 +43,11 @@ public class PsAdminAcc implements java.io.Serializable {
 	}
 
 	/** full constructor */
-<<<<<<< HEAD
 	public PsAdminAcc(PsAdministrator psAdministrator, PsOrderLog psOrderLog,
 			Double amount, Timestamp timeCreated) {
 		this.psAdministrator = psAdministrator;
 		this.psOrderLog = psOrderLog;
 		this.amount = amount;
-=======
-	public PsAdminAcc(Integer idAdmin, PsAdministrator psAdministrator, Timestamp timeCreated) {
-		this.idAdmin = idAdmin;
-		this.psAdministrator = psAdministrator;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 		this.timeCreated = timeCreated;
 	}
 
@@ -88,7 +73,6 @@ public class PsAdminAcc implements java.io.Serializable {
 		this.psAdministrator = psAdministrator;
 	}
 
-<<<<<<< HEAD
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_order_log", nullable = false)
 	public PsOrderLog getPsOrderLog() {
@@ -106,16 +90,6 @@ public class PsAdminAcc implements java.io.Serializable {
 
 	public void setAmount(Double amount) {
 		this.amount = amount;
-=======
-	@OneToOne(fetch = FetchType.EAGER)
-	@PrimaryKeyJoinColumn
-	public PsAdministrator getPsAdministrator() {
-		return this.psAdministrator;
-	}
-
-	public void setPsAdministrator(PsAdministrator psAdministrator) {
-		this.psAdministrator = psAdministrator;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	}
 
 	@Column(name = "time_created", nullable = false, length = 19)

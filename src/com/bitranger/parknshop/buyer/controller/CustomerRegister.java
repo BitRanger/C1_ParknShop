@@ -68,12 +68,8 @@ public class CustomerRegister {
 		{
 			log.debug("Seller Try to sign up.");
 			Timestamp now = new Timestamp(System.currentTimeMillis());
-<<<<<<< HEAD:src/com/bitranger/parknshop/buyer/controller/CustomerRegister.java
 			PsSeller toAdd = new PsSeller(email, password, new Timestamp(System.currentTimeMillis()));
 			toAdd.setNickname(username);
-=======
-			PsSeller toAdd = new PsSeller(username, email, password);
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79:src/com/bitranger/parknshop/buyer/controller/CustomerRegister.java
 			toAdd.setTimeCreated(now);
 			psSellerDao.save(toAdd);
 			req.getSession().setAttribute("currentSeller", toAdd);

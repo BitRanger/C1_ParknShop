@@ -1,38 +1,24 @@
 package com.bitranger.parknshop.buyer.controller;
 
-<<<<<<< HEAD
-=======
 import java.util.List;
 
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
 import com.bitranger.parknshop.admin.data.PsAdministrator;
 import com.bitranger.parknshop.admin.data.PsAdministratorDAO;
 import com.bitranger.parknshop.buyer.model.PsCustomer;
 import com.bitranger.parknshop.common.model.OrderStatus;
 import com.bitranger.parknshop.seller.dao.impl.PsOrderDAO;
 import com.bitranger.parknshop.seller.model.PsOrder;
-=======
-import com.bitranger.parknshop.admin.data.PsAdminAcc;
 import com.bitranger.parknshop.admin.data.PsAdminAccDAO;
-import com.bitranger.parknshop.admin.data.PsAdministrator;
-import com.bitranger.parknshop.admin.data.PsAdministratorDAO;
 import com.bitranger.parknshop.buyer.model.CartCustomerItem;
 import com.bitranger.parknshop.buyer.model.CartCustomerItemId;
-import com.bitranger.parknshop.buyer.model.PsCustomer;
-import com.bitranger.parknshop.common.model.OrderStatus;
 import com.bitranger.parknshop.seller.OrderState;
-import com.bitranger.parknshop.seller.dao.PsSellerAccDAO;
-import com.bitranger.parknshop.seller.dao.impl.PsOrderDAO;
-import com.bitranger.parknshop.seller.model.PsOrder;
 import com.bitranger.parknshop.seller.model.PsSellerAcc;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 /**
  * This class is a controller for canceling an order.
@@ -50,13 +36,6 @@ public class CancelOrder {
 	@Autowired
 	private PsAdministratorDAO psAdministratorDao;
 
-<<<<<<< HEAD
-//	@Autowired
-//	private PsSellerAccDAO psSellerAccDao;
-=======
-	@Autowired
-	private PsSellerAccDAO psSellerAccDao;
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 	private static final org.apache.log4j.Logger log = org.apache.log4j.Logger
 			.getLogger(MakeOrder.class.getName());
@@ -96,11 +75,10 @@ public class CancelOrder {
 		}
 		return "redirect:/";
 	}
-<<<<<<< HEAD
 	
 	@RequestMapping("/confirmReceived")
-	public String confirmedReceived(HttpServletRequest req, Integer orderId)
-	{
+	public String confirmedReceived(HttpServletRequest req, Integer orderId) {
+		
 		PsCustomer currentCustomer = (PsCustomer) req.getSession()
 				.getAttribute("currentCustomer");
 		if (currentCustomer == null)
@@ -119,6 +97,4 @@ public class CancelOrder {
 		}
 		return "redirect:/buyerCenter";
 	}
-=======
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 }

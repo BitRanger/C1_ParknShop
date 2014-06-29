@@ -31,7 +31,6 @@ import com.bitranger.parknshop.common.model.PsItem;
  */
 public class PsItemDAO extends HibernateDaoSupport implements IPsItemDAO {
 	
-<<<<<<< HEAD
 /**
  select IT.*, count(IT.count_purchase) as CT from ps_item as IT
 where IT.id_category = ?
@@ -98,8 +97,6 @@ limit 0, ?
 //    MATCH (`name`, `introduction`) AGAINST (? IN NATURAL LANGUAGE MODE) AS relevance
 //FROM `ps_item` as IT
 //ORDER BY relevance DESC
-=======
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PsItem> searchByKeyword(final String q) {
