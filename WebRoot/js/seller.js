@@ -16,35 +16,6 @@ $(".sellerControlItem").click(function() {
 $("#chooseCategoryBtn").click(function() {
     $("#seller_categoryList").show();
 });
-<<<<<<< HEAD
-=======
-
-$("#seller_categoryList").mouseleave(function() {
-    $(this).hide();
-});
-
-$(".seller_categoryListItem").mouseenter(function() {
-    $(this).css("background-color", "#189918");
-    $(this).css("color", "#ffffff");
-}).mouseleave(function() {
-    $(this).css("background-color", "#efefef");
-    $(this).css("color", "#333333");
-}).click(function() {
-    $("#sellerCategoryTag").show();
-});
-
-$(".sellerCategoryTagItem").click(function() {
-    if ($(this).data("state") == "0") {
-        $(this).css("background-color", "#189918");
-        $(this).css("color", "#ffffff");
-        $(this).data("state", "1");
-    } else {
-        $(this).css("background-color", "#efefef");
-        $(this).css("color", "#333333");
-        $(this).data("state", "0");
-    }
-});
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 
 $("#seller_categoryList").mouseleave(function() {
     $(this).hide();

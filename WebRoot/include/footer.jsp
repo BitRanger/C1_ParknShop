@@ -25,18 +25,6 @@
                 </a>
                 <a class="promoLink" href="#">
                     <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_6.jpg" hspace="4">
-<<<<<<< HEAD
-=======
-                </a>
-                <a href="#">
-                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_7.jpg" hspace="4">
-                </a>
-                <a class="promoLink" href="#">
-                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_8.jpg" hspace="4">
-                </a>
-                <a class="promoLink" href="#">
-                    <img border="0" src="<%=request.getContextPath()%>/images/logo/logo_9.jpg" hspace="4">
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                 </a>
             </div>
         </div>

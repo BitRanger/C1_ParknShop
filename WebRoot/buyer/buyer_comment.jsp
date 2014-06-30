@@ -10,15 +10,9 @@
 <head>
     <title>Online Store</title>
     <meta charset="utf-8" />
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/buyer_css/buyer_comment.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/common.css">
-=======
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="../css/buyer_css/buyer_comment.css" />
-    <link rel="stylesheet" type="text/css" href="../css/common.css">
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 </head>
 <body>
 <%@ include file="../include/header.jsp" %>
@@ -27,48 +21,29 @@
 <div id="categorybarDiv">
     <%@ include file="../include/categorybar.jsp" %>
 </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 <div id="mainContent">
 
    <div id="storeItemList">
        <div id="itemDetail">
            <div id="itemDetail_PicShow">
                <div id="itemDetail_PicShow_Big">
-<<<<<<< HEAD
                    <img id="itemDetail_PicShow_Big_img" src="<%=request.getContextPath() %>/images/detail/detail1.JPG">
-=======
-                   <img id="itemDetail_PicShow_Big_img" src="../images/detail/detail1.JPG">
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                </div>
            </div>
            <div id="itemDetail_Desc">
                <div id="itemDetail_DescTitle">
-<<<<<<< HEAD
                    <h3>${psItem.name}</h3>
-=======
-                   <h3>United Colors of Benetton Solid Men's Shorts</h3>
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                </div>
                <div>
                    <div id="itemDetail_price">
                        <span class="itemDetail_intro">Price</span>
                        <span>$</span>
-<<<<<<< HEAD
                        <span style="text-decoration: line-through">${psItem.price}</span>
                    </div>
                    <div id="itemDetail_promotion">
                        <span style="margin-top: 5px" class="itemDetail_intro">Promotion</span>
                        <span style="font-size: 24px;color: #f40;">$${psItem.price}</span>
-=======
-                       <span style="text-decoration: line-through">32.00</span>
-                   </div>
-                   <div id="itemDetail_promotion">
-                       <span style="margin-top: 5px" class="itemDetail_intro">Promotion</span>
-                       <span style="font-size: 24px;color: #f40;">$26.00</span>
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                    </div>
                    <div id="itemDetail_deliver">
 
@@ -148,7 +123,6 @@
 <%@ include file="../include/footer.jsp" %>
 
 
-<<<<<<< HEAD
 <script src="<%=request.getContextPath() %>/js/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath() %>/js/bootstrap.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath() %>/js/categorybar.js" type="text/javascript"></script>
@@ -174,12 +148,5 @@
 	   }
 	});
 </script>
-=======
-<script src="../js/jquery-1.10.2.min.js" type="text/javascript"></script>
-<script src="../js/bootstrap.js" type="text/javascript"></script>
-<script src="../js/categorybar.js" type="text/javascript"></script>
-<script src="../js/buyer.js" type="text/javascript"></script>
-<script src="../js/common.js" type="text/javascript"></script>
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 </body>
 </html>

@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2014 BitRanger.
+ * Copyright (c) 2014 BitRangers (Team C1).
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Lesser Public License v2.1
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- *     BitRanger - initial API and implementation
+ *      BitRangers (Team C1) - initial API and implementation
  ******************************************************************************/
 package com.bitranger.parknshop.common.dao;
 

@@ -11,11 +11,7 @@
 			%>
 			<li id="<%=psCategory.getId()%>" class="categorybarListItem"><a
 				class="categorybarListItemLink"
-<<<<<<< HEAD
 				href="<%=request.getContextPath()%>/itemlist?category_id=<%=psCategory.getId()%>"><span><%=psCategory.getName().split("&")[0]%></span></a>
-=======
-				href="<%=request.getContextPath()%>/category/<%=psCategory.getId()%>"><span><%=psCategory.getName().split("&")[0]%></span></a>
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 				<div id="sub_<%=psCategory.getId()%>" class="submenu">
 					<ul class="submenuPanel">
 						<li class="submenuItem submenuItemTitle"><a href="#"

@@ -63,11 +63,7 @@
                     <div class="payMethodTitle">Online Bank (In 12 hours)</div>
                     <div class="payMethodContent">
                         <div class="payListItem">
-<<<<<<< HEAD
                             <input type="radio" name="payment" id="bankSelectInput">
-=======
-                            <input type="radio" name="payment">
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                             Go to the your online bank to pay the order. (Notice: you must have an online bank account. And the
                             payment amount is limited)
                             <div class="selectDiv">
@@ -89,7 +85,6 @@
                                     <option>中国邮政储蓄银行</option>
                                 </select>
                             </div>
-<<<<<<< HEAD
                              <div id="bankExtra">
                                 <div id="bankNumberDiv">
                                     <input style="width: 280px" class="common_input" placeholder="Bank Number">
@@ -101,8 +96,6 @@
                                     <input style="width: 140px" class="common_input" type="text" placeholder="verification code">
                                 </div>
                             </div>
-=======
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                         </div>
                     </div>
                 </div>
@@ -185,11 +178,7 @@
                         <h4 class="modal-title" id="myModalLabel">Succeed !</h4>
                     </div>
                     <div class="modal-body"> Thank you for buying our books !<br>
-<<<<<<< HEAD
                         We'll take care your order as soon as possible! Enjoy Shopping!
-=======
-                        We'll take care your order as soon as possible! Enjoy Shopping ! div>
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                         <div class="modal-footer">
                             <button type="button" class="common_btn" id="payDoneModalBtn" data-dismiss="modal">Close</button>
                         </div>

@@ -17,6 +17,9 @@
             </tr>
             <% 
             List<PsPromotItem> ad_list = (List<PsPromotItem>)request.getAttribute("ad_list");
+            if (ad_list == null || ad_list.size() < 1)
+            	out.print("No Advertisement Yet");
+            else
             for(int i = 0; i < ad_list.size(); i++) { 
             	PsPromotItem ad = ad_list.get(i);
             %>

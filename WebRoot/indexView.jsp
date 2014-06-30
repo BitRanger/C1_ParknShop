@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 <%@page import="com.bitranger.parknshop.common.ads.PsPromotItem"%>
-=======
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 <%@page import="com.bitranger.parknshop.buyer.controller.Utility"%>
 <%@page import="com.bitranger.parknshop.common.model.PsItem"%>
 <%@page import="java.util.HashMap"%>
@@ -159,13 +156,7 @@
 				%>
 				<div class="storeItem">
 					<a href="<%=request.getContextPath()%>/item/<%=psItem.getId()%>"><img
-<<<<<<< HEAD
 						width="180px" height="180px" src="<%=psItem.getUrlPicture()%>"
-=======
-						width="180px"
-						height="180px"
-						src="<%=request.getContextPath()%>/images/<%=psItem.getUrlPicture()%>"
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
 						alt="..."></a>
 					<div class="storeItemDesc">
 						<h5>

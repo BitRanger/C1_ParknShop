@@ -90,12 +90,9 @@
                             <input type="radio" name="role" value="buyer" checked="checked" />Buyer
                             <input type="radio" name="role" value="seller" />Seller
                         </div>
-<<<<<<< HEAD
                         <br>
                         <br>
                         <!--  
-=======
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                         <b><input style="margin: 5px 0;vertical-align: middle;" type="checkbox"></b>
                         <span><label style="margin: 0;vertical-align: middle;font-size: 12px;font-weight: 200;">Stay signed in</label></span>
                         <span style="vertical-align: middle;margin-left: 20px;"><a class="login_link" href="#">Forget Password?</a></span><br>
@@ -103,11 +100,7 @@
                         <p style="font-size: 12px;margin-left: 18px;color:#999999">
                             To protect your privacy, remember to sign out when you're done shopping.
                             <a class="login_link" href="#">Learn more</a>
-<<<<<<< HEAD
                         </p>-->
-=======
-                        </p>
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                         
                         <input id="login_btn" type="submit" value="Login">
                         <span style="margin-left: 20px;font-size: 12px;">

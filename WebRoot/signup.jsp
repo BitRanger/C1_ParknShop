@@ -43,20 +43,12 @@
         <div id="signupMainRight">
             <div id="signupPanel">
                 <div class="signupMessage">Sign up, trade world</div>
-<<<<<<< HEAD
                 <form style="margin:0" id="signupForm" method="post" onsubmit="return deal_signup()" action="<%=request.getContextPath()%>/register">
-=======
-                <form style="margin:0" id="signupForm" method="post" submit="return deal_signup()" action="<%=request.getContextPath()%>/register">
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                     <input class="signup_input" type="text" name="username" placeholder="Pick a username"><br>
                     <input class="signup_input" type="text" name="email" placeholder="Your email"><br>
                     <input class="signup_input" type="password" name="password" placeholder="Create a password"><br>
                     <input class="signup_input" type="password" name="pwconfirm" placeholder="Confirm password"><br>
-<<<<<<< HEAD
 					<div id="signup_type">
-=======
-                    <div id="signup_type">
->>>>>>> c7c78cd9f37d4662e95dd95bf4d4054fc2ec8e79
                         <input type="radio" checked="checked" name="role" value="buyer">Buyer
                         <input style="margin-left: 30px" type="radio" name="role" value="seller">Seller
                     </div>

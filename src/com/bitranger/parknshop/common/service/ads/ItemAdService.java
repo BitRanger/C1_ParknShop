@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2014 BitRangers (Team C1).
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *      BitRangers (Team C1) - initial API and implementation
+ ******************************************************************************/
 package com.bitranger.parknshop.common.service.ads;
 
 import java.sql.SQLException;
@@ -20,6 +30,7 @@ import com.bitranger.parknshop.common.ads.PsAdItemDAO;
 import com.bitranger.parknshop.common.ads.PsPromotItem;
 import com.bitranger.parknshop.common.model.PsItem;
 import com.bitranger.parknshop.common.model.PsTag;
+import com.bitranger.parknshop.common.recommend.basic.CFilter;
 
 /*
  index page
@@ -93,7 +104,11 @@ order by TAG_INTER desc
 	public List<PsPromotItem> forItemList(@Nullable final List<PsItem> items, 
 								final int limit, 
 								@Nullable PsCustomer customer) {
-									
+		
+		if (customer != null) {
+			return new CFilter().filter(items, limit, customer.getId());
+		}
+		
 		final HashSet<PsTag> tags = new HashSet<>(items.size() * 6);
 		for (PsItem i : items) {
 			tags.addAll(i.getPsTags());
@@ -134,7 +149,10 @@ b.append(
 	@Override
 	public List<PsPromotItem> forItem(@Nullable final List<Integer> tags, 
 								final int category,  final int limit, @Nullable PsCustomer customer) {
-	
+		if (customer != null) {
+			return new CFilter().filter(tags, category, limit, customer.getId());
+		}
+		
 		return psAdItemDAO.hibernate().executeFind(new HibernateCallback<List<PsPromotItem>>() {
 
 			@Override

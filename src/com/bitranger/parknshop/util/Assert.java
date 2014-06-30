@@ -1,12 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2014 WangKang.
+ * Copyright (c) 2014 BitRangers (Team C1).
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the GNU Public License v3.0
+ * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
- * http://www.gnu.org/licenses/gpl.html
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- *    WangKang. - initial API and implementation
+ *      BitRangers (Team C1) - initial API and implementation
  ******************************************************************************/
 /*
  * Copyright 2002-2013 the original author or authors.
