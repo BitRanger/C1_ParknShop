@@ -116,7 +116,7 @@ public class PsPromotItemDAO extends HibernateDaoSupport {
 		}
 	}
 
-	public List findByProperty(String propertyName, Object value) {
+	public List<PsPromotItem> findByProperty(String propertyName, Object value) {
 		log.debug("finding PsPromotItem instance with property: "
 				+ propertyName + ", value: " + value);
 		try {

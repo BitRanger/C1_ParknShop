@@ -12,12 +12,6 @@ package com.bitranger.parknshop.common.recommend.collections;
 
 import java.util.AbstractList;
 
-/**
- * List consisting of multiple occurrences of one element.
- *
- * @param <T> The element type of the list.
- * @author <a href="http://www.grouplens.org">GroupLens Research</a>
- */
 class RepeatedList<T> extends AbstractList<T> {
     private int size;
     private T object;

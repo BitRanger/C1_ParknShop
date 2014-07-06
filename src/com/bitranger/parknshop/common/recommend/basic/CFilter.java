@@ -47,7 +47,7 @@ public class CFilter {
 		List<Long> ls = recommender.recommend(new Feature(itemIds1, -1, itemIds2));
 		List<PsPromotItem> rec = new ArrayList<>(ls.size());
 		for (Long l : ls) {
-			rec.addAll((psPromotItemDAO.findByProperty("id_item", l.intValue()));
+			rec.addAll(psPromotItemDAO.findByProperty("id_item", l.intValue()));
 		}
 		return rec;
 	}
@@ -66,7 +66,7 @@ public class CFilter {
 		List<Long> ls = recommender.recommend(new Feature(tags, category, itemIds));
 		List<PsPromotItem> rec = new ArrayList<>(ls.size());
 		for (Long l : ls) {
-			rec.addAll((psPromotItemDAO.findByProperty("id_item", l.intValue()));
+			rec.addAll(psPromotItemDAO.findByProperty("id_item", l.intValue()));
 		}
 		return rec;
 	}

@@ -13,11 +13,7 @@ package com.bitranger.parknshop.common.recommend.collections;
 
 import java.io.Serializable;
 
-/**
- * Efficient representation of intervals as an integer list.
- *
- * @author <a href="http://www.grouplens.org">GroupLens Research</a>
- */
+
 class IntIntervalList  implements Serializable {
     private static final long serialVersionUID = -914440213158448384L;
 

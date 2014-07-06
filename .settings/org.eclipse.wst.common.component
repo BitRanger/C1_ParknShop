@@ -3,8 +3,6 @@
     <wb-module deploy-name="C1_ParknShop">
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/note"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/sql"/>
         <property name="context-root" value="C1_ParknShop"/>
         <property name="java-output-path" value="/C1_ParknShop/build/classes"/>
     </wb-module>

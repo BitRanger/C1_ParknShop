@@ -31,26 +31,11 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Various helper methods for working with collections (particularly Fastutil
- * collections).
- *
- * @author <a href="http://www.grouplens.org">GroupLens Research</a>
- * @compat Public
- */
+
 public final class CollectionUtils {
     private CollectionUtils() {
     }
 
-    /**
-     * Use the fast iterator of an iterable, if available.
-     *
-     * @param <E>  The type of object to iterate.
-     * @param iter An iterable to wrap
-     * @return An iterable using the underlying iterable's fast iterator, if present,
-     *         to do iteration. Fast iteration is detected by looking for a {@code fastIterator()}
-     *         method, like is present in {@link FastEntrySet}.
-     */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static <E> Iterable<E> fast(final Iterable<E> iter) {
         if (iter instanceof FastIterable) {
@@ -125,18 +110,12 @@ public final class CollectionUtils {
         return new RepeatedList<T>(obj, n);
     }
 
-    /**
-     * Create an empty, immutable fast collection.
-     *
-     * @param <E> The type of fast collection.
-     * @return An empty fast collection.
-     */
+
     public static <E> FastCollection<E> emptyFastCollection() {
         return new EmptyFastCollection<E>();
     }
 
     private static class EmptyFastCollection<E> extends AbstractCollection<E> implements FastCollection<E> {
-        @Override
         public Iterator<E> fastIterator() {
             return Iterators.emptyIterator();
         }

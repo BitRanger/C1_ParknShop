@@ -15,10 +15,6 @@ import com.google.common.collect.Iterators;
 
 import java.util.Iterator;
 
-/**
- * Implementation of {@link CollectionUtils#fastFilterAndLimit(Iterable, Predicate, int)}.
- * @author <a href="http://www.grouplens.org">GroupLens Research</a>
- */
 class FilteringFastIterable<E> implements FastIterable<E> {
     private final Iterable<E> delegate;
     private final Predicate<? super E> predicate;

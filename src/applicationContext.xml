@@ -7,8 +7,8 @@
 	<bean id="springMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
-		<property name="username" value="username" />
-		<property name="password" value="password" />
+		<property name="username" value="net_freechoice@163.com" />
+		<property name="password" value="psw-dev" />
 
 		<property name="javaMailProperties">
 			<props>
@@ -22,25 +22,43 @@
 		<property name="sender" ref="springMailSender"/>
 	</bean>
 	
-<!-- 	<bean id="scheduledExecutor" -->
-<!-- 		class="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean" -->
-<!-- 		scope="singleton"> -->
-<!-- 		<property name="scheduledExecutorTasks"> -->
-<!-- 			<list> -->
-<!-- 				<bean -->
-<!-- 					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask"> -->
-<!-- 					<property name="period" value="5000" /> -->
-<!-- 					<property name="runnable"> -->
-<!-- 						<bean -->
-<!-- 							class="com.bitranger.parknshop.task.MaintainDB"> -->
-<!-- 								<property name="sessionFactory" ref="sessionFactory"></property> -->
-<!-- 						</bean> -->
-<!-- 					</property> -->
-<!-- 				</bean> -->
-				
-<!-- 			</list> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
+	<bean id="scheduledExecutor"
+		class="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean"
+		scope="singleton">
+		<property name="scheduledExecutorTasks">
+			<list>
+				<bean
+					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">
+					<property name="period" value="5000" />
+					<property name="runnable">
+						<bean
+							class="com.bitranger.parknshop.task.MaintainDB">
+								<property name="sessionFactory" ref="sessionFactory"></property>
+						</bean>
+					</property>
+				</bean>
+				<bean
+					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">
+					<property name="period" value="5000" />
+					<property name="runnable">
+						<bean
+							class="com.bitranger.parknshop.task.ClearOutdated">
+								<property name="sessionFactory" ref="sessionFactory"></property>
+						</bean>
+					</property>
+				</bean>
+				<bean
+					class="org.springframework.scheduling.concurrent.ScheduledExecutorTask">
+					<property name="period" value="5000" />
+					<property name="runnable">
+						<bean
+							class="com.bitranger.parknshop.task.OrderChecker">
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
 	
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
